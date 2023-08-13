@@ -1,0 +1,52 @@
+name: dalai
+description: El Design System ha de reflectir els valors i objectius de CityXerpa com a empresa.
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: any
+  substring_highlight: any
+  shimmer: any
+  dotted_line: any
+  auto_size_text: any
+  url_launcher: any
+  map_launcher: any
+  geolocator: any
+  cached_network_image: any
+  lottie: any
+  flutter_html: any
+  latlng: any
+  flutter_vibrate: any
+  cityxerpa_icons:
+    git:
+      url: https://gitlab.com/dribba-labs/cityxerpa/cityxerpa-icons.git
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/fonts/
+    - assets/animations/
+    - assets/images/
+
+  fonts:
+    - family: metropolis
+      fonts:
+        - asset: assets/fonts/metropolis/regular.otf
+          weight: 400
+        - asset: assets/fonts/metropolis/semibold.otf
+          weight: 600
+        - asset: assets/fonts/metropolis/bold.otf
+          weight: 700
