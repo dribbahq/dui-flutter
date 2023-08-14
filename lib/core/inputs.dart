@@ -512,4 +512,94 @@ class DalaiInputs {
           );
         });
   }
+
+  Widget chatInputField(BuildContext context, String? label,
+      TextEditingController? controller, FocusNode? focusNode,
+      {Function(String)? onSubmit, double? height, bool? enabled}) {
+    StreamController<bool> streamController = StreamController<bool>();
+
+    return StreamBuilder<bool>(
+        stream: streamController.stream,
+        builder: (context, snapshot) {
+          bool isFocusEnabled = snapshot.data ?? false;
+          return Focus(
+            child: Container(
+              height: height,
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Dalai.color.homeCategoryBG
+                      : Dalai.color.homeCategoryBGDark,
+                  borderRadius: BorderRadius.circular(60),
+                  border: Border.all(
+                      color: isFocusEnabled
+                          ? Theme.of(context)
+                              .inputDecorationTheme
+                              .focusedBorder!
+                              .borderSide
+                              .color
+                          : Colors.transparent,
+                      width: isFocusEnabled
+                          ? Theme.of(context)
+                              .inputDecorationTheme
+                              .focusedBorder!
+                              .borderSide
+                              .width
+                          : 0)),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: Dalai.spacing.lateralPaddingValue,
+                    horizontal: Dalai.spacing.lateralPaddingValue * 2),
+                child: TextField(
+                  onTapOutside: (event) {
+                    if (focusNode != null) {
+                      focusNode.unfocus();
+                    }
+                  },
+                  onChanged: (text) {},
+                  onSubmitted: (text) {
+                    if (onSubmit != null) {
+                      onSubmit(text)!;
+                    }
+                  },
+                  enabled: enabled ?? true,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  textCapitalization: TextCapitalization.sentences,
+                  controller: controller,
+                  focusNode: focusNode,
+                  cursorColor:
+                      Theme.of(context).inputDecorationTheme.focusColor,
+                  textInputAction: TextInputAction.done,
+                  maxLines: 1,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                      fontSize: Dalai.text.regularText,
+                      color: Theme.of(context).textTheme.bodyMedium!.color),
+                  decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.only(
+                        top: Dalai.spacing.lateralPaddingValue, bottom: 0),
+                    filled: false,
+                    focusedBorder: const OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.transparent, width: 0)),
+                    enabledBorder: const OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.transparent, width: 0)),
+                    disabledBorder: const OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.transparent, width: 0)),
+                    alignLabelWithHint: true,
+                    hintText: label,
+                  ),
+                ),
+              ),
+            ),
+            onFocusChange: (hasFocus) {
+              streamController.add(hasFocus);
+            },
+          );
+        });
+  }
 }
