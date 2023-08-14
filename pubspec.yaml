@@ -23,6 +23,7 @@ dependencies:
   flutter_html: any
   latlng: any
   flutter_vibrate: any
+  flutter_slidable: any
   custom_sliding_segmented_control: any
   cityxerpa_icons:
     git:

@@ -1,12 +1,20 @@
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
+import 'package:dalai/core/external/slidable_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:substring_highlight/substring_highlight.dart';
 
 import '../dalai.dart';
 
 class DalaiTiles {
-  Widget listTile(String text, BuildContext context, Function() onTap,
-      {EdgeInsets? padding, Color? colorText, bool? loading = false, Widget? leading, Widget? trailing,}) {
+  Widget listTile(String text,
+      BuildContext context,
+      Function() onTap, {
+        EdgeInsets? padding,
+        Color? colorText,
+        bool? loading = false,
+        Widget? leading,
+        Widget? trailing,
+      }) {
     return Material(
       color: Dalai.color.white,
       child: ListTile(
@@ -38,39 +46,48 @@ class DalaiTiles {
             ),
           ),
         )
-            : trailing ??  Dalai.icon.dalaiIcons(
-          context,
-          CXIcon.chevron_right,
-          size: CXIconSize.small,
-          mainColor: Theme
-              .of(context)
-              .textTheme
-              .bodyMedium!
-              .color,
-        ),
+            : trailing ??
+            Dalai.icon.dalaiIcons(
+              context,
+              CXIcon.chevron_right,
+              size: CXIconSize.small,
+              mainColor: Theme
+                  .of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .color,
+            ),
         leading: leading,
         onTap: onTap,
       ),
     );
   }
 
-  Widget listTileWithSub(String title, BuildContext context, String subtitle,
-      {EdgeInsets? padding, Color? colorText, Function()? onTap, Widget? leading, Widget? trailing,}) {
+  Widget listTileWithSub(String title,
+      BuildContext context,
+      String subtitle, {
+        EdgeInsets? padding,
+        Color? colorText,
+        Function()? onTap,
+        Widget? leading,
+        Widget? trailing,
+      }) {
     return Material(
       color: Dalai.color.white,
       child: ListTile(
         onTap: onTap,
         leading: leading,
-        trailing: trailing ?? Dalai.icon.dalaiIcons(
-          context,
-          CXIcon.chevron_right,
-          size: CXIconSize.small,
-          mainColor: Theme
-              .of(context)
-              .textTheme
-              .bodyMedium!
-              .color,
-        ),
+        trailing: trailing ??
+            Dalai.icon.dalaiIcons(
+              context,
+              CXIcon.chevron_right,
+              size: CXIconSize.small,
+              mainColor: Theme
+                  .of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .color,
+            ),
         tileColor: Theme
             .of(context)
             .colorScheme
@@ -242,6 +259,24 @@ class DalaiTiles {
                   ]),
             )),
       ),
+    );
+  }
+
+  Widget paymentMethod(BuildContext context,
+      String title,
+      String? subtitle, {
+        Function()? onTap,
+        Function()? onRemove,
+        String? highlightText,
+        bool? autoDone = false,
+      }) {
+    return SlidableTile(
+      title: title,
+      subtitle: subtitle,
+      highlightText: highlightText,
+      onRemove: onRemove,
+      tapped: onTap,
+      autoDone: autoDone,
     );
   }
 }

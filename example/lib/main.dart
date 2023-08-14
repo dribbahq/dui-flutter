@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Dalai.spacing.spacer(multiplier: 12),
+              Dalai.spacing.spacer(multiplier: 8),
               Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: Dalai.spacing.largeLateralPaddingValue),
@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       Image.asset(
                         'assets/images/lama-ui-icon.png',
-                        width: 100,
+                        width: 120,
                       ),
                       Dalai.spacing.spacer(),
                       Dalai.text.title1(context, 'LAMA Showcase'),
@@ -514,8 +514,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Dalai.input.phoneTextField(context, "Número de teléfono",
-                                TextEditingController(), FocusNode(), "+34", (prefix){}),
+                            Dalai.input.phoneTextField(
+                                context,
+                                "Número de teléfono",
+                                TextEditingController(),
+                                FocusNode(),
+                                "+34",
+                                (prefix) {}),
                           ],
                         ),
                         title: "Phone Input"),
@@ -704,6 +709,30 @@ class _MyHomePageState extends State<MyHomePage> {
                     Dalai.spacing.spacer(),
                     showCaseBlock(Dalai.card.cardPrice(context, 'Card Price'),
                         title: "Card Price"),
+                    Dalai.spacing.spacer(),
+                    showCaseBlock(
+                        Dalai.card.banner(
+                            context,
+                            "Check it out!",
+                            "Click on here to view more info",
+                            () {},
+                            "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
+                            Dalai.color.black),
+                        title: "Promotion Card"),
+                    Dalai.spacing.spacer(),
+                    showCaseBlock(
+                        Dalai.card.order(context,
+                            title: "Comanda al Ginza41",
+                            highlightText: "Ginza41",
+                            leadingSubtitle: "1 prod",
+                            trailingSubtitle: "22.50€",
+                            status: "Entregat",
+                            badgeColor: BadgeColor.secondary,
+                            accessoryTitle:
+                                "Carrer de la Unió, 41 AD500 Andorra la Vella",
+                            imageURL:
+                                "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg"),
+                        title: "Order Card"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -767,6 +796,16 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Tile with highlighted search text"),
+                    Dalai.spacing.spacer(),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.tile.paymentMethod(
+                                context, "Card ending in 4444", "Exp. at 12/25",
+                                highlightText: "4444", onTap: (){}, onRemove: (){}),
+                          ],
+                        ),
+                        title: "Payment Method Tile"),
                     Dalai.spacing.divider(context),
                   ],
                 ),

@@ -15,7 +15,7 @@ class StyledSwitch extends StatefulWidget {
 
 class _StyledSwitchState extends State<StyledSwitch> {
   bool isToggled = false;
-  double size = 32;
+  double size = 28;
   double innerPadding = 0;
 
   @override
@@ -38,7 +38,7 @@ class _StyledSwitchState extends State<StyledSwitch> {
       },
       child: AnimatedContainer(
         height: size,
-        width: size * 1.75,
+        width: size * 1.60,
         padding: EdgeInsets.all(innerPadding),
         alignment: isToggled ? Alignment.centerLeft : Alignment.centerRight,
         duration: const Duration(milliseconds: 200),
