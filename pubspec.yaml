@@ -4,7 +4,7 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=2.15.0 <3.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
@@ -23,9 +23,12 @@ dependencies:
   flutter_html: any
   latlng: any
   flutter_vibrate: any
+  custom_sliding_segmented_control: any
   cityxerpa_icons:
     git:
       url: https://gitlab.com/dribba-labs/cityxerpa/cityxerpa-icons.git
+  country_flags: ^2.1.0
+
 
 dev_dependencies:
   flutter_test:

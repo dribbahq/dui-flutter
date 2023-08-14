@@ -22,6 +22,7 @@ class DalaiSkeleton {
                   : Dalai.color.loadingDarkSecondary,
               enabled: true,
               child: ListView.builder(
+                padding: EdgeInsets.zero,
                 itemBuilder: (_, __) => Padding(
                   padding: const EdgeInsets.only(bottom: 6.0),
                   child: Container(

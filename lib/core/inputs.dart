@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
+import 'package:dalai/core/external/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../dalai.dart';
@@ -527,10 +528,9 @@ class DalaiInputs {
               height: height,
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.light
-                      ? Dalai.color.homeCategoryBG
-                      : Dalai.color.homeCategoryBGDark,
-                  borderRadius: BorderRadius.circular(60),
+                  color: Theme.of(context).inputDecorationTheme.fillColor,
+                  borderRadius:
+                      BorderRadius.circular(Dalai.spacing.borderRadius),
                   border: Border.all(
                       color: isFocusEnabled
                           ? Theme.of(context)
@@ -601,5 +601,33 @@ class DalaiInputs {
             },
           );
         });
+  }
+
+  Widget phoneTextField(
+      BuildContext context,
+      String? label,
+      TextEditingController? controller,
+      FocusNode? focusNode,
+      String initialPhonePrefix,
+      Function(String) onPrefixChange,
+      {bool isEnabled = true,
+      Widget? leading,
+      Widget? trailing}) {
+    return Dalai.input
+        .textField(label, controller, focusNode ?? FocusNode(), context,
+            enabled: isEnabled,
+            suffixIcon: leading ?? const SizedBox.shrink(),
+            prefixIcon: CountryPicker(
+              initialSelection: initialPhonePrefix,
+              favorite: ['+376', '+34', '+33', '+351'],
+              onChanged: (country) {
+                onPrefixChange(country!.countryCode ?? '');
+              },
+            ),
+            showPrefixSeparator: true,
+            inputFormatters: <TextInputFormatter>[
+              LengthLimitingTextInputFormatter(12),
+            ],
+            keyboardType: TextInputType.phone);
   }
 }

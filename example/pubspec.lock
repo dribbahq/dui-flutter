@@ -106,6 +106,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  country_flags:
+    dependency: transitive
+    description:
+      name: country_flags
+      sha256: fa9683dd1b163c160e26a6c46a44f3874798ca6f7d776162c7c7358d4ad24c9c
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   crypto:
     dependency: transitive
     description:
@@ -130,6 +138,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  custom_sliding_segmented_control:
+    dependency: transitive
+    description:
+      name: custom_sliding_segmented_control
+      sha256: a12d1908bb3fe06aabd4becd7def608cdd77b01b7a9f79e37d9414b478523a34
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.7.5"
   dalai:
     dependency: "direct main"
     description:
@@ -312,6 +328,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.18.1"
+  jovial_misc:
+    dependency: transitive
+    description:
+      name: jovial_misc
+      sha256: f6e64f789ee311025bb367be9c9afe9759f76dd8209070b7f38e735b5f529eb1
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.5"
+  jovial_svg:
+    dependency: transitive
+    description:
+      name: jovial_svg
+      sha256: "5fd52a96fe3d2b69082c53374364649f51cb1b3e06ca6be3601ed8cae537bc7b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.17"
   js:
     dependency: transitive
     description:

@@ -508,6 +508,17 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Chat Input"),
+                    Dalai.spacing.spacer(),
+                    showCaseBlock(
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Dalai.input.phoneTextField(context, "Número de teléfono",
+                                TextEditingController(), FocusNode(), "+34", (prefix){}),
+                          ],
+                        ),
+                        title: "Phone Input"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -523,6 +534,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     Dalai.spacing.spacer(),
                     showCaseBlock(Dalai.button.button(context, "Log In", () {}),
                         title: "Regular"),
+                    Dalai.spacing.spacer(),
+                    showCaseBlock(
+                        Dalai.button.shadowButton(context, "Log In", () {}),
+                        title: "Shadow"),
                     Dalai.spacing.spacer(),
                     showCaseBlock(
                         Dalai.button.noBgButton(context, "Log In", () {}),
@@ -576,7 +591,66 @@ class _MyHomePageState extends State<MyHomePage> {
                         title: "Checkbox"),
                     showCaseBlock(
                         Dalai.button.toggle(true, (value) {}, context),
-                        title: "Checkbox"),
+                        title: "Toggle"),
+                    showCaseBlock(
+                        Dalai.button.slidingControl(
+                          0,
+                          (value) {},
+                          context,
+                          children: {
+                            0: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Dalai.icon.dalaiIcons(
+                                      context,
+                                      CXIcon.bike_alt,
+                                    ),
+                                    Dalai.spacing.hSpacer(small: true),
+                                    Dalai.text.regular(context, 'Tab 1',
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .color!)
+                                  ],
+                                ),
+                              ],
+                            ),
+                            1: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Dalai.icon.dalaiIcons(
+                                      context,
+                                      CXIcon.bike_alt,
+                                    ),
+                                    Dalai.spacing.hSpacer(small: true),
+                                    Dalai.text.regular(context, 'Tab 2',
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .color!)
+                                  ],
+                                ),
+                              ],
+                            ),
+                          },
+                          isStretch: true,
+                        ),
+                        title: "Segment Bar",
+                        largePadding: false),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -641,7 +715,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Dalai.text.title2(context, 'Cards and Tiles'),
+                    Dalai.text.title2(context, 'Tiles'),
                     Dalai.spacing.spacer(),
                     showCaseBlock(
                         Column(
@@ -649,7 +723,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             Dalai.tile.listTile('Title', context, () {}),
                             Dalai.spacing.divider(context),
                             Dalai.tile.listTile('Loading Tile', context, () {},
-                                loading: true)
+                                loading: true),
+                            Dalai.spacing.divider(context),
+                            Dalai.tile.listTile('Loading Tile', context, () {},
+                                trailing: const SizedBox.shrink(),
+                                leading:
+                                    Dalai.icon.dalaiIcons(context, CXIcon.ban))
                           ],
                         ),
                         title: "Tile with Title"),
@@ -659,6 +738,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             Dalai.tile
                                 .listTileWithSub('Title', context, 'Subtitle'),
+                            Dalai.spacing.divider(context),
+                            Dalai.tile.listTileWithSub(
+                                'Title', context, 'Subtitle',
+                                leading:
+                                    Dalai.icon.dalaiIcons(context, CXIcon.bag)),
                           ],
                         ),
                         title: "Tile with Subtitle"),

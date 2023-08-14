@@ -6,7 +6,7 @@ import '../dalai.dart';
 
 class DalaiTiles {
   Widget listTile(String text, BuildContext context, Function() onTap,
-      {EdgeInsets? padding, Color? colorText, bool? loading = false}) {
+      {EdgeInsets? padding, Color? colorText, bool? loading = false, Widget? leading, Widget? trailing,}) {
     return Material(
       color: Dalai.color.white,
       child: ListTile(
@@ -38,27 +38,39 @@ class DalaiTiles {
             ),
           ),
         )
-            : Dalai.icon.dalaiIcons(
+            : trailing ??  Dalai.icon.dalaiIcons(
           context,
           CXIcon.chevron_right,
-          size: CXIconSize.x_small,
+          size: CXIconSize.small,
           mainColor: Theme
               .of(context)
               .textTheme
               .bodyMedium!
               .color,
         ),
+        leading: leading,
         onTap: onTap,
       ),
     );
   }
 
   Widget listTileWithSub(String title, BuildContext context, String subtitle,
-      {EdgeInsets? padding, Color? colorText, Function()? onTap}) {
+      {EdgeInsets? padding, Color? colorText, Function()? onTap, Widget? leading, Widget? trailing,}) {
     return Material(
       color: Dalai.color.white,
       child: ListTile(
         onTap: onTap,
+        leading: leading,
+        trailing: trailing ?? Dalai.icon.dalaiIcons(
+          context,
+          CXIcon.chevron_right,
+          size: CXIconSize.small,
+          mainColor: Theme
+              .of(context)
+              .textTheme
+              .bodyMedium!
+              .color,
+        ),
         tileColor: Theme
             .of(context)
             .colorScheme
@@ -114,15 +126,18 @@ class DalaiTiles {
                   right: Dalai.spacing.lateralPaddingValue,
                   top: 16,
                   bottom: 16),
-              child: Row(children: <Widget>[
-                leading,
-                Dalai.spacing.hSpacer(),
-                Expanded(
-                  child: Dalai.text.regular(context, title, maxLines: 2),
-                ),
-                CityXerpaIcons.get(CXIcon.chevron_right,
-                    size: CXIconSize.x_small),
-              ]),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    leading,
+                    Dalai.spacing.hSpacer(),
+                    Expanded(
+                      child: Dalai.text.regular(context, title, maxLines: 2),
+                    ),
+                    CityXerpaIcons.get(CXIcon.chevron_right,
+                        size: CXIconSize.small),
+                  ]),
             )),
       ),
     );
@@ -180,48 +195,51 @@ class DalaiTiles {
                   right: Dalai.spacing.lateralPaddingValue,
                   top: 0,
                   bottom: 0),
-              child: Row(children: <Widget>[
-                Dalai.icon.dalaiIcons(
-                  context,
-                  leading,
-                  mainColor: imageColor ??
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Dalai.icon.dalaiIcons(
+                      context,
+                      leading,
+                      mainColor: imageColor ??
+                          Theme
+                              .of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .color,
+                    ),
+                    Dalai.spacing.hSpacer(),
+                    Expanded(
+                        child: SubstringHighlight(
+                          text: title,
+                          term: searchText,
+                          textStyle: unselectedTextStyle,
+                          textStyleHighlight: selectedTextStyle,
+                        )),
+                    Dalai.spacing.hSpacer(),
+                    loading
+                        ? const SizedBox(
+                      width: 18,
+                      height: 18,
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                        ),
+                      ),
+                    )
+                        : Dalai.icon.dalaiIcons(
+                      context,
+                      CXIcon.chevron_right,
+                      size: CXIconSize.small,
+                      mainColor:
                       Theme
                           .of(context)
                           .textTheme
                           .bodyMedium!
                           .color,
-                ),
-                Dalai.spacing.hSpacer(),
-                Expanded(
-                    child: SubstringHighlight(
-                      text: title,
-                      term: searchText,
-                      textStyle: unselectedTextStyle,
-                      textStyleHighlight: selectedTextStyle,
-                    )),
-                Dalai.spacing.hSpacer(),
-                loading
-                    ? const SizedBox(
-                  width: 18,
-                  height: 18,
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
                     ),
-                  ),
-                )
-                    : Dalai.icon.dalaiIcons(
-                  context,
-                  CXIcon.chevron_right,
-                  size: CXIconSize.x_small,
-                  mainColor:
-                  Theme
-                      .of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .color,
-                ),
-              ]),
+                  ]),
             )),
       ),
     );
