@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Dalai.spacing.spacer(multiplier: 8),
               Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: Dalai.spacing.largeLateralPaddingValue),
+                      horizontal: Dalai.spacing.lateralPaddingValue),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 44,
                 child: ListView.separated(
                   padding: EdgeInsets.symmetric(
-                      horizontal: Dalai.spacing.largeLateralPaddingValue),
+                      horizontal: Dalai.spacing.lateralPaddingValue),
                   itemCount: 11,
                   separatorBuilder: (context, index) {
                     return Dalai.spacing.hSpacer();
@@ -169,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Container(
                 key: key1,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -248,7 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             crossAxisCount: 4,
                             crossAxisSpacing: Dalai.spacing.lateralPaddingValue,
                             mainAxisSpacing: Dalai.spacing.lateralPaddingValue,
-                            childAspectRatio: 0.7),
+                            childAspectRatio: 0.75),
                         itemBuilder: (BuildContext context, int index) {
                           var key = availableColors.keys.elementAt(index);
                           return showCaseBlock(
@@ -971,7 +971,7 @@ class _MyHomePageState extends State<MyHomePage> {
             : const SizedBox.shrink(),
         title != null
             ? Dalai.text.xs(context, title,
-                color: Dalai.color.text.withOpacity(0.8), bold: true)
+                color: Dalai.color.text.withOpacity(0.8), bold: true, maxLines: 2)
             : const SizedBox.shrink(),
         title != null ? Dalai.spacing.spacer() : const SizedBox.shrink(),
       ],
