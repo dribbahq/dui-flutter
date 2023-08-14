@@ -10,7 +10,10 @@ class DalaiTiles {
     return Material(
       color: Dalai.color.white,
       child: ListTile(
-        tileColor: Theme.of(context).colorScheme.background,
+        tileColor: Theme
+            .of(context)
+            .colorScheme
+            .background,
         contentPadding: padding ??
             EdgeInsets.symmetric(
                 horizontal: Dalai.spacing.lateralPaddingValue, vertical: 0),
@@ -19,35 +22,47 @@ class DalaiTiles {
           style: TextStyle(
               fontSize: Dalai.text.regularText,
               color:
-                  colorText ?? Theme.of(context).textTheme.bodyMedium!.color),
+              colorText ?? Theme
+                  .of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .color),
         ),
         trailing: loading!
             ? const SizedBox(
-                width: 18,
-                height: 18,
-                child: Center(
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                  ),
-                ),
-              )
+          width: 18,
+          height: 18,
+          child: Center(
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+            ),
+          ),
+        )
             : Dalai.icon.dalaiIcons(
-                context,
-                CXIcon.chevron_right,
-                size: CXIconSize.x_small,
-                mainColor: Theme.of(context).textTheme.bodyMedium!.color,
-              ),
+          context,
+          CXIcon.chevron_right,
+          size: CXIconSize.x_small,
+          mainColor: Theme
+              .of(context)
+              .textTheme
+              .bodyMedium!
+              .color,
+        ),
         onTap: onTap,
       ),
     );
   }
 
   Widget listTileWithSub(String title, BuildContext context, String subtitle,
-      {EdgeInsets? padding, Color? colorText}) {
+      {EdgeInsets? padding, Color? colorText, Function()? onTap}) {
     return Material(
       color: Dalai.color.white,
       child: ListTile(
-        tileColor: Theme.of(context).colorScheme.background,
+        onTap: onTap,
+        tileColor: Theme
+            .of(context)
+            .colorScheme
+            .background,
         contentPadding: padding ??
             EdgeInsets.symmetric(
                 horizontal: Dalai.spacing.lateralPaddingValue, vertical: 0),
@@ -57,25 +72,36 @@ class DalaiTiles {
               fontSize: Dalai.text.h3,
               fontWeight: Dalai.text.semiBoldWeight,
               color:
-                  colorText ?? Theme.of(context).textTheme.bodyMedium!.color),
+              colorText ?? Theme
+                  .of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .color),
         ),
         subtitle: Text(
           subtitle,
           style: TextStyle(
               fontSize: Dalai.text.regularText,
               color:
-                  colorText ?? Theme.of(context).textTheme.bodyMedium!.color),
+              colorText ?? Theme
+                  .of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .color),
           textAlign: TextAlign.start,
         ),
       ),
     );
   }
 
-  Widget listTileCustomImage(
-      Widget leading, BuildContext context, String title, Function() onTap) {
+  Widget listTileCustomImage(Widget leading, BuildContext context, String title,
+      Function() onTap) {
     return Material(
       child: Container(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme
+            .of(context)
+            .colorScheme
+            .background,
         child: InkWell(
             splashColor: Colors.red,
             focusColor: Colors.red,
@@ -102,18 +128,22 @@ class DalaiTiles {
     );
   }
 
-  Widget listSearchTileCustomImage(
-      CXIcon leading, BuildContext context, String title, Function() onTap,
+  Widget listSearchTileCustomImage(CXIcon leading, BuildContext context,
+      String title, Function() onTap,
       {String? searchText,
-      double? imageSize,
-      Color? imageColor,
-      bool loading = false}) {
+        double? imageSize,
+        Color? imageColor,
+        bool loading = false}) {
     TextStyle selectedTextStyle = TextStyle(
       fontSize: Dalai.text.h3,
       height: Dalai.text.textHeight,
       fontWeight: Dalai.text.boldWeight,
       fontFamily: 'metropolis',
-      color: Theme.of(context).textTheme.bodyMedium!.color,
+      color: Theme
+          .of(context)
+          .textTheme
+          .bodyMedium!
+          .color,
     );
     TextStyle unselectedTextStyle = TextStyle(
       fontSize: Dalai.text.h3,
@@ -121,15 +151,27 @@ class DalaiTiles {
       fontWeight: Dalai.text.regularWeight,
       fontFamily: 'metropolis',
       color: searchText != null && searchText.isNotEmpty
-          ? Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.7)
-          : Theme.of(context).textTheme.bodyMedium!.color,
+          ? Theme
+          .of(context)
+          .textTheme
+          .bodyMedium!
+          .color!
+          .withOpacity(0.7)
+          : Theme
+          .of(context)
+          .textTheme
+          .bodyMedium!
+          .color,
     );
 
     return Material(
       color: Dalai.color.white,
       child: Container(
         height: 64,
-        color: Theme.of(context).colorScheme.background,
+        color: Theme
+            .of(context)
+            .colorScheme
+            .background,
         child: InkWell(
             onTap: onTap,
             child: Padding(
@@ -143,34 +185,42 @@ class DalaiTiles {
                   context,
                   leading,
                   mainColor: imageColor ??
-                      Theme.of(context).textTheme.bodyMedium!.color,
+                      Theme
+                          .of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .color,
                 ),
                 Dalai.spacing.hSpacer(),
                 Expanded(
                     child: SubstringHighlight(
-                  text: title,
-                  term: searchText,
-                  textStyle: unselectedTextStyle,
-                  textStyleHighlight: selectedTextStyle,
-                )),
+                      text: title,
+                      term: searchText,
+                      textStyle: unselectedTextStyle,
+                      textStyleHighlight: selectedTextStyle,
+                    )),
                 Dalai.spacing.hSpacer(),
                 loading
                     ? const SizedBox(
-                        width: 18,
-                        height: 18,
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                          ),
-                        ),
-                      )
+                  width: 18,
+                  height: 18,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ),
+                  ),
+                )
                     : Dalai.icon.dalaiIcons(
-                        context,
-                        CXIcon.chevron_right,
-                        size: CXIconSize.x_small,
-                        mainColor:
-                            Theme.of(context).textTheme.bodyMedium!.color,
-                      ),
+                  context,
+                  CXIcon.chevron_right,
+                  size: CXIconSize.x_small,
+                  mainColor:
+                  Theme
+                      .of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .color,
+                ),
               ]),
             )),
       ),

@@ -37,6 +37,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - lib/animations/
     - assets/fonts/
     - assets/animations/
     - assets/images/

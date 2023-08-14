@@ -1,9 +1,11 @@
+import 'dart:io';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:flutter/material.dart';
 import '../common_utils/common_utils.dart';
 import '../dalai.dart';
+import 'external/custom_switch.dart';
 
 class DalaiButtons {
   final double buttonMinHeight = 64.0;
@@ -102,6 +104,9 @@ class DalaiButtons {
           style: ElevatedButton.styleFrom(
             elevation: 0,
             shadowColor: Colors.transparent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+            ),
             backgroundColor: Colors.transparent,
             foregroundColor: Dalai.color.primaryOutlinedNestingBackground,
             padding: Dalai.spacing.lateralPadding,
@@ -259,14 +264,14 @@ class DalaiButtons {
             padding: Dalai.spacing.lateralPadding,
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                  color: color ?? Theme.of(context)
+                  color: color ??
+                      Theme.of(context)
                           .textTheme
                           .bodyMedium!
                           .color!
                           .withOpacity(0.2), //TODO
                   width: 1),
-              borderRadius:
-                   BorderRadius.circular(Dalai.spacing.borderRadius),
+              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
             ),
           ),
           child: loading!
@@ -348,8 +353,10 @@ class DalaiButtons {
                     borderRadius: BorderRadius.circular(40),
                     border: Border.all(
                         color: Colors.black.withOpacity(0.1), width: 1.5)),
-                child: Dalai.text.xs(context,
-                    addMoreToRequestText.replaceAll("%@", Utils.parsePrice(minPrice - currentPrice)),
+                child: Dalai.text.xs(
+                    context,
+                    addMoreToRequestText.replaceAll(
+                        "%@", Utils.parsePrice(minPrice - currentPrice)),
                     textAlign: TextAlign.start),
               ),
             ],
@@ -462,6 +469,26 @@ class DalaiButtons {
           ),
         )
       ],
+    );
+  }
+
+  Widget checkbox(
+      bool isSelected, Function(bool) onChange, BuildContext context) {
+    return GestureDetector(
+        child: Container(
+            child: isSelected
+                ? Dalai.icon.dalaiIcons(context, CXIcon.checkbox_on,
+                    secondaryColor: Dalai.color.primary)
+                : Dalai.icon.dalaiIcons(context, CXIcon.checkbox)),
+        onTap: () {
+          onChange(!isSelected);
+        });
+  }
+
+  Widget toggle(bool isSelected, Function(bool) onChange, BuildContext context) {
+    return StyledSwitch(
+      onChange: onChange,
+      enabled: isSelected,
     );
   }
 }
