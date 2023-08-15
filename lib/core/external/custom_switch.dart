@@ -45,7 +45,7 @@ class _StyledSwitchState extends State<StyledSwitch> {
         curve: Curves.easeInOutSine,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          color: isToggled ? Dalai.color.text.withOpacity(0.15) : Dalai.color
+          color: isToggled ? Dalai.color.text.withOpacity(0.1) : Dalai.color
               .primary,
         ),
         child: Container(

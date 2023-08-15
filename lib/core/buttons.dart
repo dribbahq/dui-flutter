@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
+import 'package:dalai/core/external/custom_stepper.dart';
 import 'package:flutter/material.dart';
 import '../common_utils/common_utils.dart';
 import '../dalai.dart';
@@ -44,13 +45,7 @@ class DalaiButtons {
           ),
         ),
         child: loading!
-            ? SizedBox(
-            width: 24,
-            height: 24,
-            child: Center(
-                child: CircularProgressIndicator(
-                  color: Dalai.color.primaryContrast,
-                )))
+            ? Dalai.misc.loadingAnimation(context, light: true)
             : Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -115,13 +110,7 @@ class DalaiButtons {
             padding: Dalai.spacing.lateralPadding,
           ),
           child: loading!
-              ? SizedBox(
-              width: 24,
-              height: 24,
-              child: Center(
-                  child: CircularProgressIndicator(
-                    color: Dalai.color.primaryContrast,
-                  )))
+              ? Dalai.misc.loadingAnimation(context, light: false)
               : Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -189,13 +178,7 @@ class DalaiButtons {
             padding: Dalai.spacing.lateralPadding,
           ),
           child: loading!
-              ? SizedBox(
-              width: 24,
-              height: 24,
-              child: Center(
-                  child: CircularProgressIndicator(
-                    color: Dalai.color.primaryContrast,
-                  )))
+              ? Dalai.misc.loadingAnimation(context)
               : Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -276,13 +259,7 @@ class DalaiButtons {
             ),
           ),
           child: loading!
-              ? SizedBox(
-              width: 24,
-              height: 24,
-              child: Center(
-                  child: CircularProgressIndicator(
-                    color: Dalai.color.primaryContrast,
-                  )))
+              ? Dalai.misc.loadingAnimation(context)
               : Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -364,13 +341,7 @@ class DalaiButtons {
             ),
           ),
           child: loading!
-              ? SizedBox(
-              width: 24,
-              height: 24,
-              child: Center(
-                  child: CircularProgressIndicator(
-                    color: Dalai.color.primaryContrast,
-                  )))
+              ? Dalai.misc.loadingAnimation(context, size: 18)
               : Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -493,16 +464,7 @@ class DalaiButtons {
         ),
         child: IconButton(
           icon: loading
-              ? const AspectRatio(
-              aspectRatio: 1,
-              child: Center(
-                child: SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                    )),
-              ))
+              ? Dalai.misc.loadingAnimation(context, size: 16)
               : Dalai.icon.dalaiIcons(context, icon),
           onPressed: () async {
             if (onTap != null) {
@@ -613,33 +575,82 @@ class DalaiButtons {
         required Map<int, Widget> children,
         double height = 60}) {
     return Container(
-      height: height, child: CustomSlidingSegmentedControl<int>(
-      initialValue: initialValue,
-      isStretch: isStretch,
       height: height,
-      children: children,
-      decoration: BoxDecoration(
-        color: Theme
-            .of(context)
-            .scaffoldBackgroundColor,
-        borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
-        border: Border.all(
-            color: Theme
-                .of(context)
-                .scaffoldBackgroundColor, width: 1.5),
+      child: CustomSlidingSegmentedControl<int>(
+        initialValue: initialValue,
+        isStretch: isStretch,
+        height: height,
+        children: children,
+        decoration: BoxDecoration(
+          color: Theme
+              .of(context)
+              .scaffoldBackgroundColor,
+          borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+          border: Border.all(
+              color: Theme
+                  .of(context)
+                  .scaffoldBackgroundColor, width: 1.5),
+        ),
+        thumbDecoration: BoxDecoration(
+          color: Theme
+              .of(context)
+              .colorScheme
+              .background,
+          borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius - 0.5),
+        ),
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInToLinear,
+        onValueChanged: (v) {
+          onChange(v);
+        },
       ),
-      thumbDecoration: BoxDecoration(
-        color: Theme
-            .of(context)
-            .colorScheme
-            .background,
-        borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius - 0.5),
-      ),
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInToLinear,
-      onValueChanged: (v) {
-        onChange(v);
+    );
+  }
+
+  Widget stepper(BuildContext context, int initialValue, Function(int) onChange,
+      {bool loading = false,
+        String? appendString,
+        int lowerLimit = 0,
+        int upperLimit = 10000}) {
+    return CustomStepper(
+      lowerLimit: lowerLimit,
+      upperLimit: upperLimit,
+      initialValue: initialValue,
+      loading: loading,
+      appendString: appendString,
+      onChange: (int value) {
+        onChange(value);
       },
-    ),);
+    );
+  }
+
+  Widget dataSelector(BuildContext context, String? title, String? headerTitle,
+      Function() onChange,
+      {bool loading = false}) {
+    return GestureDetector(
+      onTap: onChange,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+            horizontal: Dalai.spacing.lateralPaddingValue,
+            vertical: Dalai.spacing.lateralPaddingValue / 2),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+        ),
+        width: double.infinity, child: Row(children: [
+        Expanded(child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            headerTitle != null
+                ? Dalai.text.xs(context, headerTitle ?? "")
+                : SizedBox.shrink(),
+            Dalai.text.regular(context, title ?? "", bold: true),
+          ],
+        )),
+        Dalai.icon.dalaiIcons(
+            context, CXIcon.chevron_down, size: CXIconSize.small)
+
+      ],),),
+    );
   }
 }

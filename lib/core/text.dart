@@ -434,4 +434,47 @@ class DalaiText {
               .color),
     );
   }
+
+  Widget itemHeader(BuildContext context, String text,
+      {Function? onTap, String? onAccessoryButtonText, bool loading = false}) {
+    return Container(
+      padding: EdgeInsets.only(top: 2 * Dalai.spacing.lateralPaddingValue),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          title3(context, text,
+              color: Theme
+                  .of(context)
+                  .textTheme
+                  .titleLarge!
+                  .color!
+                  .withOpacity(0.8)),
+          onAccessoryButtonText == null
+              ? SizedBox.shrink()
+              : Dalai.button
+              .smallButton(
+              context, onAccessoryButtonText, onTap, loading: loading)
+        ],
+      ),
+    );
+  }
+
+  Widget smallItemHeader(BuildContext context, String text) {
+    return Container(
+      padding: EdgeInsets.only(top: 2 * Dalai.spacing.lateralPaddingValue),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          small(context, text,
+              bold: true,
+              color: Theme
+                  .of(context)
+                  .textTheme
+                  .titleLarge!
+                  .color!
+                  .withOpacity(0.8)),
+        ],
+      ),
+    );
+  }
 }

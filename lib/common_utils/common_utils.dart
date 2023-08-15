@@ -24,6 +24,7 @@ class Utils {
     }
     return list.reversed.toList();
   }
+
   static int roundUp(int toRound) {
     try {
       if (toRound % 5 == 0) return toRound;
@@ -32,10 +33,12 @@ class Utils {
       return 15;
     }
   }
+
   static List<Object> rotate(List<Object> list, int v) {
     if (list.isEmpty) return list;
     var i = v % list.length;
-    return list.sublist(i)..addAll(list.sublist(0, i));
+    return list.sublist(i)
+      ..addAll(list.sublist(0, i));
   }
 
   /* ------------------------------------------------------------------------- */
@@ -45,33 +48,37 @@ class Utils {
   * */
   static showBottomSheet(context,
       {Widget? content,
-      bool dismissible = true,
-      double? maxHeight,
-      bool skipPadding = false}) {
-    Future(() => CustomShowModalBottomSheet.customShowModalBottomSheet(
-          darkMode: Theme.of(context).brightness == Brightness.light,
+        bool dismissible = true,
+        double? maxHeight,
+        bool skipPadding = false}) {
+    Future(() =>
+        CustomShowModalBottomSheet.customShowModalBottomSheet(
+          darkMode: Theme
+              .of(context)
+              .brightness == Brightness.light,
           context: context,
           dismissible: dismissible,
           builder: (context) {
             return Container(
               constraints:
-                  BoxConstraints(maxHeight: maxHeight ?? double.infinity),
+              BoxConstraints(maxHeight: maxHeight ?? double.infinity),
               padding: skipPadding
                   ? null
                   : EdgeInsets.only(
-                      bottom: Dalai.spacing.lateralPaddingValue,
-                      left: Dalai.spacing.lateralPaddingValue,
-                      right: Dalai.spacing.lateralPaddingValue),
+                  bottom: Dalai.spacing.lateralPaddingValue,
+                  left: Dalai.spacing.lateralPaddingValue,
+                  right: Dalai.spacing.lateralPaddingValue),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.background,
+                color: Theme
+                    .of(context)
+                    .colorScheme
+                    .background,
                 borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(Dalai.spacing.borderRadius)),
-                border: Border.all(
-                    color: Dalai.color.black.withOpacity(0.1), width: 1.5),
+                    top: Radius.circular(Dalai.spacing.largeBorderRadius)),
                 boxShadow: [
                   BoxShadow(
-                    color: Dalai.color.black.withOpacity(0.26),
-                    blurRadius: 10.0,
+                    color: Dalai.color.black.withOpacity(0.2),
+                    blurRadius: 5.0,
                     offset: const Offset(0.0, 0.0),
                   ),
                 ],
@@ -86,17 +93,19 @@ class Utils {
                       children: <Widget>[
                         dismissible == true
                             ? Center(
-                                child: Dalai.icon.dalaiIcons(
-                                  context,
-                                  CXIcon.horizontal_line,
-                                  size: CXIconSize.large,
-                                  mainColor: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .color!
-                                      .withOpacity(0.2),
-                                ),
-                              )
+                          child: Opacity(
+                            opacity: 0.2,
+                            child: Dalai.icon.dalaiIcons(
+                                context,
+                                CXIcon.horizontal_line,
+                                size: CXIconSize.x_large,
+                                mainColor: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .color!
+                            ),),
+                        )
                             : Dalai.spacing.spacer(multiplier: 2),
                         content ?? const SizedBox.shrink()
                       ],
@@ -108,8 +117,8 @@ class Utils {
           },
         ));
   }
-  static showBottomPage(
-    context, {
+
+  static showBottomPage(context, {
     Widget? content,
     bool dismissible = false,
     double? maxHeight,
@@ -121,7 +130,10 @@ class Utils {
         isScrollControlled: true,
         useSafeArea: false,
         constraints: BoxConstraints(
-            maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.95),
+            maxHeight: maxHeight ?? MediaQuery
+                .of(context)
+                .size
+                .height * 0.95),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
                 top: Radius.circular(Dalai.spacing.borderRadius))),
@@ -137,36 +149,44 @@ class Utils {
   * Date Helper Methods
   * */
   static DateFormat dateFormatScheduleSet =
-      DateFormat('yyyy-MM-ddTHH:mm:ss.SSS', 'ca_ES');
+  DateFormat('yyyy-MM-ddTHH:mm:ss.SSS', 'ca_ES');
   static DateFormat dateFormatScheduleGet =
-      DateFormat('yyyy-MM-ddTHH:mm:ssZ', 'ca_ES');
+  DateFormat('yyyy-MM-ddTHH:mm:ssZ', 'ca_ES');
+
   static String getDate(String date, DateFormat format) {
     return DateFormat('dd/MM/yyyy').format(format.parse(date));
   }
+
   static String getNiceDateMinus10(String date, DateFormat format,
       {String? localeCode}) {
     try {
-      return '${DateFormat('EE, dd/MM/yy, HH:mm', localeCode ?? 'ca_ES').format(format.parseUTC(date).toLocal())}h';
+      return '${DateFormat('EE, dd/MM/yy, HH:mm', localeCode ?? 'ca_ES').format(
+          format.parseUTC(date).toLocal())}h';
     } catch (e) {
       return '';
     }
   }
+
   static String getNiceDate(String date, DateFormat format,
       {String? localeCode}) {
     try {
-      return '${DateFormat('dd MMMM yyyy, HH:mm', localeCode ?? 'ca_ES').format(format.parseUTC(date).toLocal())}h';
+      return '${DateFormat('dd MMMM yyyy, HH:mm', localeCode ?? 'ca_ES').format(
+          format.parseUTC(date).toLocal())}h';
     } catch (e) {
       return '';
     }
   }
+
   static String getNiceSmallDate(String date, DateFormat format,
       {String? localeCode}) {
     try {
-      return '${DateFormat('dd MMM, HH:mm', localeCode ?? 'ca_ES').format(format.parseUTC(date).toLocal())}h';
+      return '${DateFormat('dd MMM, HH:mm', localeCode ?? 'ca_ES').format(
+          format.parseUTC(date).toLocal())}h';
     } catch (e) {
       return '';
     }
   }
+
   static String getNiceSmallDateNoHour(String date, DateFormat format,
       {String? localeCode}) {
     try {
@@ -185,6 +205,7 @@ class Utils {
   static String getTime(date, format) {
     return DateFormat('HH:mm').format(format.parseUTC(date).toLocal());
   }
+
   static bool timeOfDayIsBefore(TimeOfDay a, TimeOfDay b) {
     if (a.hour == b.hour) {
       if (a.minute < b.minute) {
@@ -197,19 +218,36 @@ class Utils {
     }
     return false;
   }
+
   static bool isToday(DateTime other) {
-    return DateTime.now().year == other.year &&
-        DateTime.now().month == other.month &&
-        DateTime.now().day == other.day;
+    return DateTime
+        .now()
+        .year == other.year &&
+        DateTime
+            .now()
+            .month == other.month &&
+        DateTime
+            .now()
+            .day == other.day;
   }
+
   static bool isTomorrow(DateTime other) {
-    return DateTime.now().year == other.year &&
-        DateTime.now().month == other.month &&
-        DateTime.now().day + 1 == other.day;
+    return DateTime
+        .now()
+        .year == other.year &&
+        DateTime
+            .now()
+            .month == other.month &&
+        DateTime
+            .now()
+            .day + 1 == other.day;
   }
+
   static bool isSameDay(DateTime date1, DateTime date2) {
     final now = date1;
-    final diff = now.difference(date2).inDays;
+    final diff = now
+        .difference(date2)
+        .inDays;
     return diff == 0 && now.day == date2.day;
   }
 
@@ -252,11 +290,11 @@ class Utils {
       double price = double.parse(stringedPrice);
       if (price % 1 == 0) {
         return NumberFormat.currency(
-                locale: 'es_ES', symbol: '', decimalDigits: 0)
+            locale: 'es_ES', symbol: '', decimalDigits: 0)
             .format(price.round());
       }
       return NumberFormat.currency(
-              locale: 'es_ES', symbol: '', decimalDigits: 2)
+          locale: 'es_ES', symbol: '', decimalDigits: 2)
           .format(price);
     }
     return "0";

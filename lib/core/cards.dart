@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:flutter/material.dart';
 
 import '../dalai.dart';
@@ -111,7 +114,7 @@ class DalaiCards {
     );
   }
 
-  Widget order(BuildContext context,
+  Widget deliveryOrderCard(BuildContext context,
       {String? title,
         String? leadingSubtitle,
         String? trailingSubtitle,
@@ -119,7 +122,7 @@ class DalaiCards {
         String? imageURL,
         String? highlightText,
         String? accessoryTitle,
-        String? status, BadgeColor? badgeColor}) {
+        Widget? badge}) {
     return GestureDetector(
       onTap: () {
         onTap!();
@@ -140,8 +143,8 @@ class DalaiCards {
                 children: [
                   title == null
                       ? const SizedBox.shrink()
-                      : Dalai.text.regular(
-                      context, title, highlightText: highlightText, bold: true),
+                      : Dalai.text.regular(context, title,
+                      highlightText: highlightText, bold: true),
                   highlightText == null
                       ? const SizedBox.shrink()
                       : SizedBox(height: 3),
@@ -157,14 +160,12 @@ class DalaiCards {
                           : Dalai.text.small(context, ' • '),
                       trailingSubtitle == null
                           ? const SizedBox.shrink()
-                          : Dalai.text.small(context, trailingSubtitle),
-                      status == null
+                          : Dalai.text
+                          .small(context, trailingSubtitle, bold: true),
+                      badge == null
                           ? const SizedBox.shrink()
                           : Dalai.spacing.hSpacer(),
-                      status == null
-                          ? const SizedBox.shrink()
-                          : Dalai.badge.badgeSolid(context, status,
-                          color: badgeColor ?? BadgeColor.primary)
+                      badge ?? const SizedBox.shrink()
                     ],
                   ),
                   Dalai.spacing.spacer(),
@@ -192,5 +193,202 @@ class DalaiCards {
         ),
       ),
     );
+  }
+
+  Widget mobilityOrderCard(BuildContext context,
+      {String? title,
+        String? header,
+        String? leadingSubtitle,
+        String? trailingSubtitle,
+        Function? onTap,
+        Widget? trailingWidget,
+        String? highlightText,
+        Widget? badge}) {
+    return GestureDetector(
+      onTap: () {
+        onTap!();
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  header != null
+                      ? Dalai.text.xs(context, header, bold: true)
+                      : const SizedBox.shrink(),
+                  title == null
+                      ? const SizedBox.shrink()
+                      : Dalai.text.regular(context, title,
+                      highlightText: highlightText, bold: true),
+                  highlightText == null
+                      ? const SizedBox.shrink()
+                      : const SizedBox(height: 3),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      leadingSubtitle == null
+                          ? const SizedBox.shrink()
+                          : Dalai.text.small(context, leadingSubtitle),
+                      trailingSubtitle == null
+                          ? const SizedBox.shrink()
+                          : Dalai.text.small(context, ' • '),
+                      trailingSubtitle == null
+                          ? const SizedBox.shrink()
+                          : Dalai.text
+                          .small(context, trailingSubtitle, bold: true),
+                      badge == null
+                          ? const SizedBox.shrink()
+                          : Dalai.spacing.hSpacer(),
+                      badge ?? const SizedBox.shrink()
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Dalai.spacing.hSpacer(),
+            trailingWidget == null
+                ? const SizedBox.shrink()
+                : ClipRRect(
+                borderRadius:
+                BorderRadius.circular(Dalai.spacing.borderRadius),
+                child:
+                SizedBox(height: 60, width: 60, child: trailingWidget)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget avatar(BuildContext context, String? imageUrl,
+      {Function? onTap, bool loading = false}) {
+    return GestureDetector(
+      onTap: () {
+        if (onTap != null) {
+          onTap();
+        }
+      },
+      child: SizedBox(
+        width: 90,
+        height: 90,
+        child: Stack(
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: Dalai.color.cream),
+                width: 80,
+                height: 80,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl ?? '',
+                  fit: BoxFit.cover,
+                  progressIndicatorBuilder: (context, url, progress) =>
+                      Dalai.misc.loadingAnimation(context),
+                  errorWidget: (error, string, image) {
+                    return Dalai.misc.defaultUserProfileImage(context);
+                  },
+                )),
+            onTap != null ? Align(
+              alignment: Alignment.bottomRight,
+              child: CircleAvatar(
+                backgroundColor: Theme
+                    .of(context)
+                    .colorScheme
+                    .background,
+                child: Dalai.icon.dalaiIcons(context, CXIcon.pencil),
+              ),
+            ) : SizedBox.shrink()
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget iconSmallCard(BuildContext context, String title, dynamic? imageUrl,
+      Function() onTap,
+      {bool isSelected = false, bool clearBackground = false}) {
+    return GestureDetector(
+        onTap: () {
+          onTap();
+        },
+        child: Container(
+          constraints: BoxConstraints(
+              minWidth: min(200, (MediaQuery
+                  .of(context)
+                  .size
+                  .width / 3) - 24),
+              maxWidth: (MediaQuery
+                  .of(context)
+                  .size
+                  .width / 3) - 24),
+          padding: EdgeInsets.symmetric(
+              vertical: Dalai.spacing.lateralPaddingValue,
+              horizontal: Dalai.spacing.lateralPaddingValue),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+              color: isSelected
+                  ? clearBackground
+                  ? Theme
+                  .of(context)
+                  .inputDecorationTheme
+                  .fillColor
+                  : Theme
+                  .of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .color!
+                  .withOpacity(0.15)
+                  : clearBackground
+                  ? Colors.transparent
+                  : Theme
+                  .of(context)
+                  .inputDecorationTheme
+                  .fillColor),
+          child: Column(
+            children: [
+              imageUrl == null
+                  ? SizedBox.shrink()
+                  : Container(
+                  height: 72,
+                  width: 72,
+                  child: imageUrl is String
+                      ? CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    fit: BoxFit.cover,
+                  )
+                      : imageUrl is Widget
+                      ? imageUrl
+                      : SizedBox.shrink()),
+              imageUrl == null
+                  ? SizedBox.shrink()
+                  : Dalai.spacing.spacer(small: clearBackground),
+              AutoSizeText(
+                title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                minFontSize: Dalai.text
+                    .smallTextStyle(context)
+                    .fontSize! - 4,
+                style: Dalai.text.smallTextStyle(context,
+                    color: Theme
+                        .of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .color,
+                    bold: true),
+              ),
+            ],
+          ),
+        ));
   }
 }

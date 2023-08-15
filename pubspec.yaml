@@ -25,6 +25,7 @@ dependencies:
   flutter_vibrate: any
   flutter_slidable: any
   custom_sliding_segmented_control: any
+  loading_animation_widget: any
   cityxerpa_icons:
     git:
       url: https://gitlab.com/dribba-labs/cityxerpa/cityxerpa-icons.git

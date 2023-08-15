@@ -1,7 +1,10 @@
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
+import '../common_utils/common_utils.dart';
 import '../dalai.dart';
+import 'external/date_picker.dart';
 
 class Misc {
   /*
@@ -17,10 +20,10 @@ class Misc {
   * */
   Widget checkoutHeader(context, String preTitle, String business,
       {Color? color,
-      int? maxLines,
-      double? size,
-      TextAlign? textAlign,
-      TextDecoration? decoration}) {
+        int? maxLines,
+        double? size,
+        TextAlign? textAlign,
+        TextDecoration? decoration}) {
     return RichText(
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,
@@ -30,41 +33,50 @@ class Misc {
             text: preTitle,
             style: TextStyle(
                 fontFamily: 'metropolis',
-                color: color ?? Theme.of(context).textTheme.bodyMedium!.color,
+                color: color ?? Theme
+                    .of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .color,
                 fontSize: size ?? Dalai.text.h2,
                 fontWeight: Dalai.text.regularWeight,
-                decoration:
-                    decoration ?? TextDecoration.none),
+                decoration: decoration ?? TextDecoration.none),
           ),
           TextSpan(
             text: business,
             style: TextStyle(
                 fontFamily: 'metropolis',
-                color: color ?? Theme.of(context).textTheme.bodyMedium!.color,
+                color: color ?? Theme
+                    .of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .color,
                 fontSize: size ?? Dalai.text.h2,
                 fontWeight: Dalai.text.semiBoldWeight,
-                decoration:
-                    decoration ?? TextDecoration.none),
+                decoration: decoration ?? TextDecoration.none),
           )
         ],
       ),
     );
   }
 
-  Widget spanWithBoldTitle(
-    context,
-    String title,
-    String text, {
-    Color? color,
-    int? maxLines,
-    double? size,
-  }) {
+  Widget spanWithBoldTitle(context,
+      String title,
+      String text, {
+        Color? color,
+        int? maxLines,
+        double? size,
+      }) {
     return RichText(
       maxLines: maxLines,
       text: TextSpan(
         style: TextStyle(
           fontFamily: 'metropolis',
-          color: color ?? Theme.of(context).textTheme.bodyMedium!.color,
+          color: color ?? Theme
+              .of(context)
+              .textTheme
+              .bodyMedium!
+              .color,
           fontSize: size ?? Dalai.text.regularText,
           fontWeight: Dalai.text.regularWeight,
         ),
@@ -89,15 +101,27 @@ class Misc {
       return SlideTransition(
           position: offsetFloat!,
           child: SizedBox(
-            height: MediaQuery.of(context).size.width / 2.1 -
+            height: MediaQuery
+                .of(context)
+                .size
+                .width / 2.1 -
                 Dalai.spacing.lateralPaddingValue / 2,
-            width: MediaQuery.of(context).size.width,
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
             child: Image.asset(
               imagePath,
               alignment: alignRight ? Alignment.centerRight : Alignment.center,
-              height: MediaQuery.of(context).size.width / 2.1 -
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .width / 2.1 -
                   Dalai.spacing.lateralPaddingValue / 2,
-              width: MediaQuery.of(context).size.width -
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width -
                   2 * Dalai.spacing.lateralPaddingValue,
             ),
           ));
@@ -105,15 +129,27 @@ class Misc {
     return SlideTransition(
         position: offsetFloat!,
         child: SizedBox(
-          height: MediaQuery.of(context).size.width / 2.1 -
+          height: MediaQuery
+              .of(context)
+              .size
+              .width / 2.1 -
               Dalai.spacing.lateralPaddingValue / 2,
-          width: MediaQuery.of(context).size.width / 2.1 -
+          width: MediaQuery
+              .of(context)
+              .size
+              .width / 2.1 -
               Dalai.spacing.lateralPaddingValue / 2,
           child: Image.asset(
             imagePath,
-            height: MediaQuery.of(context).size.width / 2.1 -
+            height: MediaQuery
+                .of(context)
+                .size
+                .width / 2.1 -
                 Dalai.spacing.lateralPaddingValue / 2,
-            width: MediaQuery.of(context).size.width / 2.1 -
+            width: MediaQuery
+                .of(context)
+                .size
+                .width / 2.1 -
                 Dalai.spacing.lateralPaddingValue / 2,
           ),
         ));
@@ -155,7 +191,10 @@ class Misc {
             Center(
               child: Lottie.asset(
                 'assets/animations/ax_error_search.json',
-                width: MediaQuery.of(context).size.width * 0.8,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.8,
               ),
             ),
             const Expanded(
@@ -176,9 +215,9 @@ class Misc {
     );
   }
 
-  Widget defaultUserProfileImage(BuildContext context,
-      {required dynamic userManager}) {
-    if (userManager.getUser() != null &&
+  Widget defaultUserProfileImage(BuildContext context, {dynamic userManager}) {
+    if (userManager != null &&
+        userManager.getUser() != null &&
         userManager.getUser()!.getNameInitials() != null) {
       return Center(
         child: Opacity(
@@ -189,5 +228,141 @@ class Misc {
       );
     }
     return getProductPlaceholder(context);
+  }
+
+  Widget loadingAnimation(BuildContext context,
+      {double size = 24.0, bool light = false}) {
+    return Container(
+        width: (2 * size * 0.88),
+        height: (2 * size * 0.88),
+        child: Center(
+          child: LoadingAnimationWidget.discreteCircle(
+            color: light ? Dalai.color.white : Dalai.color.primary,
+            secondRingColor: light
+                ? Dalai.color.primaryContrast
+                : Dalai.color.primaryAlternativeDark,
+            thirdRingColor: light
+                ? Dalai.color.primaryAlternativeDark
+                : Dalai.color.primaryAlternativeLight,
+            size: size,
+          ),
+        ));
+  }
+
+  bottomSheetPicker(BuildContext context, String? title, String? subtitle,
+      Widget content,
+      {String? dismissText,
+        String? buttonText,
+        Function? onButtonPressed,
+        Function? onDismissPressed}) {
+    Utils.showBottomSheet(context,
+        skipPadding: false,
+        content: Container(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Dalai.spacing.spacer(small: true),
+              title != null
+                  ? Dalai.text.small(context, title, bold: true)
+                  : SizedBox.shrink(),
+              subtitle != null
+                  ? Dalai.spacing.spacer(small: true)
+                  : SizedBox.shrink(),
+              subtitle != null
+                  ? Dalai.text.title3(context, subtitle)
+                  : SizedBox.shrink(),
+              Dalai.spacing.spacer(multiplier: 2),
+              content,
+              Dalai.spacing.spacer(multiplier: 2),
+              Row(
+                children: [
+                  dismissText == null
+                      ? const SizedBox.shrink()
+                      : Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: double.infinity,
+                      child: Dalai.button
+                          .noBgButton(context, dismissText!, () {
+                        if (onDismissPressed != null) {
+                          onDismissPressed!();
+                        }
+                        Navigator.pop(context);
+                      }),
+                    ),
+                  ),
+                  Dalai.spacing.hSpacer(),
+                  buttonText == null
+                      ? const SizedBox.shrink()
+                      : Expanded(
+                    flex: 2,
+                    child: Container(
+                      width: double.infinity,
+                      child:
+                      Dalai.button.button(context, buttonText!, () {
+                        if (onButtonPressed != null) {
+// TODO
+                        }
+                        Navigator.pop(context);
+                      }),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+        ));
+  }
+
+  Widget noticeCard(BuildContext context, String? text,
+      {Function? onTap, String? title, CXIcon? leadingIcon, CXIcon? trailingIcon}) {
+    return GestureDetector(onTap: () {
+      if (onTap != null) {
+        onTap();
+      }
+    }, child: Container(
+        width: double.infinity,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            leadingIcon != null ? Padding(
+              child: Dalai.icon.dalaiIcons(context, leadingIcon!),
+              padding: EdgeInsets.only(
+                  right: Dalai.spacing.lateralPaddingValue),) : SizedBox
+                .shrink(),
+            Expanded(child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                title == null
+                    ? SizedBox.shrink()
+                    : Dalai.text.small(context, title!, bold: true),
+                Dalai.text.small(context, text, color: Theme
+                    .of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .color!)
+              ],
+            ),),
+            trailingIcon != null
+                ? Padding(
+              child: Dalai.icon.dalaiIcons(context, trailingIcon!),
+              padding: EdgeInsets.only(
+                  left: Dalai.spacing.lateralPaddingValue),)
+                : SizedBox.shrink(),
+          ],),
+        padding: EdgeInsets.symmetric(
+            horizontal: Dalai.spacing.lateralPaddingValue,
+            vertical: Dalai.spacing.lateralPaddingValue),
+        decoration: BoxDecoration(
+            border: Border.all(
+                color: Dalai.color.cream,
+                width: Dalai.spacing.borderWidth,
+                style: BorderStyle.solid),
+            color: Dalai.color.cream,
+            borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius))));
   }
 }

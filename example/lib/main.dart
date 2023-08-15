@@ -1,6 +1,7 @@
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:dalai/common_utils/alert.dart';
 import 'package:dalai/core/badges.dart';
+import 'package:dalai/core/external/slidable_tile.dart';
 import 'package:dalai/dalai.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Lama UI Showcase',
       theme: Dalai.theme.themeData(false),
+      darkTheme: Dalai.theme.themeData(true),
       home: const MyHomePage(),
     );
   }
@@ -88,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Dalai.color.cream,
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -106,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         'assets/images/lama-ui-icon.png',
                         width: 120,
                       ),
-                      Dalai.spacing.spacer(),
+                      Dalai.spacing.spacer(small: true),
                       Dalai.text.title1(context, 'LAMA Showcase'),
                     ],
                   )),
@@ -175,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Text and Labels'),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.text.title1(context, 'El teu heroi a domicili'),
                         title: "Dalai.text.title1"),
@@ -226,6 +228,35 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Dalai.text.xs"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.text.itemHeader(
+                              context,
+                              'Menjar a domicili',
+                              onAccessoryButtonText: 'Veure tot',
+                              onTap: () {},
+                            ),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.text.itemHeader(context, 'Menjar a domicili',
+                                onAccessoryButtonText: 'Veure tot',
+                                onTap: () {},
+                                loading: true),
+                          ],
+                        ),
+                        title: "Item Header with Button"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.text.smallItemHeader(
+                              context,
+                              'Opcions a la app',
+                            ),
+                          ],
+                        ),
+                        title: "Small Item Header"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -238,7 +269,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Colors'),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     GridView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
@@ -275,7 +306,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Spacing and Dividers'),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
@@ -284,7 +315,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               width: 24,
                               color: Dalai.color.primary,
                             ),
-                            Dalai.spacing.spacer(),
+                            Dalai.spacing.spacer(small: true),
                             Container(
                               height: 24,
                               width: 24,
@@ -293,7 +324,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Regular Spacer"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
@@ -311,7 +342,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Small Spacer"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -330,7 +361,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Regular HSpacer"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -349,14 +380,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Small HSpacer"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(Dalai.spacing.divider(context),
                         title: "Horizontal Divider"),
                     showCaseBlock(Dalai.spacing.verticalDivider(context, 24),
                         title: "Vertical Divider"),
                     showCaseBlock(Dalai.spacing.dottedDivider(context),
                         title: "Dotted Divider"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -401,7 +432,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Icons'),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -419,7 +450,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Icon Sizes"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -452,7 +483,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Text Fields and Inputs'),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -460,25 +491,25 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             Dalai.input.textField("Email address",
                                 TextEditingController(), FocusNode(), context),
-                            Dalai.spacing.spacer(),
+                            Dalai.spacing.spacer(small: true),
                             Dalai.input.textField(
                                 "Password",
                                 TextEditingController(text: "Password"),
                                 FocusNode(),
                                 context,
                                 obscure: true),
-                            Dalai.spacing.spacer(),
+                            Dalai.spacing.spacer(small: true),
                             Dalai.input.textField("Email address",
                                 TextEditingController(), FocusNode(), context,
                                 enabled: false),
-                            Dalai.spacing.spacer(),
+                            Dalai.spacing.spacer(small: true),
                             Dalai.input.textField("Email address",
                                 TextEditingController(), FocusNode(), context,
                                 error: "Error"),
                           ],
                         ),
                         title: "Regular"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -486,18 +517,18 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             Dalai.input.searchField("Email address",
                                 TextEditingController(), FocusNode(), context),
-                            Dalai.spacing.spacer(),
+                            Dalai.spacing.spacer(small: true),
                             Dalai.input.searchField("Email address",
                                 TextEditingController(), FocusNode(), context,
                                 enabled: false),
-                            Dalai.spacing.spacer(),
+                            Dalai.spacing.spacer(small: true),
                             Dalai.input.searchField("Email address",
                                 TextEditingController(), FocusNode(), context,
                                 error: "Error"),
                           ],
                         ),
                         title: "Search"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -508,7 +539,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Chat Input"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -536,35 +567,73 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Buttons'),
-                    Dalai.spacing.spacer(),
-                    showCaseBlock(Dalai.button.button(context, "Log In", () {}),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.button.button(context, "Log In", () {},
+                                loading: false),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.button.button(context, "Log In", () {},
+                                loading: true),
+                          ],
+                        ),
                         title: "Regular"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.shadowButton(context, "Log In", () {}),
+                        Column(
+                          children: [
+                            Dalai.button.shadowButton(context, "Log In", () {}),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.button.shadowButton(context, "Log In", () {},
+                                loading: true),
+                          ],
+                        ),
                         title: "Shadow"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.noBgButton(context, "Log In", () {}),
+                        Column(
+                          children: [
+                            Dalai.button.noBgButton(context, "Log In", () {}),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.button.noBgButton(context, "Log In", () {},
+                                loading: true),
+                          ],
+                        ),
                         title: "No BG Button"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.outlineButton(context, "Log In", () {}),
+                        Column(
+                          children: [
+                            Dalai.button
+                                .outlineButton(context, "Log In", () {}),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.button.outlineButton(context, "Log In", () {},
+                                loading: true),
+                          ],
+                        ),
                         title: "Outline Button"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.smallButton(context, "Log In", () {}),
+                        Column(
+                          children: [
+                            Dalai.button.smallButton(context, "Log In", () {}),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.button.smallButton(context, "Log In", () {},
+                                loading: true),
+                          ],
+                        ),
                         title: "Small Button"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(Dalai.button.buttonQtyLeading(context, 2),
                         title: "Button Quantity Leading"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.button.buttonPriceTrailing(context, 22.50,
                             freeText: "Free", amountInEurosText: "%@ Euros"),
                         title: "Button Price Trailing",
                         backgroundColor: Dalai.color.primary),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.button.buttonMinPriceWidget(context,
                             minPrice: 22.5,
@@ -572,18 +641,26 @@ class _MyHomePageState extends State<MyHomePage> {
                             addMoreToRequestText: "Add more to order"),
                         title: "Button Min Price",
                         backgroundColor: Dalai.color.primary),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.button.backButtonCircle(
                           context,
                         ),
                         title: "Back Button Circle"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.appBarActionButtonCircle(
-                            context, CXIcon.compare_arrows),
+                        Column(
+                          children: [
+                            Dalai.button.appBarActionButtonCircle(
+                                context, CXIcon.compare_arrows),
+                            Dalai.spacing.hSpacer(),
+                            Dalai.button.appBarActionButtonCircle(
+                                context, CXIcon.compare_arrows,
+                                loading: true),
+                          ],
+                        ),
                         title: "AppBar Action Button Circle"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -594,9 +671,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Checkbox"),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.button.toggle(true, (value) {}, context),
                         title: "Toggle"),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.button.slidingControl(
                           0,
@@ -656,6 +735,45 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         title: "Segment Bar",
                         largePadding: false),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Dalai.button.slidingControl(0, (value) {}, context,
+                            children: {
+                              0: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Dalai.icon.dalaiIcons(
+                                    context,
+                                    CXIcon.bike_alt,
+                                  ),
+                                ],
+                              ),
+                              1: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Dalai.icon.dalaiIcons(
+                                    context,
+                                    CXIcon.walk,
+                                  ),
+                                ],
+                              ),
+                            },
+                            isStretch: false,
+                            height: 44),
+                        title: "Segment Bar (Small)",
+                        largePadding: false),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(Dalai.button.stepper(context, 0, (value) {}),
+                        title: "Stepper"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Dalai.button.dataSelector(context, "Pau Casals, 6",
+                            "Where do we deliver it?", () {}),
+                        title: "Data Selector"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -668,18 +786,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Skeleton Loading'),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Container(
                           height: 90,
                           child: Dalai.skeleton.emptyRegularTileList(context),
                         ),
                         title: "Empty Regular Tile List"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.skeleton.emptyBusinessContainer(160, context),
                         title: "Supermarket Products Block"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.skeleton.emptySimpleContainer(60, 60, context),
                         title: "Empty Simple Container"),
@@ -695,21 +813,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Cards'),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(Dalai.card.cardTitle(context, 'Card Title'),
                         title: "Card Title"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.card.cardTitleSmall(context, 'Card Title Small'),
                         title: "Card Title Small"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.card.cardDescription(context, 'Card Description'),
                         title: "Card Description"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(Dalai.card.cardPrice(context, 'Card Price'),
                         title: "Card Price"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.card.banner(
                             context,
@@ -719,20 +837,114 @@ class _MyHomePageState extends State<MyHomePage> {
                             "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
                             Dalai.color.black),
                         title: "Promotion Card"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.card.order(context,
+                        Dalai.card.deliveryOrderCard(context,
                             title: "Comanda al Ginza41",
                             highlightText: "Ginza41",
                             leadingSubtitle: "1 prod",
                             trailingSubtitle: "22.50€",
-                            status: "Entregat",
-                            badgeColor: BadgeColor.secondary,
+                            badge: Dalai.badge.badgeSolid(context, 'Entregat'),
                             accessoryTitle:
                                 "Carrer de la Unió, 41 AD500 Andorra la Vella",
                             imageURL:
                                 "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg"),
-                        title: "Order Card"),
+                        title: "Delivery Order Card"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Dalai.card.mobilityOrderCard(context,
+                            header: "Sunday 22 of Fabriary",
+                            title: "Viatge a Barcelona",
+                            highlightText: "Barcelona",
+                            leadingSubtitle: "#627A",
+                            trailingSubtitle: "125.50€",
+                            badge:
+                                Dalai.badge.badgeSolid(context, 'Cancelled')),
+                        title: "Mobility Order Card"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Dalai.card.mobilityOrderCard(context,
+                            header: "Sunday 22 of Fabriary",
+                            title: "Viatge a Barcelona",
+                            highlightText: "Barcelona",
+                            leadingSubtitle: "#627A",
+                            trailingSubtitle: "125.50€",
+                            badge:
+                                Dalai.badge.badgeSolid(context, 'Cancelled')),
+                        title: "Mobility Order Card"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Dalai.card.iconSmallCard(
+                                    context,
+                                    "Shop",
+                                    'https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg',
+                                    () {}),
+                                Dalai.spacing.hSpacer(),
+                                Dalai.card.iconSmallCard(
+                                    context,
+                                    "Restaurant",
+                                    'https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg',
+                                    () {},
+                                    isSelected: true),
+                              ],
+                            ),
+                            Dalai.spacing.spacer(small: true),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Dalai.card.iconSmallCard(
+                                    context,
+                                    "Shop",
+                                    'https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg',
+                                    () {},
+                                    clearBackground: true),
+                                Dalai.spacing.hSpacer(),
+                                Dalai.card.iconSmallCard(
+                                    context,
+                                    "Restaurant",
+                                    'https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg',
+                                    () {},
+                                    isSelected: true,
+                                    clearBackground: true),
+                              ],
+                            ),
+                            Dalai.spacing.spacer(small: true),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Dalai.card.iconSmallCard(
+                                    context, "Eat", null, () {},
+                                    isSelected: false),
+                                Dalai.spacing.hSpacer(),
+                                Dalai.card.iconSmallCard(
+                                    context, "Eat", null, () {},
+                                    isSelected: true),
+                              ],
+                            ),
+                          ],
+                        ),
+                        title: "Small Icon Card"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Dalai.card.avatar(context,
+                                "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
+                                loading: true),
+                            Dalai.spacing.hSpacer(),
+                            Dalai.card.avatar(context,
+                                "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
+                                onTap: () {}),
+                          ],
+                        ),
+                        title: "Data Selector"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -745,7 +957,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Tiles'),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
@@ -761,7 +973,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Tile with Title"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
@@ -786,23 +998,30 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Tile with Custom Image"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
                             Dalai.tile.listSearchTileCustomImage(CXIcon.bag_alt,
                                 context, 'Click me and get free bags!', () {},
                                 searchText: "free"),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.tile.listSearchTileCustomImage(CXIcon.bag_alt,
+                                context, 'Click me and get free bags!', () {},
+                                searchText: "free", loading: true),
                           ],
                         ),
                         title: "Tile with highlighted search text"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
                             Dalai.tile.paymentMethod(
                                 context, "Card ending in 4444", "Exp. at 12/25",
-                                highlightText: "4444", onTap: (){}, onRemove: (){}),
+                                highlightText: "4444",
+                                ccBrand: CCBrand.visa,
+                                onTap: () {},
+                                onRemove: () {}),
                           ],
                         ),
                         title: "Payment Method Tile"),
@@ -818,7 +1037,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Badges'),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -831,7 +1050,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Badge Solid"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -845,65 +1064,129 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Badge Outline"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                        Column(
                           children: [
-                            Dalai.badge.tagSolid(context, 'Click Me!',
-                                onTap: () {
-                              Alert.showAlert(
-                                "You clicked me!",
-                                "You perv...",
-                                context,
-                                okText: 'OK',
-                              );
-                            }),
-                            Dalai.spacing.hSpacer(),
-                            Dalai.badge.tagSolid(context, 'Click Me!',
-                                icon: CXIcon.vision_alt,
-                                color: BadgeColor.secondary, onTap: () {
-                              Alert.showAlert(
-                                "You clicked me!",
-                                "You perv...",
-                                context,
-                                okText: 'OK',
-                              );
-                            }),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Dalai.badge.tagSolid(context, 'Click Me!',
+                                    onTap: () {
+                                  Alert.showAlert(
+                                    "You clicked me!",
+                                    "You perv...",
+                                    context,
+                                    okText: 'OK',
+                                  );
+                                }),
+                                Dalai.spacing.hSpacer(),
+                                Dalai.badge.tagSolid(context, 'Click Me!',
+                                    icon: CXIcon.vision_alt,
+                                    color: BadgeColor.secondary, onTap: () {
+                                  Alert.showAlert(
+                                    "You clicked me!",
+                                    "You perv...",
+                                    context,
+                                    okText: 'OK',
+                                  );
+                                }),
+                              ],
+                            ),
+                            Dalai.spacing.spacer(small: true),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Dalai.badge.tagSolid(context, 'Click Me!',
+                                    onDelete: () {}, onTap: () {
+                                  Alert.showAlert(
+                                    "You clicked me!",
+                                    "You perv...",
+                                    context,
+                                    okText: 'OK',
+                                  );
+                                }),
+                                Dalai.spacing.hSpacer(),
+                                Dalai.badge.tagSolid(context, 'Click Me!',
+                                    icon: CXIcon.vision_alt,
+                                    color: BadgeColor.secondary,
+                                    onDelete: () {}, onTap: () {
+                                  Alert.showAlert(
+                                    "You clicked me!",
+                                    "You perv...",
+                                    context,
+                                    okText: 'OK',
+                                  );
+                                }),
+                              ],
+                            ),
                           ],
                         ),
                         title: "Tag Solid"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                        Column(
                           children: [
-                            Dalai.badge.tagOutline(context, 'Click Me!',
-                                onTap: () {
-                              Alert.showAlert(
-                                "You clicked me!",
-                                "You perv...",
-                                context,
-                                okText: 'OK',
-                              );
-                            }),
-                            Dalai.spacing.hSpacer(),
-                            Dalai.badge.tagOutline(context, 'Click Me!',
-                                icon: CXIcon.directions_walk,
-                                color: BadgeColor.secondary, onTap: () {
-                              Alert.showAlert(
-                                "You clicked me!",
-                                "You perv...",
-                                context,
-                                okText: 'OK',
-                              );
-                            }),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Dalai.badge.tagOutline(context, 'Click Me!',
+                                    onTap: () {
+                                  Alert.showAlert(
+                                    "You clicked me!",
+                                    "You perv...",
+                                    context,
+                                    okText: 'OK',
+                                  );
+                                }),
+                                Dalai.spacing.hSpacer(),
+                                Dalai.badge.tagOutline(context, 'Click Me!',
+                                    icon: CXIcon.vision_alt,
+                                    color: BadgeColor.secondary, onTap: () {
+                                  Alert.showAlert(
+                                    "You clicked me!",
+                                    "You perv...",
+                                    context,
+                                    okText: 'OK',
+                                  );
+                                }),
+                              ],
+                            ),
+                            Dalai.spacing.spacer(small: true),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Dalai.badge.tagOutline(context, 'Click Me!',
+                                    onDelete: () {}, onTap: () {
+                                  Alert.showAlert(
+                                    "You clicked me!",
+                                    "You perv...",
+                                    context,
+                                    okText: 'OK',
+                                  );
+                                }),
+                                Dalai.spacing.hSpacer(),
+                                Dalai.badge.tagOutline(context, 'Click Me!',
+                                    icon: CXIcon.vision_alt,
+                                    color: BadgeColor.secondary,
+                                    onDelete: () {}, onTap: () {
+                                  Alert.showAlert(
+                                    "You clicked me!",
+                                    "You perv...",
+                                    context,
+                                    okText: 'OK',
+                                  );
+                                }),
+                              ],
+                            ),
                           ],
                         ),
                         title: "Tag Outline"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -916,19 +1199,54 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Misc'),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.misc.checkoutHeader(
                             context, 'La teva comanda a ', 'Ginza41'),
                         title: "Checkout Header"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.misc.spanWithBoldTitle(
                             context, 'La teva comanda a ', 'Ginza41'),
                         title: "Span with Bold Title"),
-                    Dalai.spacing.spacer(),
+                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(Dalai.misc.getProductPlaceholder(context),
                         title: "Product Placeholder"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Dalai.button.smallButton(context, 'Obrir Bottom Picker',
+                            () {
+                          Dalai.misc.bottomSheetPicker(
+                              context,
+                              'Demo Picker',
+                              'Demo Picker ',
+                              Dalai.misc.noticeCard(context,
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis, urna nec sagittis interdum, neque tortor sagittis urna, feugiat congue magna dui vel libero.',
+                                  title: 'This is just a demo', onTap: () {}),
+                              dismissText: 'Tancar',
+                              buttonText: 'Seleccionar',
+                              onDismissPressed: () {},
+                              onButtonPressed: () {});
+                        }),
+                        title: "Bottom Picker"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.misc.noticeCard(context,
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis, urna nec sagittis interdum, neque tortor sagittis urna, feugiat congue magna dui vel libero.',
+                                title: 'This is a title',
+                                onTap: () {},
+                                trailingIcon: CXIcon.accessible),
+                            Dalai.spacing.spacer(),
+                            Dalai.misc.noticeCard(context,
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis, urna nec sagittis interdum, neque tortor sagittis urna, feugiat congue magna dui vel libero.',
+                                title: 'This is a title',
+                                onTap: () {},
+                                leadingIcon: CXIcon.bag),
+                          ],
+                        ),
+                        title: "Notice Card"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -958,7 +1276,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 top: largePadding ? 24 : 12,
                 bottom: largePadding ? 24 : 12),
             decoration: BoxDecoration(
-                color: backgroundColor,
+                color: Theme.of(context).scaffoldBackgroundColor,
                 borderRadius:
                     BorderRadius.circular(Dalai.spacing.smallBorderRadius)),
             child: Center(
@@ -971,7 +1289,9 @@ class _MyHomePageState extends State<MyHomePage> {
             : const SizedBox.shrink(),
         title != null
             ? Dalai.text.xs(context, title,
-                color: Dalai.color.text.withOpacity(0.8), bold: true, maxLines: 2)
+                color: Theme.of(context).textTheme.bodyMedium!.color,
+                bold: true,
+                maxLines: 2)
             : const SizedBox.shrink(),
         title != null ? Dalai.spacing.spacer() : const SizedBox.shrink(),
       ],

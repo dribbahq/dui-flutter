@@ -69,7 +69,7 @@ class _SlidableTileState extends State<SlidableTile> {
                             Dalai.spacing.hSpacer(),
                             Dalai.icon.dalaiIcons(
                                 context, getCardIcon(),
-                                size: CXIconSize.regular),
+                                size: CXIconSize.large),
                             Dalai.spacing.hSpacer(),
                             Expanded(
                                 child: Column(

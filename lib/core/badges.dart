@@ -3,44 +3,46 @@ import 'package:flutter/material.dart';
 
 import '../dalai.dart';
 
-
 enum BadgeHierarchy { primary, secondary }
+
 enum BadgeColor { primary, secondary, white, error, cream }
 
 class DalaiBadges {
-
   Widget badgeSolid(BuildContext context, String text,
-      {CXIcon? icon, BadgeColor color = BadgeColor
-          .primary, BadgeHierarchy? hierarchy = BadgeHierarchy.primary}) {
+      {CXIcon? icon,
+        BadgeColor color = BadgeColor.primary,
+        BadgeHierarchy? hierarchy = BadgeHierarchy.primary}) {
     Color bgColor = _getBGColor(context, color);
-    Color contentColor = hierarchy == BadgeHierarchy.primary ? _getContentColor(
-        context, color) : bgColor;
+    Color contentColor = hierarchy == BadgeHierarchy.primary
+        ? _getContentColor(context, color)
+        : bgColor;
 
     return Container(
       padding: const EdgeInsets.only(left: 6, right: 6, top: 3, bottom: 2),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius / 2),
-          color: bgColor.withOpacity(
-              hierarchy == BadgeHierarchy.primary ? 1 : 0.1)
-      ),
+          color: bgColor
+              .withOpacity(hierarchy == BadgeHierarchy.primary ? 1 : 0.1)),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           icon != null
-              ? Dalai.icon.dalaiIcons(
-              context, icon, size: CXIconSize.x_small, mainColor: contentColor)
+              ? Dalai.icon.dalaiIcons(context, icon,
+              size: CXIconSize.x_small, mainColor: contentColor)
               : const SizedBox.shrink(),
           icon != null
               ? Dalai.spacing.hSpacer(small: true)
               : const SizedBox.shrink(),
           Dalai.text.xs(context, text, bold: true, color: contentColor)
-        ],),
+        ],
+      ),
     );
   }
 
   Widget badgeOutline(BuildContext context, String text,
-      {CXIcon? icon, BadgeColor color = BadgeColor
-          .primary, BadgeHierarchy? hierarchy = BadgeHierarchy.primary}) {
+      {CXIcon? icon,
+        BadgeColor color = BadgeColor.primary,
+        BadgeHierarchy? hierarchy = BadgeHierarchy.primary}) {
     Color outlineColor = _getBGColor(context, color);
     Color bgColor = hierarchy == BadgeHierarchy.primary
         ? Colors.transparent
@@ -50,83 +52,34 @@ class DalaiBadges {
       padding: const EdgeInsets.only(left: 6, right: 6, top: 3, bottom: 2),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius / 2),
-          border: Border.all(
-              color: outlineColor,
-              width: 1.5
-          ),
-          color: bgColor
-      ),
+          border: Border.all(color: outlineColor, width: 1.5),
+          color: bgColor),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           icon != null
-              ? Dalai.icon.dalaiIcons(
-              context, icon, size: CXIconSize.x_small, mainColor: outlineColor)
+              ? Dalai.icon.dalaiIcons(context, icon,
+              size: CXIconSize.x_small, mainColor: outlineColor)
               : const SizedBox.shrink(),
           icon != null
               ? Dalai.spacing.hSpacer(small: true)
               : const SizedBox.shrink(),
           Dalai.text.xs(context, text, bold: true, color: outlineColor)
-        ],),
-    );
-  }
-
-  Widget tagSolid(BuildContext context, String text,
-      {CXIcon? icon, BadgeColor color = BadgeColor
-          .primary, BadgeHierarchy? hierarchy = BadgeHierarchy
-          .primary, Function? onDelete, Function? onTap}) {
-    Color bgColor = _getBGColor(context, color);
-    Color contentColor = hierarchy == BadgeHierarchy.primary ? _getContentColor(
-        context, color) : bgColor;
-    return GestureDetector(
-      onTap: () {
-        if (onTap != null) {
-          onTap();
-        }
-      },
-      child: Chip(
-        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        labelPadding: EdgeInsets.zero,
-        padding: EdgeInsets.symmetric(
-            vertical: Dalai.spacing.lateralPaddingValue / 2,
-            horizontal: Dalai.spacing.lateralPaddingValue),
-        backgroundColor: bgColor.withOpacity(
-            hierarchy == BadgeHierarchy.primary ? 1 : 0.1),
-        label: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            icon != null
-                ? Dalai.icon.dalaiIcons(context, icon, size: CXIconSize.x_small,
-                mainColor: contentColor)
-                : const SizedBox.shrink(),
-            icon != null
-                ? Dalai.spacing.hSpacer(small: true)
-                : const SizedBox.shrink(),
-            Dalai.text.xs(context, text, bold: true, color: contentColor)
-          ],),
-        onDeleted: onDelete != null ? () {
-          onDelete();
-        } : null,
-        deleteIconColor: contentColor,
-        deleteIcon: Padding(
-          padding: EdgeInsets.only(left: Dalai.spacing.lateralPaddingValue / 2),
-          child: Dalai.icon.dalaiIcons(
-              context, CXIcon.xmark_circle, size: CXIconSize.x_small,
-              mainColor: contentColor),
-        ),
+        ],
       ),
     );
   }
 
-  Widget tagOutline(BuildContext context, String text,
-      {CXIcon? icon, BadgeColor color = BadgeColor
-          .primary, BadgeHierarchy? hierarchy = BadgeHierarchy
-          .primary, Function? onDelete, Function? onTap}) {
-    Color outlineColor = _getBGColor(context, color);
-    Color bgColor = hierarchy == BadgeHierarchy.primary
-        ? Colors.transparent
-        : outlineColor.withOpacity(0.1);
-
+  Widget tagSolid(BuildContext context, String text,
+      {CXIcon? icon,
+        BadgeColor color = BadgeColor.primary,
+        BadgeHierarchy? hierarchy = BadgeHierarchy.primary,
+        Function? onDelete,
+        Function? onTap}) {
+    Color bgColor = _getBGColor(context, color);
+    Color contentColor = hierarchy == BadgeHierarchy.primary
+        ? _getContentColor(context, color)
+        : bgColor;
     return GestureDetector(
       onTap: () {
         if (onTap != null) {
@@ -135,36 +88,99 @@ class DalaiBadges {
       },
       child: Chip(
         side: BorderSide(
-            color: outlineColor,
-            width: 1.5
-        ),
+            color: hierarchy == BadgeHierarchy.primary
+                ? bgColor
+                : bgColor.withOpacity(0.1),
+            width: 1.5),
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         labelPadding: EdgeInsets.zero,
-        padding: EdgeInsets.symmetric(
-            vertical: Dalai.spacing.lateralPaddingValue / 2,
-            horizontal: Dalai.spacing.lateralPaddingValue),
+        padding: EdgeInsets.only(
+            left: Dalai.spacing.lateralPaddingValue,
+            right: Dalai.spacing.lateralPaddingValue,
+            top: Dalai.spacing.lateralPaddingValue / 2 + 2,
+            bottom: Dalai.spacing.lateralPaddingValue / 2),
+        backgroundColor:
+        bgColor.withOpacity(hierarchy == BadgeHierarchy.primary ? 1 : 0.1),
+        label: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            icon != null
+                ? Dalai.icon.dalaiIcons(context, icon,
+                size: CXIconSize.x_small, mainColor: contentColor)
+                : const SizedBox.shrink(),
+            icon != null
+                ? Dalai.spacing.hSpacer(small: true)
+                : const SizedBox.shrink(),
+            Dalai.text.xs(context, text, bold: true, color: contentColor)
+          ],
+        ),
+        onDeleted: onDelete != null
+            ? () {
+          onDelete();
+        }
+            : null,
+        deleteIconColor: contentColor,
+        deleteIcon: Padding(
+          padding: EdgeInsets.only(
+              left: Dalai.spacing.lateralPaddingValue / 2, bottom: 2),
+          child: Dalai.icon.dalaiIcons(context, CXIcon.xmark_circle,
+              size: CXIconSize.x_small, mainColor: contentColor),
+        ),
+      ),
+    );
+  }
+
+  Widget tagOutline(BuildContext context, String text,
+      {CXIcon? icon,
+        BadgeColor color = BadgeColor.primary,
+        BadgeHierarchy? hierarchy = BadgeHierarchy.primary,
+        Function? onDelete,
+        Function? onTap}) {
+    Color outlineColor = _getBGColor(context, color);
+    Color bgColor = hierarchy == BadgeHierarchy.primary
+        ? Colors.transparent
+        : outlineColor.withOpacity(0.1);
+
+    return GestureDetector(
+      onTap: () {
+        if (onTap != null) {
+          onTap();
+        }
+      },
+      child: Chip(
+        side: BorderSide(color: outlineColor, width: 1.5),
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        labelPadding: EdgeInsets.zero,
+        padding: EdgeInsets.only(
+            left: Dalai.spacing.lateralPaddingValue,
+            right: Dalai.spacing.lateralPaddingValue,
+            top: Dalai.spacing.lateralPaddingValue / 2 + 2,
+            bottom: Dalai.spacing.lateralPaddingValue / 2),
         backgroundColor: bgColor,
         label: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             icon != null
-                ? Dalai.icon.dalaiIcons(context, icon, size: CXIconSize.x_small,
-                mainColor: outlineColor)
+                ? Dalai.icon.dalaiIcons(context, icon,
+                size: CXIconSize.x_small, mainColor: outlineColor)
                 : const SizedBox.shrink(),
             icon != null
                 ? Dalai.spacing.hSpacer(small: true)
                 : const SizedBox.shrink(),
             Dalai.text.xs(context, text, bold: true, color: outlineColor)
-          ],),
-        onDeleted: onDelete != null ? () {
+          ],
+        ),
+        onDeleted: onDelete != null
+            ? () {
           onDelete();
-        } : null,
+        }
+            : null,
         deleteIconColor: outlineColor,
         deleteIcon: Padding(
-          padding: EdgeInsets.only(left: Dalai.spacing.lateralPaddingValue / 2),
-          child: Dalai.icon.dalaiIcons(
-              context, CXIcon.xmark_circle, size: CXIconSize.x_small,
-              mainColor: outlineColor),
+          padding: EdgeInsets.only(
+              left: Dalai.spacing.lateralPaddingValue / 2, bottom: 2),
+          child: Dalai.icon.dalaiIcons(context, CXIcon.xmark_circle,
+              size: CXIconSize.x_small, mainColor: outlineColor),
         ),
       ),
     );
