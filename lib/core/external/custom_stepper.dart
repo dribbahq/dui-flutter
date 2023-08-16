@@ -75,7 +75,7 @@ class _CustomStepperState extends State<CustomStepper> {
       curve: Curves.easeInOutSine,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          color: Dalai.color.text.withOpacity(0.1)),
+          color: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.1)),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -92,12 +92,7 @@ class _CustomStepperState extends State<CustomStepper> {
                 child: Opacity(
                   opacity: widget.loading ? 0.1 : currentValue ==
                       widget.lowerLimit ? 0.3 : 1.0,
-                  child: Dalai.icon.dalaiIcons(context, CXIcon.minus,
-                      mainColor: Theme
-                          .of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .color!),
+                  child: Dalai.icon.dalaiIcons(context, CXIcon.minus),
                 ),
               )),
           Dalai.spacing.hSpacer(small: true),
@@ -122,12 +117,7 @@ class _CustomStepperState extends State<CustomStepper> {
                 child: Opacity(
                   opacity: widget.loading ? 0.1 : currentValue ==
                       widget.upperLimit ? 0.3 : 1.0,
-                  child: Dalai.icon.dalaiIcons(context, CXIcon.plus,
-                      mainColor: Theme
-                          .of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .color!),
+                  child: Dalai.icon.dalaiIcons(context, CXIcon.plus),
                 ),
               )),
           Dalai.spacing.hSpacer(small: true)

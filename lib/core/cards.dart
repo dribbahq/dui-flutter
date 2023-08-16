@@ -344,7 +344,7 @@ class DalaiCards {
                   : Theme
                   .of(context)
                   .textTheme
-                  .bodyLarge!
+                  .bodyMedium!
                   .color!
                   .withOpacity(0.15)
                   : clearBackground
@@ -383,7 +383,7 @@ class DalaiCards {
                     color: Theme
                         .of(context)
                         .textTheme
-                        .bodyLarge!
+                        .bodyMedium!
                         .color,
                     bold: true),
               ),

@@ -106,7 +106,7 @@ class DalaiButtons {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
             ),
-            backgroundColor: Dalai.color.text.withOpacity(0.1),
+            backgroundColor: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.1),
             padding: Dalai.spacing.lateralPadding,
           ),
           child: loading!
@@ -140,7 +140,7 @@ class DalaiButtons {
                                 : const SizedBox.shrink(),
                             text != null
                                 ? Dalai.text.regular(context, text,
-                                color: color ?? Dalai.color.text,
+                                color: color ?? Theme.of(context).textTheme.bodyMedium!.color,
                                 bold: true)
                                 : const SizedBox.shrink(),
                           ],
@@ -317,7 +317,7 @@ class DalaiButtons {
       width: expand ? double.infinity : null,
       child: ElevatedButton(
           onPressed: () {
-            if (onPressed != null) {
+            if (onPressed != null && loading == false) {
               onPressed();
             }
           },

@@ -324,14 +324,20 @@ class Misc {
       }
     }, child: Container(
         width: double.infinity,
+        padding: EdgeInsets.symmetric(
+            horizontal: Dalai.spacing.lateralPaddingValue,
+            vertical: Dalai.spacing.lateralPaddingValue),
+        decoration: BoxDecoration(
+            color: Theme.of(context).brightness == Brightness.light ? Dalai.color.cream : Dalai.color.cream.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             leadingIcon != null ? Padding(
-              child: Dalai.icon.dalaiIcons(context, leadingIcon!),
               padding: EdgeInsets.only(
-                  right: Dalai.spacing.lateralPaddingValue),) : SizedBox
+                  right: Dalai.spacing.lateralPaddingValue),
+              child: Dalai.icon.dalaiIcons(context, leadingIcon),) : SizedBox
                 .shrink(),
             Expanded(child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -339,30 +345,20 @@ class Misc {
               children: [
                 title == null
                     ? SizedBox.shrink()
-                    : Dalai.text.small(context, title!, bold: true),
+                    : Dalai.text.small(context, title, bold: true),
                 Dalai.text.small(context, text, color: Theme
                     .of(context)
                     .textTheme
-                    .bodyLarge!
+                    .bodyMedium!
                     .color!)
               ],
             ),),
             trailingIcon != null
                 ? Padding(
-              child: Dalai.icon.dalaiIcons(context, trailingIcon!),
               padding: EdgeInsets.only(
-                  left: Dalai.spacing.lateralPaddingValue),)
+                  left: Dalai.spacing.lateralPaddingValue),
+              child: Dalai.icon.dalaiIcons(context, trailingIcon),)
                 : SizedBox.shrink(),
-          ],),
-        padding: EdgeInsets.symmetric(
-            horizontal: Dalai.spacing.lateralPaddingValue,
-            vertical: Dalai.spacing.lateralPaddingValue),
-        decoration: BoxDecoration(
-            border: Border.all(
-                color: Dalai.color.cream,
-                width: Dalai.spacing.borderWidth,
-                style: BorderStyle.solid),
-            color: Dalai.color.cream,
-            borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius))));
+          ],)));
   }
 }

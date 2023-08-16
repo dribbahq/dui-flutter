@@ -236,7 +236,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               context,
                               'Menjar a domicili',
                               onAccessoryButtonText: 'Veure tot',
-                              onTap: () {},
+                              onTap: () {
+                                Alert.showAlert('title', 'text', context, okText: 'okText');
+                              },
                             ),
                             Dalai.spacing.spacer(small: true),
                             Dalai.text.itemHeader(context, 'Menjar a domicili',
@@ -279,7 +281,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             crossAxisCount: 4,
                             crossAxisSpacing: Dalai.spacing.lateralPaddingValue,
                             mainAxisSpacing: Dalai.spacing.lateralPaddingValue,
-                            childAspectRatio: 0.75),
+                            childAspectRatio: 0.65),
                         itemBuilder: (BuildContext context, int index) {
                           var key = availableColors.keys.elementAt(index);
                           return showCaseBlock(
@@ -315,7 +317,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               width: 24,
                               color: Dalai.color.primary,
                             ),
-                            Dalai.spacing.spacer(small: true),
+                            Dalai.spacing.spacer(),
                             Container(
                               height: 24,
                               width: 24,
@@ -457,12 +459,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Dalai.icon.dalaiIcons(context, CXIcon.bike_slash,
-                                mainColor: Dalai.color.black,
                                 secondaryColor: Dalai.color.primary,
                                 size: CXIconSize.large),
                             Dalai.icon.dalaiIcons(context, CXIcon.bike_slash,
-                                mainColor: Dalai.color.black,
-                                secondaryColor: Dalai.color.black,
                                 size: CXIconSize.large),
                             Dalai.icon.dalaiIcons(context, CXIcon.bike_slash,
                                 mainColor: Dalai.color.blue,
@@ -944,7 +943,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 onTap: () {}),
                           ],
                         ),
-                        title: "Data Selector"),
+                        title: "Avatar"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
