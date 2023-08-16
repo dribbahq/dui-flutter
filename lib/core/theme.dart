@@ -21,6 +21,12 @@ class DalaiTheme {
             color: isDarkTheme
                 ? Dalai.color.smallTextDarkMode
                 : Dalai.color.smallText),
+        titleLarge: TextStyle(
+            color: isDarkTheme ? Dalai.color.textDarkMode : Dalai.color.text),
+        titleSmall: TextStyle(
+            color: isDarkTheme
+                ? Dalai.color.smallTextDarkMode
+                : Dalai.color.smallText),
       ),
       scaffoldBackgroundColor:
           isDarkTheme ? Dalai.color.scaffoldDarkMode : Dalai.color.scaffold,

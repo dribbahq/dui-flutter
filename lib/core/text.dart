@@ -36,7 +36,7 @@ class DalaiText {
         color: color ?? Theme
             .of(context)
             .textTheme
-            .bodyMedium!
+            .titleLarge!
             .color,
         fontSize: h1,
         height: textHeight,
@@ -57,7 +57,7 @@ class DalaiText {
         color: color ?? Theme
             .of(context)
             .textTheme
-            .bodyMedium!
+            .titleLarge!
             .color,
         fontSize: h2,
         height: textHeight,
@@ -78,7 +78,7 @@ class DalaiText {
         color: color ?? Theme
             .of(context)
             .textTheme
-            .bodyMedium!
+            .titleLarge!
             .color,
         fontSize: h3,
         height: textHeight,
@@ -447,8 +447,7 @@ class DalaiText {
                   .of(context)
                   .textTheme
                   .titleLarge!
-                  .color!
-                  .withOpacity(0.8)),
+                  .color),
           onAccessoryButtonText == null
               ? SizedBox.shrink()
               : Dalai.button
@@ -471,8 +470,7 @@ class DalaiText {
                   .of(context)
                   .textTheme
                   .titleLarge!
-                  .color!
-                  .withOpacity(0.8)),
+                  .color),
         ],
       ),
     );
