@@ -143,7 +143,7 @@ class _CountryPicker extends State<CountryPicker> {
         children: <Widget>[
           Dalai.spacing.hSpacer(multiplier: 5),
           CountryFlag.fromCountryCode(
-            selectedItem!.countryExtension!.toLowerCase(),
+            element.countryExtension!.toLowerCase(),
             width: 24.0,
             height: 24.0,
           ),
@@ -187,7 +187,7 @@ class _CountryPicker extends State<CountryPicker> {
         children: <Widget>[
           Dalai.spacing.hSpacer(multiplier: 5),
           CountryFlag.fromCountryCode(
-            selectedItem!.countryExtension!.toLowerCase(),
+            element.countryExtension!.toLowerCase(),
             width: 24.0,
             height: 24.0,
           ),
