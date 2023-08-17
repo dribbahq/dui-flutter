@@ -611,12 +611,12 @@ class DalaiInputs {
       String initialPhonePrefix,
       Function(String) onPrefixChange,
       {bool isEnabled = true,
-      Widget? leading,
-      Widget? trailing}) {
+      Widget? trailing,
+      Function()? onChange}) {
     return Dalai.input
         .textField(label, controller, focusNode ?? FocusNode(), context,
             enabled: isEnabled,
-            suffixIcon: leading ?? const SizedBox.shrink(),
+            suffixIcon: trailing ?? const SizedBox.shrink(),
             prefixIcon: CountryPicker(
               initialSelection: initialPhonePrefix,
               favorite: ['+376', '+34', '+33', '+351'],
@@ -628,6 +628,7 @@ class DalaiInputs {
             inputFormatters: <TextInputFormatter>[
               LengthLimitingTextInputFormatter(12),
             ],
-            keyboardType: TextInputType.phone);
+            keyboardType: TextInputType.phone,
+    onChange: onChange);
   }
 }
