@@ -7,7 +7,7 @@ import '../dalai.dart';
 
 class DalaiTiles {
   Widget listTile(
-    String text,
+    String? text,
     BuildContext context,
     Function() onTap, {
     EdgeInsets? padding,
@@ -24,7 +24,7 @@ class DalaiTiles {
             EdgeInsets.symmetric(
                 horizontal: Dalai.spacing.lateralPaddingValue, vertical: 0),
         title: Text(
-          text,
+          text ?? '',
           style: TextStyle(
               fontSize: Dalai.text.regularText,
               color:
@@ -46,9 +46,9 @@ class DalaiTiles {
   }
 
   Widget listTileWithSub(
-    String title,
+    String? title,
     BuildContext context,
-    String subtitle, {
+    String? subtitle, {
     EdgeInsets? padding,
     Color? colorText,
     Function()? onTap,
@@ -72,7 +72,7 @@ class DalaiTiles {
             EdgeInsets.symmetric(
                 horizontal: Dalai.spacing.lateralPaddingValue, vertical: 0),
         title: Text(
-          title,
+          title ?? '',
           style: TextStyle(
               fontSize: Dalai.text.h3,
               fontWeight: Dalai.text.semiBoldWeight,
@@ -80,7 +80,7 @@ class DalaiTiles {
                   colorText ?? Theme.of(context).textTheme.bodyMedium!.color),
         ),
         subtitle: Text(
-          subtitle,
+          subtitle ?? '',
           style: TextStyle(
               fontSize: Dalai.text.regularText,
               color:
@@ -92,7 +92,7 @@ class DalaiTiles {
   }
 
   Widget listTileCustomImage(
-      Widget leading, BuildContext context, String title, Function() onTap) {
+      Widget leading, BuildContext context, String? title, Function() onTap) {
     return Material(
       child: Container(
         color: Theme.of(context).colorScheme.background,
@@ -115,7 +115,7 @@ class DalaiTiles {
                     leading,
                     Dalai.spacing.hSpacer(),
                     Expanded(
-                      child: Dalai.text.regular(context, title, maxLines: 2),
+                      child: Dalai.text.regular(context, title ?? '', maxLines: 2),
                     ),
                     CityXerpaIcons.get(CXIcon.chevron_right,
                         size: CXIconSize.small),
@@ -126,7 +126,7 @@ class DalaiTiles {
   }
 
   Widget listSearchTileCustomImage(
-      CXIcon leading, BuildContext context, String title, Function() onTap,
+      CXIcon leading, BuildContext context, String? title, Function() onTap,
       {String? searchText,
       double? imageSize,
       Color? imageColor,
@@ -174,7 +174,7 @@ class DalaiTiles {
                     Dalai.spacing.hSpacer(),
                     Expanded(
                         child: SubstringHighlight(
-                      text: title,
+                      text: title ?? '',
                       term: searchText,
                       textStyle: unselectedTextStyle,
                       textStyleHighlight: selectedTextStyle,
@@ -195,14 +195,14 @@ class DalaiTiles {
     );
   }
 
-  Widget paymentMethod(BuildContext context, String title, String? subtitle,
+  Widget paymentMethod(BuildContext context, String? title, String? subtitle,
       {Function()? onTap,
       Function()? onRemove,
       String? highlightText,
       bool? autoDone = false,
       CCBrand? ccBrand}) {
     return SlidableTile(
-      title: title,
+      title: title ?? '',
       subtitle: subtitle,
       highlightText: highlightText,
       onRemove: onRemove,
