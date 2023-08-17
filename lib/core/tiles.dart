@@ -37,7 +37,6 @@ class DalaiTiles {
                   context,
                   CXIcon.chevron_right,
                   size: CXIconSize.small,
-                  mainColor: Theme.of(context).textTheme.bodyMedium!.color,
                 ),
         leading: leading,
         onTap: onTap,
@@ -65,7 +64,6 @@ class DalaiTiles {
               context,
               CXIcon.chevron_right,
               size: CXIconSize.small,
-              mainColor: Theme.of(context).textTheme.bodyMedium!.color,
             ),
         tileColor: Theme.of(context).colorScheme.background,
         contentPadding: padding ??
@@ -117,8 +115,7 @@ class DalaiTiles {
                     Expanded(
                       child: Dalai.text.regular(context, title ?? '', maxLines: 2),
                     ),
-                    CityXerpaIcons.get(CXIcon.chevron_right,
-                        size: CXIconSize.small),
+                    Dalai.icon.dalaiIcons(context, CXIcon.chevron_right, size: CXIconSize.small),
                   ]),
             )),
       ),
@@ -186,8 +183,6 @@ class DalaiTiles {
                             context,
                             CXIcon.chevron_right,
                             size: CXIconSize.small,
-                            mainColor:
-                                Theme.of(context).textTheme.bodyMedium!.color,
                           ),
                   ]),
             )),
