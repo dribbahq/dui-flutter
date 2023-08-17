@@ -965,6 +965,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Dalai.spacing.divider(context),
                             Dalai.tile.listTile('Loading Tile', context, () {},
                                 trailing: const SizedBox.shrink(),
+                                loading: true,
                                 leading:
                                     Dalai.icon.dalaiIcons(context, CXIcon.ban))
                           ],

@@ -284,7 +284,7 @@ class DalaiCards {
           children: [
             Container(
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: Dalai.color.cream),
+                    shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.light ? Dalai.color.cream : Dalai.color.cream.withOpacity(0.1)),
                 width: 80,
                 height: 80,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
