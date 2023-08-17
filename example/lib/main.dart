@@ -509,6 +509,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         title: "Regular"),
                     Dalai.spacing.spacer(small: true),
                     showCaseBlock(
+                        Dalai.input.smallTextField(TextEditingController(), context, hint: 'Email address'),
+                        title: "Small"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -847,17 +851,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             imageURL:
                                 "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg"),
                         title: "Delivery Order Card"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Dalai.card.mobilityOrderCard(context,
-                            header: "Sunday 22 of Fabriary",
-                            title: "Viatge a Barcelona",
-                            highlightText: "Barcelona",
-                            leadingSubtitle: "#627A",
-                            trailingSubtitle: "125.50€",
-                            badge:
-                                Dalai.badge.badgeSolid(context, 'Cancelled')),
-                        title: "Mobility Order Card"),
                     Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.card.mobilityOrderCard(context,
