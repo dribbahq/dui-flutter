@@ -10,8 +10,8 @@ class DalaiInputs {
   Widget textField(
     String? label,
     TextEditingController? controller,
-    FocusNode? focusNode,
     BuildContext context, {
+    FocusNode? focusNode,
     bool? enabled,
     TextInputType? keyboardType,
     TextCapitalization? textCapitalization,
@@ -35,6 +35,7 @@ class DalaiInputs {
     bool? showSuffixSeparator = false,
   }) {
     StreamController<bool> streamController = StreamController<bool>();
+    FocusNode focus = focusNode ?? FocusNode();
     return StreamBuilder<bool>(
         stream: streamController.stream,
         builder: (context, snapshot) {
@@ -111,9 +112,7 @@ class DalaiInputs {
                         Expanded(
                           child: TextField(
                             onTapOutside: (event) {
-                              if (focusNode != null) {
-                                focusNode.unfocus();
-                              }
+                              focus.unfocus();
                             },
                             onChanged: (value) {
                               if (onChange != null) {
@@ -129,9 +128,7 @@ class DalaiInputs {
                               if (onSubmit != null) {
                                 onSubmit(term)!;
                               }
-                              if (focusNode != null) {
-                                focusNode.unfocus();
-                              }
+                              focus.unfocus();
                             },
                             inputFormatters: inputFormatters,
                             autocorrect: false,
@@ -140,7 +137,7 @@ class DalaiInputs {
                                 TextCapitalization.sentences,
                             autofocus: false,
                             controller: controller,
-                            focusNode: focusNode,
+                            focusNode: focus,
                             enabled: enabled ?? true,
                             maxLength: maxLength,
                             obscureText: obscure ?? false,
@@ -274,8 +271,8 @@ class DalaiInputs {
   Widget searchField(
     String? label,
     TextEditingController? controller,
-    FocusNode? focusNode,
     BuildContext context, {
+    FocusNode? focusNode,
     bool? enabled,
     TextInputType? keyboardType,
     TextCapitalization? textCapitalization,
@@ -300,6 +297,7 @@ class DalaiInputs {
     bool? showSuffixSeparator = false,
   }) {
     StreamController<bool> streamController = StreamController<bool>();
+    FocusNode? focus = focusNode ?? FocusNode();
 
     return StreamBuilder<bool>(
         stream: streamController.stream,
@@ -352,9 +350,7 @@ class DalaiInputs {
                                 }
                               },
                               onTapOutside: (event) {
-                                if (focusNode != null) {
-                                  focusNode.unfocus();
-                                }
+                                focus.unfocus();
                               },
                               onChanged: (value) {
                                 if (onChange != null) {
@@ -370,9 +366,7 @@ class DalaiInputs {
                                 if (onSubmit != null) {
                                   onSubmit(term)!;
                                 }
-                                if (focusNode != null) {
-                                  focusNode.unfocus();
-                                }
+                                focus.unfocus();
                               },
                               inputFormatters: inputFormatters,
                               autocorrect: false,
@@ -381,7 +375,7 @@ class DalaiInputs {
                                   TextCapitalization.sentences,
                               autofocus: false,
                               controller: controller,
-                              focusNode: focusNode,
+                              focusNode: focus,
                               enabled: enabled ?? true,
                               maxLength: maxLength,
                               obscureText: obscure ?? false,
@@ -514,10 +508,14 @@ class DalaiInputs {
         });
   }
 
-  Widget chatInputField(BuildContext context, String? label,
-      TextEditingController? controller, FocusNode? focusNode,
-      {Function(String)? onSubmit, double? height, bool? enabled}) {
+  Widget chatInputField(
+      BuildContext context, String? label, TextEditingController? controller,
+      {FocusNode? focusNode,
+      Function(String)? onSubmit,
+      double? height,
+      bool? enabled}) {
     StreamController<bool> streamController = StreamController<bool>();
+    FocusNode focus = focusNode ?? FocusNode();
 
     return StreamBuilder<bool>(
         stream: streamController.stream,
@@ -552,9 +550,7 @@ class DalaiInputs {
                     horizontal: Dalai.spacing.lateralPaddingValue * 2),
                 child: TextField(
                   onTapOutside: (event) {
-                    if (focusNode != null) {
-                      focusNode.unfocus();
-                    }
+                    focus.unfocus();
                   },
                   onChanged: (text) {},
                   onSubmitted: (text) {
@@ -567,7 +563,7 @@ class DalaiInputs {
                   keyboardType: TextInputType.text,
                   textCapitalization: TextCapitalization.sentences,
                   controller: controller,
-                  focusNode: focusNode,
+                  focusNode: focus,
                   cursorColor:
                       Theme.of(context).inputDecorationTheme.focusColor,
                   textInputAction: TextInputAction.done,
@@ -607,28 +603,28 @@ class DalaiInputs {
       BuildContext context,
       String? label,
       TextEditingController? controller,
-      FocusNode? focusNode,
       String initialPhonePrefix,
       Function(String) onPrefixChange,
       {bool isEnabled = true,
+      FocusNode? focusNode,
       Widget? trailing,
       Function()? onChange}) {
-    return Dalai.input
-        .textField(label, controller, focusNode ?? FocusNode(), context,
-            enabled: isEnabled,
-            suffixIcon: trailing ?? const SizedBox.shrink(),
-            prefixIcon: CountryPicker(
-              initialSelection: initialPhonePrefix,
-              favorite: ['+376', '+34', '+33', '+351'],
-              onChanged: (country) {
-                onPrefixChange(country!.countryCode ?? '');
-              },
-            ),
-            showPrefixSeparator: true,
-            inputFormatters: <TextInputFormatter>[
-              LengthLimitingTextInputFormatter(12),
-            ],
-            keyboardType: TextInputType.phone,
-    onChange: onChange);
+    return Dalai.input.textField(label, controller, context,
+        enabled: isEnabled,
+        focusNode: focusNode,
+        suffixIcon: trailing ?? const SizedBox.shrink(),
+        prefixIcon: CountryPicker(
+          initialSelection: initialPhonePrefix,
+          favorite: ['+376', '+34', '+33', '+351'],
+          onChanged: (country) {
+            onPrefixChange(country!.countryCode ?? '');
+          },
+        ),
+        showPrefixSeparator: true,
+        inputFormatters: <TextInputFormatter>[
+          LengthLimitingTextInputFormatter(12),
+        ],
+        keyboardType: TextInputType.phone,
+        onChange: onChange);
   }
 }
