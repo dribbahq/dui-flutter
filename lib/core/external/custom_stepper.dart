@@ -10,6 +10,7 @@ class CustomStepper extends StatefulWidget {
   int? upperLimit;
   int? lowerLimit;
   String? appendString;
+  String? customText;
   bool loading;
 
   CustomStepper({Key? key,
@@ -18,6 +19,7 @@ class CustomStepper extends StatefulWidget {
     this.upperLimit,
     this.lowerLimit,
     this.loading = false,
+    this.customText,
     this.appendString})
       : super(key: key);
 
@@ -108,7 +110,7 @@ class _CustomStepperState extends State<CustomStepper> {
             child: widget.loading
                 ? Dalai.misc.loadingAnimation(context)
                 : Dalai.text.title2(
-                context, '$currentValue${widget.appendString ?? ''}',
+                context, widget.customText ?? '$currentValue${widget.appendString ?? ''}',
                 textAlign: TextAlign.center, maxLines: 1),
           ),
           Dalai.spacing.hSpacer(small: true),
