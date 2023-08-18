@@ -5,7 +5,7 @@ import '../../common_utils/common_utils.dart';
 import '../../dalai.dart';
 
 class CustomStepper extends StatefulWidget {
-  final void Function(int value, {bool lowerLimitReached, bool upperLimitReached}) onChange;
+  final void Function(int value, bool lowerLimitReached, bool upperLimitReached) onChange;
   int initialValue = 0;
   int upperLimit = 100000000;
   int lowerLimit = 0;
@@ -47,7 +47,7 @@ class _CustomStepperState extends State<CustomStepper> {
         currentValue = widget.upperLimit;
       }
     });
-    widget.onChange(currentValue, lowerLimitReached: currentValue == widget.lowerLimit, upperLimitReached: currentValue == widget.upperLimit);
+    widget.onChange(currentValue, currentValue == widget.lowerLimit, currentValue == widget.upperLimit);
   }
 
   minus() {
@@ -63,7 +63,7 @@ class _CustomStepperState extends State<CustomStepper> {
         currentValue = widget.lowerLimit;
       }
     });
-    widget.onChange(currentValue, lowerLimitReached: currentValue == widget.lowerLimit, upperLimitReached: currentValue == widget.upperLimit);
+    widget.onChange(currentValue, currentValue == widget.lowerLimit, currentValue == widget.upperLimit);
   }
 
   @override
