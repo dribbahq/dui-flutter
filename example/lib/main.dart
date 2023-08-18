@@ -773,7 +773,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       print('lower: $lowerLimitReached');
                       print('upper: $upperLimitReached');
                       print('-----------');
-                    }, upperLimit: 3),
+                    }, upperLimit: 5),
                         title: "Stepper"),
                     Dalai.spacing.spacer(small: true),
                     showCaseBlock(

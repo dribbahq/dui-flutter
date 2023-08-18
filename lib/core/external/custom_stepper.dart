@@ -7,16 +7,16 @@ import '../../dalai.dart';
 class CustomStepper extends StatefulWidget {
   final void Function(int value, bool lowerLimitReached, bool upperLimitReached) onChange;
   int initialValue = 0;
-  int upperLimit = 100000000;
-  int lowerLimit = 0;
+  int? upperLimit;
+  int? lowerLimit;
   String? appendString;
   bool loading;
 
   CustomStepper({Key? key,
     required this.onChange,
     required this.initialValue,
-    this.upperLimit = 100000000,
-    this.lowerLimit = 0,
+    this.upperLimit,
+    this.lowerLimit,
     this.loading = false,
     this.appendString})
       : super(key: key);
@@ -28,9 +28,14 @@ class CustomStepper extends StatefulWidget {
 class _CustomStepperState extends State<CustomStepper> {
   var currentValue = 0;
 
+  late int _upperLimit;
+  late int _lowerLimit;
+
   @override
   void initState() {
     currentValue = widget.initialValue;
+    _upperLimit = widget.upperLimit ?? 10000;
+    _lowerLimit = widget.lowerLimit ?? 0;
     super.initState();
   }
 
@@ -39,15 +44,15 @@ class _CustomStepperState extends State<CustomStepper> {
       return;
     }
     setState(() {
-      if (currentValue < widget.upperLimit) {
+      if (currentValue < _upperLimit) {
         Utils.vibrateOnTap();
         currentValue = currentValue + 1;
       } else {
         Utils.vibrateOnErrorTap();
-        currentValue = widget.upperLimit;
+        currentValue = _upperLimit;
       }
     });
-    widget.onChange(currentValue, currentValue == widget.lowerLimit, currentValue == widget.upperLimit);
+    widget.onChange(currentValue, currentValue == _lowerLimit, currentValue == _upperLimit);
   }
 
   minus() {
@@ -55,15 +60,15 @@ class _CustomStepperState extends State<CustomStepper> {
       return;
     }
     setState(() {
-      if (currentValue > widget.lowerLimit) {
+      if (currentValue > _lowerLimit) {
         Utils.vibrateOnTap();
         currentValue = currentValue - 1;
       } else {
         Utils.vibrateOnErrorTap();
-        currentValue = widget.lowerLimit;
+        currentValue = _lowerLimit;
       }
     });
-    widget.onChange(currentValue, currentValue == widget.lowerLimit, currentValue == widget.upperLimit);
+    widget.onChange(currentValue, currentValue == _lowerLimit, currentValue == _upperLimit);
   }
 
   @override
@@ -91,7 +96,7 @@ class _CustomStepperState extends State<CustomStepper> {
                     BorderRadius.circular(Dalai.spacing.largeBorderRadius)),
                 child: Opacity(
                   opacity: widget.loading ? 0.1 : currentValue ==
-                      widget.lowerLimit ? 0.3 : 1.0,
+                      _lowerLimit ? 0.3 : 1.0,
                   child: Dalai.icon.dalaiIcons(context, CXIcon.minus),
                 ),
               )),
@@ -116,7 +121,7 @@ class _CustomStepperState extends State<CustomStepper> {
                     BorderRadius.circular(Dalai.spacing.largeBorderRadius)),
                 child: Opacity(
                   opacity: widget.loading ? 0.1 : currentValue ==
-                      widget.upperLimit ? 0.3 : 1.0,
+                      _upperLimit ? 0.3 : 1.0,
                   child: Dalai.icon.dalaiIcons(context, CXIcon.plus),
                 ),
               )),

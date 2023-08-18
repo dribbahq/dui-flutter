@@ -610,8 +610,8 @@ class DalaiButtons {
   Widget stepper(BuildContext context, int initialValue, Function(int, bool lowerLimitReached, bool upperLimitReached) onChange,
       {bool loading = false,
         String? appendString,
-        int lowerLimit = 0,
-        int upperLimit = 10000}) {
+        int? lowerLimit,
+        int? upperLimit}) {
     return CustomStepper(
       lowerLimit: lowerLimit,
       upperLimit: upperLimit,
