@@ -607,7 +607,7 @@ class DalaiButtons {
     );
   }
 
-  Widget stepper(BuildContext context, int initialValue, Function(int, bool lowerLimitReached, bool upperLimitReached) onChange,
+  Widget stepper(BuildContext context, int initialValue, Function(int, bool underLowerLimit, bool overUpperLimit) onChange,
       {bool loading = false,
         String? appendString,
         int? lowerLimit,
@@ -618,8 +618,8 @@ class DalaiButtons {
       initialValue: initialValue,
       loading: loading,
       appendString: appendString,
-      onChange: (int value, bool lowerLimitReached, bool upperLimitReached) {
-        onChange(value, lowerLimitReached, upperLimitReached);
+      onChange: (int value, bool underLowerLimit, bool overUpperLimit) {
+        onChange(value, underLowerLimit, overUpperLimit);
       },
     );
   }

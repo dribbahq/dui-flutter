@@ -768,10 +768,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         title: "Segment Bar (Small)",
                         largePadding: false),
                     Dalai.spacing.spacer(small: true),
-                    showCaseBlock(Dalai.button.stepper(context, 0, (value, bool lowerLimitReached, bool upperLimitReached) {
+                    showCaseBlock(Dalai.button.stepper(context, 0, (value, bool underLowerLimit, bool overUpperLimit) {
                       print('-----------');
-                      print('lower: $lowerLimitReached');
-                      print('upper: $upperLimitReached');
+                      print('under lower: $underLowerLimit');
+                      print('over upper: $overUpperLimit');
                       print('-----------');
                     }, upperLimit: 5),
                         title: "Stepper"),

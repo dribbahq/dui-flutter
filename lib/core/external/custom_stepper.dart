@@ -5,7 +5,7 @@ import '../../common_utils/common_utils.dart';
 import '../../dalai.dart';
 
 class CustomStepper extends StatefulWidget {
-  final void Function(int value, bool lowerLimitReached, bool upperLimitReached) onChange;
+  final void Function(int value, bool underLowerLimit, bool overUpperLimit) onChange;
   int initialValue = 0;
   int? upperLimit;
   int? lowerLimit;
@@ -47,12 +47,13 @@ class _CustomStepperState extends State<CustomStepper> {
       if (currentValue < _upperLimit) {
         Utils.vibrateOnTap();
         currentValue = currentValue + 1;
+        widget.onChange(currentValue, currentValue == _lowerLimit, false);
       } else {
         Utils.vibrateOnErrorTap();
         currentValue = _upperLimit;
+        widget.onChange(currentValue, currentValue == _lowerLimit, true); //upper limit flag is true only when trying to surpass it, not when reached
       }
     });
-    widget.onChange(currentValue, currentValue == _lowerLimit, currentValue == _upperLimit);
   }
 
   minus() {
@@ -63,12 +64,13 @@ class _CustomStepperState extends State<CustomStepper> {
       if (currentValue > _lowerLimit) {
         Utils.vibrateOnTap();
         currentValue = currentValue - 1;
+        widget.onChange(currentValue, false, currentValue == _upperLimit);
       } else {
         Utils.vibrateOnErrorTap();
         currentValue = _lowerLimit;
+        widget.onChange(currentValue, true, currentValue == _upperLimit); //lower limit flag is true only when trying to surpass it, not when reached
       }
     });
-    widget.onChange(currentValue, currentValue == _lowerLimit, currentValue == _upperLimit);
   }
 
   @override
