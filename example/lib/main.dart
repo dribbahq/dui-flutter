@@ -928,11 +928,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Dalai.card.avatar(context,
-                                "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
+                                "",
                                 loading: true),
+                            Dalai.spacing.hSpacer(),
+                            Dalai.card.avatar(context,
+                                "",
+                                initials: 'CX',),
                             Dalai.spacing.hSpacer(),
                             Dalai.card.avatar(context,
                                 "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",

@@ -521,6 +521,34 @@ class DalaiSkeleton {
     );
   }
 
+  Widget emptyLoadingCircle(double height, BuildContext context) {
+    return SizedBox(
+      width: height,
+      height: height,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Expanded(
+            child: Shimmer.fromColors(
+              baseColor: Theme.of(context).brightness == Brightness.light
+                  ? Dalai.color.loadingLightPrimary!
+                  : Dalai.color.loadingDarkPrimary,
+              highlightColor: Theme.of(context).brightness == Brightness.light
+                  ? Dalai.color.loadingLightSecondary!
+                  : Dalai.color.loadingDarkSecondary,
+              enabled: true,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Dalai.color.white,
+                    shape: BoxShape.circle),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget emptySearchLoadingContainer(double height, BuildContext context) {
     return Container(
       width: double.infinity,

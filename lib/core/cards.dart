@@ -270,7 +270,11 @@ class DalaiCards {
   }
 
   Widget avatar(BuildContext context, String? imageUrl,
-      {Function? onTap, bool loading = false}) {
+      {Function? onTap, bool loading = false, String? initials}) {
+    double containerSize = onTap != null ? 90 : 80;
+    if(loading){
+      return Dalai.skeleton.emptyLoadingCircle(80, context);
+    }
     return GestureDetector(
       onTap: () {
         if (onTap != null) {
@@ -278,8 +282,8 @@ class DalaiCards {
         }
       },
       child: SizedBox(
-        width: 90,
-        height: 90,
+        width: containerSize,
+        height: containerSize,
         child: Stack(
           children: [
             Container(
@@ -288,15 +292,17 @@ class DalaiCards {
                 width: 80,
                 height: 80,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: CachedNetworkImage(
+                child: imageUrl != null && imageUrl.isNotEmpty
+                    ? CachedNetworkImage(
                   imageUrl: imageUrl ?? '',
                   fit: BoxFit.cover,
                   progressIndicatorBuilder: (context, url, progress) =>
                       Dalai.misc.loadingAnimation(context),
                   errorWidget: (error, string, image) {
-                    return Dalai.misc.defaultUserProfileImage(context);
+                    return Dalai.misc.defaultUserProfileImage(context, initials);
                   },
-                )),
+                )
+                    :  Dalai.misc.defaultUserProfileImage(context, initials)),
             onTap != null ? Align(
               alignment: Alignment.bottomRight,
               child: CircleAvatar(

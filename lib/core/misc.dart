@@ -215,15 +215,13 @@ class Misc {
     );
   }
 
-  Widget defaultUserProfileImage(BuildContext context, {dynamic userManager}) {
-    if (userManager != null &&
-        userManager.getUser() != null &&
-        userManager.getUser()!.getNameInitials() != null) {
+  Widget defaultUserProfileImage(BuildContext context, String? initials) {
+    if (initials != null && initials.isNotEmpty) {
       return Center(
         child: Opacity(
             opacity: 0.2,
             child: Dalai.text.title1(
-                context, userManager.getUser()!.getNameInitials(),
+                context, initials,
                 color: Dalai.color.secondary)),
       );
     }
