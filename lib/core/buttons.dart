@@ -628,7 +628,7 @@ class DalaiButtons {
 
   Widget dataSelector(BuildContext context, String? title, String? headerTitle,
       Function() onChange,
-      {bool loading = false}) {
+      {bool loading = false, bool forceDark = false}) {
     return GestureDetector(
       onTap: onChange,
       child: Container(
@@ -644,13 +644,13 @@ class DalaiButtons {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             headerTitle != null
-                ? Dalai.text.xs(context, headerTitle ?? "")
+                ? Dalai.text.xs(context, headerTitle, color: forceDark ? Dalai.color.smallTextDarkMode : null)
                 : SizedBox.shrink(),
-            Dalai.text.regular(context, title ?? "", bold: true),
+            Dalai.text.regular(context, title ?? "", bold: true, color: forceDark ? Dalai.color.textDarkMode : null),
           ],
         )),
         Dalai.icon.dalaiIcons(
-            context, CXIcon.chevron_down, size: CXIconSize.small)
+            context, CXIcon.chevron_down, size: CXIconSize.small, mainColor: forceDark ? Dalai.color.textDarkMode : null)
 
       ],),),
     );
