@@ -93,7 +93,8 @@ class DalaiButtons {
         Color? color,
         bool? loading = false}) {
     return Container(
-      constraints: BoxConstraints(minWidth: 200, minHeight: buttonMinHeight),
+      height: buttonMinHeight,
+      constraints: BoxConstraints(minWidth: 200),
       child: ElevatedButton(
           onPressed: () {
             if (onPressed != null) {
@@ -160,7 +161,8 @@ class DalaiButtons {
         Color? color,
         bool? loading = false}) {
     return Container(
-      constraints: BoxConstraints(minWidth: 200, minHeight: buttonMinHeight),
+      height: buttonMinHeight,
+      constraints: BoxConstraints(minWidth: 200),
       child: ElevatedButton(
           onPressed: () {
             if (onPressed != null) {
@@ -235,7 +237,8 @@ class DalaiButtons {
         Color? bgColor,
         bool? loading = false}) {
     return Container(
-      constraints: BoxConstraints(minWidth: 200, minHeight: buttonMinHeight),
+      height: buttonMinHeight,
+      constraints: BoxConstraints(minWidth: 200),
       child: ElevatedButton(
           onPressed: () {
             if (onPressed != null) {
