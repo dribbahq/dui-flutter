@@ -17,7 +17,7 @@ class SlidableTile extends StatefulWidget {
   final Function? onRemove;
   final bool? autoDone;
 
-  SlidableTile({Key? key,
+  const SlidableTile({Key? key,
     required this.title,
     this.subtitle,
     this.highlightText,
@@ -54,75 +54,67 @@ class _SlidableTileState extends State<SlidableTile> {
               .of(context)
               .colorScheme
               .background,
-          child: Column(
-            children: <Widget>[
-              IntrinsicHeight(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Dalai.spacing.hSpacer(),
-                            Dalai.icon.dalaiIcons(
-                                context, getCardIcon(),
-                                size: CXIconSize.large),
-                            Dalai.spacing.hSpacer(),
-                            Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Dalai.text.regular(context, widget.title,
-                                        bold: true,
-                                        highlightText: widget.highlightText),
-                                    Dalai.text.small(context, widget.subtitle),
-                                  ],)
-                            ),
-                            Dalai.spacing.hSpacer(),
-                            widget.tapped != null && widget.autoDone!
-                                ? Dalai.icon.dalaiIcons(
-                                context, CXIcon.chevron_right,
-                                size: CXIconSize.x_small,
-                                mainColor: Theme
-                                    .of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .color)
-                                : Container(),
-                            Dalai.spacing.hSpacer(),
-                          ],
+          child: IntrinsicHeight(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Dalai.spacing.hSpacer(),
+                        Dalai.icon.dalaiIcons(
+                            context, getCardIcon(),
+                            size: CXIconSize.large),
+                        Dalai.spacing.hSpacer(),
+                        Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Dalai.text.regular(context, widget.title,
+                                    bold: true,
+                                    highlightText: widget.highlightText),
+                                Dalai.text.small(context, widget.subtitle),
+                              ],)
                         ),
-                      ),
+                        Dalai.spacing.hSpacer(),
+                        widget.tapped != null && widget.autoDone!
+                            ? Dalai.icon.dalaiIcons(
+                            context, CXIcon.chevron_right,
+                            size: CXIconSize.x_small,
+                            mainColor: Theme
+                                .of(context)
+                                .textTheme
+                                .bodySmall!
+                                .color)
+                            : Container(),
+                        Dalai.spacing.hSpacer(),
+                      ],
                     ),
-                    // Container(
-                    //   width: 3,
-                    //   decoration: BoxDecoration(
-                    //       color: widget.cardReference!.isDefault!
-                    //           ? Theme.of(context).colorScheme.primary
-                    //           : Colors.transparent,
-                    //       borderRadius: BorderRadius.only(
-                    //           topLeft: Radius.circular(Dalai.spacing.borderRadius),
-                    //           bottomLeft:
-                    //           Radius.circular(Dalai.spacing.borderRadius))),
-                    // ),
-                  ],
+                  ),
                 ),
-              ),
-              Dalai.spacing.divider(
-                context,
-              ),
-            ],
+                // Container(
+                //   width: 3,
+                //   decoration: BoxDecoration(
+                //       color: widget.cardReference!.isDefault!
+                //           ? Theme.of(context).colorScheme.primary
+                //           : Colors.transparent,
+                //       borderRadius: BorderRadius.only(
+                //           topLeft: Radius.circular(Dalai.spacing.borderRadius),
+                //           bottomLeft:
+                //           Radius.circular(Dalai.spacing.borderRadius))),
+                // ),
+              ],
+            ),
           ),
         ));
 
     return Platform.isAndroid || widget.onRemove == null
         ? item
         : Slidable(
-      child: item,
       endActionPane: ActionPane(
         motion: const DrawerMotion(),
         extentRatio: 0.16,
@@ -137,6 +129,7 @@ class _SlidableTileState extends State<SlidableTile> {
               }),
         ],
       ),
+      child: item,
     );
   }
 }
