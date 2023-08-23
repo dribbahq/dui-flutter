@@ -1,3 +1,4 @@
+import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -1104,5 +1105,67 @@ class DalaiSkeleton {
                 ))
           ],
         ));
+  }
+
+  Widget emptyLoadingBusinessTile(BuildContext context){
+    return Padding(
+      padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
+      child: Shimmer.fromColors(
+        baseColor: Theme.of(context).brightness == Brightness.light
+            ? Dalai.color.loadingLightPrimary!
+            : Dalai.color.loadingDarkPrimary,
+        highlightColor: Theme.of(context).brightness == Brightness.light
+            ? Dalai.color.loadingLightSecondary!
+            : Dalai.color.loadingDarkSecondary,
+        enabled: true,
+        child: Row(
+          children: [
+            Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(Dalai.spacing.lateralPaddingValue),
+                        color: Colors.red,
+                      ),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                    ),
+                    Dalai.spacing.hSpacer(),
+                    Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 100,
+                              height: Dalai.text.regularText,
+                              color: Colors.red,
+                            ),
+                            Dalai.spacing.spacer(small: true),
+                            Container(
+                              width: 150,
+                              height: Dalai.text.smallText,
+                              color: Colors.red,
+                            ),
+                            Dalai.spacing.spacer(small: true),
+                            Wrap(
+                              spacing: 2,
+                              direction: Axis.horizontal,
+                              children: List.generate(5, (index) {
+                                return Dalai.icon.dalaiIcons(context, CXIcon.star_fill, size: CXIconSize.small, mainColor: Theme.of(context).colorScheme.primary);
+                              }),
+                            )
+                          ],
+                        )),
+                  ],
+                )),
+            Dalai.spacing.hSpacer(),
+            Dalai.icon.dalaiIcons(context, CXIcon.chevron_right, size: CXIconSize.x_small)
+          ],
+        ),
+      ),
+    );
   }
 }
