@@ -17,23 +17,27 @@ enum AnimationType {
   trackingOngoingMarket,
   trackingOngoingSuper,
   trackingPickup,
-  trackingQueued
+  trackingQueued,
+  paymentProcessing
 }
 
 class DalaiAnimations {
   Widget animation(BuildContext context, AnimationType type,
       {String? title,
-      String? subtitle,
-      String? disclaimer,
-      String? buttonText,
-      Function? onButtonTap,
-      bool loading = false,
-      double? size,
-      BoxFit boxFit = BoxFit.contain,
-      bool circled = false,
-      Color? backgroundColor,
-      double? animationPadding = 0}) {
-    double computedSize = size ?? MediaQuery.of(context).size.width * 0.6;
+        String? subtitle,
+        String? disclaimer,
+        String? buttonText,
+        Function? onButtonTap,
+        bool loading = false,
+        double? size,
+        BoxFit boxFit = BoxFit.contain,
+        bool circled = false,
+        Color? backgroundColor,
+        double? animationPadding = 0}) {
+    double computedSize = size ?? MediaQuery
+        .of(context)
+        .size
+        .width * 0.6;
 
     return Container(
       padding: Dalai.spacing.lateralPadding,
@@ -45,7 +49,10 @@ class DalaiAnimations {
                   borderRadius: BorderRadius.circular(50000),
                   color: circled
                       ? (backgroundColor ??
-                          Theme.of(context).colorScheme.background)
+                      Theme
+                          .of(context)
+                          .colorScheme
+                          .background)
                       : Colors.transparent),
               child: Lottie.asset(_extractAnimation(type),
                   package: 'dalai',
@@ -62,12 +69,12 @@ class DalaiAnimations {
           subtitle == null
               ? SizedBox.shrink()
               : Dalai.text
-                  .regular(context, subtitle, textAlign: TextAlign.center),
+              .regular(context, subtitle, textAlign: TextAlign.center),
           onButtonTap == null ? SizedBox.shrink() : Dalai.spacing.spacer(),
           onButtonTap == null
               ? SizedBox.shrink()
               : Dalai.button.smallButton(context, buttonText ?? '', onButtonTap,
-                  loading: loading),
+              loading: loading),
           disclaimer == null ? SizedBox.shrink() : Dalai.spacing.spacer(),
           disclaimer == null
               ? SizedBox.shrink()
@@ -105,6 +112,8 @@ class DalaiAnimations {
       return 'assets/animations/ax_tracking_pickup.json';
     } else if (animationType == AnimationType.trackingQueued) {
       return 'assets/animations/ax_tracking_queued.json';
+    } else if (animationType == AnimationType.paymentProcessing) {
+      return 'assets/animations/ax_payment_processing.json';
     } else {
       return 'assets/animations/ax_error_generic.json';
     }

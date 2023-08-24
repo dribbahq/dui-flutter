@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: ListView.separated(
                   padding: EdgeInsets.symmetric(
                       horizontal: Dalai.spacing.lateralPaddingValue),
-                  itemCount: 11,
+                  itemCount: 12,
                   separatorBuilder: (context, index) {
                     return Dalai.spacing.hSpacer();
                   },
@@ -163,6 +163,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     } else if (index == 10) {
                       title = "Misc";
                       key = key11;
+                    } else if (index == 11) {
+                      title = "Animations";
+                      key = key12;
                     }
 
                     return Dalai.badge.tagSolid(context, title,
@@ -1352,7 +1355,6 @@ class _MyHomePageState extends State<MyHomePage> {
                               ],
                             ),
                             Dalai.spacing.spacer(),
-
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -1376,8 +1378,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Dalai.spacing.hSpacer(small: true),
                                 FutureBuilder(
                                   future: Dalai.misc.getMapMarker(
-                                      MapMarker.rider, context,
-                                      state: MapMarkerState.unselected),
+                                      MapMarker.rider, context),
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData == false) {
                                       return Dalai.skeleton
@@ -1394,8 +1395,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Dalai.spacing.hSpacer(small: true),
                                 FutureBuilder(
                                   future: Dalai.misc.getMapMarker(
-                                      MapMarker.car, context,
-                                      state: MapMarkerState.unselected),
+                                      MapMarker.car, context),
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData == false) {
                                       return Dalai.skeleton
@@ -1412,8 +1412,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Dalai.spacing.hSpacer(small: true),
                                 FutureBuilder(
                                   future: Dalai.misc.getMapMarker(
-                                      MapMarker.van, context,
-                                      state: MapMarkerState.unselected),
+                                      MapMarker.van, context),
                                   builder: (context, snapshot) {
                                     print(snapshot.error);
                                     if (snapshot.hasData == false) {
@@ -1479,7 +1478,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     if (snapshot.hasData == false) {
                                       return Dalai.skeleton
                                           .emptySimpleContainer(
-                                          40, 40, context);
+                                              40, 40, context);
                                     }
                                     return SizedBox(
                                       height: 40,
@@ -1497,7 +1496,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     if (snapshot.hasData == false) {
                                       return Dalai.skeleton
                                           .emptySimpleContainer(
-                                          40, 40, context);
+                                              40, 40, context);
                                     }
                                     return SizedBox(
                                       height: 40,
@@ -1511,6 +1510,40 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Map Markers"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.misc
+                                .getPlaceholderImage(PlaceholderImage.courier),
+                            Dalai.spacing.spacer(),
+                            Dalai.misc
+                                .getPlaceholderImage(PlaceholderImage.partner),
+                            Dalai.spacing.spacer(),
+                            Dalai.misc.getPlaceholderImage(
+                                PlaceholderImage.experienceZone),
+                            Dalai.spacing.spacer(),
+                          ],
+                        ),
+                        title: "Placeholder Images"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Container(
+                              height: 100,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                fit: BoxFit.fitWidth,
+                                image: Dalai.misc.getPlaceholderImageProvider(
+                                    PlaceholderImage.courier,
+                                    fit: BoxFit.fitWidth),
+                              )),
+                            )
+                          ],
+                        ),
+                        title: "Placeholder Image Providers"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -1644,6 +1677,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                     circled: true,
                                     size: 120,
                                     backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.paymentProcessing,
+                                    size: 150),
                               ],
                             ),
                           ],
@@ -1655,14 +1691,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             Dalai.animations.animation(
                               context,
-                              AnimationType.trackingQueued,
-                              title: "Pots seguir la teva comanda a la app",
+                              AnimationType.paymentProcessing,
+                              title: "Has de validar la teva identitat",
                               subtitle:
-                                  "Fes clic per obrir la pantalla de Tracking de la app i seguir la teva comanda.",
+                                  "El teu banc ens demana que validem la teva identitat per poder fer el pagament.",
                               onButtonTap: () {},
-                              buttonText: "Seguir comanda",
+                              buttonText: "Ja he validat la meva identitat",
                               disclaimer:
-                                  "Al premer el boto de seguir comanda, ens dones permis per obtenir la teva ubicació en temps real.",
+                                  "Obre la app del teu banc i segueix les instruccions per validar la teva identitat.",
                             ),
                             Dalai.spacing.dottedDivider(context),
                             Dalai.spacing.spacer(),

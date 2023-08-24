@@ -16,6 +16,8 @@ enum MapMarker { origin, destination, shop, rider, car, van, currentLocation }
 
 enum MapMarkerState { selected, unselected }
 
+enum PlaceholderImage { courier, partner, experienceZone }
+
 class Misc {
   /*
   * Map styles
@@ -569,7 +571,7 @@ class Misc {
       }
     } else if (marker == MapMarker.car) {
       return getBytesFromPng(
-          'package/dalai/assets/images/map_markers/map_marker_car.png', 150);
+          'packages/dalai/assets/images/map_markers/map_marker_car.png', 150);
     } else if (marker == MapMarker.rider) {
       return getBytesFromPng(
           'packages/dalai/assets/images/map_markers/map_marker_rider.png', 150);
@@ -608,5 +610,33 @@ class Misc {
     ByteData? bytes = await image.toByteData(format: ui.ImageByteFormat.png);
 
     return (bytes?.buffer.asUint8List());
+  }
+
+  Image getPlaceholderImage(PlaceholderImage image,
+      {BoxFit fit = BoxFit.cover}) {
+    if (image == PlaceholderImage.courier) {
+      return Image.asset(
+          'packages/dalai/assets/images/placeholders/placeholder_courier.jpg',
+          fit: fit);
+    } else if (image == PlaceholderImage.partner) {
+      return Image.asset(
+        'packages/dalai/assets/images/placeholders/placeholder_anything.jpg',
+        fit: fit,
+      );
+    } else if (image == PlaceholderImage.experienceZone) {
+      return Image.asset(
+        'packages/dalai/assets/images/placeholders/placeholder_experiences.jpg',
+        fit: fit,
+      );
+    }
+    return Image.asset(
+      'packages/dalai/assets/images/placeholders/placeholder_anything.jpg',
+      fit: fit,
+    );
+  }
+
+  ImageProvider getPlaceholderImageProvider(PlaceholderImage image,
+      {BoxFit fit = BoxFit.cover}) {
+    return getPlaceholderImage(image, fit: fit).image;
   }
 }
