@@ -447,28 +447,48 @@ class DalaiButtons {
         : const SizedBox.shrink();
   }
 
+  Widget iconButton
+      (BuildContext context, CXIcon icon,
+      {Function? onTap, bool filled = false}) {
+    return ElevatedButton(
+      onPressed: () {
+        if (onTap != null) onTap();
+      },
+      child: Dalai.icon.dalaiIcons(context, icon),
+      style: ButtonStyle(
+        elevation: MaterialStateProperty.all(filled ? 2 : 0),
+        shape: MaterialStateProperty.all(CircleBorder()),
+        padding: MaterialStateProperty.all(
+            EdgeInsets.all(Dalai.spacing.lateralPaddingValue)),
+        backgroundColor: MaterialStateProperty.all(
+            filled ? Theme
+                .of(context)
+                .colorScheme
+                .background : Colors
+                .transparent),
+        overlayColor: MaterialStateProperty.resolveWith<Color?>((states) {
+          if (states.contains(MaterialState.pressed) ||
+              states.contains(MaterialState.hovered)) return Theme
+              .of(context)
+              .textTheme
+              .bodyMedium!
+              .color!
+              .withOpacity(0.1);
+        }),
+      ),
+    );
+  }
+
   Widget backButtonCircle(BuildContext context,
       {Function? onTap, bool filled = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Ink(
-        decoration: ShapeDecoration(
-          color: Theme
-              .of(context)
-              .colorScheme
-              .background,
-          shape: const CircleBorder(),
-        ),
-        child: IconButton(
-          icon: Dalai.icon.dalaiIcons(context, CXIcon.arrow_left),
-          onPressed: () async {
-            if (onTap != null) {
-              onTap();
-            }
-            Navigator.pop(context);
-          },
-        ),
-      ),
+      child: iconButton(context, CXIcon.arrow_left, onTap: (){
+        if (onTap != null) {
+          onTap();
+        }
+        Navigator.pop(context);
+      })
     );
   }
 

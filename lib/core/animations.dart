@@ -23,18 +23,17 @@ enum AnimationType {
 class DalaiAnimations {
   Widget animation(BuildContext context, AnimationType type,
       {String? title,
-        String? subtitle,
-        String? disclaimer,
-        String? buttonText,
-        Function? onButtonTap,
-        bool loading = false,
-        double? size,
-        BoxFit boxFit = BoxFit
-            .contain, bool circled = false, Color? backgroundColor, double? animationPadding = 0}) {
-    double computedSize = size ?? MediaQuery
-        .of(context)
-        .size
-        .width * 0.6;
+      String? subtitle,
+      String? disclaimer,
+      String? buttonText,
+      Function? onButtonTap,
+      bool loading = false,
+      double? size,
+      BoxFit boxFit = BoxFit.contain,
+      bool circled = false,
+      Color? backgroundColor,
+      double? animationPadding = 0}) {
+    double computedSize = size ?? MediaQuery.of(context).size.width * 0.6;
 
     return Container(
       padding: Dalai.spacing.lateralPadding,
@@ -44,17 +43,16 @@ class DalaiAnimations {
               clipBehavior: circled ? Clip.antiAliasWithSaveLayer : Clip.none,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50000),
-                  color: circled ? (backgroundColor ?? Theme
-                      .of(context)
-                      .colorScheme
-                      .background) : Colors.transparent),
+                  color: circled
+                      ? (backgroundColor ??
+                          Theme.of(context).colorScheme.background)
+                      : Colors.transparent),
               child: Lottie.asset(_extractAnimation(type),
                   package: 'dalai',
                   height: computedSize,
                   width: computedSize,
                   fit: boxFit)),
-          circled ? Dalai.spacing.spacer() : SizedBox(
-              height: animationPadding),
+          circled ? Dalai.spacing.spacer() : SizedBox(height: animationPadding),
           title == null
               ? SizedBox.shrink()
               : Dalai.text.title3(context, title, textAlign: TextAlign.center),
@@ -64,12 +62,12 @@ class DalaiAnimations {
           subtitle == null
               ? SizedBox.shrink()
               : Dalai.text
-              .regular(context, subtitle, textAlign: TextAlign.center),
+                  .regular(context, subtitle, textAlign: TextAlign.center),
           onButtonTap == null ? SizedBox.shrink() : Dalai.spacing.spacer(),
           onButtonTap == null
               ? SizedBox.shrink()
               : Dalai.button.smallButton(context, buttonText ?? '', onButtonTap,
-              loading: loading),
+                  loading: loading),
           disclaimer == null ? SizedBox.shrink() : Dalai.spacing.spacer(),
           disclaimer == null
               ? SizedBox.shrink()

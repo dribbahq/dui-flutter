@@ -30,7 +30,7 @@ dependencies:
     git:
       url: https://gitlab.com/dribba-labs/cityxerpa/cityxerpa-icons.git
   country_flags: ^2.1.0
-  flutter_svg: any
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:

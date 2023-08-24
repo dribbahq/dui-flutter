@@ -1,8 +1,11 @@
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:dalai/common_utils/alert.dart';
+import 'package:dalai/common_utils/common_utils.dart';
 import 'package:dalai/core/animations.dart';
 import 'package:dalai/core/badges.dart';
+import 'package:dalai/core/cards.dart';
 import 'package:dalai/core/external/slidable_tile.dart';
+import 'package:dalai/core/misc.dart';
 import 'package:dalai/dalai.dart';
 import 'package:flutter/material.dart';
 
@@ -649,6 +652,22 @@ class _MyHomePageState extends State<MyHomePage> {
                         backgroundColor: Dalai.color.primary),
                     Dalai.spacing.spacer(small: true),
                     showCaseBlock(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Dalai.button.iconButton(
+                              context,
+                              CXIcon.camera,
+                            ),
+                            Dalai.spacing.hSpacer(),
+                            Dalai.button
+                                .iconButton(context, CXIcon.bag, filled: true),
+                          ],
+                        ),
+                        title: "Back Button Circle (No-Filled & Filled)"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
                         Dalai.button.backButtonCircle(
                           context,
                         ),
@@ -931,6 +950,28 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Avatar"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.card.disclaimerTextWithImage(
+                                "¡Recuerda ponerte el cinturón!",
+                                "El uso del cinturón es obligtorio en CityXerpa Move, no te olvides!",
+                                ComponentImage.beltImage,
+                                context),
+                            Dalai.card.disclaimerTextWithImage(
+                                "¡Recuerda ponerte el cinturón!",
+                                "El uso del cinturón es obligtorio en CityXerpa Move, no te olvides!",
+                                ComponentImage.covidImage,
+                                context),
+                            Dalai.card.disclaimerTextWithImage(
+                                "¡Recuerda ponerte el cinturón!",
+                                "El uso del cinturón es obligtorio en CityXerpa Move, no te olvides!",
+                                ComponentImage.musicImage,
+                                context),
+                          ],
+                        ),
+                        title: "Image + Text + Subtitle Component"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -1234,6 +1275,242 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Notice Card"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.misc.getNutriscoreImage(
+                                NutriscoreLevel.none, context),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.misc
+                                .getNutriscoreImage(NutriscoreLevel.A, context),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.misc
+                                .getNutriscoreImage(NutriscoreLevel.B, context),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.misc
+                                .getNutriscoreImage(NutriscoreLevel.C, context),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.misc
+                                .getNutriscoreImage(NutriscoreLevel.D, context),
+                            Dalai.spacing.spacer(small: true),
+                            Dalai.misc
+                                .getNutriscoreImage(NutriscoreLevel.E, context),
+                          ],
+                        ),
+                        title: "Nutriscore"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.misc.getCarPlate("A5545", context),
+                          ],
+                        ),
+                        title: "CityXerpa Move Car Plate"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                FutureBuilder(
+                                  future: Dalai.misc
+                                      .getMapMarker(MapMarker.shop, context),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return Dalai.skeleton
+                                          .emptySimpleContainer(
+                                              40, 40, context);
+                                    }
+                                    return SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: Image.memory(snapshot.data!),
+                                    );
+                                  },
+                                ),
+                                Dalai.spacing.hSpacer(small: true),
+                                FutureBuilder(
+                                  future: Dalai.misc.getMapMarker(
+                                      MapMarker.shop, context,
+                                      state: MapMarkerState.unselected),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return Dalai.skeleton
+                                          .emptySimpleContainer(
+                                              40, 40, context);
+                                    }
+                                    return SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: Image.memory(snapshot.data!),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                            Dalai.spacing.spacer(),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                FutureBuilder(
+                                  future: Dalai.misc.getMapMarker(
+                                      MapMarker.currentLocation, context),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return Dalai.skeleton
+                                          .emptySimpleContainer(
+                                              40, 40, context);
+                                    }
+                                    return SizedBox(
+                                      height: 20,
+                                      width: 20,
+                                      child: Image.memory(snapshot.data!),
+                                    );
+                                  },
+                                ),
+                                Dalai.spacing.hSpacer(small: true),
+                                FutureBuilder(
+                                  future: Dalai.misc.getMapMarker(
+                                      MapMarker.rider, context,
+                                      state: MapMarkerState.unselected),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return Dalai.skeleton
+                                          .emptySimpleContainer(
+                                              40, 40, context);
+                                    }
+                                    return SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: Image.memory(snapshot.data!),
+                                    );
+                                  },
+                                ),
+                                Dalai.spacing.hSpacer(small: true),
+                                FutureBuilder(
+                                  future: Dalai.misc.getMapMarker(
+                                      MapMarker.car, context,
+                                      state: MapMarkerState.unselected),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return Dalai.skeleton
+                                          .emptySimpleContainer(
+                                              40, 40, context);
+                                    }
+                                    return SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: Image.memory(snapshot.data!),
+                                    );
+                                  },
+                                ),
+                                Dalai.spacing.hSpacer(small: true),
+                                FutureBuilder(
+                                  future: Dalai.misc.getMapMarker(
+                                      MapMarker.van, context,
+                                      state: MapMarkerState.unselected),
+                                  builder: (context, snapshot) {
+                                    print(snapshot.error);
+                                    if (snapshot.hasData == false) {
+                                      return Dalai.skeleton
+                                          .emptySimpleContainer(
+                                              40, 40, context);
+                                    }
+                                    return SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: Image.memory(snapshot.data!),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                            Dalai.spacing.spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                FutureBuilder(
+                                  future: Dalai.misc.getMapMarker(
+                                      MapMarker.origin, context,
+                                      state: MapMarkerState.selected),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return Dalai.skeleton
+                                          .emptySimpleContainer(
+                                              40, 40, context);
+                                    }
+                                    return SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: Image.memory(snapshot.data!),
+                                    );
+                                  },
+                                ),
+                                Dalai.spacing.hSpacer(small: true),
+                                FutureBuilder(
+                                  future: Dalai.misc.getMapMarker(
+                                      MapMarker.origin, context,
+                                      state: MapMarkerState.unselected),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return Dalai.skeleton
+                                          .emptySimpleContainer(
+                                              40, 40, context);
+                                    }
+                                    return SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: Image.memory(snapshot.data!),
+                                    );
+                                  },
+                                ),
+                                Dalai.spacing.hSpacer(small: true),
+                                FutureBuilder(
+                                  future: Dalai.misc.getMapMarker(
+                                      MapMarker.destination, context,
+                                      state: MapMarkerState.selected),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return Dalai.skeleton
+                                          .emptySimpleContainer(
+                                          40, 40, context);
+                                    }
+                                    return SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: Image.memory(snapshot.data!),
+                                    );
+                                  },
+                                ),
+                                Dalai.spacing.hSpacer(small: true),
+                                FutureBuilder(
+                                  future: Dalai.misc.getMapMarker(
+                                      MapMarker.destination, context,
+                                      state: MapMarkerState.unselected),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData == false) {
+                                      return Dalai.skeleton
+                                          .emptySimpleContainer(
+                                          40, 40, context);
+                                    }
+                                    return SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: Image.memory(snapshot.data!),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        title: "Map Markers"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -1257,12 +1534,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Dalai.animations.animation(
                                     context, AnimationType.errorData,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                                 Dalai.animations.animation(
                                     context, AnimationType.errorGeneric,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                               ],
                             ),
@@ -1275,12 +1552,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Dalai.animations.animation(
                                     context, AnimationType.errorMap,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                                 Dalai.animations.animation(
                                     context, AnimationType.errorUpdate,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                               ],
                             ),
@@ -1293,12 +1570,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Dalai.animations.animation(
                                     context, AnimationType.errorWorking,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                                 Dalai.animations.animation(
                                     context, AnimationType.errorSearch,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                               ],
                             ),
@@ -1311,12 +1588,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Dalai.animations.animation(
                                     context, AnimationType.trackingQueued,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                                 Dalai.animations.animation(
                                     context, AnimationType.trackingPickup,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                               ],
                             ),
@@ -1329,12 +1606,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Dalai.animations.animation(
                                     context, AnimationType.trackingDropoff,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                                 Dalai.animations.animation(
                                     context, AnimationType.trackingDelivering,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                               ],
                             ),
@@ -1347,12 +1624,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Dalai.animations.animation(
                                     context, AnimationType.trackingOngoingSuper,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                                 Dalai.animations.animation(context,
                                     AnimationType.trackingOngoingMarket,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                               ],
                             ),
@@ -1365,7 +1642,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Dalai.animations.animation(context,
                                     AnimationType.trackingOngoingDelivery,
                                     circled: true,
-                                    size: 150,
+                                    size: 120,
                                     backgroundColor: Dalai.color.cream),
                               ],
                             ),
@@ -1383,7 +1660,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               subtitle:
                                   "Fes clic per obrir la pantalla de Tracking de la app i seguir la teva comanda.",
                               onButtonTap: () {},
-                              buttonText: "Seguir comanda", disclaimer: "Al premer el boto de seguir comanda, ens dones permis per obtenir la teva ubicació en temps real.",),
+                              buttonText: "Seguir comanda",
+                              disclaimer:
+                                  "Al premer el boto de seguir comanda, ens dones permis per obtenir la teva ubicació en temps real.",
+                            ),
                             Dalai.spacing.dottedDivider(context),
                             Dalai.spacing.spacer(),
                             Dalai.animations.animation(
@@ -1391,10 +1671,13 @@ class _MyHomePageState extends State<MyHomePage> {
                               AnimationType.trackingQueued,
                               title: "Pots seguir la teva comanda a la app",
                               subtitle:
-                              "Fes clic per obrir la pantalla de Tracking de la app i seguir la teva comanda.",
+                                  "Fes clic per obrir la pantalla de Tracking de la app i seguir la teva comanda.",
                               onButtonTap: () {},
                               loading: true,
-                              buttonText: "Seguir comanda", disclaimer: "Al premer el boto de seguir comanda, ens dones permis per obtenir la teva ubicació en temps real.",),
+                              buttonText: "Seguir comanda",
+                              disclaimer:
+                                  "Al premer el boto de seguir comanda, ens dones permis per obtenir la teva ubicació en temps real.",
+                            ),
                           ],
                         ),
                         title: "Animation Usage"),

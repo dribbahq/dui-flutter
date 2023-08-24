@@ -4,10 +4,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../dalai.dart';
 import 'badges.dart';
 import 'external/promo_banner.dart';
+import 'external/svg_content.dart';
+
+enum ComponentImage { beltImage, covidImage, musicImage }
 
 class DalaiCards {
   Widget cardDescription(context, text, {color, maxLines, textAlign}) {
@@ -354,7 +358,8 @@ class DalaiCards {
                   color: Theme
                       .of(context)
                       .colorScheme
-                      .primary, width: Dalai.spacing.borderWidth)
+                      .primary,
+                  width: Dalai.spacing.borderWidth)
                   : null,
               color: isSelected
                   ? Colors.transparent
@@ -379,9 +384,7 @@ class DalaiCards {
                       : imageUrl is Widget
                       ? imageUrl
                       : SizedBox.shrink()),
-              imageUrl == null
-                  ? SizedBox.shrink()
-                  : Dalai.spacing.spacer(),
+              imageUrl == null ? SizedBox.shrink() : Dalai.spacing.spacer(),
               AutoSizeText(
                 title,
                 maxLines: 1,
@@ -401,5 +404,42 @@ class DalaiCards {
             ],
           ),
         ));
+  }
+
+  Widget disclaimerTextWithImage(String title, String content,
+      ComponentImage imageType, BuildContext context) {
+    String image = '';
+    if (imageType == ComponentImage.beltImage) {
+      image = rawBeltImage;
+    } else if (imageType == ComponentImage.covidImage) {
+      image = rawCovidImage;
+    } else if (imageType == ComponentImage.musicImage) {
+      image = rawMusicImage;
+    } else {
+      throw Exception('Image type not found');
+    }
+
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: Dalai.spacing.lateralPaddingValue),
+      child: Row(
+      children: [
+        SvgPicture.string(
+          image,
+          height: 84,
+          width: 84,
+        ),
+        Dalai.spacing.hSpacer(multiplier: 2),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Dalai.text.regular(context, title, bold: true),
+              Dalai.text.small(context, content),
+            ],
+          ),
+        )
+      ],
+    ),);
   }
 }
