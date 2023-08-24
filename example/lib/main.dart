@@ -1,5 +1,6 @@
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:dalai/common_utils/alert.dart';
+import 'package:dalai/core/animations.dart';
 import 'package:dalai/core/badges.dart';
 import 'package:dalai/core/external/slidable_tile.dart';
 import 'package:dalai/dalai.dart';
@@ -86,6 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var key9 = GlobalKey();
   var key10 = GlobalKey();
   var key11 = GlobalKey();
+  var key12 = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -237,7 +239,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               'Menjar a domicili',
                               onAccessoryButtonText: 'Veure tot',
                               onTap: () {
-                                Alert.showAlert('title', 'text', context, okText: 'okText');
+                                Alert.showAlert('title', 'text', context,
+                                    okText: 'okText');
                               },
                             ),
                             Dalai.spacing.spacer(small: true),
@@ -509,7 +512,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         title: "Regular"),
                     Dalai.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.input.smallTextField(TextEditingController(), context, hint: 'Email address'),
+                        Dalai.input.smallTextField(
+                            TextEditingController(), context,
+                            hint: 'Email address'),
                         title: "Small"),
                     Dalai.spacing.spacer(small: true),
                     showCaseBlock(
@@ -768,12 +773,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         title: "Segment Bar (Small)",
                         largePadding: false),
                     Dalai.spacing.spacer(small: true),
-                    showCaseBlock(Dalai.button.stepper(context, 0, (value, bool underLowerLimit, bool overUpperLimit) {
-                      print('-----------');
-                      print('under lower: $underLowerLimit');
-                      print('over upper: $overUpperLimit');
-                      print('-----------');
-                    }, upperLimit: 5),
+                    showCaseBlock(
+                        Dalai.button.stepper(context, 0,
+                            (value, bool underLowerLimit, bool overUpperLimit) {
+                          print('-----------');
+                          print('under lower: $underLowerLimit');
+                          print('over upper: $overUpperLimit');
+                          print('-----------');
+                        }, upperLimit: 5),
                         title: "Stepper"),
                     Dalai.spacing.spacer(small: true),
                     showCaseBlock(
@@ -893,26 +900,6 @@ class _MyHomePageState extends State<MyHomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Dalai.card.iconSmallCard(
-                                    context,
-                                    "Shop",
-                                    'https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg',
-                                    () {},
-                                    clearBackground: true),
-                                Dalai.spacing.hSpacer(),
-                                Dalai.card.iconSmallCard(
-                                    context,
-                                    "Restaurant",
-                                    'https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg',
-                                    () {},
-                                    isSelected: true,
-                                    clearBackground: true),
-                              ],
-                            ),
-                            Dalai.spacing.spacer(small: true),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Dalai.card.iconSmallCard(
                                     context, "Eat", null, () {},
                                     isSelected: false),
                                 Dalai.spacing.hSpacer(),
@@ -930,13 +917,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Dalai.card.avatar(context,
-                                "",
-                                loading: true),
+                            Dalai.card.avatar(context, "", loading: true),
                             Dalai.spacing.hSpacer(),
-                            Dalai.card.avatar(context,
-                                "",
-                                initials: 'CX',),
+                            Dalai.card.avatar(
+                              context,
+                              "",
+                              initials: 'CX',
+                            ),
                             Dalai.spacing.hSpacer(),
                             Dalai.card.avatar(context,
                                 "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
@@ -1247,6 +1234,170 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Notice Card"),
+                    Dalai.spacing.divider(context),
+                  ],
+                ),
+              ),
+              Container(
+                key: key12,
+                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Dalai.text.title2(context, 'Animations'),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Dalai.animations.animation(
+                                    context, AnimationType.errorData,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.errorGeneric,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                              ],
+                            ),
+                            Dalai.spacing.dottedDivider(context),
+                            Dalai.spacing.spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Dalai.animations.animation(
+                                    context, AnimationType.errorMap,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.errorUpdate,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                              ],
+                            ),
+                            Dalai.spacing.dottedDivider(context),
+                            Dalai.spacing.spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Dalai.animations.animation(
+                                    context, AnimationType.errorWorking,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.errorSearch,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                              ],
+                            ),
+                            Dalai.spacing.dottedDivider(context),
+                            Dalai.spacing.spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Dalai.animations.animation(
+                                    context, AnimationType.trackingQueued,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.trackingPickup,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                              ],
+                            ),
+                            Dalai.spacing.dottedDivider(context),
+                            Dalai.spacing.spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Dalai.animations.animation(
+                                    context, AnimationType.trackingDropoff,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.trackingDelivering,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                              ],
+                            ),
+                            Dalai.spacing.dottedDivider(context),
+                            Dalai.spacing.spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Dalai.animations.animation(
+                                    context, AnimationType.trackingOngoingSuper,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(context,
+                                    AnimationType.trackingOngoingMarket,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                              ],
+                            ),
+                            Dalai.spacing.dottedDivider(context),
+                            Dalai.spacing.spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Dalai.animations.animation(context,
+                                    AnimationType.trackingOngoingDelivery,
+                                    circled: true,
+                                    size: 150,
+                                    backgroundColor: Dalai.color.cream),
+                              ],
+                            ),
+                          ],
+                        ),
+                        title: "Animations Available"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.animations.animation(
+                              context,
+                              AnimationType.trackingQueued,
+                              title: "Pots seguir la teva comanda a la app",
+                              subtitle:
+                                  "Fes clic per obrir la pantalla de Tracking de la app i seguir la teva comanda.",
+                              onButtonTap: () {},
+                              buttonText: "Seguir comanda", disclaimer: "Al premer el boto de seguir comanda, ens dones permis per obtenir la teva ubicació en temps real.",),
+                            Dalai.spacing.dottedDivider(context),
+                            Dalai.spacing.spacer(),
+                            Dalai.animations.animation(
+                              context,
+                              AnimationType.trackingQueued,
+                              title: "Pots seguir la teva comanda a la app",
+                              subtitle:
+                              "Fes clic per obrir la pantalla de Tracking de la app i seguir la teva comanda.",
+                              onButtonTap: () {},
+                              loading: true,
+                              buttonText: "Seguir comanda", disclaimer: "Al premer el boto de seguir comanda, ens dones permis per obtenir la teva ubicació en temps real.",),
+                          ],
+                        ),
+                        title: "Animation Usage"),
                     Dalai.spacing.divider(context),
                   ],
                 ),

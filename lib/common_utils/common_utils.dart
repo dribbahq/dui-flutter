@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:intl/intl.dart';
 import 'package:latlng/latlng.dart';
@@ -10,6 +11,8 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:vector_math/vector_math.dart' as deg;
 import '../dalai.dart';
 import 'custom_modal_bottom_sheet.dart';
+
+enum NutriscoreLevel { A, B, C, D, E, none }
 
 class Utils {
   /*
@@ -37,8 +40,7 @@ class Utils {
   static List<Object> rotate(List<Object> list, int v) {
     if (list.isEmpty) return list;
     var i = v % list.length;
-    return list.sublist(i)
-      ..addAll(list.sublist(0, i));
+    return list.sublist(i)..addAll(list.sublist(0, i));
   }
 
   /* ------------------------------------------------------------------------- */
@@ -48,31 +50,25 @@ class Utils {
   * */
   static showBottomSheet(context,
       {Widget? content,
-        bool dismissible = true,
-        double? maxHeight,
-        bool skipPadding = false}) {
-    Future(() =>
-        CustomShowModalBottomSheet.customShowModalBottomSheet(
-          darkMode: Theme
-              .of(context)
-              .brightness == Brightness.light,
+      bool dismissible = true,
+      double? maxHeight,
+      bool skipPadding = false}) {
+    Future(() => CustomShowModalBottomSheet.customShowModalBottomSheet(
+          darkMode: Theme.of(context).brightness == Brightness.light,
           context: context,
           dismissible: dismissible,
           builder: (context) {
             return Container(
               constraints:
-              BoxConstraints(maxHeight: maxHeight ?? double.infinity),
+                  BoxConstraints(maxHeight: maxHeight ?? double.infinity),
               padding: skipPadding
                   ? null
                   : EdgeInsets.only(
-                  bottom: Dalai.spacing.lateralPaddingValue,
-                  left: Dalai.spacing.lateralPaddingValue,
-                  right: Dalai.spacing.lateralPaddingValue),
+                      bottom: Dalai.spacing.lateralPaddingValue,
+                      left: Dalai.spacing.lateralPaddingValue,
+                      right: Dalai.spacing.lateralPaddingValue),
               decoration: BoxDecoration(
-                color: Theme
-                    .of(context)
-                    .colorScheme
-                    .background,
+                color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.vertical(
                     top: Radius.circular(Dalai.spacing.largeBorderRadius)),
                 boxShadow: [
@@ -93,19 +89,17 @@ class Utils {
                       children: <Widget>[
                         dismissible == true
                             ? Center(
-                          child: Opacity(
-                            opacity: 0.2,
-                            child: Dalai.icon.dalaiIcons(
-                                context,
-                                CXIcon.horizontal_line,
-                                size: CXIconSize.x_large,
-                                mainColor: Theme
-                                    .of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .color!
-                            ),),
-                        )
+                                child: Opacity(
+                                  opacity: 0.2,
+                                  child: Dalai.icon.dalaiIcons(
+                                      context, CXIcon.horizontal_line,
+                                      size: CXIconSize.x_large,
+                                      mainColor: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .color!),
+                                ),
+                              )
                             : Dalai.spacing.spacer(multiplier: 2),
                         content ?? const SizedBox.shrink()
                       ],
@@ -118,7 +112,8 @@ class Utils {
         ));
   }
 
-  static showBottomPage(context, {
+  static showBottomPage(
+    context, {
     Widget? content,
     bool dismissible = false,
     double? maxHeight,
@@ -130,10 +125,7 @@ class Utils {
         isScrollControlled: true,
         useSafeArea: false,
         constraints: BoxConstraints(
-            maxHeight: maxHeight ?? MediaQuery
-                .of(context)
-                .size
-                .height * 0.95),
+            maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.95),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
                 top: Radius.circular(Dalai.spacing.borderRadius))),
@@ -149,9 +141,9 @@ class Utils {
   * Date Helper Methods
   * */
   static DateFormat dateFormatScheduleSet =
-  DateFormat('yyyy-MM-ddTHH:mm:ss.SSS', 'ca_ES');
+      DateFormat('yyyy-MM-ddTHH:mm:ss.SSS', 'ca_ES');
   static DateFormat dateFormatScheduleGet =
-  DateFormat('yyyy-MM-ddTHH:mm:ssZ', 'ca_ES');
+      DateFormat('yyyy-MM-ddTHH:mm:ssZ', 'ca_ES');
 
   static String getDate(String date, DateFormat format) {
     return DateFormat('dd/MM/yyyy').format(format.parse(date));
@@ -160,8 +152,7 @@ class Utils {
   static String getNiceDateMinus10(String date, DateFormat format,
       {String? localeCode}) {
     try {
-      return '${DateFormat('EE, dd/MM/yy, HH:mm', localeCode ?? 'ca_ES').format(
-          format.parseUTC(date).toLocal())}h';
+      return '${DateFormat('EE, dd/MM/yy, HH:mm', localeCode ?? 'ca_ES').format(format.parseUTC(date).toLocal())}h';
     } catch (e) {
       return '';
     }
@@ -170,8 +161,7 @@ class Utils {
   static String getNiceDate(String date, DateFormat format,
       {String? localeCode}) {
     try {
-      return '${DateFormat('dd MMMM yyyy, HH:mm', localeCode ?? 'ca_ES').format(
-          format.parseUTC(date).toLocal())}h';
+      return '${DateFormat('dd MMMM yyyy, HH:mm', localeCode ?? 'ca_ES').format(format.parseUTC(date).toLocal())}h';
     } catch (e) {
       return '';
     }
@@ -180,8 +170,7 @@ class Utils {
   static String getNiceSmallDate(String date, DateFormat format,
       {String? localeCode}) {
     try {
-      return '${DateFormat('dd MMM, HH:mm', localeCode ?? 'ca_ES').format(
-          format.parseUTC(date).toLocal())}h';
+      return '${DateFormat('dd MMM, HH:mm', localeCode ?? 'ca_ES').format(format.parseUTC(date).toLocal())}h';
     } catch (e) {
       return '';
     }
@@ -220,34 +209,20 @@ class Utils {
   }
 
   static bool isToday(DateTime other) {
-    return DateTime
-        .now()
-        .year == other.year &&
-        DateTime
-            .now()
-            .month == other.month &&
-        DateTime
-            .now()
-            .day == other.day;
+    return DateTime.now().year == other.year &&
+        DateTime.now().month == other.month &&
+        DateTime.now().day == other.day;
   }
 
   static bool isTomorrow(DateTime other) {
-    return DateTime
-        .now()
-        .year == other.year &&
-        DateTime
-            .now()
-            .month == other.month &&
-        DateTime
-            .now()
-            .day + 1 == other.day;
+    return DateTime.now().year == other.year &&
+        DateTime.now().month == other.month &&
+        DateTime.now().day + 1 == other.day;
   }
 
   static bool isSameDay(DateTime date1, DateTime date2) {
     final now = date1;
-    final diff = now
-        .difference(date2)
-        .inDays;
+    final diff = now.difference(date2).inDays;
     return diff == 0 && now.day == date2.day;
   }
 
@@ -290,11 +265,11 @@ class Utils {
       double price = double.parse(stringedPrice);
       if (price % 1 == 0) {
         return NumberFormat.currency(
-            locale: 'es_ES', symbol: '', decimalDigits: 0)
+                locale: 'es_ES', symbol: '', decimalDigits: 0)
             .format(price.round());
       }
       return NumberFormat.currency(
-          locale: 'es_ES', symbol: '', decimalDigits: 2)
+              locale: 'es_ES', symbol: '', decimalDigits: 2)
           .format(price);
     }
     return "0";
@@ -386,5 +361,46 @@ class Utils {
       return true;
     }
     return false;
+  }
+
+  /* ------------------------------------------------------------------------- */
+
+  /*
+  * Nutriscore Helpers Methods
+  * */
+  static Widget getNutriscoreImage(NutriscoreLevel nutriscoreLevel,
+      {double size = 44}) {
+    switch (nutriscoreLevel) {
+      case NutriscoreLevel.A:
+        return SvgPicture.asset(
+          'assets/images/nutriscore/nutriscore_A.svg',
+          height: size,
+        );
+      case NutriscoreLevel.B:
+        return SvgPicture.asset(
+          'assets/images/nutriscore/nutriscore_B.svg',
+          height: size,
+        );
+      case NutriscoreLevel.C:
+        return SvgPicture.asset(
+          'assets/images/nutriscore/nutriscore_C.svg',
+          height: size,
+        );
+      case NutriscoreLevel.D:
+        return SvgPicture.asset(
+          'assets/images/nutriscore/nutriscore_D.svg',
+          height: size,
+        );
+      case NutriscoreLevel.E:
+        return SvgPicture.asset(
+          'assets/images/nutriscore/nutriscore_E.svg',
+          height: size,
+        );
+      default:
+        return SvgPicture.asset(
+          'assets/images/nutriscore/nutriscore_0.svg',
+          height: size - 8,
+        );
+    }
   }
 }

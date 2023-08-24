@@ -5,6 +5,7 @@ class DalaiSpacing{
   /**
    * Margins
    * */
+  final double smallPaddingValue = 4;
   final double lateralPaddingValue = 12;
   final double largeLateralPaddingValue = 20;
   final EdgeInsets lateralPadding =
@@ -30,7 +31,7 @@ class DalaiSpacing{
   * */
   Widget spacer({int multiplier = 1, bool small = false}) {
     if (small) {
-      return const SizedBox(height: 4);
+      return SizedBox(height: smallPaddingValue);
     }
     return SizedBox(
       height: lateralPaddingValue * multiplier,
@@ -39,7 +40,7 @@ class DalaiSpacing{
 
   Widget hSpacer({int multiplier = 1, bool small = false}) {
     if (small) {
-      return const SizedBox(width: 4);
+      return SizedBox(width: smallPaddingValue);
     }
     return SizedBox(
       width: lateralPaddingValue * multiplier,

@@ -1,5 +1,6 @@
 library dalai;
 
+import 'core/animations.dart';
 import 'core/badges.dart';
 import 'core/buttons.dart';
 import 'core/cards.dart';
@@ -13,7 +14,7 @@ import 'core/text.dart';
 import 'core/theme.dart';
 import 'core/tiles.dart';
 
-class Dalai{
+class Dalai {
   static final DalaiText text = DalaiText();
   static final DalaiColor color = DalaiColor();
   static final DalaiTheme theme = DalaiTheme();
@@ -25,5 +26,7 @@ class Dalai{
   static final DalaiCards card = DalaiCards();
   static final DalaiTiles tile = DalaiTiles();
   static final DalaiBadges badge = DalaiBadges();
+  static final DalaiAnimations animations = DalaiAnimations();
+
   static final Misc misc = Misc();
 }

@@ -107,7 +107,13 @@ class DalaiButtons {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
             ),
-            backgroundColor: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.1),
+            backgroundColor:
+            Theme
+                .of(context)
+                .textTheme
+                .bodyMedium!
+                .color!
+                .withOpacity(0.1),
             padding: Dalai.spacing.lateralPadding,
           ),
           child: loading!
@@ -141,7 +147,12 @@ class DalaiButtons {
                                 : const SizedBox.shrink(),
                             text != null
                                 ? Dalai.text.regular(context, text,
-                                color: color ?? Theme.of(context).textTheme.bodyMedium!.color,
+                                color: color ??
+                                    Theme
+                                        .of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .color,
                                 bold: true)
                                 : const SizedBox.shrink(),
                           ],
@@ -406,30 +417,38 @@ class DalaiButtons {
       children: [
         Container(
           padding: EdgeInsets.only(
-              left: 2 * Dalai.spacing.lateralPaddingValue,
-              right: 2 * Dalai.spacing.lateralPaddingValue,
+              left: Dalai.spacing.lateralPaddingValue,
+              right: Dalai.spacing.lateralPaddingValue,
               top: Dalai.spacing.lateralPaddingValue,
-              bottom: 12),
+              bottom: 10),
           decoration: BoxDecoration(
               color: Theme
                   .of(context)
                   .colorScheme
                   .background,
-              borderRadius: BorderRadius.circular(40),
+              borderRadius:
+              BorderRadius.circular(Dalai.spacing.borderRadius),
               border: Border.all(
-                  color: Colors.black.withOpacity(0.1), width: 1.5)),
-          child: Dalai.text.xs(
+                  color: Theme
+                      .of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .color!
+                      .withOpacity(0.2),
+                  width: Dalai.spacing.borderWidth)),
+          child: Dalai.text.small(
               context,
               addMoreToRequestText.replaceAll(
                   "%@", Utils.parsePrice(minPrice - currentPrice)),
-              textAlign: TextAlign.start),
+              textAlign: TextAlign.start, bold: true),
         ),
       ],
     )
         : const SizedBox.shrink();
   }
 
-  Widget backButtonCircle(BuildContext context, {Function? onTap}) {
+  Widget backButtonCircle(BuildContext context,
+      {Function? onTap, bool filled = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Ink(
@@ -587,7 +606,7 @@ class DalaiButtons {
         decoration: BoxDecoration(
           color: Theme
               .of(context)
-              .scaffoldBackgroundColor,
+              .scaffoldBackgroundColor, // TODO: Revisar color de fons
           borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
           border: Border.all(
               color: Theme
@@ -610,7 +629,8 @@ class DalaiButtons {
     );
   }
 
-  Widget stepper(BuildContext context, int initialValue, Function(int, bool underLowerLimit, bool overUpperLimit) onChange,
+  Widget stepper(BuildContext context, int initialValue,
+      Function(int, bool underLowerLimit, bool overUpperLimit) onChange,
       {bool loading = false,
         String? appendString,
         String? customText,
@@ -641,21 +661,29 @@ class DalaiButtons {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
         ),
-        width: double.infinity, child: Row(children: [
-        Expanded(child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        width: double.infinity,
+        child: Row(
           children: [
-            headerTitle != null
-                ? Dalai.text.xs(context, headerTitle, color: forceDark ? Dalai.color.smallTextDarkMode : null)
-                : SizedBox.shrink(),
-            Dalai.text.regular(context, title ?? "", bold: true, color: forceDark ? Dalai.color.textDarkMode : null),
+            Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    headerTitle != null
+                        ? Dalai.text.xs(context, headerTitle,
+                        color: forceDark ? Dalai.color.smallTextDarkMode : null)
+                        : SizedBox.shrink(),
+                    Dalai.text.regular(context, title ?? "",
+                        bold: true,
+                        color: forceDark ? Dalai.color.textDarkMode : null),
+                  ],
+                )),
+            Dalai.icon.dalaiIcons(context, CXIcon.chevron_down,
+                size: CXIconSize.small,
+                mainColor: forceDark ? Dalai.color.textDarkMode : null)
           ],
-        )),
-        Dalai.icon.dalaiIcons(
-            context, CXIcon.chevron_down, size: CXIconSize.small, mainColor: forceDark ? Dalai.color.textDarkMode : null)
-
-      ],),),
+        ),
+      ),
     );
   }
 }

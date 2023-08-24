@@ -1,4 +1,5 @@
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
+import 'package:dalai/common_utils/color_extension.dart';
 import 'package:flutter/material.dart';
 
 import '../dalai.dart';
@@ -13,9 +14,6 @@ class DalaiBadges {
         BadgeColor color = BadgeColor.primary,
         BadgeHierarchy? hierarchy = BadgeHierarchy.primary}) {
     Color bgColor = _getBGColor(context, color);
-    Color contentColor = hierarchy == BadgeHierarchy.primary
-        ? _getContentColor(context, color)
-        : bgColor;
 
     return Container(
       padding: const EdgeInsets.only(left: 6, right: 6, top: 3, bottom: 2),
@@ -28,12 +26,12 @@ class DalaiBadges {
         children: [
           icon != null
               ? Dalai.icon.dalaiIcons(context, icon,
-              size: CXIconSize.x_small, mainColor: contentColor)
+              size: CXIconSize.x_small, mainColor: bgColor.calculateLuminance())
               : const SizedBox.shrink(),
           icon != null
               ? Dalai.spacing.hSpacer(small: true)
               : const SizedBox.shrink(),
-          Dalai.text.xs(context, text, bold: true, color: contentColor)
+          Dalai.text.xs(context, text, bold: true, color: bgColor.calculateLuminance())
         ],
       ),
     );
@@ -77,9 +75,7 @@ class DalaiBadges {
         Function? onDelete,
         Function? onTap}) {
     Color bgColor = _getBGColor(context, color);
-    Color contentColor = hierarchy == BadgeHierarchy.primary
-        ? _getContentColor(context, color)
-        : bgColor;
+
     return GestureDetector(
       onTap: () {
         if (onTap != null) {
@@ -106,12 +102,12 @@ class DalaiBadges {
           children: [
             icon != null
                 ? Dalai.icon.dalaiIcons(context, icon,
-                size: CXIconSize.x_small, mainColor: contentColor)
+                size: CXIconSize.x_small, mainColor: bgColor.calculateLuminance())
                 : const SizedBox.shrink(),
             icon != null
                 ? Dalai.spacing.hSpacer(small: true)
                 : const SizedBox.shrink(),
-            Dalai.text.xs(context, text, bold: true, color: contentColor)
+            Dalai.text.xs(context, text, bold: true, color: bgColor.calculateLuminance())
           ],
         ),
         onDeleted: onDelete != null
@@ -119,12 +115,12 @@ class DalaiBadges {
           onDelete();
         }
             : null,
-        deleteIconColor: contentColor,
+        deleteIconColor: bgColor.calculateLuminance(),
         deleteIcon: Padding(
           padding: EdgeInsets.only(
               left: Dalai.spacing.lateralPaddingValue / 2, bottom: 2),
           child: Dalai.icon.dalaiIcons(context, CXIcon.xmark_circle,
-              size: CXIconSize.x_small, mainColor: contentColor),
+              size: CXIconSize.x_small, mainColor: bgColor.calculateLuminance()),
         ),
       ),
     );

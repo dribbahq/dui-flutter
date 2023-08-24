@@ -190,7 +190,7 @@ class Misc {
             ),
             Center(
               child: Lottie.asset(
-                'assets/animations/ax_error_search.json',
+                'assets/animations.dart/ax_error_search.json',
                 width: MediaQuery
                     .of(context)
                     .size

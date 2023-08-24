@@ -272,7 +272,7 @@ class DalaiCards {
   Widget avatar(BuildContext context, String? imageUrl,
       {Function? onTap, bool loading = false, String? initials}) {
     double containerSize = onTap != null ? 90 : 80;
-    if(loading){
+    if (loading) {
       return Dalai.skeleton.emptyLoadingCircle(80, context);
     }
     return GestureDetector(
@@ -288,7 +288,12 @@ class DalaiCards {
           children: [
             Container(
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.light ? Dalai.color.cream : Dalai.color.cream.withOpacity(0.1)),
+                    shape: BoxShape.circle,
+                    color: Theme
+                        .of(context)
+                        .brightness == Brightness.light
+                        ? Dalai.color.cream
+                        : Dalai.color.cream.withOpacity(0.1)),
                 width: 80,
                 height: 80,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -299,11 +304,13 @@ class DalaiCards {
                   progressIndicatorBuilder: (context, url, progress) =>
                       Dalai.misc.loadingAnimation(context),
                   errorWidget: (error, string, image) {
-                    return Dalai.misc.defaultUserProfileImage(context, initials);
+                    return Dalai.misc
+                        .defaultUserProfileImage(context, initials);
                   },
                 )
-                    :  Dalai.misc.defaultUserProfileImage(context, initials)),
-            onTap != null ? Align(
+                    : Dalai.misc.defaultUserProfileImage(context, initials)),
+            onTap != null
+                ? Align(
               alignment: Alignment.bottomRight,
               child: CircleAvatar(
                 backgroundColor: Theme
@@ -312,7 +319,8 @@ class DalaiCards {
                     .background,
                 child: Dalai.icon.dalaiIcons(context, CXIcon.pencil),
               ),
-            ) : SizedBox.shrink()
+            )
+                : SizedBox.shrink()
           ],
         ),
       ),
@@ -321,7 +329,7 @@ class DalaiCards {
 
   Widget iconSmallCard(BuildContext context, String title, dynamic? imageUrl,
       Function() onTap,
-      {bool isSelected = false, bool clearBackground = false}) {
+      {bool isSelected = false}) {
     return GestureDetector(
         onTap: () {
           onTap();
@@ -341,24 +349,21 @@ class DalaiCards {
               horizontal: Dalai.spacing.lateralPaddingValue),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+              border: isSelected
+                  ? Border.all(
+                  color: Theme
+                      .of(context)
+                      .colorScheme
+                      .primary, width: Dalai.spacing.borderWidth)
+                  : null,
               color: isSelected
-                  ? clearBackground
-                  ? Theme
-                  .of(context)
-                  .inputDecorationTheme
-                  .fillColor
+                  ? Colors.transparent
                   : Theme
                   .of(context)
                   .textTheme
                   .bodyMedium!
                   .color!
-                  .withOpacity(0.15)
-                  : clearBackground
-                  ? Colors.transparent
-                  : Theme
-                  .of(context)
-                  .inputDecorationTheme
-                  .fillColor),
+                  .withOpacity(0.05)),
           child: Column(
             children: [
               imageUrl == null
@@ -376,7 +381,7 @@ class DalaiCards {
                       : SizedBox.shrink()),
               imageUrl == null
                   ? SizedBox.shrink()
-                  : Dalai.spacing.spacer(small: clearBackground),
+                  : Dalai.spacing.spacer(),
               AutoSizeText(
                 title,
                 maxLines: 1,
