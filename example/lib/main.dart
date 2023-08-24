@@ -1009,7 +1009,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Column(
                           children: [
                             Dalai.tile
-                                .listTileWithSub('Title', context, 'Subtitle'),
+                                .listTileWithSub('Title', context, 'Subtitle', onTap: () {}),
                             Dalai.spacing.divider(context),
                             Dalai.tile.listTileWithSub(
                                 'Title', context, 'Subtitle',
