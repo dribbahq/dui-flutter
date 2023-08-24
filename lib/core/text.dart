@@ -382,7 +382,7 @@ class DalaiText {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           small(context, text,
-              bold: true, color: Theme.of(context).textTheme.titleSmall!.color),
+              bold: true),
         ],
       ),
     );
