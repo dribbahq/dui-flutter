@@ -365,10 +365,7 @@ class DalaiText {
               color: Theme.of(context).textTheme.titleLarge!.color),
           onAccessoryButtonText == null
               ? SizedBox.shrink()
-              : Dalai.button.smallButton(
-                  context,
-                  onAccessoryButtonText,
-                  onTap,
+              : Dalai.button.smallButton(context, onAccessoryButtonText, onTap,
                   loading: loading)
         ],
       ),
@@ -377,12 +374,14 @@ class DalaiText {
 
   Widget smallItemHeader(BuildContext context, String text) {
     return Container(
-      padding: EdgeInsets.only(top: 2 * Dalai.spacing.lateralPaddingValue),
+      padding: EdgeInsets.only(
+          top: 2 * Dalai.spacing.lateralPaddingValue,
+          left: Dalai.spacing.lateralPaddingValue,
+          right: Dalai.spacing.lateralPaddingValue),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          small(context, text,
-              bold: true),
+          small(context, text, bold: true),
         ],
       ),
     );
