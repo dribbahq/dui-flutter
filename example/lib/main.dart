@@ -112,6 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Image.asset(
                         'assets/images/lama-ui-icon.png',
                         width: 120,
+                        package: 'dalai',
                       ),
                       Dalai.spacing.spacer(small: true),
                       Dalai.text.title1(context, 'LAMA Showcase'),
@@ -668,7 +669,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 .iconButton(context, CXIcon.bag, filled: true),
                           ],
                         ),
-                        title: "Back Button Circle (No-Filled & Filled)"),
+                        title: "Icon Button (No-Filled & Filled)"),
                     Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.button.backButtonCircle(
@@ -1494,21 +1495,21 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         title: "Map Markers"),
                     Dalai.spacing.spacer(small: true),
-                    // showCaseBlock(
-                    //     Column(
-                    //       children: [
-                    //         Dalai.misc
-                    //             .getPlaceholderImage(PlaceholderImage.courier),
-                    //         Dalai.spacing.spacer(),
-                    //         Dalai.misc
-                    //             .getPlaceholderImage(PlaceholderImage.partner),
-                    //         Dalai.spacing.spacer(),
-                    //         Dalai.misc.getPlaceholderImage(
-                    //             PlaceholderImage.experienceZone),
-                    //         Dalai.spacing.spacer(),
-                    //       ],
-                    //     ),
-                    //     title: "Placeholder Images"),
+                     showCaseBlock(
+                         Column(
+                           children: [
+                             Dalai.misc
+                                 .getPlaceholderImage(PlaceholderImage.courier),
+                             Dalai.spacing.spacer(),
+                             Dalai.misc
+                                 .getPlaceholderImage(PlaceholderImage.partner),
+                             Dalai.spacing.spacer(),
+                             Dalai.misc.getPlaceholderImage(
+                                 PlaceholderImage.experienceZone),
+                             Dalai.spacing.spacer(),
+                           ],
+                         ),
+                         title: "Placeholder Images"),
                     // Dalai.spacing.spacer(small: true),
                     // showCaseBlock(
                     //     Column(
@@ -1543,128 +1544,99 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                            GridView(
+                              physics: NeverScrollableScrollPhysics(),
+                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              shrinkWrap: true,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing:
+                                    Dalai.spacing.lateralPaddingValue,
+                              ),
                               children: [
                                 Dalai.animations.animation(
                                     context, AnimationType.errorData,
                                     circled: true,
                                     size: 120,
                                     backgroundColor: Dalai.color.cream),
-                                // Dalai.animations.animation(
-                                //     context, AnimationType.errorGeneric,
-                                //     circled: true,
-                                //     size: 120,
-                                //     backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.errorGeneric,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.errorMap,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.errorUpdate,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.errorWorking,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.errorSearch,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.trackingQueued,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.trackingPickup,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.trackingDropoff,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.trackingDelivering,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.trackingOngoingSuper,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(context,
+                                    AnimationType.trackingOngoingMarket,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(context,
+                                    AnimationType.trackingOngoingDelivery,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.paymentProcessing,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.orderCancelled,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.orderDelivered,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
                               ],
                             ),
-                            // Dalai.spacing.dottedDivider(context),
-                            // Dalai.spacing.spacer(),
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.center,
-                            //   crossAxisAlignment: CrossAxisAlignment.center,
-                            //   children: [
-                            //     Dalai.animations.animation(
-                            //         context, AnimationType.errorMap,
-                            //         circled: true,
-                            //         size: 120,
-                            //         backgroundColor: Dalai.color.cream),
-                            //     Dalai.animations.animation(
-                            //         context, AnimationType.errorUpdate,
-                            //         circled: true,
-                            //         size: 120,
-                            //         backgroundColor: Dalai.color.cream),
-                            //   ],
-                            // ),
-                            // Dalai.spacing.dottedDivider(context),
-                            // Dalai.spacing.spacer(),
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.center,
-                            //   crossAxisAlignment: CrossAxisAlignment.center,
-                            //   children: [
-                            //     Dalai.animations.animation(
-                            //         context, AnimationType.errorWorking,
-                            //         circled: true,
-                            //         size: 120,
-                            //         backgroundColor: Dalai.color.cream),
-                            //     Dalai.animations.animation(
-                            //         context, AnimationType.errorSearch,
-                            //         circled: true,
-                            //         size: 120,
-                            //         backgroundColor: Dalai.color.cream),
-                            //   ],
-                            // ),
-                            // Dalai.spacing.dottedDivider(context),
-                            // Dalai.spacing.spacer(),
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.center,
-                            //   crossAxisAlignment: CrossAxisAlignment.center,
-                            //   children: [
-                            //     Dalai.animations.animation(
-                            //         context, AnimationType.trackingQueued,
-                            //         circled: true,
-                            //         size: 120,
-                            //         backgroundColor: Dalai.color.cream),
-                            //     Dalai.animations.animation(
-                            //         context, AnimationType.trackingPickup,
-                            //         circled: true,
-                            //         size: 120,
-                            //         backgroundColor: Dalai.color.cream),
-                            //   ],
-                            // ),
-                            // Dalai.spacing.dottedDivider(context),
-                            // Dalai.spacing.spacer(),
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.center,
-                            //   crossAxisAlignment: CrossAxisAlignment.center,
-                            //   children: [
-                            //     Dalai.animations.animation(
-                            //         context, AnimationType.trackingDropoff,
-                            //         circled: true,
-                            //         size: 120,
-                            //         backgroundColor: Dalai.color.cream),
-                            //     Dalai.animations.animation(
-                            //         context, AnimationType.trackingDelivering,
-                            //         circled: true,
-                            //         size: 120,
-                            //         backgroundColor: Dalai.color.cream),
-                            //   ],
-                            // ),
-                            // Dalai.spacing.dottedDivider(context),
-                            // Dalai.spacing.spacer(),
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.center,
-                            //   crossAxisAlignment: CrossAxisAlignment.center,
-                            //   children: [
-                            //     Dalai.animations.animation(
-                            //         context, AnimationType.trackingOngoingSuper,
-                            //         circled: true,
-                            //         size: 120,
-                            //         backgroundColor: Dalai.color.cream),
-                            //     Dalai.animations.animation(context,
-                            //         AnimationType.trackingOngoingMarket,
-                            //         circled: true,
-                            //         size: 120,
-                            //         backgroundColor: Dalai.color.cream),
-                            //   ],
-                            // ),
-                            // Dalai.spacing.dottedDivider(context),
-                            // Dalai.spacing.spacer(),
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.center,
-                            //   crossAxisAlignment: CrossAxisAlignment.center,
-                            //   children: [
-                            //     Dalai.animations.animation(context,
-                            //         AnimationType.trackingOngoingDelivery,
-                            //         circled: true,
-                            //         size: 120,
-                            //         backgroundColor: Dalai.color.cream),
-                            //     Dalai.animations.animation(
-                            //         context, AnimationType.paymentProcessing,
-                            //         size: 150),
-                            //   ],
-                            // ),
                           ],
                         ),
                         title: "Animations Available"),

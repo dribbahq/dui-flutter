@@ -45,6 +45,7 @@ flutter:
     - assets/animations/
     - assets/fonts/
     - assets/images/
+    - assets/images/placeholders/
 
   fonts:
     - family: metropolis

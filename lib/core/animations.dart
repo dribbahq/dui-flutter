@@ -87,8 +87,6 @@ class DalaiAnimations {
   }
 
   String _extractAnimation(AnimationType animationType) {
-    return 'assets/animations/ax_error_data.json';
-
     if (animationType == AnimationType.errorData) {
       return 'assets/animations/ax_error_data.json';
     } else if (animationType == AnimationType.errorGeneric) {
@@ -116,7 +114,7 @@ class DalaiAnimations {
     } else if (animationType == AnimationType.trackingQueued) {
       return 'assets/animations/ax_tracking_queued.json';
     } else if (animationType == AnimationType.paymentProcessing) {
-      return 'assets/animations/ax_tracking_queued.json'; // TODO
+      return 'assets/animations/ax_payment.json';
     } else if (animationType == AnimationType.orderCancelled) {
       return 'assets/animations/ax_order_cancel.json';
     } else if (animationType == AnimationType.orderDelivered) {
@@ -126,3 +124,22 @@ class DalaiAnimations {
     }
   }
 }
+
+class CardTest extends StatelessWidget {
+  final Widget? header;
+  final Widget? body;
+  final Widget? footer;
+  const CardTest({Key? key, this.body, this.header, this.footer}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        header ?? SizedBox.shrink(),
+        Expanded(child: body ?? SizedBox.shrink(),),
+        footer ?? SizedBox.shrink(),
+      ],
+    );
+  }
+}
+
