@@ -55,7 +55,6 @@ class DalaiAnimations {
                           .background)
                       : Colors.transparent),
               child: Lottie.asset(_extractAnimation(type),
-                  package: 'dalai',
                   height: computedSize,
                   width: computedSize,
                   fit: boxFit)),
