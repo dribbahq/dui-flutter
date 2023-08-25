@@ -87,35 +87,35 @@ class DalaiAnimations {
 
   String _extractAnimation(AnimationType animationType) {
     if (animationType == AnimationType.errorData) {
-      return 'assets/animations/ax_error_data.json';
+      return 'packages/dalai/assets/animations/ax_error_data.json';
     } else if (animationType == AnimationType.errorGeneric) {
-      return 'assets/animations/ax_error_generic.json';
+      return 'packages/dalai/assets/animations/ax_error_generic.json';
     } else if (animationType == AnimationType.errorMap) {
-      return 'assets/animations/ax_error_map.json';
+      return 'packages/dalai/assets/animations/ax_error_map.json';
     } else if (animationType == AnimationType.errorSearch) {
-      return 'assets/animations/ax_error_search.json';
+      return 'packages/dalai/assets/animations/ax_error_search.json';
     } else if (animationType == AnimationType.errorUpdate) {
-      return 'assets/animations/ax_error_update.json';
+      return 'packages/dalai/assets/animations/ax_error_update.json';
     } else if (animationType == AnimationType.errorWorking) {
-      return 'assets/animations/ax_error_working.json';
+      return 'packages/dalai/assets/animations/ax_error_working.json';
     } else if (animationType == AnimationType.trackingDelivering) {
-      return 'assets/animations/ax_tracking_delivering.json';
+      return 'packages/dalai/assets/animations/ax_tracking_delivering.json';
     } else if (animationType == AnimationType.trackingDropoff) {
-      return 'assets/animations/ax_tracking_dropoff.json';
+      return 'packages/dalai/assets/animations/ax_tracking_dropoff.json';
     } else if (animationType == AnimationType.trackingOngoingDelivery) {
-      return 'assets/animations/ax_tracking_ongoing_delivery.json';
+      return 'packages/dalai/assets/animations/ax_tracking_ongoing_delivery.json';
     } else if (animationType == AnimationType.trackingOngoingMarket) {
-      return 'assets/animations/ax_tracking_ongoing_market.json';
+      return 'packages/dalai/assets/animations/ax_tracking_ongoing_market.json';
     } else if (animationType == AnimationType.trackingOngoingSuper) {
-      return 'assets/animations/ax_tracking_ongoing_super.json';
+      return 'packages/dalai/assets/animations/ax_tracking_ongoing_super.json';
     } else if (animationType == AnimationType.trackingPickup) {
-      return 'assets/animations/ax_tracking_pickup.json';
+      return 'packages/dalai/assets/animations/ax_tracking_pickup.json';
     } else if (animationType == AnimationType.trackingQueued) {
-      return 'assets/animations/ax_tracking_queued.json';
+      return 'packages/dalai/assets/animations/ax_tracking_queued.json';
     } else if (animationType == AnimationType.paymentProcessing) {
-      return 'assets/animations/ax_payment_processing.json';
+      return 'packages/dalai/assets/animations/ax_payment_processing.json';
     } else {
-      return 'assets/animations/ax_error_generic.json';
+      return 'packages/dalai/assets/animations/ax_error_generic.json';
     }
   }
 }
