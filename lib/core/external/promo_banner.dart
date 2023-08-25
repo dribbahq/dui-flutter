@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dalai/common_utils/color_extension.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -52,6 +53,7 @@ class CustomCXBanner extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                Dalai.spacing.spacer(),
                 Expanded(
                   flex: 2,
                   child: ClipPath(
@@ -69,13 +71,11 @@ class CustomCXBanner extends StatelessWidget {
                           children: [
                             Spacer(),
                             Dalai.text.title1(context, title,
-                              maxLines: 2, color: calculateTextColor(
-                                  mainColor ?? Dalai.color.primary),),
+                              maxLines: 2, color: (mainColor ?? Dalai.color.primary).calculateLuminance()),
                             Dalai.spacing.spacer(small: true),
                             Dalai.text.regular(context, message,
                               bold: true,
-                              color: calculateTextColor(
-                                  mainColor ?? Dalai.color.primary).withOpacity(0.75),
+                              color: (mainColor ?? Dalai.color.primary).calculateLuminance().withOpacity(0.75),
                             ),
                             Spacer()
                           ],
@@ -84,6 +84,7 @@ class CustomCXBanner extends StatelessWidget {
                     ),
                   ),
                 ),
+                Dalai.spacing.spacer(),
                 Expanded(child: Container())
               ],
             ),
@@ -91,12 +92,6 @@ class CustomCXBanner extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Color calculateTextColor(Color background) {
-    return ThemeData.estimateBrightnessForColor(background) == Brightness.light
-        ? Colors.black
-        : Colors.white;
   }
 }
 

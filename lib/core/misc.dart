@@ -570,14 +570,12 @@ class Misc {
         rawSvg = markerDestinationDown;
       }
     } else if (marker == MapMarker.car) {
-      return getBytesFromPng(
-          'packages/dalai/assets/images/map_markers/map_marker_car.png', 150);
+      rawSvg = markerCar;
     } else if (marker == MapMarker.rider) {
-      return getBytesFromPng(
-          'packages/dalai/assets/images/map_markers/map_marker_rider.png', 150);
+      rawSvg = markerRider;
     } else if (marker == MapMarker.van) {
-      return getBytesFromPng(
-          'packages/dalai/assets/images/map_markers/map_marker_van.png', 150);
+      rawSvg = markerCar;
+
     }
 
     return svgToPng(rawSvg);

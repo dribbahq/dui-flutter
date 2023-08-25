@@ -18,7 +18,9 @@ enum AnimationType {
   trackingOngoingSuper,
   trackingPickup,
   trackingQueued,
-  paymentProcessing
+  paymentProcessing,
+  orderCancelled,
+  orderDelivered
 }
 
 class DalaiAnimations {
@@ -54,9 +56,9 @@ class DalaiAnimations {
                           .colorScheme
                           .background)
                       : Colors.transparent),
-              child: Lottie.asset(_extractAnimation(type),
-                  height: computedSize,
+              child: Lottie.asset(_extractAnimation(type), height: computedSize,
                   width: computedSize,
+                  package: 'dalai',
                   fit: boxFit)),
           circled ? Dalai.spacing.spacer() : SizedBox(height: animationPadding),
           title == null
@@ -85,36 +87,42 @@ class DalaiAnimations {
   }
 
   String _extractAnimation(AnimationType animationType) {
+    return 'assets/animations/ax_error_data.json';
+
     if (animationType == AnimationType.errorData) {
-      return 'packages/dalai/assets/animations/ax_error_data.json';
+      return 'assets/animations/ax_error_data.json';
     } else if (animationType == AnimationType.errorGeneric) {
-      return 'packages/dalai/assets/animations/ax_error_generic.json';
+      return 'assets/animations/ax_error_generic.json';
     } else if (animationType == AnimationType.errorMap) {
-      return 'packages/dalai/assets/animations/ax_error_map.json';
+      return 'assets/animations/ax_error_map.json';
     } else if (animationType == AnimationType.errorSearch) {
-      return 'packages/dalai/assets/animations/ax_error_search.json';
+      return 'assets/animations/ax_error_search.json';
     } else if (animationType == AnimationType.errorUpdate) {
-      return 'packages/dalai/assets/animations/ax_error_update.json';
+      return 'assets/animations/ax_error_update.json';
     } else if (animationType == AnimationType.errorWorking) {
-      return 'packages/dalai/assets/animations/ax_error_working.json';
+      return 'assets/animations/ax_error_working.json';
     } else if (animationType == AnimationType.trackingDelivering) {
-      return 'packages/dalai/assets/animations/ax_tracking_delivering.json';
+      return 'assets/animations/ax_tracking_delivering.json';
     } else if (animationType == AnimationType.trackingDropoff) {
-      return 'packages/dalai/assets/animations/ax_tracking_dropoff.json';
+      return 'assets/animations/ax_tracking_dropoff.json';
     } else if (animationType == AnimationType.trackingOngoingDelivery) {
-      return 'packages/dalai/assets/animations/ax_tracking_ongoing_delivery.json';
+      return 'assets/animations/ax_tracking_ongoing_delivery.json';
     } else if (animationType == AnimationType.trackingOngoingMarket) {
-      return 'packages/dalai/assets/animations/ax_tracking_ongoing_market.json';
+      return 'assets/animations/ax_tracking_ongoing_market.json';
     } else if (animationType == AnimationType.trackingOngoingSuper) {
-      return 'packages/dalai/assets/animations/ax_tracking_ongoing_super.json';
+      return 'assets/animations/ax_tracking_ongoing_super.json';
     } else if (animationType == AnimationType.trackingPickup) {
-      return 'packages/dalai/assets/animations/ax_tracking_pickup.json';
+      return 'assets/animations/ax_tracking_pickup.json';
     } else if (animationType == AnimationType.trackingQueued) {
-      return 'packages/dalai/assets/animations/ax_tracking_queued.json';
+      return 'assets/animations/ax_tracking_queued.json';
     } else if (animationType == AnimationType.paymentProcessing) {
-      return 'packages/dalai/assets/animations/ax_payment_processing.json';
+      return 'assets/animations/ax_tracking_queued.json'; // TODO
+    } else if (animationType == AnimationType.orderCancelled) {
+      return 'assets/animations/ax_order_cancel.json';
+    } else if (animationType == AnimationType.orderDelivered) {
+      return 'assets/animations/ax_order_delivered.json';
     } else {
-      return 'packages/dalai/assets/animations/ax_error_generic.json';
+      return 'assets/animations/ax_error_generic.json';
     }
   }
 }

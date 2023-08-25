@@ -14,6 +14,7 @@ import 'external/svg_content.dart';
 enum ComponentImage { beltImage, covidImage, musicImage }
 
 class DalaiCards {
+  @Deprecated('This widget will be removed in the future. Use Dalai.text elements instead.')
   Widget cardDescription(context, text, {color, maxLines, textAlign}) {
     return Text(
       text,
@@ -35,6 +36,7 @@ class DalaiCards {
     );
   }
 
+  @Deprecated('This widget will be removed in the future. Use Dalai.text elements instead.')
   Widget cardTitle(context, text, {color, maxLines, align, double? fontSize}) {
     return AutoSizeText(text,
         maxLines: 2,
@@ -64,6 +66,7 @@ class DalaiCards {
         ));
   }
 
+  @Deprecated('This widget will be removed in the future. Use Dalai.text elements instead.')
   Widget cardTitleSmall(context, text, {color, maxLines}) {
     return Text(
       text,
@@ -88,6 +91,7 @@ class DalaiCards {
     );
   }
 
+  @Deprecated('This widget will be removed in the future. Use Dalai.text elements instead.')
   Widget cardPrice(context, text,
       {Color? color,
         int? maxLines,
