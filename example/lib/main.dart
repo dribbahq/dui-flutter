@@ -730,7 +730,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         color: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
-                                            .color!)
+                                            .color!, bold: true)
                                   ],
                                 ),
                               ],
@@ -747,14 +747,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   children: [
                                     Dalai.icon.dalaiIcons(
                                       context,
-                                      CXIcon.bike_alt,
+                                      CXIcon.bag,
                                     ),
                                     Dalai.spacing.hSpacer(small: true),
                                     Dalai.text.regular(context, 'Tab 2',
                                         color: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
-                                            .color!)
+                                            .color!, bold: true)
                                   ],
                                 ),
                               ],
