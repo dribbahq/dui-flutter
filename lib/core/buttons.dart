@@ -429,7 +429,6 @@ class DalaiButtons {
       onPressed: () {
         if (onTap != null) onTap();
       },
-      child: Dalai.icon.dalaiIcons(context, icon),
       style: ButtonStyle(
         elevation: MaterialStateProperty.all(filled ? 2 : 0),
         shape: MaterialStateProperty.all(CircleBorder()),
@@ -438,16 +437,21 @@ class DalaiButtons {
         backgroundColor: MaterialStateProperty.all(filled
             ? Theme.of(context).colorScheme.background
             : Colors.transparent),
+        surfaceTintColor: MaterialStateProperty.all(filled
+            ? Theme.of(context).colorScheme.background
+            : Colors.transparent),
         overlayColor: MaterialStateProperty.resolveWith<Color?>((states) {
           if (states.contains(MaterialState.pressed) ||
-              states.contains(MaterialState.hovered))
+              states.contains(MaterialState.hovered)) {
             return Theme.of(context)
                 .textTheme
                 .bodyMedium!
                 .color!
                 .withOpacity(0.1);
+          }
         }),
       ),
+      child: Dalai.icon.dalaiIcons(context, icon),
     );
   }
 
