@@ -118,7 +118,9 @@ class DalaiCards {
       message: message,
       imageURL: imageURL,
       mainColor: mainColor,
-      onTap: () {},
+      onTap: () {
+        onTap();
+      },
     );
   }
 
