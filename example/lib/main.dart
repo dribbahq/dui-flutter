@@ -730,7 +730,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         color: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
-                                            .color!, bold: true)
+                                            .color!,
+                                        bold: true)
                                   ],
                                 ),
                               ],
@@ -754,7 +755,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         color: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
-                                            .color!, bold: true)
+                                            .color!,
+                                        bold: true)
                                   ],
                                 ),
                               ],
@@ -849,21 +851,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Dalai.text.title2(context, 'Cards'),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(Dalai.card.cardTitle(context, 'Card Title'),
-                        title: "Card Title"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Dalai.card.cardTitleSmall(context, 'Card Title Small'),
-                        title: "Card Title Small"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Dalai.card.cardDescription(context, 'Card Description'),
-                        title: "Card Description"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(Dalai.card.cardPrice(context, 'Card Price'),
-                        title: "Card Price"),
-                    Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.card.banner(
                             context,
@@ -976,6 +963,28 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Image + Text + Subtitle Component"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.card.partnerCard(
+                              "Gohan Yama",
+                              "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
+                              context,
+                              () {},
+                              partnerIsClosed: false,
+                              partnerDeliveryPrice: "2,99 €",
+                              partnerDeliveryTime: "15 - 30 min",
+                              partnerDescription: 'Fast Food & McCafé',
+                              scheduleBadgeTitle: "Opens at 19.25h",
+                              ratingTitle: "4.5",
+                              showFastBadge: true,
+                              promotionTitle: "Free delivery",
+                              type: PartnerCardType.fullWidth,
+                            ),
+                          ],
+                        ),
+                        title: "Partner Banners"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -1009,8 +1018,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.tile
-                                .listTileWithSub('Title', context, 'Subtitle', onTap: () {}),
+                            Dalai.tile.listTileWithSub(
+                                'Title', context, 'Subtitle',
+                                onTap: () {}),
                             Dalai.spacing.divider(context),
                             Dalai.tile.listTileWithSub(
                                 'Title', context, 'Subtitle',
@@ -1378,8 +1388,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 Dalai.spacing.hSpacer(small: true),
                                 FutureBuilder(
-                                  future: Dalai.misc.getMapMarker(
-                                      MapMarker.rider, context),
+                                  future: Dalai.misc
+                                      .getMapMarker(MapMarker.rider, context),
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData == false) {
                                       return Dalai.skeleton
@@ -1395,8 +1405,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 Dalai.spacing.hSpacer(small: true),
                                 FutureBuilder(
-                                  future: Dalai.misc.getMapMarker(
-                                      MapMarker.car, context),
+                                  future: Dalai.misc
+                                      .getMapMarker(MapMarker.car, context),
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData == false) {
                                       return Dalai.skeleton
@@ -1410,7 +1420,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     );
                                   },
                                 ),
-
                               ],
                             ),
                             Dalai.spacing.spacer(),
@@ -1495,21 +1504,21 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         title: "Map Markers"),
                     Dalai.spacing.spacer(small: true),
-                     showCaseBlock(
-                         Column(
-                           children: [
-                             Dalai.misc
-                                 .getPlaceholderImage(PlaceholderImage.courier),
-                             Dalai.spacing.spacer(),
-                             Dalai.misc
-                                 .getPlaceholderImage(PlaceholderImage.partner),
-                             Dalai.spacing.spacer(),
-                             Dalai.misc.getPlaceholderImage(
-                                 PlaceholderImage.experienceZone),
-                             Dalai.spacing.spacer(),
-                           ],
-                         ),
-                         title: "Placeholder Images"),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.misc
+                                .getPlaceholderImage(PlaceholderImage.courier),
+                            Dalai.spacing.spacer(),
+                            Dalai.misc
+                                .getPlaceholderImage(PlaceholderImage.partner),
+                            Dalai.spacing.spacer(),
+                            Dalai.misc.getPlaceholderImage(
+                                PlaceholderImage.experienceZone),
+                            Dalai.spacing.spacer(),
+                          ],
+                        ),
+                        title: "Placeholder Images"),
                     // Dalai.spacing.spacer(small: true),
                     // showCaseBlock(
                     //     Column(
