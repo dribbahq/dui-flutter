@@ -578,8 +578,6 @@ class DalaiButtons {
           color:
               Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.1),
           borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius + 2),
-          border: Border.all(
-              color: Theme.of(context).scaffoldBackgroundColor, width: 1.5),
         ),
         thumbDecoration: BoxDecoration(
           color: Theme.of(context).colorScheme.background,
