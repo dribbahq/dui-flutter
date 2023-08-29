@@ -56,7 +56,7 @@ class _CustomButtonState extends State<CustomButton> {
         constraints: BoxConstraints(
             minWidth: widget.loading ? (buttonMinHeight + 24) : 100,
             maxWidth: MediaQuery.of(context).size.width),
-        duration: Duration(milliseconds: 400),
+        duration: Duration(milliseconds: 200),
         curve: Curves.easeIn,
         width: widget.expanded
             ? double.infinity
