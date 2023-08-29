@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
@@ -72,69 +71,6 @@ class DalaiButtons {
       color: Colors.transparent,
       textColor: color ?? Theme.of(context).colorScheme.primary,
       loading: loading,
-    );
-
-    return Container(
-      height: buttonMinHeight,
-      constraints: BoxConstraints(minWidth: 200),
-      child: ElevatedButton(
-          onPressed: () {
-            if (onPressed != null) {
-              onPressed();
-            }
-          },
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            shadowColor: Colors.transparent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
-            ),
-            backgroundColor: Colors.transparent,
-            foregroundColor: Dalai.color.primaryOutlinedNestingBackground,
-            padding: Dalai.spacing.lateralPadding,
-          ),
-          child: loading!
-              ? Dalai.misc.loadingAnimation(context)
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    leading ?? const SizedBox.shrink(),
-                    Expanded(
-                        child: Center(
-                      child: content ??
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              icon != null
-                                  ? Row(
-                                      children: [
-                                        Dalai.icon.dalaiIcons(
-                                          context,
-                                          icon,
-                                          mainColor: color ??
-                                              Theme.of(context)
-                                                  .colorScheme
-                                                  .primary,
-                                        ),
-                                        Dalai.spacing.hSpacer(small: true)
-                                      ],
-                                    )
-                                  : const SizedBox.shrink(),
-                              text != null
-                                  ? Dalai.text.title3(
-                                      context,
-                                      text,
-                                      color: color ??
-                                          Theme.of(context).colorScheme.primary,
-                                    )
-                                  : const SizedBox.shrink(),
-                            ],
-                          ),
-                    )),
-                    trailing ?? const SizedBox.shrink(),
-                  ],
-                )),
     );
   }
 
@@ -272,6 +208,7 @@ class DalaiButtons {
                 .color!
                 .withOpacity(0.1);
           }
+          return null;
         }),
       ),
       child: Dalai.icon.dalaiIcons(context, icon),
@@ -394,7 +331,7 @@ class DalaiButtons {
       {bool isStretch = true,
       required Map<int, Widget> children,
       double height = 60}) {
-    return Container(
+    return SizedBox(
       height: height,
       child: CustomSlidingSegmentedControl<int>(
         initialValue: initialValue,

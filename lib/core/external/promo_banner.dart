@@ -45,7 +45,7 @@ class CustomCXBanner extends StatelessWidget {
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               image: CachedNetworkImageProvider(
-                                this.imageURL ?? '',
+                                imageURL ?? '',
                               ))),
                     ))
               ],

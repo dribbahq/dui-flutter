@@ -35,13 +35,15 @@ class DalaiInputs {
     bool? showSuffixSeparator = false,
   }) {
     StreamController<bool> streamController = StreamController<bool>();
-    FocusNode focus = focusNode ?? FocusNode();
-
     return StreamBuilder<bool>(
         stream: streamController.stream,
         builder: (context, snapshot) {
           bool isFocusEnabled = snapshot.data ?? false;
           return Focus(
+            focusNode: focusNode,
+            onFocusChange: (hasFocus) {
+              streamController.add(hasFocus);
+            },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -76,30 +78,30 @@ class DalaiInputs {
                       children: [
                         prefixIcon != null
                             ? Row(
-                          children: [
-                            prefixIcon,
-                            Dalai.spacing.hSpacer(),
-                            showPrefixSeparator!
-                                ? Row(
-                              children: [
-                                SizedBox(
-                                  height: 24,
-                                  child: VerticalDivider(
-                                    width: 1,
-                                    thickness: 1,
-                                    color: Theme.of(context)
-                                        .inputDecorationTheme
-                                        .enabledBorder!
-                                        .borderSide
-                                        .color,
-                                  ),
-                                ),
-                                Dalai.spacing.hSpacer()
-                              ],
-                            )
-                                : const SizedBox.shrink(),
-                          ],
-                        )
+                                children: [
+                                  prefixIcon,
+                                  Dalai.spacing.hSpacer(),
+                                  showPrefixSeparator!
+                                      ? Row(
+                                          children: [
+                                            SizedBox(
+                                              height: 24,
+                                              child: VerticalDivider(
+                                                width: 1,
+                                                thickness: 1,
+                                                color: Theme.of(context)
+                                                    .inputDecorationTheme
+                                                    .enabledBorder!
+                                                    .borderSide
+                                                    .color,
+                                              ),
+                                            ),
+                                            Dalai.spacing.hSpacer()
+                                          ],
+                                        )
+                                      : const SizedBox.shrink(),
+                                ],
+                              )
                             : const SizedBox.shrink(),
                         Expanded(
                           child: TextFormField(
@@ -109,7 +111,7 @@ class DalaiInputs {
                               }
                             },
                             onTapOutside: (event) {
-                              focus.unfocus();
+                              focusNode.unfocus();
                             },
                             onFieldSubmitted: (term) {
                               if (textInputAction != null &&
@@ -128,7 +130,6 @@ class DalaiInputs {
                                 TextCapitalization.sentences,
                             autofocus: false,
                             controller: controller,
-                            focusNode: focus,
                             enabled: enabled ?? true,
                             maxLength: maxLength,
                             obscureText: obscure ?? false,
@@ -260,22 +261,19 @@ class DalaiInputs {
                 )
               ],
             ),
-            onFocusChange: (hasFocus) {
-              streamController.add(hasFocus);
-            },
           );
         });
   }
 
   Widget smallTextField(
     TextEditingController? controller,
+    FocusNode focusNode,
     BuildContext context, {
     bool? enabled,
     TextInputType? keyboardType,
     TextCapitalization? textCapitalization,
     bool? obscure,
     TextInputAction? textInputAction,
-    FocusNode? focusNode,
     FocusNode? nextFocusNode,
     Widget? suffixIcon,
     Widget? prefixIcon,
@@ -294,13 +292,13 @@ class DalaiInputs {
     bool? showSuffixSeparator = false,
   }) {
     StreamController<bool> streamController = StreamController<bool>();
-    FocusNode focus = focusNode ?? FocusNode();
 
     return StreamBuilder<bool>(
         stream: streamController.stream,
         builder: (context, snapshot) {
           bool isFocusEnabled = snapshot.data ?? false;
           return Focus(
+            focusNode: focusNode,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -364,7 +362,7 @@ class DalaiInputs {
                         Expanded(
                           child: TextField(
                             onTapOutside: (event) {
-                              focus.unfocus();
+                              focusNode.unfocus();
                             },
                             onChanged: (value) {
                               if (onChange != null) {
@@ -380,7 +378,7 @@ class DalaiInputs {
                               if (onSubmit != null) {
                                 onSubmit(term)!;
                               }
-                              focus.unfocus();
+                              focusNode.unfocus();
                             },
                             inputFormatters: inputFormatters,
                             autocorrect: false,
@@ -389,7 +387,6 @@ class DalaiInputs {
                                 TextCapitalization.sentences,
                             autofocus: false,
                             controller: controller,
-                            focusNode: focus,
                             enabled: enabled ?? true,
                             maxLength: maxLength,
                             obscureText: obscure ?? false,
@@ -545,13 +542,13 @@ class DalaiInputs {
     bool enabled = true,
   }) {
     StreamController<bool> streamController = StreamController<bool>();
-    FocusNode focus = focusNode ?? FocusNode();
 
     return StreamBuilder<bool>(
         stream: streamController.stream,
         builder: (context, snapshot) {
           bool isFocusEnabled = snapshot.data ?? false;
           return Focus(
+            focusNode: focusNode,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -593,7 +590,7 @@ class DalaiInputs {
                         Expanded(
                           child: TextField(
                             onTapOutside: (event) {
-                              focus.unfocus();
+                              focusNode.unfocus();
                             },
                             onChanged: (value) {
                               if (onChange != null) {
@@ -609,7 +606,7 @@ class DalaiInputs {
                               if (onSubmit != null) {
                                 onSubmit(term)!;
                               }
-                              focus.unfocus();
+                              focusNode.unfocus();
                             },
                             inputFormatters: inputFormatters,
                             autocorrect: false,
@@ -618,8 +615,7 @@ class DalaiInputs {
                                 TextCapitalization.sentences,
                             autofocus: false,
                             controller: controller,
-                            focusNode: focus,
-                            enabled: enabled ?? true,
+                            enabled: enabled,
                             cursorColor: Theme.of(context)
                                 .inputDecorationTheme
                                 .focusColor,
@@ -696,26 +692,6 @@ class DalaiInputs {
                         loading
                             ? Dalai.spacing.hSpacer(small: true)
                             : SizedBox.shrink(),
-                        // enabled && controller!.text.isNotEmpty
-                        //     ? GestureDetector(
-                        //         child: Dalai.icon.dalaiIcons(
-                        //           context,
-                        //           CXIcon.xmark_circle,
-                        //           size: CXIconSize.small,
-                        //           mainColor: colorText,
-                        //         ),
-                        //         onTap: () {
-                        //           controller!.clear();
-                        //           focus.unfocus();
-                        //           if (onChange != null) {
-                        //             onChange();
-                        //           }
-                        //           if (onSubmit != null) {
-                        //             onSubmit('');
-                        //           }
-                        //         },
-                        //       )
-                        //     : SizedBox.shrink(),
                       ],
                     ),
                   ),
@@ -732,9 +708,8 @@ class DalaiInputs {
   Widget chatInputField(BuildContext context, String? label,
       TextEditingController? controller, FocusNode focusNode,
       {Function(String)? onSubmit, double? height, bool? enabled}) {
-    return Dalai.input.smallTextField(controller, context,
+    return Dalai.input.smallTextField(controller, focusNode, context,
         hint: label,
-        focusNode: focusNode,
         onSubmit: onSubmit,
         enabled: enabled,
         maxLines: 3,
@@ -756,7 +731,7 @@ class DalaiInputs {
         suffixIcon: trailing ?? const SizedBox.shrink(),
         prefixIcon: CountryPicker(
           initialSelection: initialPhonePrefix,
-          favorite: ['+376', '+34', '+33', '+351'],
+          favorite: const ['+376', '+34', '+33', '+351'],
           onChanged: (country) {
             onPrefixChange(country!.countryCode ?? '');
           },

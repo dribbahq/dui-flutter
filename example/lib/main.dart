@@ -531,7 +531,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Dalai.spacing.spacer(small: true),
                     showCaseBlock(
                         Dalai.input.smallTextField(
-                            TextEditingController(), context,
+                            TextEditingController(), FocusNode(), context,
                             hint: 'Email address'),
                         title: "Small"),
                     Dalai.spacing.spacer(small: true),

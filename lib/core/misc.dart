@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,7 +8,7 @@ import '../common_utils/common_utils.dart';
 import '../dalai.dart';
 import 'external/svg_content.dart';
 import 'dart:ui' as ui;
-import 'package:xml/xml.dart' as xml;
+import 'package:xml/xml.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 enum MapMarker { origin, destination, shop, rider, car, van, currentLocation }
@@ -203,7 +202,7 @@ class Misc {
 
   Widget loadingAnimation(BuildContext context,
       {double size = 24.0, bool light = false}) {
-    return Container(
+    return SizedBox(
         width: (2 * size * 0.88),
         height: (2 * size * 0.88),
         child: Center(
@@ -228,62 +227,60 @@ class Misc {
       Function? onDismissPressed}) {
     Utils.showBottomSheet(context,
         skipPadding: false,
-        content: Container(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Dalai.spacing.spacer(small: true),
-              title != null
-                  ? Dalai.text.small(context, title, bold: true)
-                  : SizedBox.shrink(),
-              subtitle != null
-                  ? Dalai.spacing.spacer(small: true)
-                  : SizedBox.shrink(),
-              subtitle != null
-                  ? Dalai.text.title3(context, subtitle)
-                  : SizedBox.shrink(),
-              Dalai.spacing.spacer(multiplier: 2),
-              content,
-              Dalai.spacing.spacer(multiplier: 2),
-              Row(
-                children: [
-                  dismissText == null
-                      ? const SizedBox.shrink()
-                      : Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: double.infinity,
-                            child: Dalai.button
-                                .noBgButton(context, dismissText!, () {
-                              if (onDismissPressed != null) {
-                                onDismissPressed!();
-                              }
-                              Navigator.pop(context);
-                            }),
-                          ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Dalai.spacing.spacer(small: true),
+            title != null
+                ? Dalai.text.small(context, title, bold: true)
+                : SizedBox.shrink(),
+            subtitle != null
+                ? Dalai.spacing.spacer(small: true)
+                : SizedBox.shrink(),
+            subtitle != null
+                ? Dalai.text.title3(context, subtitle)
+                : SizedBox.shrink(),
+            Dalai.spacing.spacer(multiplier: 2),
+            content,
+            Dalai.spacing.spacer(multiplier: 2),
+            Row(
+              children: [
+                dismissText == null
+                    ? const SizedBox.shrink()
+                    : Expanded(
+                        flex: 1,
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Dalai.button
+                              .noBgButton(context, dismissText, () {
+                            if (onDismissPressed != null) {
+                              onDismissPressed();
+                            }
+                            Navigator.pop(context);
+                          }),
                         ),
-                  Dalai.spacing.hSpacer(),
-                  buttonText == null
-                      ? const SizedBox.shrink()
-                      : Expanded(
-                          flex: 2,
-                          child: Container(
-                            width: double.infinity,
-                            child:
-                                Dalai.button.button(context, buttonText!, () {
-                              if (onButtonPressed != null) {
-// TODO
-                              }
-                              Navigator.pop(context);
-                            }),
-                          ),
-                        )
-                ],
-              )
-            ],
-          ),
+                      ),
+                Dalai.spacing.hSpacer(),
+                buttonText == null
+                    ? const SizedBox.shrink()
+                    : Expanded(
+                        flex: 2,
+                        child: SizedBox(
+                          width: double.infinity,
+                          child:
+                              Dalai.button.button(context, buttonText, () {
+                            if (onButtonPressed != null) {
+                              onButtonPressed();
+                            }
+                            Navigator.pop(context);
+                          }),
+                        ),
+                      )
+              ],
+            )
+          ],
         ));
   }
 
@@ -591,7 +588,7 @@ class Misc {
   }
 
   Future<Uint8List?> svgToPng(String svgString) async {
-    final document = xml.XmlDocument.parse(svgString);
+    final document = XmlDocument.parse(svgString);
     final svgElement = document.rootElement;
     final widthAttribute =
         svgElement.getAttribute('width')!.replaceAll("px", "");

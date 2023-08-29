@@ -27,6 +27,7 @@ class SlidableTile extends StatefulWidget {
     this.autoDone})
       : super(key: key);
 
+  @override
   _SlidableTileState createState() => _SlidableTileState();
 }
 

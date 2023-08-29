@@ -306,7 +306,7 @@ class DalaiCards {
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: imageUrl != null && imageUrl.isNotEmpty
                     ? CachedNetworkImage(
-                        imageUrl: imageUrl ?? '',
+                        imageUrl: imageUrl,
                         fit: BoxFit.cover,
                         progressIndicatorBuilder: (context, url, progress) =>
                             Dalai.misc.loadingAnimation(context),
@@ -332,7 +332,7 @@ class DalaiCards {
   }
 
   Widget iconSmallCard(
-      BuildContext context, String title, dynamic? imageUrl, Function() onTap,
+      BuildContext context, String title, dynamic imageUrl, Function() onTap,
       {bool isSelected = false}) {
     return GestureDetector(
         onTap: () {
@@ -363,7 +363,7 @@ class DalaiCards {
             children: [
               imageUrl == null
                   ? SizedBox.shrink()
-                  : Container(
+                  : SizedBox(
                       height: 72,
                       width: 72,
                       child: imageUrl is String
@@ -554,7 +554,7 @@ class DalaiCards {
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 spacing: 6,
                                 children: [
-                                  Dalai.text.regular(context, "$partnerName",
+                                  Dalai.text.regular(context, partnerName,
                                       maxLines: 1, bold: true),
                                 ]),
                           ),
@@ -792,7 +792,7 @@ class DalaiCards {
                                   crossAxisAlignment: WrapCrossAlignment.center,
                                   spacing: 6,
                                   children: [
-                                    Dalai.text.regular(context, "$partnerName",
+                                    Dalai.text.regular(context, partnerName,
                                         maxLines: 1, bold: true),
                                   ]),
                             ),
@@ -1052,7 +1052,7 @@ class DalaiCards {
                                         width: double.infinity,
                                         child: Center(
                                           child: Dalai.text.xs(
-                                              context, promotionTitle ?? '',
+                                              context, promotionTitle,
                                               color: Dalai.color.discount
                                                   .calculateLuminance(),
                                               bold: true),
@@ -1192,108 +1192,106 @@ class DalaiCards {
                   },
             child: AspectRatio(
                 aspectRatio: 0.62,
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Stack(
-                        fit: StackFit.loose,
-                        alignment: Alignment.bottomRight,
-                        children: [
-                          AspectRatio(
-                              aspectRatio: 1.0,
-                              child: Container(
-                                padding: EdgeInsets.all(
-                                    Dalai.spacing.lateralPaddingValue),
-                                decoration: BoxDecoration(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .background,
-                                    borderRadius: BorderRadius.circular(
-                                        Dalai.spacing.borderRadius)),
-                                width: double.infinity,
-                                child: CachedNetworkImage(
-                                  imageUrl: productImageURL ?? '',
-                                  imageBuilder: (context, imageProvider) =>
-                                      Container(
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: imageProvider,
-                                      ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Stack(
+                      fit: StackFit.loose,
+                      alignment: Alignment.bottomRight,
+                      children: [
+                        AspectRatio(
+                            aspectRatio: 1.0,
+                            child: Container(
+                              padding: EdgeInsets.all(
+                                  Dalai.spacing.lateralPaddingValue),
+                              decoration: BoxDecoration(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .background,
+                                  borderRadius: BorderRadius.circular(
+                                      Dalai.spacing.borderRadius)),
+                              width: double.infinity,
+                              child: CachedNetworkImage(
+                                imageUrl: productImageURL ?? '',
+                                imageBuilder: (context, imageProvider) =>
+                                    Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: imageProvider,
                                     ),
                                   ),
-                                  progressIndicatorBuilder:
-                                      (context, url, downloadProgress) =>
-                                          Container(
-                                    padding: EdgeInsets.zero,
-                                    width: 60,
-                                    height: 60,
-                                    child: Center(
-                                        child: Dalai.icon.dalaiIcons(
-                                            context, CXIcon.image,
-                                            size: CXIconSize.large,
-                                            mainColor: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium!
-                                                .color!
-                                                .lighten(0.3),
-                                            secondaryColor: Theme.of(context)
-                                                .colorScheme
-                                                .primary)),
-                                  ),
-                                  errorWidget: (context, url, error) =>
-                                      Container(
-                                    padding: EdgeInsets.zero,
-                                    width: 60,
-                                    height: 60,
-                                    child: Center(
-                                        child: Dalai.icon.dalaiIcons(
-                                            context, CXIcon.image,
-                                            size: CXIconSize.large,
-                                            mainColor: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium!
-                                                .color!
-                                                .lighten(0.3),
-                                            secondaryColor: Theme.of(context)
-                                                .colorScheme
-                                                .primary)),
-                                  ),
                                 ),
-                              )),
-                          Dalai.button.stepper(
-                              context, 0, (value, under, uper) {},
-                              reduced: true),
-                        ],
-                      ),
-                      Dalai.spacing.spacer(small: true),
-                      price != null
-                          ? Row(
-                              children: [
-                                Dalai.text.xs(context, price,
-                                    maxLines: 1,
-                                    bold: true,
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .color),
-                                Dalai.text.xs(context, '/ ' + priceAccessory!,
-                                    maxLines: 1,
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .color!
-                                        .withOpacity(0.8))
-                              ],
-                            )
-                          : SizedBox.shrink(),
-                      Dalai.text.xs(context, title,
-                          maxLines: 2,
-                          color: Theme.of(context).textTheme.bodyMedium!.color),
-                    ],
-                  ),
+                                progressIndicatorBuilder:
+                                    (context, url, downloadProgress) =>
+                                        Container(
+                                  padding: EdgeInsets.zero,
+                                  width: 60,
+                                  height: 60,
+                                  child: Center(
+                                      child: Dalai.icon.dalaiIcons(
+                                          context, CXIcon.image,
+                                          size: CXIconSize.large,
+                                          mainColor: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .color!
+                                              .lighten(0.3),
+                                          secondaryColor: Theme.of(context)
+                                              .colorScheme
+                                              .primary)),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    Container(
+                                  padding: EdgeInsets.zero,
+                                  width: 60,
+                                  height: 60,
+                                  child: Center(
+                                      child: Dalai.icon.dalaiIcons(
+                                          context, CXIcon.image,
+                                          size: CXIconSize.large,
+                                          mainColor: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .color!
+                                              .lighten(0.3),
+                                          secondaryColor: Theme.of(context)
+                                              .colorScheme
+                                              .primary)),
+                                ),
+                              ),
+                            )),
+                        Dalai.button.stepper(
+                            context, 0, (value, under, uper) {},
+                            reduced: true),
+                      ],
+                    ),
+                    Dalai.spacing.spacer(small: true),
+                    price != null
+                        ? Row(
+                            children: [
+                              Dalai.text.xs(context, price,
+                                  maxLines: 1,
+                                  bold: true,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .color),
+                              Dalai.text.xs(context, '/ ${priceAccessory!}',
+                                  maxLines: 1,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .color!
+                                      .withOpacity(0.8))
+                            ],
+                          )
+                        : SizedBox.shrink(),
+                    Dalai.text.xs(context, title,
+                        maxLines: 2,
+                        color: Theme.of(context).textTheme.bodyMedium!.color),
+                  ],
                 ))));
   }
 }

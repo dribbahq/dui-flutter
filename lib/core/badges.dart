@@ -27,13 +27,13 @@ class DalaiBadges {
         children: [
           icon != null
               ? Padding(
+                  padding: EdgeInsets.only(bottom: 2),
                   child: Dalai.icon.dalaiIcons(context, icon,
                       size: CXIconSize.x_small,
                       mainColor: (hierarchy == BadgeHierarchy.primary
                               ? bgColor
                               : bgColor.lighten())
                           .calculateLuminance()),
-                  padding: EdgeInsets.only(bottom: 2),
                 )
               : const SizedBox.shrink(),
           icon != null && text != null
@@ -220,15 +220,6 @@ class DalaiBadges {
         return Dalai.color.cream;
       default:
         return Theme.of(context).colorScheme.primary;
-    }
-  }
-
-  Color _getContentColor(BuildContext context, BadgeColor color) {
-    switch (color) {
-      case BadgeColor.white:
-        return Theme.of(context).textTheme.bodyMedium!.color!;
-      default:
-        return Theme.of(context).colorScheme.background;
     }
   }
 }

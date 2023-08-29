@@ -172,7 +172,7 @@ class _CustomButtonState extends State<CustomButton> {
                       BorderRadius.circular(Dalai.spacing.borderRadius),
                 ),
         ),
-        child: widget.loading!
+        child: widget.loading
             ? Dalai.misc.loadingAnimation(context,
                 light: (widget.textColor ?? Dalai.color.primaryContrast)
                         .computeLuminance() >

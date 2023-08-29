@@ -2,9 +2,8 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 
 class DalaiSpacing{
-  /**
-   * Margins
-   * */
+  /// Margins
+  ///
   final double smallPaddingValue = 4;
   final double lateralPaddingValue = 12;
   final double largeLateralPaddingValue = 20;
@@ -14,21 +13,18 @@ class DalaiSpacing{
   final double homeCategoriesPadding = 12 * 2;
 
 
-  /**
-  * Border Radius
-  * */
+  /// Border Radius
+  ///
   final double smallBorderRadius = 4.0;
   final double borderRadius = 12.0;
   final double largeBorderRadius = 24.0;
 
-  /**
-   * Border Width
-   * */
+  /// Border Width
+  ///
   final double borderWidth = 1.5;
 
-  /**
-  * Widgets
-  * */
+  /// Widgets
+  ///
   Widget spacer({int multiplier = 1, bool small = false}) {
     if (small) {
       return SizedBox(height: smallPaddingValue);

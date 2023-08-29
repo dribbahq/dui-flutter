@@ -23,11 +23,11 @@ class CountryPicker extends StatefulWidget {
   final String? initialSelection;
   final List<String>? favorite;
 
-  CountryPicker({
+  const CountryPicker({Key? key,
     this.onChanged,
     this.initialSelection,
     this.favorite,
-  });
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -42,7 +42,7 @@ class CountryPicker extends StatefulWidget {
             ))
         .toList();
 
-    return new _CountryPicker(elements);
+    return _CountryPicker(elements);
   }
 }
 
@@ -105,7 +105,7 @@ class _CountryPicker extends State<CountryPicker> {
 
   void _showSelectionDialog() {
     Utils.showBottomSheet(context,
-        content: Container(
+        content: SizedBox(
           height: MediaQuery.of(context).copyWith().size.height * 0.25,
           child: CupertinoPicker(
             magnification: 1,
