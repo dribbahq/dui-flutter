@@ -7,6 +7,7 @@ import 'package:dalai/core/external/custom_stepper.dart';
 import 'package:flutter/material.dart';
 import '../common_utils/common_utils.dart';
 import '../dalai.dart';
+import 'external/button.dart';
 import 'external/custom_switch.dart';
 
 class DalaiButtons {
@@ -20,65 +21,17 @@ class DalaiButtons {
       Widget? content,
       Color? color,
       Color? textColor,
-      bool? loading = false}) {
-    return Container(
-      height: buttonMinHeight,
-      constraints: const BoxConstraints(
-        minWidth: 200,
-      ),
-      child: ElevatedButton(
-        onPressed: () {
-          if (onPressed != null) {
-            onPressed();
-          }
-        },
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-          shadowColor: Colors.transparent,
-          padding: Dalai.spacing.lateralPadding,
-          backgroundColor: color ?? Theme.of(context).colorScheme.primary,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
-          ),
-        ),
-        child: loading!
-            ? Dalai.misc.loadingAnimation(context, light: true)
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  leading ?? const SizedBox.shrink(),
-                  Expanded(
-                      child: Center(
-                    child: content ??
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            icon != null
-                                ? Row(
-                                    children: [
-                                      Dalai.icon.dalaiIcons(
-                                        context,
-                                        icon,
-                                        mainColor: textColor ??
-                                            Dalai.color.primaryContrast,
-                                      ),
-                                      Dalai.spacing.hSpacer(small: true)
-                                    ],
-                                  )
-                                : const SizedBox.shrink(),
-                            text != null
-                                ? Dalai.text.title3(context, text,
-                                    color: textColor ??
-                                        Dalai.color.primaryContrast)
-                                : const SizedBox.shrink(),
-                          ],
-                        ),
-                  )),
-                  trailing ?? const SizedBox.shrink(),
-                ],
-              ),
-      ),
+      bool loading = false}) {
+    return CustomButton(
+      text: text,
+      onPressed: onPressed,
+      icon: icon,
+      leading: leading,
+      trailing: trailing,
+      content: content,
+      color: color,
+      textColor: textColor,
+      loading: loading,
     );
   }
 
@@ -88,69 +41,17 @@ class DalaiButtons {
       Widget? trailing,
       Widget? content,
       Color? color,
-      bool? loading = false}) {
-    return Container(
-      height: buttonMinHeight,
-      constraints: BoxConstraints(minWidth: 200),
-      child: ElevatedButton(
-          onPressed: () {
-            if (onPressed != null) {
-              onPressed();
-            }
-          },
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            shadowColor: Colors.transparent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
-            ),
-            backgroundColor:
-                Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.1),
-            padding: Dalai.spacing.lateralPadding,
-          ),
-          child: loading!
-              ? Dalai.misc.loadingAnimation(context, light: false)
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    leading ?? const SizedBox.shrink(),
-                    Expanded(
-                        child: Center(
-                      child: content ??
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              icon != null
-                                  ? Row(
-                                      children: [
-                                        Dalai.icon.dalaiIcons(
-                                          context,
-                                          icon,
-                                          mainColor: color ??
-                                              Theme.of(context)
-                                                  .colorScheme
-                                                  .primary,
-                                        ),
-                                        Dalai.spacing.hSpacer(small: true)
-                                      ],
-                                    )
-                                  : const SizedBox.shrink(),
-                              text != null
-                                  ? Dalai.text.regular(context, text,
-                                      color: color ??
-                                          Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .color,
-                                      bold: true)
-                                  : const SizedBox.shrink(),
-                            ],
-                          ),
-                    )),
-                    trailing ?? const SizedBox.shrink(),
-                  ],
-                )),
+      bool loading = false}) {
+    return CustomButton(
+      text: text,
+      onPressed: onPressed,
+      icon: icon,
+      leading: leading,
+      trailing: trailing,
+      content: content,
+      color: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.1),
+      textColor: color ?? Theme.of(context).textTheme.bodyMedium!.color,
+      loading: loading,
     );
   }
 
@@ -160,7 +61,19 @@ class DalaiButtons {
       Widget? trailing,
       Widget? content,
       Color? color,
-      bool? loading = false}) {
+      bool loading = false}) {
+    return CustomButton(
+      text: text,
+      onPressed: onPressed,
+      icon: icon,
+      leading: leading,
+      trailing: trailing,
+      content: content,
+      color: Colors.transparent,
+      textColor: color ?? Theme.of(context).colorScheme.primary,
+      loading: loading,
+    );
+
     return Container(
       height: buttonMinHeight,
       constraints: BoxConstraints(minWidth: 200),
@@ -232,71 +145,18 @@ class DalaiButtons {
       Widget? content,
       Color? color,
       Color? bgColor,
-      bool? loading = false}) {
-    return Container(
-      height: buttonMinHeight,
-      constraints: BoxConstraints(minWidth: 200),
-      child: ElevatedButton(
-          onPressed: () {
-            if (onPressed != null) {
-              onPressed();
-            }
-          },
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            shadowColor: Colors.transparent,
-            backgroundColor: bgColor ?? Colors.transparent,
-            foregroundColor: Dalai.color.primaryOutlinedNestingBackground,
-            padding: Dalai.spacing.lateralPadding,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                  color: color ?? Theme.of(context).colorScheme.primary,
-                  width: 2),
-              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
-            ),
-          ),
-          child: loading!
-              ? Dalai.misc.loadingAnimation(context)
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    leading ?? const SizedBox.shrink(),
-                    Expanded(
-                        child: Center(
-                      child: content ??
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              icon != null
-                                  ? Row(
-                                      children: [
-                                        Dalai.icon.dalaiIcons(
-                                          context,
-                                          icon,
-                                          mainColor: color ??
-                                              Theme.of(context)
-                                                  .colorScheme
-                                                  .primary,
-                                        ),
-                                        Dalai.spacing.hSpacer(small: true)
-                                      ],
-                                    )
-                                  : const SizedBox.shrink(),
-                              text != null
-                                  ? Dalai.text.title3(
-                                      context,
-                                      text,
-                                      color: color ??
-                                          Theme.of(context).colorScheme.primary,
-                                    )
-                                  : const SizedBox.shrink(),
-                            ],
-                          ),
-                    )),
-                    trailing ?? const SizedBox.shrink(),
-                  ],
-                )),
+      bool loading = false}) {
+    return CustomButton(
+      text: text,
+      onPressed: onPressed,
+      icon: icon,
+      leading: leading,
+      trailing: trailing,
+      content: content,
+      color: color,
+      textColor: color ?? Theme.of(context).colorScheme.primary,
+      loading: loading,
+      outlined: true,
     );
   }
 
@@ -304,54 +164,17 @@ class DalaiButtons {
       {CXIcon? icon,
       Color? color,
       Color? bgColor,
-      bool? loading = false,
+      bool loading = false,
       bool expand = false}) {
-    return SizedBox(
-      width: expand ? double.infinity : null,
-      child: ElevatedButton(
-          onPressed: () {
-            if (onPressed != null && loading == false) {
-              onPressed();
-            }
-          },
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            shadowColor: Colors.transparent,
-            backgroundColor: bgColor ?? Colors.transparent,
-            foregroundColor: Dalai.color.primaryOutlinedNestingBackground,
-            padding: Dalai.spacing.lateralPadding,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                  color: color ??
-                      Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .color!
-                          .withOpacity(0.2), //TODO
-                  width: 1),
-              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
-            ),
-          ),
-          child: loading!
-              ? Dalai.misc.loadingAnimation(context, size: 18)
-              : Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    icon != null
-                        ? Row(
-                            children: [
-                              Dalai.icon.dalaiIcons(context, icon,
-                                  mainColor: color, size: CXIconSize.x_small),
-                              Dalai.spacing.hSpacer(small: true)
-                            ],
-                          )
-                        : const SizedBox.shrink(),
-                    text != null
-                        ? Dalai.text
-                            .small(context, text, color: color, bold: true)
-                        : const SizedBox.shrink(),
-                  ],
-                )),
+    return CustomButton(
+      text: text,
+      onPressed: onPressed,
+      icon: icon,
+      color: color,
+      textColor: color ?? Theme.of(context).colorScheme.primary,
+      loading: loading,
+      small: true,
+      expanded: expand,
     );
   }
 
@@ -601,6 +424,7 @@ class DalaiButtons {
       {bool loading = false,
       String? appendString,
       String? customText,
+      bool reduced = false,
       int? lowerLimit,
       int? upperLimit}) {
     return CustomStepper(
@@ -608,6 +432,7 @@ class DalaiButtons {
       upperLimit: upperLimit,
       initialValue: initialValue,
       loading: loading,
+      reduced: reduced,
       appendString: appendString,
       customText: customText,
       onChange: (int value, bool underLowerLimit, bool overUpperLimit) {

@@ -92,6 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
   var key11 = GlobalKey();
   var key12 = GlobalKey();
 
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -584,11 +586,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.button(context, "Log In", () {},
-                                loading: false),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.button.button(context, "Log In", () {},
-                                loading: true),
+                            Dalai.button.button(context, "Log In", () {
+                              setState(() {
+                                loading = !loading;
+                              });
+                            }, loading: loading),
+                            Dalai.spacing.spacer(),
+                            Dalai.button.button(context, "Log In", null, loading: loading),
                           ],
                         ),
                         title: "Regular"),
@@ -596,10 +600,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.shadowButton(context, "Log In", () {}),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.button.shadowButton(context, "Log In", () {},
-                                loading: true),
+                            Dalai.button.shadowButton(context, "Log In", () {
+                              setState(() {
+                                loading = !loading;
+                              });
+                            }, loading: loading),
+                            Dalai.spacing.spacer(),
+                            Dalai.button.shadowButton(context, "Log In", null, loading: loading),
                           ],
                         ),
                         title: "Shadow"),
@@ -607,10 +614,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.noBgButton(context, "Log In", () {}),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.button.noBgButton(context, "Log In", () {},
-                                loading: true),
+                            Dalai.button.noBgButton(context, "Log In", () {
+                              setState(() {
+                                loading = !loading;
+                              });
+                            }, loading: loading),
+                            Dalai.spacing.spacer(),
+                            Dalai.button.noBgButton(context, "Log In", null, loading: loading),
                           ],
                         ),
                         title: "No BG Button"),
@@ -618,11 +628,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button
-                                .outlineButton(context, "Log In", () {}),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.button.outlineButton(context, "Log In", () {},
-                                loading: true),
+                            Dalai.button.outlineButton(context, "Log In", () {
+                              setState(() {
+                                loading = !loading;
+                              });
+                            }, loading: loading),
+                            Dalai.spacing.spacer(),
+                            Dalai.button.outlineButton(context, "Log In", null, loading: loading),
                           ],
                         ),
                         title: "Outline Button"),
@@ -630,10 +642,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.smallButton(context, "Log In", () {}),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.button.smallButton(context, "Log In", () {},
-                                loading: true),
+                            Dalai.button.smallButton(context, "Log In", () {
+                              setState(() {
+                                loading = !loading;
+                              });
+                            }, loading: loading),
+                            Dalai.spacing.spacer(),
+                            Dalai.button.smallButton(context, "Log In", null, loading: loading),
                           ],
                         ),
                         title: "Small Button"),
@@ -975,16 +990,152 @@ class _MyHomePageState extends State<MyHomePage> {
                               partnerIsClosed: false,
                               partnerDeliveryPrice: "2,99 €",
                               partnerDeliveryTime: "15 - 30 min",
-                              partnerDescription: 'Fast Food & McCafé',
-                              scheduleBadgeTitle: "Opens at 19.25h",
+                              partnerAccessory: 'Fast Food & McCafé',
+                              badge: Dalai.badge.badgeSolid(context, 'Open'),
                               ratingTitle: "4.5",
                               showFastBadge: true,
                               promotionTitle: "Free delivery",
                               type: PartnerCardType.fullWidth,
                             ),
+                            Dalai.spacing.spacer(),
+                            Dalai.card.partnerCard(
+                              "Gohan Yama",
+                              "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
+                              context,
+                              () {},
+                              partnerIsClosed: false,
+                              partnerDeliveryPrice: "2,99 €",
+                              partnerDeliveryTime: "15 - 30 min",
+                              partnerAccessory: 'Fast Food & McCafé',
+                              badge: Dalai.badge.badgeSolid(context, 'Open'),
+                              ratingTitle: "4.5",
+                              showFastBadge: true,
+                              promotionTitle: "Free delivery",
+                              type: PartnerCardType.squared,
+                            ),
+                            Dalai.spacing.spacer(),
+                            Dalai.card.partnerCard(
+                              "Gohan Yama",
+                              "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
+                              context,
+                              () {},
+                              partnerIsClosed: false,
+                              partnerDeliveryPrice: "2,99 €",
+                              partnerDeliveryTime: "15 - 30 min",
+                              partnerAccessory: 'Fast Food & McCafé',
+                              badge: Dalai.badge.badgeSolid(context, 'Open'),
+                              ratingTitle: "4.5",
+                              showFastBadge: true,
+                              promotionTitle: "Free delivery",
+                              type: PartnerCardType.promoted,
+                            ),
+                            Dalai.spacing.spacer(multiplier: 2),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Dalai.card.partnerCard(
+                                    "Ametller Origen",
+                                    "https://seeklogo.com/images/A/ametller-origen-logo-596158BBFA-seeklogo.com.png",
+                                    context,
+                                    () {},
+                                    partnerIsClosed: true,
+                                    partnerDeliveryPrice: "Gratis",
+                                    partnerDeliveryTime: "15 - 30 min",
+                                    promotionTitle: "¡Envio GRATIS!",
+                                    type: PartnerCardType.withPartnerLogo,
+                                  ),
+                                ),
+                                Dalai.spacing.hSpacer(),
+                                Expanded(
+                                  child: Dalai.card.partnerCard(
+                                    "Carrefour Andorra 2000",
+                                    "https://assets.stickpng.com/images/5842906ca6515b1e0ad75abb.png",
+                                    context,
+                                    () {},
+                                    partnerDeliveryPrice: "2,99 €",
+                                    partnerDeliveryTime: "15 - 30 min",
+                                    partnerAccessory: '12 prod. max.',
+                                    promotionTitle: "10% de descuento",
+                                    type: PartnerCardType.withPartnerLogo,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Dalai.spacing.spacer(),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Dalai.card.partnerCard(
+                                    "Pyrenees Gourmet",
+                                    "https://www.pyrenees.ad/images/logo.webp",
+                                    context,
+                                    () {},
+                                    partnerIsClosed: false,
+                                    partnerDeliveryPrice: "Gratis",
+                                    partnerDeliveryTime: "15 - 30 min",
+                                    type: PartnerCardType.withPartnerLogo,
+                                  ),
+                                ),
+                                Dalai.spacing.hSpacer(),
+                                Expanded(
+                                  child: Dalai.card.partnerCard(
+                                    "Mercadona",
+                                    "https://1000marcas.net/wp-content/uploads/2021/09/Mercadona-Logo.png",
+                                    context,
+                                    () {},
+                                    partnerDeliveryPrice: "2,99 €",
+                                    partnerDeliveryTime: "15 - 30 min",
+                                    type: PartnerCardType.withPartnerLogo,
+                                  ),
+                                ),
+                              ],
+                            )
                           ],
                         ),
                         title: "Partner Banners"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Dalai.card.gridProductItem(
+                                    context,
+                                    'Nomen Arròs bomba ideal caldos',
+                                    '4,42€',
+                                    "https://www.supermercadosmas.com/media/catalog/product/cache/d91bc430dbe2e3d899436802c7aa5233/a/e/aecoc_08410055150070_08410055150070_d1n1.jpg",
+                                    () {},
+                                    priceAccessory: '1 kg',
+                                  ),
+                                ),
+                                Dalai.spacing.hSpacer(),
+                                Expanded(
+                                  child: Dalai.card.gridProductItem(
+                                    context,
+                                    'Nomen Arròs bomba ideal caldos',
+                                    '4,42€',
+                                    "https://www.supermercadosmas.com/media/catalog/product/cache/d91bc430dbe2e3d899436802c7aa5233/a/e/aecoc_08410055150070_08410055150070_d1n1.jpg",
+                                    () {},
+                                    priceAccessory: '1 kg',
+                                  ),
+                                ),
+                                Dalai.spacing.hSpacer(),
+                                Expanded(
+                                  child: Dalai.card.gridProductItem(
+                                    context,
+                                    'Nomen Arròs bomba ideal caldos',
+                                    '4,42€',
+                                    "https://www.supermercadosmas.com/media/catalog/product/cache/d91bc430dbe2e3d899436802c7aa5233/a/e/aecoc_08410055150070_08410055150070_d1n1.jpg",
+                                    () {},
+                                    priceAccessory: '1 kg',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        title: "Product Grid"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -1699,7 +1850,7 @@ class _MyHomePageState extends State<MyHomePage> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         GridPaper(
-          color: Dalai.color.grey.withOpacity(0.15),
+          color: Dalai.color.grey.withOpacity(0.1),
           divisions: 2,
           subdivisions: 2,
           interval: 24,

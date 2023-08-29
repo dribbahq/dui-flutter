@@ -16,7 +16,13 @@ import 'external/svg_content.dart';
 
 enum ComponentImage { beltImage, covidImage, musicImage }
 
-enum PartnerCardType { fullWidth, fullWidthCarousel, squared, promoted }
+enum PartnerCardType {
+  fullWidth,
+  fullWidthCarousel,
+  squared,
+  promoted,
+  withPartnerLogo
+}
 
 class DalaiCards {
   @Deprecated(
@@ -426,16 +432,17 @@ class DalaiCards {
   Widget partnerCard(String partnerName, String? imageURL, BuildContext context,
       Function() onTap,
       {PartnerCardType type = PartnerCardType.fullWidth,
-      String? partnerDescription,
+      String? partnerAccessory,
       String? partnerDeliveryPrice,
       String? partnerDeliveryTime,
-      String? scheduleBadgeTitle,
+      Widget? badge,
       String? ratingTitle,
       String? promotionTitle,
       bool partnerIsClosed = false,
       bool showFastBadge = false,
       bool allowToSchedule = true}) {
-    if (type == PartnerCardType.fullWidth) {
+    if (type == PartnerCardType.fullWidth ||
+        type == PartnerCardType.fullWidthCarousel) {
       return Material(
         color: Colors.transparent,
         child: GestureDetector(
@@ -461,10 +468,75 @@ class DalaiCards {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
-                    child: _imageBanner(context, imageURL,
-                        partnerIsClosed: partnerIsClosed,
-                        promotionTitle: promotionTitle,
-                        showFastBadge: showFastBadge),
+                    child: Stack(
+                      fit: StackFit.loose,
+                      alignment: Alignment.topRight,
+                      children: [
+                        CachedNetworkImage(
+                          imageUrl: imageURL ?? '',
+                          imageBuilder: (context, imageProvider) => Container(
+                            padding: EdgeInsets.zero,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                  Dalai.spacing.borderRadius),
+                              image: DecorationImage(
+                                colorFilter: partnerIsClosed
+                                    ? ColorFilter.mode(
+                                        Dalai.color.black, BlendMode.color)
+                                    : null,
+                                fit: BoxFit.cover,
+                                image: imageProvider,
+                              ),
+                            ),
+                          ),
+                          progressIndicatorBuilder:
+                              (context, url, downloadProgress) => Container(
+                            padding: EdgeInsets.zero,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .color!
+                                        .withOpacity(0.2),
+                                    width: 0.2),
+                                borderRadius: BorderRadius.circular(
+                                    Dalai.spacing.borderRadius),
+                                color: Dalai.color.black.withOpacity(0.05)),
+                            child: Center(
+                              child: Dalai.misc.loadingAnimation(context),
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            padding: EdgeInsets.zero,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                  Dalai.spacing.borderRadius),
+                              image: DecorationImage(
+                                colorFilter: partnerIsClosed
+                                    ? ColorFilter.mode(
+                                        Dalai.color.black, BlendMode.color)
+                                    : null,
+                                fit: BoxFit.cover,
+                                image: Dalai.misc.getPlaceholderImageProvider(
+                                    PlaceholderImage.partner),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(
+                              Dalai.spacing.lateralPaddingValue / 2),
+                          child: partnerIsClosed || promotionTitle == null
+                              ? SizedBox.shrink()
+                              : Dalai.badge.badgeSolid(context, promotionTitle,
+                                  color: BadgeColor.white, icon: CXIcon.deal),
+                        ),
+                      ],
+                    ),
                   ),
                   Dalai.spacing.spacer(small: true),
                   Column(
@@ -486,14 +558,11 @@ class DalaiCards {
                                       maxLines: 1, bold: true),
                                 ]),
                           ),
-                          scheduleBadgeTitle != null
+                          badge != null
                               ? Column(
                                   children: [
                                     Dalai.spacing.hSpacer(small: true),
-                                    Dalai.badge.badgeSolid(
-                                        context, scheduleBadgeTitle,
-                                        color: BadgeColor.secondary,
-                                        hierarchy: BadgeHierarchy.secondary)
+                                    badge
                                   ],
                                 )
                               : SizedBox.shrink(),
@@ -598,90 +667,633 @@ class DalaiCards {
         ),
       );
     }
+    if (type == PartnerCardType.squared) {
+      return Material(
+        color: Colors.transparent,
+        child: GestureDetector(
+            onTap: partnerIsClosed && !allowToSchedule
+                ? () {
+                    Utils.vibrateOnHeavyTap();
+                  }
+                : () {
+                    Utils.vibrateOnTap();
+                    onTap();
+                  },
+            child: Container(
+                width: 180,
+                padding: EdgeInsets.zero,
+                margin: EdgeInsets.only(
+                    bottom: 0,
+                    left: Dalai.spacing.lateralPaddingValue,
+                    right: Dalai.spacing.lateralPaddingValue),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    AspectRatio(
+                      aspectRatio: 1,
+                      child: Expanded(
+                        child: Stack(
+                          fit: StackFit.loose,
+                          alignment: Alignment.topRight,
+                          children: [
+                            CachedNetworkImage(
+                              imageUrl: imageURL ?? '',
+                              imageBuilder: (context, imageProvider) =>
+                                  Container(
+                                padding: EdgeInsets.zero,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      Dalai.spacing.borderRadius),
+                                  image: DecorationImage(
+                                    colorFilter: partnerIsClosed
+                                        ? ColorFilter.mode(
+                                            Dalai.color.black, BlendMode.color)
+                                        : null,
+                                    fit: BoxFit.cover,
+                                    image: imageProvider,
+                                  ),
+                                ),
+                              ),
+                              progressIndicatorBuilder:
+                                  (context, url, downloadProgress) => Container(
+                                padding: EdgeInsets.zero,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .color!
+                                            .withOpacity(0.2),
+                                        width: 0.2),
+                                    borderRadius: BorderRadius.circular(
+                                        Dalai.spacing.borderRadius),
+                                    color: Dalai.color.black.withOpacity(0.05)),
+                                child: Center(
+                                  child: Dalai.misc.loadingAnimation(context),
+                                ),
+                              ),
+                              errorWidget: (context, url, error) => Container(
+                                padding: EdgeInsets.zero,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      Dalai.spacing.borderRadius),
+                                  image: DecorationImage(
+                                    colorFilter: partnerIsClosed
+                                        ? ColorFilter.mode(
+                                            Dalai.color.black, BlendMode.color)
+                                        : null,
+                                    fit: BoxFit.cover,
+                                    image: Dalai.misc
+                                        .getPlaceholderImageProvider(
+                                            PlaceholderImage.partner),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(
+                                  Dalai.spacing.lateralPaddingValue / 2),
+                              child: partnerIsClosed || promotionTitle == null
+                                  ? SizedBox.shrink()
+                                  : Dalai.badge.badgeSolid(
+                                      context, promotionTitle,
+                                      color: BadgeColor.white,
+                                      icon: CXIcon.deal),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Dalai.spacing.spacer(small: true),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Dalai.spacing.spacer(small: true),
+                        badge != null
+                            ? Column(
+                                children: [
+                                  badge,
+                                  Dalai.spacing.spacer(small: true),
+                                ],
+                              )
+                            : SizedBox.shrink(),
+
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Wrap(
+                                  alignment: WrapAlignment.start,
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  spacing: 6,
+                                  children: [
+                                    Dalai.text.regular(context, "$partnerName",
+                                        maxLines: 1, bold: true),
+                                  ]),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Dalai.text.xs(context, partnerDeliveryPrice,
+                                bold: true,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .color),
+                            partnerDeliveryTime != null
+                                ? Dalai.text.xs(context, " · ", bold: true)
+                                : SizedBox.shrink(),
+                            partnerDeliveryTime != null &&
+                                    !partnerIsClosed &&
+                                    showFastBadge
+                                ? Dalai.icon.dalaiIcons(context, CXIcon.fast,
+                                    size: CXIconSize.x_small)
+                                : SizedBox.shrink(),
+                            partnerDeliveryTime != null
+                                ? Dalai.text.xs(context, " ", bold: true)
+                                : SizedBox.shrink(),
+                            partnerDeliveryTime != null
+                                ? Dalai.text.xs(context, partnerDeliveryTime,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .color)
+                                : SizedBox.shrink(),
+                            Expanded(
+                              child: SizedBox.shrink(),
+                            ),
+                          ],
+                        ),
+                        // Row(
+                        //   children: [
+                        //     widget.localFiltered != null &&
+                        //             widget.localFiltered!
+                        //         ? FutureBuilder<String?>(
+                        //             builder: (context, snapshot) {
+                        //               if (!snapshot.hasData ||
+                        //                   snapshot.data == null) {
+                        //                 return SizedBox.shrink();
+                        //               }
+                        //               return Dalai.text.small(context,
+                        //                   '${MyLocalizations.of(context, 'distance_title')} ${snapshot.data}',
+                        //                   bold: true);
+                        //             },
+                        //             future: _business!
+                        //                 .getDistanceFromBusiness(context),
+                        //           )
+                        //         : Dalai.text.small(
+                        //             context,
+                        //             Utils.getPriceText(
+                        //                 context, _deliveryCost),
+                        //             bold: true),
+                        //     _readyTime(context) != null
+                        //         ? Row(
+                        //             children: [
+                        //               Dalai.text
+                        //                   .small(context, ' · ', bold: true),
+                        //               Dalai.text.small(
+                        //                   context, _readyTime(context)),
+                        //             ],
+                        //           )
+                        //         : SizedBox.shrink(),
+                        //     widget.isSquare!
+                        //         ? SizedBox.shrink()
+                        //         : Expanded(
+                        //             child: Row(
+                        //               children: [
+                        //                 Dalai.text.small(context, ' · ',
+                        //                     bold: true),
+                        //                 Expanded(
+                        //                   child: Dalai.text.small(context,
+                        //                       _business!.getSubtitle(),
+                        //                       maxLines: 1),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //   ],
+                        // ),
+                      ],
+                    ),
+                  ],
+                ))),
+      );
+    }
+    if (type == PartnerCardType.promoted) {
+      return Material(
+        color: Colors.transparent,
+        child: GestureDetector(
+            onTap: partnerIsClosed && !allowToSchedule
+                ? () {
+                    Utils.vibrateOnHeavyTap();
+                  }
+                : () {
+                    Utils.vibrateOnTap();
+                    onTap();
+                  },
+            child: Container(
+                width: 180,
+                padding: EdgeInsets.zero,
+                margin: EdgeInsets.only(
+                    bottom: 0,
+                    left: Dalai.spacing.lateralPaddingValue,
+                    right: Dalai.spacing.lateralPaddingValue),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    AspectRatio(
+                      aspectRatio: 1,
+                      child: Expanded(
+                        child: Stack(
+                          fit: StackFit.loose,
+                          alignment: Alignment.topRight,
+                          children: [
+                            CachedNetworkImage(
+                              imageUrl: imageURL ?? '',
+                              imageBuilder: (context, imageProvider) =>
+                                  Container(
+                                padding: EdgeInsets.zero,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      Dalai.spacing.borderRadius),
+                                  image: DecorationImage(
+                                    colorFilter: partnerIsClosed
+                                        ? ColorFilter.mode(
+                                            Dalai.color.black, BlendMode.color)
+                                        : null,
+                                    fit: BoxFit.cover,
+                                    image: imageProvider,
+                                  ),
+                                ),
+                              ),
+                              progressIndicatorBuilder:
+                                  (context, url, downloadProgress) => Container(
+                                padding: EdgeInsets.zero,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .color!
+                                            .withOpacity(0.2),
+                                        width: 0.2),
+                                    borderRadius: BorderRadius.circular(
+                                        Dalai.spacing.borderRadius),
+                                    color: Dalai.color.black.withOpacity(0.05)),
+                                child: Center(
+                                  child: Dalai.misc.loadingAnimation(context),
+                                ),
+                              ),
+                              errorWidget: (context, url, error) => Container(
+                                padding: EdgeInsets.zero,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      Dalai.spacing.borderRadius),
+                                  image: DecorationImage(
+                                    colorFilter: partnerIsClosed
+                                        ? ColorFilter.mode(
+                                            Dalai.color.black, BlendMode.color)
+                                        : null,
+                                    fit: BoxFit.cover,
+                                    image: Dalai.misc
+                                        .getPlaceholderImageProvider(
+                                            PlaceholderImage.partner),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Dalai.spacing.spacer(small: true),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Dalai.spacing.spacer(small: true),
+                        Dalai.text.regular(context, partnerName,
+                            maxLines: 1, bold: true),
+                      ],
+                    ),
+                  ],
+                ))),
+      );
+    }
+    if (type == PartnerCardType.withPartnerLogo) {
+      return FutureBuilder<Color>(
+        future:
+            Utils.getImagePalette(CachedNetworkImageProvider(imageURL ?? '')),
+        builder: (context, snapshot) {
+          return Material(
+            color: Colors.transparent,
+            child: GestureDetector(
+                onTap: partnerIsClosed && !allowToSchedule
+                    ? () {
+                        Utils.vibrateOnHeavyTap();
+                      }
+                    : () {
+                        Utils.vibrateOnTap();
+                        onTap();
+                      },
+                child: AspectRatio(
+                    aspectRatio: 0.9,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          borderRadius: BorderRadius.circular(
+                              Dalai.spacing.borderRadius)),
+                      child: Stack(
+                          fit: StackFit.loose,
+                          alignment: Alignment.topCenter,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: snapshot.data == null
+                                      ? Colors.transparent
+                                      : snapshot.data!.withOpacity(0.08),
+                                  borderRadius: BorderRadius.circular(
+                                      Dalai.spacing.borderRadius)),
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                promotionTitle == null
+                                    ? Dalai.spacing.spacer(multiplier: 2)
+                                    : Container(
+                                        margin: EdgeInsets.only(
+                                            bottom: Dalai
+                                                .spacing.lateralPaddingValue),
+                                        padding: EdgeInsets.only(
+                                            left: Dalai
+                                                .spacing.lateralPaddingValue,
+                                            right: Dalai
+                                                .spacing.lateralPaddingValue,
+                                            top: 4,
+                                            bottom: 2),
+                                        decoration: BoxDecoration(
+                                            color: Dalai.color.discount,
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(
+                                                    Dalai.spacing.borderRadius),
+                                                topRight: Radius.circular(Dalai
+                                                    .spacing.borderRadius))),
+                                        width: double.infinity,
+                                        child: Center(
+                                          child: Dalai.text.xs(
+                                              context, promotionTitle ?? '',
+                                              color: Dalai.color.discount
+                                                  .calculateLuminance(),
+                                              bold: true),
+                                        ),
+                                      ),
+                                CachedNetworkImage(
+                                  imageUrl: imageURL ?? '',
+                                  imageBuilder: (context, imageProvider) =>
+                                      Container(
+                                    padding: EdgeInsets.zero,
+                                    width: 120,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        fit: BoxFit.fitHeight,
+                                        image: imageProvider,
+                                      ),
+                                    ),
+                                  ),
+                                  progressIndicatorBuilder:
+                                      (context, url, downloadProgress) =>
+                                          Container(
+                                    padding: EdgeInsets.zero,
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .color!
+                                          .withOpacity(0.05),
+                                      borderRadius: BorderRadius.circular(200),
+                                    ),
+                                    child: Center(
+                                      child:
+                                          Dalai.misc.loadingAnimation(context),
+                                    ),
+                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      Container(
+                                    padding: EdgeInsets.zero,
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .color!
+                                          .withOpacity(0.05),
+                                      borderRadius: BorderRadius.circular(200),
+                                    ),
+                                    child: Center(
+                                        child: Dalai.icon.dalaiIcons(
+                                      context,
+                                      CXIcon.shop,
+                                    )),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Dalai.spacing.spacer(),
+                                ),
+                                Dalai.text.small(context, partnerName,
+                                    bold: true,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .color,
+                                    maxLines: 1,
+                                    textAlign: TextAlign.center),
+                                Dalai.spacing.spacer(small: true),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Dalai.text.xs(context, partnerDeliveryPrice,
+                                        bold: true,
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .color),
+                                    partnerDeliveryTime != null
+                                        ? Dalai.text
+                                            .xs(context, " · ", bold: true)
+                                        : SizedBox.shrink(),
+                                    partnerDeliveryTime != null
+                                        ? Dalai.text.xs(
+                                            context, partnerDeliveryTime,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .color)
+                                        : SizedBox.shrink(),
+                                  ],
+                                ),
+                                partnerAccessory == null
+                                    ? SizedBox.shrink()
+                                    : Dalai.spacing.spacer(small: true),
+                                partnerAccessory == null
+                                    ? SizedBox.shrink()
+                                    : Dalai.badge.badgeSolid(
+                                        context, partnerAccessory,
+                                        color: BadgeColor.white,
+                                        hierarchy: BadgeHierarchy.secondary),
+                                Expanded(
+                                  flex: 2,
+                                  child: Dalai.spacing.spacer(),
+                                ),
+                              ],
+                            ),
+                          ]),
+                    ))),
+          );
+        },
+      );
+    }
     return Container();
   }
 
-  Widget _imageBanner(BuildContext context, String? partnerImageURL,
-      {bool partnerIsClosed = false,
-      bool showFastBadge = false,
-      String? promotionTitle}) {
-    return Stack(
-      fit: StackFit.loose,
-      alignment: Alignment.topLeft,
-      children: [
-        CachedNetworkImage(
-          imageUrl: partnerImageURL ?? '',
-          imageBuilder: (context, imageProvider) => Container(
-            padding: EdgeInsets.zero,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
-              image: DecorationImage(
-                colorFilter: partnerIsClosed
-                    ? ColorFilter.mode(Dalai.color.black, BlendMode.color)
-                    : null,
-                fit: BoxFit.cover,
-                image: imageProvider,
-              ),
-            ),
-          ),
-          progressIndicatorBuilder: (context, url, downloadProgress) =>
-              Container(
-            padding: EdgeInsets.zero,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                border: Border.all(
-                    color: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .color!
-                        .withOpacity(0.2),
-                    width: 0.2),
-                borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
-                color: Dalai.color.black.withOpacity(0.05)),
-            child: Center(
-              child: Dalai.misc.loadingAnimation(context),
-            ),
-          ),
-          errorWidget: (context, url, error) => Container(
-            padding: EdgeInsets.zero,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
-              image: DecorationImage(
-                colorFilter: partnerIsClosed
-                    ? ColorFilter.mode(Dalai.color.black, BlendMode.color)
-                    : null,
-                fit: BoxFit.cover,
-                image: Dalai.misc
-                    .getPlaceholderImageProvider(PlaceholderImage.partner),
-              ),
-            ),
-          ),
-        ),
-        Padding(
-            padding:
-                EdgeInsets.only(top: Dalai.spacing.lateralPaddingValue),
-            child: partnerIsClosed || promotionTitle == null
-                ? SizedBox.shrink()
-                : Container(
-                    padding: const EdgeInsets.only(
-                        left: 6, right: 6, top: 3, bottom: 1),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(Dalai.spacing.smallBorderRadius),
-                            bottomRight: Radius.circular(Dalai.spacing.smallBorderRadius)),
-                        color: Dalai.color.discount),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Dalai.text.xs(context, promotionTitle,
-                            bold: true,
-                            color: Dalai.color.discount.calculateLuminance())
-                      ],
-                    ),
-                  )),
-      ],
-    );
+  Widget gridProductItem(
+    BuildContext context,
+    String title,
+    String? price,
+    String? productImageURL,
+    Function? onTap, {
+    String? priceAccessory,
+  }) {
+    return Material(
+        color: Colors.transparent,
+        child: GestureDetector(
+            onTap: onTap == null
+                ? () {
+                    Utils.vibrateOnHeavyTap();
+                  }
+                : () {
+                    Utils.vibrateOnTap();
+                    onTap();
+                  },
+            child: AspectRatio(
+                aspectRatio: 0.65,
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(
+                        fit: StackFit.loose,
+                        alignment: Alignment.bottomRight,
+                        children: [
+                          AspectRatio(
+                              aspectRatio: 1.0,
+                              child: Container(
+                                padding: EdgeInsets.all(
+                                    Dalai.spacing.lateralPaddingValue),
+                                decoration: BoxDecoration(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .background,
+                                    borderRadius: BorderRadius.circular(
+                                        Dalai.spacing.borderRadius)),
+                                width: double.infinity,
+                                child: CachedNetworkImage(
+                                  imageUrl: productImageURL ?? '',
+                                  imageBuilder: (context, imageProvider) =>
+                                      Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: imageProvider,
+                                      ),
+                                    ),
+                                  ),
+                                  progressIndicatorBuilder:
+                                      (context, url, downloadProgress) =>
+                                          Container(
+                                    padding: EdgeInsets.zero,
+                                    width: 60,
+                                    height: 60,
+                                    child: Center(
+                                        child: Dalai.icon.dalaiIcons(
+                                            context, CXIcon.image,
+                                            size: CXIconSize.large,
+                                            mainColor: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .color!
+                                                .lighten(0.3),
+                                            secondaryColor: Theme.of(context)
+                                                .colorScheme
+                                                .primary)),
+                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      Container(
+                                    padding: EdgeInsets.zero,
+                                    width: 60,
+                                    height: 60,
+                                    child: Center(
+                                        child: Dalai.icon.dalaiIcons(
+                                            context, CXIcon.image,
+                                            size: CXIconSize.large,
+                                            mainColor: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .color!
+                                                .lighten(0.3),
+                                            secondaryColor: Theme.of(context)
+                                                .colorScheme
+                                                .primary)),
+                                  ),
+                                ),
+                              )),
+                          Dalai.button.stepper(
+                              context, 0, (value, under, uper) {},
+                              reduced: true),
+                        ],
+                      ),
+                      Dalai.spacing.spacer(small: true),
+                      price != null
+                          ? Row(
+                              children: [
+                                Dalai.text.xs(context, price,
+                                    maxLines: 1,
+                                    bold: true,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .color),
+                                Dalai.text.xs(context, '/ ' + priceAccessory!,
+                                    maxLines: 1,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .color!
+                                        .withOpacity(0.8))
+                              ],
+                            )
+                          : SizedBox.shrink(),
+                      Dalai.text.xs(context, title,
+                          maxLines: 2,
+                          color: Theme.of(context).textTheme.bodyMedium!.color),
+                    ],
+                  ),
+                ))));
   }
 }

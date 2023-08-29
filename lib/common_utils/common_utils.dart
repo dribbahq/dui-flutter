@@ -7,6 +7,7 @@ import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:intl/intl.dart';
 import 'package:latlng/latlng.dart';
 import 'package:map_launcher/map_launcher.dart';
+import 'package:palette_generator/palette_generator.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:vector_math/vector_math.dart' as deg;
 import '../dalai.dart';
@@ -388,5 +389,16 @@ class Utils {
       return true;
     }
     return false;
+  }
+
+  /* ------------------------------------------------------------------------- */
+
+  /*
+  * Color Helper Methods
+  * */
+  static Future<Color> getImagePalette (ImageProvider imageProvider) async {
+    final PaletteGenerator paletteGenerator = await PaletteGenerator
+        .fromImageProvider(imageProvider);
+    return paletteGenerator.dominantColor!.color;
   }
 }

@@ -522,6 +522,26 @@ class DalaiSkeleton {
     );
   }
 
+  Widget loadingContainer(double height, double width, BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: Theme.of(context).brightness == Brightness.light
+          ? Dalai.color.loadingLightPrimary!
+          : Dalai.color.loadingDarkPrimary,
+      highlightColor: Theme.of(context).brightness == Brightness.light
+          ? Dalai.color.loadingLightSecondary!
+          : Dalai.color.loadingDarkSecondary,
+      enabled: true,
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+            color: Dalai.color.white,
+            borderRadius:
+                BorderRadius.all(Radius.circular(Dalai.spacing.borderRadius))),
+      ),
+    );
+  }
+
   Widget emptyLoadingCircle(double height, BuildContext context) {
     return SizedBox(
       width: height,
@@ -540,8 +560,7 @@ class DalaiSkeleton {
               enabled: true,
               child: Container(
                 decoration: BoxDecoration(
-                    color: Dalai.color.white,
-                    shape: BoxShape.circle),
+                    color: Dalai.color.white, shape: BoxShape.circle),
               ),
             ),
           ),
@@ -1107,7 +1126,7 @@ class DalaiSkeleton {
         ));
   }
 
-  Widget emptyLoadingBusinessTile(BuildContext context){
+  Widget emptyLoadingBusinessTile(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
       child: Shimmer.fromColors(
@@ -1122,47 +1141,51 @@ class DalaiSkeleton {
           children: [
             Expanded(
                 child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                        Dalai.spacing.lateralPaddingValue),
+                    color: Colors.red,
+                  ),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                ),
+                Dalai.spacing.hSpacer(),
+                Expanded(
+                    child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: 60,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(Dalai.spacing.lateralPaddingValue),
-                        color: Colors.red,
-                      ),
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      width: 100,
+                      height: Dalai.text.regularText,
+                      color: Colors.red,
                     ),
-                    Dalai.spacing.hSpacer(),
-                    Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 100,
-                              height: Dalai.text.regularText,
-                              color: Colors.red,
-                            ),
-                            Dalai.spacing.spacer(small: true),
-                            Container(
-                              width: 150,
-                              height: Dalai.text.smallText,
-                              color: Colors.red,
-                            ),
-                            Dalai.spacing.spacer(small: true),
-                            Wrap(
-                              spacing: 2,
-                              direction: Axis.horizontal,
-                              children: List.generate(5, (index) {
-                                return Dalai.icon.dalaiIcons(context, CXIcon.star_fill, size: CXIconSize.small, mainColor: Theme.of(context).colorScheme.primary);
-                              }),
-                            )
-                          ],
-                        )),
+                    Dalai.spacing.spacer(small: true),
+                    Container(
+                      width: 150,
+                      height: Dalai.text.smallText,
+                      color: Colors.red,
+                    ),
+                    Dalai.spacing.spacer(small: true),
+                    Wrap(
+                      spacing: 2,
+                      direction: Axis.horizontal,
+                      children: List.generate(5, (index) {
+                        return Dalai.icon.dalaiIcons(context, CXIcon.star_fill,
+                            size: CXIconSize.small,
+                            mainColor: Theme.of(context).colorScheme.primary);
+                      }),
+                    )
                   ],
                 )),
+              ],
+            )),
             Dalai.spacing.hSpacer(),
-            Dalai.icon.dalaiIcons(context, CXIcon.chevron_right, size: CXIconSize.x_small)
+            Dalai.icon.dalaiIcons(context, CXIcon.chevron_right,
+                size: CXIconSize.x_small)
           ],
         ),
       ),
