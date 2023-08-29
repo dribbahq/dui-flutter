@@ -1191,7 +1191,7 @@ class DalaiCards {
                     onTap();
                   },
             child: AspectRatio(
-                aspectRatio: 0.65,
+                aspectRatio: 0.62,
                 child: Container(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,

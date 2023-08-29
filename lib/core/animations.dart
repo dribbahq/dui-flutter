@@ -88,39 +88,39 @@ class DalaiAnimations {
 
   String _extractAnimation(AnimationType animationType) {
     if (animationType == AnimationType.errorData) {
-      return 'assets/animations/ax_error_data.json';
+      return 'lib/assets/animations/ax_error_data.json';
     } else if (animationType == AnimationType.errorGeneric) {
-      return 'assets/animations/ax_error_generic.json';
+      return 'lib/assets/animations/ax_error_generic.json';
     } else if (animationType == AnimationType.errorMap) {
-      return 'assets/animations/ax_error_map.json';
+      return 'lib/assets/animations/ax_error_map.json';
     } else if (animationType == AnimationType.errorSearch) {
-      return 'assets/animations/ax_error_search.json';
+      return 'lib/assets/animations/ax_error_search.json';
     } else if (animationType == AnimationType.errorUpdate) {
-      return 'assets/animations/ax_error_update.json';
+      return 'lib/assets/animations/ax_error_update.json';
     } else if (animationType == AnimationType.errorWorking) {
-      return 'assets/animations/ax_error_working.json';
+      return 'lib/assets/animations/ax_error_working.json';
     } else if (animationType == AnimationType.trackingDelivering) {
-      return 'assets/animations/ax_tracking_delivering.json';
+      return 'lib/assets/animations/ax_tracking_delivering.json';
     } else if (animationType == AnimationType.trackingDropoff) {
-      return 'assets/animations/ax_tracking_dropoff.json';
+      return 'lib/assets/animations/ax_tracking_dropoff.json';
     } else if (animationType == AnimationType.trackingOngoingDelivery) {
-      return 'assets/animations/ax_tracking_ongoing_delivery.json';
+      return 'lib/assets/animations/ax_tracking_ongoing_delivery.json';
     } else if (animationType == AnimationType.trackingOngoingMarket) {
-      return 'assets/animations/ax_tracking_ongoing_market.json';
+      return 'lib/assets/animations/ax_tracking_ongoing_market.json';
     } else if (animationType == AnimationType.trackingOngoingSuper) {
-      return 'assets/animations/ax_tracking_ongoing_super.json';
+      return 'lib/assets/animations/ax_tracking_ongoing_super.json';
     } else if (animationType == AnimationType.trackingPickup) {
-      return 'assets/animations/ax_tracking_pickup.json';
+      return 'lib/assets/animations/ax_tracking_pickup.json';
     } else if (animationType == AnimationType.trackingQueued) {
-      return 'assets/animations/ax_tracking_queued.json';
+      return 'lib/assets/animations/ax_tracking_queued.json';
     } else if (animationType == AnimationType.paymentProcessing) {
-      return 'assets/animations/ax_payment.json';
+      return 'lib/assets/animations/ax_payment.json';
     } else if (animationType == AnimationType.orderCancelled) {
-      return 'assets/animations/ax_order_cancel.json';
+      return 'lib/assets/animations/ax_order_cancel.json';
     } else if (animationType == AnimationType.orderDelivered) {
-      return 'assets/animations/ax_order_delivered.json';
+      return 'lib/assets/animations/ax_order_delivered.json';
     } else {
-      return 'assets/animations/ax_error_generic.json';
+      return 'lib/assets/animations/ax_error_generic.json';
     }
   }
 }

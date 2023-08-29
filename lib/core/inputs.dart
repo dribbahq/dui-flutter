@@ -10,8 +10,8 @@ class DalaiInputs {
   Widget textField(
     String? label,
     TextEditingController? controller,
+    FocusNode focusNode,
     BuildContext context, {
-    FocusNode? focusNode,
     bool? enabled,
     TextInputType? keyboardType,
     TextCapitalization? textCapitalization,
@@ -46,8 +46,7 @@ class DalaiInputs {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Flexible(
-                    child: Container(
+                Container(
                   decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.background,
                       borderRadius:
@@ -77,42 +76,42 @@ class DalaiInputs {
                       children: [
                         prefixIcon != null
                             ? Row(
-                                children: [
-                                  prefixIcon,
-                                  Dalai.spacing.hSpacer(),
-                                  showPrefixSeparator!
-                                      ? Row(
-                                          children: [
-                                            SizedBox(
-                                              height: 24,
-                                              child: VerticalDivider(
-                                                width: 1,
-                                                thickness: 1,
-                                                color: Theme.of(context)
-                                                    .inputDecorationTheme
-                                                    .enabledBorder!
-                                                    .borderSide
-                                                    .color,
-                                              ),
-                                            ),
-                                            Dalai.spacing.hSpacer()
-                                          ],
-                                        )
-                                      : const SizedBox.shrink(),
-                                ],
-                              )
+                          children: [
+                            prefixIcon,
+                            Dalai.spacing.hSpacer(),
+                            showPrefixSeparator!
+                                ? Row(
+                              children: [
+                                SizedBox(
+                                  height: 24,
+                                  child: VerticalDivider(
+                                    width: 1,
+                                    thickness: 1,
+                                    color: Theme.of(context)
+                                        .inputDecorationTheme
+                                        .enabledBorder!
+                                        .borderSide
+                                        .color,
+                                  ),
+                                ),
+                                Dalai.spacing.hSpacer()
+                              ],
+                            )
+                                : const SizedBox.shrink(),
+                          ],
+                        )
                             : const SizedBox.shrink(),
                         Expanded(
-                          child: TextField(
-                            onTapOutside: (event) {
-                              focus.unfocus();
-                            },
+                          child: TextFormField(
                             onChanged: (value) {
                               if (onChange != null) {
                                 onChange();
                               }
                             },
-                            onSubmitted: (term) {
+                            onTapOutside: (event) {
+                              focus.unfocus();
+                            },
+                            onFieldSubmitted: (term) {
                               if (textInputAction != null &&
                                   textInputAction == TextInputAction.next) {
                                 FocusScope.of(context)
@@ -121,7 +120,6 @@ class DalaiInputs {
                               if (onSubmit != null) {
                                 onSubmit(term)!;
                               }
-                              focus.unfocus();
                             },
                             inputFormatters: inputFormatters,
                             autocorrect: false,
@@ -234,7 +232,7 @@ class DalaiInputs {
                       ],
                     ),
                   ),
-                )),
+                ),
                 Column(
                   children: [
                     (error != null && error.isNotEmpty) ||
@@ -527,8 +525,8 @@ class DalaiInputs {
   Widget searchField(
     String? label,
     TextEditingController? controller,
+    FocusNode focusNode,
     BuildContext context, {
-    FocusNode? focusNode,
     TextInputType? keyboardType,
     TextCapitalization? textCapitalization,
     TextInputAction? textInputAction,
@@ -731,32 +729,30 @@ class DalaiInputs {
         });
   }
 
-  Widget chatInputField(
-      BuildContext context, String? label, TextEditingController? controller,
-      {FocusNode? focusNode,
-      Function(String)? onSubmit,
-      double? height,
-      bool? enabled}) {
+  Widget chatInputField(BuildContext context, String? label,
+      TextEditingController? controller, FocusNode focusNode,
+      {Function(String)? onSubmit, double? height, bool? enabled}) {
     return Dalai.input.smallTextField(controller, context,
         hint: label,
         focusNode: focusNode,
         onSubmit: onSubmit,
-        enabled: enabled, maxLines: 3, minLines: 1);
+        enabled: enabled,
+        maxLines: 3,
+        minLines: 1);
   }
 
   Widget phoneTextField(
       BuildContext context,
       String? label,
       TextEditingController? controller,
+      FocusNode focusNode,
       String initialPhonePrefix,
       Function(String) onPrefixChange,
       {bool isEnabled = true,
-      FocusNode? focusNode,
       Widget? trailing,
       Function()? onChange}) {
-    return Dalai.input.textField(label, controller, context,
+    return Dalai.input.textField(label, controller, focusNode, context,
         enabled: isEnabled,
-        focusNode: focusNode,
         suffixIcon: trailing ?? const SizedBox.shrink(),
         prefixIcon: CountryPicker(
           initialSelection: initialPhonePrefix,

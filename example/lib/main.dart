@@ -111,11 +111,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset(
-                        'assets/images/lama-ui-icon.png',
-                        width: 120,
-                        package: 'dalai',
-                      ),
                       Dalai.spacing.spacer(small: true),
                       Dalai.text.title1(context, 'LAMA Showcase'),
                     ],
@@ -501,7 +496,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Dalai.input.textField("Email address",
-                                TextEditingController(), context,
+                                TextEditingController(), FocusNode(), context,
                                 suffixIcon:
                                     Dalai.icon.dalaiIcons(context, CXIcon.fast),
                                 prefixIcon:
@@ -511,22 +506,24 @@ class _MyHomePageState extends State<MyHomePage> {
                             Dalai.input.textField(
                                 "Password",
                                 TextEditingController(text: "Password"),
+                                FocusNode(),
                                 context,
                                 obscure: true),
                             Dalai.spacing.spacer(small: true),
                             Dalai.input.textField("Email address",
-                                TextEditingController(), context,
+                                TextEditingController(), FocusNode(), context,
                                 enabled: false, helpMessage: "Help message"),
                             Dalai.spacing.spacer(small: true),
                             Dalai.input.textField(
                                 "Email address",
                                 TextEditingController(text: 'alex@dribba.com'),
+                                FocusNode(),
                                 context,
                                 enabled: false,
                                 helpMessage: "Help message"),
                             Dalai.spacing.spacer(small: true),
                             Dalai.input.textField("Email address",
-                                TextEditingController(), context,
+                                TextEditingController(), FocusNode(), context,
                                 error: "Error", helpMessage: "Help message"),
                           ],
                         ),
@@ -544,16 +541,17 @@ class _MyHomePageState extends State<MyHomePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Dalai.input.searchField("Email address",
-                                TextEditingController(), context),
+                                TextEditingController(), FocusNode(), context),
                             Dalai.spacing.spacer(small: true),
                             Dalai.input.searchField(
                                 "Email address",
                                 TextEditingController(text: 'info@dribba.com'),
+                                FocusNode(),
                                 context,
                                 loading: true),
                             Dalai.spacing.spacer(small: true),
                             Dalai.input.searchField("Email address",
-                                TextEditingController(), context,
+                                TextEditingController(), FocusNode(), context,
                                 loading: true, enabled: false),
                           ],
                         ),
@@ -565,7 +563,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Dalai.input.chatInputField(context, "Email address",
-                                TextEditingController()),
+                                TextEditingController(), FocusNode()),
                           ],
                         ),
                         title: "Chat Input"),
@@ -579,6 +577,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 context,
                                 "Número de teléfono",
                                 TextEditingController(),
+                                FocusNode(),
                                 "+34",
                                 (prefix) {}),
                           ],
@@ -1723,7 +1722,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             GridView(
                               physics: NeverScrollableScrollPhysics(),
-                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              padding: EdgeInsets.symmetric(horizontal: 6),
                               shrinkWrap: true,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
@@ -1893,7 +1892,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ? Dalai.text.xs(context, title,
                 color: Theme.of(context).textTheme.bodyMedium!.color,
                 bold: true,
-                maxLines: 2)
+                maxLines: 1)
             : const SizedBox.shrink(),
         title != null ? Dalai.spacing.spacer() : const SizedBox.shrink(),
       ],

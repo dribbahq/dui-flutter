@@ -66,27 +66,6 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  assets:
-    - packages/dalai/assets/images/placeholders/placeholder_anything.jpg
-    - packages/dalai/assets/images/placeholders/placeholder_courier.jpg
-    - packages/dalai/assets/images/placeholders/placeholder_experiences.jpg
-    - packages/dalai/assets/animations/ax_error_data.json
-    - packages/dalai/assets/animations/ax_payment.json
-    - packages/dalai/assets/animations/ax_error_generic.json
-    - packages/dalai/assets/animations/ax_tracking_delivering.json
-    - packages/dalai/assets/animations/ax_error_map.json
-    - packages/dalai/assets/animations/ax_tracking_dropoff.json
-    - packages/dalai/assets/animations/ax_error_search.json
-    - packages/dalai/assets/animations/ax_tracking_ongoing_delivery.json
-    - packages/dalai/assets/animations/ax_error_update.json
-    - packages/dalai/assets/animations/ax_tracking_ongoing_market.json
-    - packages/dalai/assets/animations/ax_error_working.json
-    - packages/dalai/assets/animations/ax_tracking_ongoing_super.json
-    - packages/dalai/assets/animations/ax_order_cancel.json
-    - packages/dalai/assets/animations/ax_tracking_pickup.json
-    - packages/dalai/assets/animations/ax_order_delivered.json
-    - packages/dalai/assets/animations/ax_tracking_queued.json
-
   fonts:
     - family: metropolis
       fonts:

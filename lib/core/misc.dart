@@ -575,7 +575,6 @@ class Misc {
       rawSvg = markerRider;
     } else if (marker == MapMarker.van) {
       rawSvg = markerCar;
-
     }
 
     return svgToPng(rawSvg);
@@ -614,16 +613,19 @@ class Misc {
       {BoxFit fit = BoxFit.cover}) {
     if (image == PlaceholderImage.courier) {
       return Image.asset(
-          'packages/dalai/assets/images/placeholders/placeholder_courier.jpg',
+          'lib/assets/images/placeholders/placeholder_courier.jpg',
+          package: 'dalai',
           fit: fit);
     } else if (image == PlaceholderImage.partner) {
       return Image.asset(
-        'packages/dalai/assets/images/placeholders/placeholder_anything.jpg',
+        'lib/assets/images/placeholders/placeholder_anything.jpg',
+        package: 'dalai',
         fit: fit,
       );
     } else if (image == PlaceholderImage.experienceZone) {
       return Image.asset(
-        'packages/dalai/assets/images/placeholders/placeholder_experiences.jpg',
+        'lib/assets/images/placeholders/placeholder_experiences.jpg',
+        package: 'dalai',
         fit: fit,
       );
     }
