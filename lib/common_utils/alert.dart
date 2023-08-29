@@ -1,67 +1,42 @@
 import 'dart:io';
+import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import '../dalai.dart';
 
 class Alert {
   static Future showStatusAlert(String title, String text, BuildContext context,
-      IconData? icon, Color color) {
+      CXIcon icon, Color color) {
     return showDialog(
         context: context,
         barrierDismissible: true,
         builder: (BuildContext context) {
           return Dialog(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
               ),
               elevation: 0,
               backgroundColor: Colors.transparent,
               child: Container(
                 width: 50,
-                padding: const EdgeInsets.all(12),
+                padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius:
+                      BorderRadius.circular(Dalai.spacing.borderRadius),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    icon == null
-                        ? const SizedBox.shrink()
-                        : Icon(
-                            icon,
-                            size: 60,
-                            color: color,
-                          ),
-                    icon == null
-                        ? const SizedBox.shrink()
-                        : const SizedBox(
-                            height: 12,
-                          ),
-                    Text(title,
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayMedium!
-                            .copyWith(
-                                fontSize: 20, fontWeight: FontWeight.w600)),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Text(
-                      text,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(fontSize: 16),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(
-                      height: 6,
-                    ),
+                    Dalai.spacing.spacer(),
+                    Dalai.icon
+                        .dalaiIcons(context, icon, size: CXIconSize.large),
+                    Dalai.spacing.spacer(),
+                    Dalai.text.regular(context, title, bold: true),
+                    Dalai.text.small(context, text),
+                    Dalai.spacing.spacer(),
                   ],
                 ),
               ));
@@ -113,26 +88,25 @@ class Alert {
           barrierDismissible: barrierDismissible ?? true,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text(
-                title!,
-                style: Theme.of(context).textTheme.displaySmall,
-              ),
-              content: SingleChildScrollView(
-                child: ListBody(
-                  children: <Widget>[
-                    Text(
-                      text!,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
-              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(Dalai.spacing.borderRadius)),
+              titlePadding: EdgeInsets.only(
+                  top: 2 * Dalai.spacing.lateralPaddingValue,
+                  bottom: Dalai.spacing.lateralPaddingValue / 2,
+                  left: Dalai.spacing.lateralPaddingValue,
+                  right: Dalai.spacing.lateralPaddingValue),
+              contentPadding: EdgeInsets.symmetric(
+                  vertical: 0, horizontal: Dalai.spacing.lateralPaddingValue),
+              actionsPadding: EdgeInsets.symmetric(
+                  vertical: 0, horizontal: Dalai.spacing.lateralPaddingValue),
+              surfaceTintColor: Theme.of(context).colorScheme.background,
+              title: Dalai.text.title3(context, title!),
+              content: Dalai.text.regular(context, text!),
               actions: <Widget>[
                 TextButton(
-                  child: Text(
-                    okText,
-                    style: Theme.of(context).textTheme.displaySmall,
-                  ),
+                  child: Dalai.text.regular(context, okText,
+                      bold: true, color: Colors.blueAccent),
                   onPressed: () {
                     if (onPressed != null) {
                       onPressed();
@@ -168,6 +142,7 @@ class Alert {
                   isDefaultAction: true,
                   child: Text(
                     okText,
+                    style: TextStyle(color: Colors.blueAccent),
                   ),
                   onPressed: () {
                     if (onPressed != null) {
@@ -186,7 +161,7 @@ class Alert {
   }
 
   static Future showAlertYesNo(
-      String? title, String? text, onYesPressed, BuildContext context,
+      String? title, String? text, Function onYesPressed, BuildContext context,
       {required String onYesText, required String onNoText}) {
     if (kIsWeb) {
       return showDialog(
@@ -234,38 +209,35 @@ class Alert {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(
-              title!,
-              style: Theme.of(context).textTheme.displaySmall,
-            ),
-            content: SingleChildScrollView(
-              child: ListBody(
-                children: <Widget>[
-                  Text(
-                    text!,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
-              ),
-            ),
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.circular(Dalai.spacing.borderRadius)),
+            titlePadding: EdgeInsets.only(
+                top: 2 * Dalai.spacing.lateralPaddingValue,
+                bottom: Dalai.spacing.lateralPaddingValue / 2,
+                left: Dalai.spacing.lateralPaddingValue,
+                right: Dalai.spacing.lateralPaddingValue),
+            contentPadding: EdgeInsets.symmetric(
+                vertical: 0, horizontal: Dalai.spacing.lateralPaddingValue),
+            actionsPadding: EdgeInsets.symmetric(
+                vertical: 0, horizontal: Dalai.spacing.lateralPaddingValue),
+            surfaceTintColor: Theme.of(context).colorScheme.background,
+            title: Dalai.text.title3(context, title!),
+            content: Dalai.text.regular(context, text!),
             actions: <Widget>[
               TextButton(
-                child: Text(
-                  onYesText,
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
+                child: Dalai.text.regular(context, onNoText,
+                    bold: true, color: Colors.blueAccent),
                 onPressed: () {
                   Navigator.of(context).pop();
-                  onYesPressed();
                 },
               ),
               TextButton(
-                child: Text(
-                  onNoText,
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
+                child: Dalai.text.regular(context, onYesText,
+                    bold: true, color: Colors.blueAccent),
                 onPressed: () {
                   Navigator.of(context).pop();
+                  onYesPressed();
                 },
               ),
             ],
@@ -290,14 +262,20 @@ class Alert {
             actions: <Widget>[
               CupertinoDialogAction(
                 isDefaultAction: true,
-                child: Text(onYesText),
+                child: Text(
+                  onYesText,
+                  style: TextStyle(color: Colors.blueAccent),
+                ),
                 onPressed: () {
                   onYesPressed();
                   Navigator.of(context).pop();
                 },
               ),
               CupertinoDialogAction(
-                child: Text(onNoText),
+                child: Text(
+                  onNoText,
+                  style: TextStyle(color: Colors.blueAccent),
+                ),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },

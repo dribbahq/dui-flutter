@@ -1286,23 +1286,21 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: [
                                 Dalai.badge.tagSolid(context, 'Click Me!',
                                     onTap: () {
-                                  Alert.showAlert(
+                                  Alert.showAlertYesNo(
                                     "You clicked me!",
                                     "You perv...",
+                                    () {},
                                     context,
-                                    okText: 'OK',
+                                    onYesText: 'Yes',
+                                    onNoText: 'No',
                                   );
                                 }),
                                 Dalai.spacing.hSpacer(),
                                 Dalai.badge.tagSolid(context, 'Click Me!',
                                     icon: CXIcon.vision_alt,
                                     color: BadgeColor.secondary, onTap: () {
-                                  Alert.showAlert(
-                                    "You clicked me!",
-                                    "You perv...",
-                                    context,
-                                    okText: 'OK',
-                                  );
+                                  Alert.showStatusAlert("Title", "Test",
+                                      context, CXIcon.cityxerpa, Colors.black);
                                 }),
                               ],
                             ),
