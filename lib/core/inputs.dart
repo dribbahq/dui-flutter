@@ -70,7 +70,7 @@ class DalaiInputs {
                           width: Dalai.spacing.borderWidth)),
                   child: Padding(
                     padding: EdgeInsets.only(
-                        top: Dalai.spacing.lateralPaddingValue + 2,
+                        top: Dalai.spacing.lateralPaddingValue,
                         right: Dalai.spacing.lateralPaddingValue,
                         left: Dalai.spacing.lateralPaddingValue,
                         bottom: Dalai.spacing.lateralPaddingValue),
@@ -574,7 +574,7 @@ class DalaiInputs {
                           width: Dalai.spacing.borderWidth)),
                   child: Padding(
                     padding: EdgeInsets.only(
-                        top: Dalai.spacing.lateralPaddingValue + 2,
+                        top: Dalai.spacing.lateralPaddingValue ,
                         right: Dalai.spacing.lateralPaddingValue,
                         left: Dalai.spacing.lateralPaddingValue,
                         bottom: Dalai.spacing.lateralPaddingValue),
