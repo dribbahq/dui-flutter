@@ -361,8 +361,8 @@ class DalaiText {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          title3(context, text,
-              color: Theme.of(context).textTheme.titleLarge!.color),
+         Expanded(child:  title3(context, text,
+             color: Theme.of(context).textTheme.titleLarge!.color),),
           onAccessoryButtonText == null
               ? SizedBox.shrink()
               : Dalai.button.smallButton(context, onAccessoryButtonText, onTap,

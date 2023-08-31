@@ -602,6 +602,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             Dalai.button.button(context, "Log In", () {
                               setState(() {
                                 loading = !loading;
+                                Future.delayed(Duration(seconds: 2), () {
+                                  setState(() {
+                                    loading = !loading;
+                                  });
+                                });
                               });
                             }, loading: loading),
                             Dalai.spacing.spacer(),
@@ -617,6 +622,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             Dalai.button.shadowButton(context, "Log In", () {
                               setState(() {
                                 loading = !loading;
+                                Future.delayed(Duration(seconds: 2), () {
+                                  setState(() {
+                                    loading = !loading;
+                                  });
+                                });
                               });
                             }, loading: loading),
                             Dalai.spacing.spacer(),
@@ -632,7 +642,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             Dalai.button.noBgButton(context, "Log In", () {
                               setState(() {
                                 loading = !loading;
+                                Future.delayed(Duration(seconds: 2), () {
+                                  setState(() {
+                                    loading = !loading;
+                                  });
+                                });
                               });
+
                             }, loading: loading),
                             Dalai.spacing.spacer(),
                             Dalai.button.noBgButton(context, "Log In", null,
@@ -647,6 +663,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             Dalai.button.outlineButton(context, "Log In", () {
                               setState(() {
                                 loading = !loading;
+                                Future.delayed(Duration(seconds: 2), () {
+                                  setState(() {
+                                    loading = !loading;
+                                  });
+                                });
                               });
                             }, loading: loading),
                             Dalai.spacing.spacer(),
@@ -659,13 +680,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.smallButton(context, "Log In", () {
+                            Dalai.button.smallButton(context, "Log In with CityXerpa", () {
                               setState(() {
                                 loading = !loading;
+                                Future.delayed(Duration(seconds: 2), () {
+                                  setState(() {
+                                    loading = !loading;
+                                  });
+                                });
                               });
                             }, loading: loading),
                             Dalai.spacing.spacer(),
-                            Dalai.button.smallButton(context, "Log In", null,
+                            Dalai.button.smallButton(context, "Log In with CityXerpa", null,
                                 loading: loading),
                           ],
                         ),

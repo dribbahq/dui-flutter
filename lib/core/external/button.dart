@@ -56,21 +56,21 @@ class _CustomButtonState extends State<CustomButton> {
         constraints: BoxConstraints(
             minWidth: widget.loading ? (buttonMinHeight + 24) : 100,
             maxWidth: MediaQuery.of(context).size.width),
-        duration: Duration(milliseconds: 200),
-        curve: Curves.easeIn,
+        duration: Duration(milliseconds: 800),
+        curve: Curves.ease,
         width: widget.expanded
             ? double.infinity
             : widget.loading
                 ? (buttonMinHeight + 24)
                 : null,
-        child: ElevatedButton(
+        child:  ElevatedButton(
             onPressed: widget.onPressed != null
                 ? () {
-                    if (widget.onPressed != null && !widget.loading) {
-                      Utils.vibrateOnTap();
-                      widget.onPressed!();
-                    }
-                  }
+              if (widget.onPressed != null && !widget.loading) {
+                Utils.vibrateOnTap();
+                widget.onPressed!();
+              }
+            }
                 : null,
             style: ElevatedButton.styleFrom(
               elevation: 0,
@@ -94,37 +94,37 @@ class _CustomButtonState extends State<CustomButton> {
             child: widget.loading
                 ? Dalai.misc.loadingAnimation(context, size: 18)
                 : Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      widget.icon != null
-                          ? Row(
-                              children: [
-                                Dalai.icon.dalaiIcons(context, widget.icon!,
-                                    mainColor: (widget.color ??
-                                            Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium!
-                                                .color!)
-                                        .withOpacity(
-                                            widget.onPressed != null ? 1 : 0.5),
-                                    size: CXIconSize.x_small),
-                                Dalai.spacing.hSpacer(small: true)
-                              ],
-                            )
-                          : const SizedBox.shrink(),
-                      widget.text != null
-                          ? Dalai.text.small(context, widget.text,
-                              color: (widget.color ??
-                                      Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium!
-                                          .color!)
-                                  .withOpacity(
-                                      widget.onPressed != null ? 1 : 0.5),
-                              bold: true)
-                          : const SizedBox.shrink(),
-                    ],
-                  )),
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                widget.icon != null
+                    ? Row(
+                  children: [
+                    Dalai.icon.dalaiIcons(context, widget.icon!,
+                        mainColor: (widget.color ??
+                            Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .color!)
+                            .withOpacity(
+                            widget.onPressed != null ? 1 : 0.5),
+                        size: CXIconSize.x_small),
+                    Dalai.spacing.hSpacer(small: true)
+                  ],
+                )
+                    : const SizedBox.shrink(),
+                widget.text != null
+                    ? Dalai.text.small(context, widget.text,
+                    color: (widget.color ??
+                        Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .color!)
+                        .withOpacity(
+                        widget.onPressed != null ? 1 : 0.5),
+                    bold: true)
+                    : const SizedBox.shrink(),
+              ],
+            )),
       );
     }
     return AnimatedContainer(
@@ -135,16 +135,16 @@ class _CustomButtonState extends State<CustomButton> {
       width: widget.loading
           ? (buttonMinHeight + 24)
           : MediaQuery.of(context).size.width,
-      duration: Duration(milliseconds: 400),
-      curve: Curves.easeIn,
+      duration: Duration(milliseconds: 800),
+      curve: Curves.ease,
       child: ElevatedButton(
         onPressed: widget.onPressed != null
             ? () {
-                if (widget.onPressed != null && widget.loading == false) {
-                  Utils.vibrateOnTap();
-                  widget.onPressed!();
-                }
-              }
+          if (widget.onPressed != null && widget.loading == false) {
+            Utils.vibrateOnTap();
+            widget.onPressed!();
+          }
+        }
             : null,
         style: ElevatedButton.styleFrom(
           elevation: 0,
@@ -156,72 +156,72 @@ class _CustomButtonState extends State<CustomButton> {
           disabledBackgroundColor: widget.outlined
               ? Colors.transparent
               : (widget.color ?? Theme.of(context).colorScheme.primary)
-                  .lighten(0.2),
+              .lighten(0.2),
           shape: widget.outlined
               ? RoundedRectangleBorder(
-                  side: BorderSide(
-                      color: (widget.color ??
-                              Theme.of(context).colorScheme.primary)
-                          .withOpacity(widget.onPressed != null ? 1 : 0.5),
-                      width: 2),
-                  borderRadius:
-                      BorderRadius.circular(Dalai.spacing.borderRadius),
-                )
+            side: BorderSide(
+                color: (widget.color ??
+                    Theme.of(context).colorScheme.primary)
+                    .withOpacity(widget.onPressed != null ? 1 : 0.5),
+                width: 2),
+            borderRadius:
+            BorderRadius.circular(Dalai.spacing.borderRadius),
+          )
               : RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(Dalai.spacing.borderRadius),
-                ),
+            borderRadius:
+            BorderRadius.circular(Dalai.spacing.borderRadius),
+          ),
         ),
         child: widget.loading
             ? Dalai.misc.loadingAnimation(context,
-                light: (widget.textColor ?? Dalai.color.primaryContrast)
-                        .computeLuminance() >
-                    0.5)
+            light: (widget.textColor ?? Dalai.color.primaryContrast)
+                .computeLuminance() >
+                0.5)
             : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  widget.leading ?? const SizedBox.shrink(),
-                  Expanded(
-                      child: Center(
-                    child: widget.content ??
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            widget.icon != null
-                                ? Row(
-                                    children: [
-                                      Dalai.icon.dalaiIcons(
-                                        context,
-                                        widget.icon!,
-                                        mainColor: (widget.textColor ??
-                                                Dalai.color.primaryContrast)
-                                            .withOpacity(
-                                                widget.onPressed == null
-                                                    ? 0.5
-                                                    : 1),
-                                      ),
-                                      Dalai.spacing.hSpacer(small: true)
-                                    ],
-                                  )
-                                : const SizedBox.shrink(),
-                            widget.text != null
-                                ? Dalai.text.title3(
-                                    context,
-                                    widget.text,
-                                    color: (widget.textColor ??
-                                            Dalai.color.primaryContrast)
-                                        .withOpacity(
-                                            widget.onPressed == null ? 0.5 : 1),
-                                  )
-                                : const SizedBox.shrink(),
-                          ],
-                        ),
-                  )),
-                  widget.trailing ?? const SizedBox.shrink(),
-                ],
-              ),
-      ),
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            widget.leading ?? const SizedBox.shrink(),
+            Expanded(
+                child: Center(
+                  child: widget.content ??
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          widget.icon != null
+                              ? Row(
+                            children: [
+                              Dalai.icon.dalaiIcons(
+                                context,
+                                widget.icon!,
+                                mainColor: (widget.textColor ??
+                                    Dalai.color.primaryContrast)
+                                    .withOpacity(
+                                    widget.onPressed == null
+                                        ? 0.5
+                                        : 1),
+                              ),
+                              Dalai.spacing.hSpacer(small: true)
+                            ],
+                          )
+                              : const SizedBox.shrink(),
+                          widget.text != null
+                              ? Dalai.text.title3(
+                            context,
+                            widget.text,
+                            color: (widget.textColor ??
+                                Dalai.color.primaryContrast)
+                                .withOpacity(
+                                widget.onPressed == null ? 0.5 : 1),
+                          )
+                              : const SizedBox.shrink(),
+                        ],
+                      ),
+                )),
+            widget.trailing ?? const SizedBox.shrink(),
+          ],
+        ),
+      )
     );
   }
 }
