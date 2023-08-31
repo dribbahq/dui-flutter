@@ -242,9 +242,9 @@ class DalaiTiles {
                   color: Colors.transparent,
                   child: Row(
                     children: [
-                      Dalai.text.regular(context, title,
+                      Flexible(child: Dalai.text.regular(context, title,
                           bold: true,
-                          color: Theme.of(context).textTheme.bodyMedium!.color),
+                          color: Theme.of(context).textTheme.bodyMedium!.color, maxLines: 1),),
                       Dalai.spacing.hSpacer(small: true),
                       onInfoTap != null
                           ? Dalai.icon.dalaiIcons(context, CXIcon.info_circle,
