@@ -104,7 +104,7 @@ class DalaiInputs {
                               )
                             : const SizedBox.shrink(),
                         Expanded(
-                          child: TextFormField(
+                          child: TextField(
                             onChanged: (value) {
                               if (onChange != null) {
                                 onChange();
@@ -113,7 +113,7 @@ class DalaiInputs {
                             onTapOutside: (event) {
                               focusNode.unfocus();
                             },
-                            onFieldSubmitted: (term) {
+                            onSubmitted: (term) {
                               if (textInputAction != null &&
                                   textInputAction == TextInputAction.next) {
                                 FocusScope.of(context)

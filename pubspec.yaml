@@ -58,7 +58,7 @@ flutter:
     - lib/assets/animations/ax_tracking_ongoing_market.json
     - lib/assets/animations/ax_error_working.json
     - lib/assets/animations/ax_tracking_ongoing_super.json
-#    - lib/assets/animations/ax_order_cancel.json
+    - lib/assets/animations/ax_order_cancel.json
     - lib/assets/animations/ax_tracking_pickup.json
     - lib/assets/animations/ax_order_delivered.json
     - lib/assets/animations/ax_tracking_queued.json
