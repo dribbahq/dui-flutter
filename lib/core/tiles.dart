@@ -113,9 +113,11 @@ class DalaiTiles {
                     leading,
                     Dalai.spacing.hSpacer(),
                     Expanded(
-                      child: Dalai.text.regular(context, title ?? '', maxLines: 2),
+                      child:
+                          Dalai.text.regular(context, title ?? '', maxLines: 2),
                     ),
-                    Dalai.icon.dalaiIcons(context, CXIcon.chevron_right, size: CXIconSize.small),
+                    Dalai.icon.dalaiIcons(context, CXIcon.chevron_right,
+                        size: CXIconSize.small),
                   ]),
             )),
       ),
@@ -187,6 +189,60 @@ class DalaiTiles {
                   ]),
             )),
       ),
+    );
+  }
+
+  Widget squareTile(BuildContext context,
+      {CXIcon? icon,
+      required String? title,
+      String? subtitle,
+      Function()? onTap,
+      required String? value}) {
+    return InkWell(
+      onTap: () {
+        if (onTap != null) {
+          onTap();
+        }
+      },
+      child: Container(
+          constraints: BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width / 3 -
+                (Dalai.spacing.lateralPaddingValue),
+          ),
+          padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.background,
+            border: Border.all(
+                color: Theme.of(context).colorScheme.background,
+                width: Dalai.spacing.borderWidth),
+            borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+          ),
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Dalai.text.title1(context, value),
+                    ),
+                    icon == null
+                        ? SizedBox.shrink()
+                        : Dalai.icon.dalaiIcons(context, icon),
+                  ],
+                ),
+                Dalai.spacing.spacer(),
+                Dalai.text.regular(context, title,
+                    bold: true,
+                    color: Theme.of(context).textTheme.bodyMedium!.color),
+                subtitle == null
+                    ? SizedBox.shrink()
+                    : Dalai.text.small(context, subtitle),
+              ],
+            ),
+          )),
     );
   }
 

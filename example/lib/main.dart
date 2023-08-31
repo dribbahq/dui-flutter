@@ -648,7 +648,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                   });
                                 });
                               });
-
                             }, loading: loading),
                             Dalai.spacing.spacer(),
                             Dalai.button.noBgButton(context, "Log In", null,
@@ -680,7 +679,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.smallButton(context, "Log In with CityXerpa", () {
+                            Dalai.button.smallButton(
+                                context, "Log In with CityXerpa", () {
                               setState(() {
                                 loading = !loading;
                                 Future.delayed(Duration(seconds: 2), () {
@@ -691,7 +691,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               });
                             }, loading: loading),
                             Dalai.spacing.spacer(),
-                            Dalai.button.smallButton(context, "Log In with CityXerpa", null,
+                            Dalai.button.smallButton(
+                                context, "Log In with CityXerpa", null,
                                 loading: loading),
                           ],
                         ),
@@ -1259,6 +1260,27 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ccBrand: CCBrand.visa,
                                 onTap: () {},
                                 onRemove: () {}),
+                          ],
+                        ),
+                        title: "Payment Method Tile"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.tile.squareTile(
+                              context,
+                              title: "Tips",
+                              subtitle: "Your daily tips",
+                              value: "25",
+                              icon: CXIcon.fast,
+                            ),
+                            Dalai.spacing.spacer(),
+                            Dalai.tile.squareTile(
+                              context,
+                              title: "Tips",
+                              value: "25",
+                              icon: CXIcon.coin,
+                            ),
                           ],
                         ),
                         title: "Payment Method Tile"),
