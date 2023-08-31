@@ -195,8 +195,8 @@ class DalaiTiles {
   Widget squareTile(BuildContext context,
       {CXIcon? icon,
       required String? title,
-      String? subtitle,
       Function()? onTap,
+      Function()? onInfoTap,
       required String? value}) {
     return InkWell(
       onTap: () {
@@ -206,8 +206,7 @@ class DalaiTiles {
       },
       child: Container(
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width / 3 -
-                (Dalai.spacing.lateralPaddingValue),
+            maxWidth: MediaQuery.of(context).size.width / 2,
           ),
           padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
           decoration: BoxDecoration(
@@ -217,31 +216,45 @@ class DalaiTiles {
                 width: Dalai.spacing.borderWidth),
             borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
           ),
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Dalai.text.title1(context, value),
-                    ),
-                    icon == null
-                        ? SizedBox.shrink()
-                        : Dalai.icon.dalaiIcons(context, icon),
-                  ],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Dalai.text.title1(context, value),
+                  ),
+                  icon == null
+                      ? SizedBox.shrink()
+                      : Dalai.icon.dalaiIcons(context, icon),
+                ],
+              ),
+              Dalai.spacing.spacer(small: true),
+              GestureDetector(
+                onTap: onInfoTap != null
+                    ? () {
+                        onInfoTap();
+                      }
+                    : null,
+                child: Container(
+                  width: double.infinity,
+                  color: Colors.transparent,
+                  child: Row(
+                    children: [
+                      Dalai.text.regular(context, title,
+                          bold: true,
+                          color: Theme.of(context).textTheme.bodyMedium!.color),
+                      Dalai.spacing.hSpacer(small: true),
+                      onInfoTap != null
+                          ? Dalai.icon.dalaiIcons(context, CXIcon.info_circle,
+                              size: CXIconSize.x_small)
+                          : SizedBox.shrink(),
+                    ],
+                  ),
                 ),
-                Dalai.spacing.spacer(),
-                Dalai.text.regular(context, title,
-                    bold: true,
-                    color: Theme.of(context).textTheme.bodyMedium!.color),
-                subtitle == null
-                    ? SizedBox.shrink()
-                    : Dalai.text.small(context, subtitle),
-              ],
-            ),
+              )
+            ],
           )),
     );
   }

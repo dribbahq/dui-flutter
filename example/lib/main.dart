@@ -1270,17 +1270,17 @@ class _MyHomePageState extends State<MyHomePage> {
                             Dalai.tile.squareTile(
                               context,
                               title: "Tips",
-                              subtitle: "Your daily tips",
                               value: "25",
                               icon: CXIcon.fast,
                             ),
                             Dalai.spacing.spacer(),
-                            Dalai.tile.squareTile(
-                              context,
-                              title: "Tips",
-                              value: "25",
-                              icon: CXIcon.coin,
-                            ),
+                            Dalai.tile.squareTile(context,
+                                title: "Total KM",
+                                value: "25,57 €",
+                                icon: CXIcon.coin, onInfoTap: () {
+                              Alert.showAlert('Hello', 'Hello', context,
+                                  okText: 'Ok');
+                            }),
                           ],
                         ),
                         title: "Payment Method Tile"),
