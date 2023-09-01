@@ -31,10 +31,10 @@ class Misc {
   * */
   Widget checkoutHeader(context, String preTitle, String business,
       {Color? color,
-        int? maxLines,
-        double? size,
-        TextAlign? textAlign,
-        TextDecoration? decoration}) {
+      int? maxLines,
+      double? size,
+      TextAlign? textAlign,
+      TextDecoration? decoration}) {
     return RichText(
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,
@@ -44,11 +44,7 @@ class Misc {
             text: preTitle,
             style: TextStyle(
                 fontFamily: 'metropolis',
-                color: color ?? Theme
-                    .of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .color,
+                color: color ?? Theme.of(context).textTheme.bodyMedium!.color,
                 fontSize: size ?? Dalai.text.h2,
                 fontWeight: Dalai.text.regularWeight,
                 decoration: decoration ?? TextDecoration.none),
@@ -57,11 +53,7 @@ class Misc {
             text: business,
             style: TextStyle(
                 fontFamily: 'metropolis',
-                color: color ?? Theme
-                    .of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .color,
+                color: color ?? Theme.of(context).textTheme.bodyMedium!.color,
                 fontSize: size ?? Dalai.text.h2,
                 fontWeight: Dalai.text.semiBoldWeight,
                 decoration: decoration ?? TextDecoration.none),
@@ -71,23 +63,20 @@ class Misc {
     );
   }
 
-  Widget spanWithBoldTitle(context,
-      String title,
-      String text, {
-        Color? color,
-        int? maxLines,
-        double? size,
-      }) {
+  Widget spanWithBoldTitle(
+    context,
+    String title,
+    String text, {
+    Color? color,
+    int? maxLines,
+    double? size,
+  }) {
     return RichText(
       maxLines: maxLines,
       text: TextSpan(
         style: TextStyle(
           fontFamily: 'metropolis',
-          color: color ?? Theme
-              .of(context)
-              .textTheme
-              .bodyMedium!
-              .color,
+          color: color ?? Theme.of(context).textTheme.bodyMedium!.color,
           fontSize: size ?? Dalai.text.regularText,
           fontWeight: Dalai.text.regularWeight,
         ),
@@ -112,27 +101,15 @@ class Misc {
       return SlideTransition(
           position: offsetFloat!,
           child: SizedBox(
-            height: MediaQuery
-                .of(context)
-                .size
-                .width / 2.1 -
+            height: MediaQuery.of(context).size.width / 2.1 -
                 Dalai.spacing.lateralPaddingValue / 2,
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
+            width: MediaQuery.of(context).size.width,
             child: Image.asset(
               imagePath,
               alignment: alignRight ? Alignment.centerRight : Alignment.center,
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .width / 2.1 -
+              height: MediaQuery.of(context).size.width / 2.1 -
                   Dalai.spacing.lateralPaddingValue / 2,
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width -
+              width: MediaQuery.of(context).size.width -
                   2 * Dalai.spacing.lateralPaddingValue,
             ),
           ));
@@ -140,27 +117,15 @@ class Misc {
     return SlideTransition(
         position: offsetFloat!,
         child: SizedBox(
-          height: MediaQuery
-              .of(context)
-              .size
-              .width / 2.1 -
+          height: MediaQuery.of(context).size.width / 2.1 -
               Dalai.spacing.lateralPaddingValue / 2,
-          width: MediaQuery
-              .of(context)
-              .size
-              .width / 2.1 -
+          width: MediaQuery.of(context).size.width / 2.1 -
               Dalai.spacing.lateralPaddingValue / 2,
           child: Image.asset(
             imagePath,
-            height: MediaQuery
-                .of(context)
-                .size
-                .width / 2.1 -
+            height: MediaQuery.of(context).size.width / 2.1 -
                 Dalai.spacing.lateralPaddingValue / 2,
-            width: MediaQuery
-                .of(context)
-                .size
-                .width / 2.1 -
+            width: MediaQuery.of(context).size.width / 2.1 -
                 Dalai.spacing.lateralPaddingValue / 2,
           ),
         ));
@@ -202,10 +167,7 @@ class Misc {
             Center(
               child: Lottie.asset(
                 'assets/animations.dart/ax_error_search.json',
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width * 0.8,
+                width: MediaQuery.of(context).size.width * 0.8,
               ),
             ),
             const Expanded(
@@ -257,12 +219,12 @@ class Misc {
         ));
   }
 
-  bottomSheetPicker(BuildContext context, String? title, String? subtitle,
-      Widget content,
+  bottomSheetPicker(
+      BuildContext context, String? title, String? subtitle, Widget content,
       {String? dismissText,
-        String? buttonText,
-        Function? onButtonPressed,
-        Function? onDismissPressed}) {
+      String? buttonText,
+      Function? onButtonPressed,
+      Function? onDismissPressed}) {
     Utils.showBottomSheet(context,
         skipPadding: false,
         content: Column(
@@ -287,33 +249,33 @@ class Misc {
                 dismissText == null
                     ? const SizedBox.shrink()
                     : Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    width: double.infinity,
-                    child:
-                    Dalai.button.noBgButton(context, dismissText, () {
-                      if (onDismissPressed != null) {
-                        onDismissPressed();
-                      }
-                      Navigator.pop(context);
-                    }),
-                  ),
-                ),
+                        flex: 1,
+                        child: SizedBox(
+                          width: double.infinity,
+                          child:
+                              Dalai.button.noBgButton(context, dismissText, () {
+                            if (onDismissPressed != null) {
+                              onDismissPressed();
+                            }
+                            Navigator.pop(context);
+                          }),
+                        ),
+                      ),
                 Dalai.spacing.hSpacer(),
                 buttonText == null
                     ? const SizedBox.shrink()
                     : Expanded(
-                  flex: 2,
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Dalai.button.button(context, buttonText, () {
-                      if (onButtonPressed != null) {
-                        onButtonPressed();
-                      }
-                      Navigator.pop(context);
-                    }),
-                  ),
-                )
+                        flex: 2,
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Dalai.button.button(context, buttonText, () {
+                            if (onButtonPressed != null) {
+                              onButtonPressed();
+                            }
+                            Navigator.pop(context);
+                          }),
+                        ),
+                      )
               ],
             )
           ],
@@ -322,9 +284,9 @@ class Misc {
 
   Widget noticeCard(BuildContext context, String? text,
       {Function? onTap,
-        String? title,
-        CXIcon? leadingIcon,
-        CXIcon? trailingIcon}) {
+      String? title,
+      CXIcon? leadingIcon,
+      CXIcon? trailingIcon}) {
     return GestureDetector(
         onTap: () {
           if (onTap != null) {
@@ -337,23 +299,21 @@ class Misc {
                 horizontal: Dalai.spacing.lateralPaddingValue,
                 vertical: Dalai.spacing.lateralPaddingValue),
             decoration: BoxDecoration(
-                color: Theme
-                    .of(context)
-                    .brightness == Brightness.light
+                color: Theme.of(context).brightness == Brightness.light
                     ? Dalai.color.cream
                     : Dalai.color.cream.withOpacity(0.1),
                 borderRadius:
-                BorderRadius.circular(Dalai.spacing.borderRadius)),
+                    BorderRadius.circular(Dalai.spacing.borderRadius)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 leadingIcon != null
                     ? Padding(
-                  padding: EdgeInsets.only(
-                      right: Dalai.spacing.lateralPaddingValue),
-                  child: Dalai.icon.dalaiIcons(context, leadingIcon),
-                )
+                        padding: EdgeInsets.only(
+                            right: Dalai.spacing.lateralPaddingValue),
+                        child: Dalai.icon.dalaiIcons(context, leadingIcon),
+                      )
                     : SizedBox.shrink(),
                 Expanded(
                   child: Column(
@@ -364,20 +324,16 @@ class Misc {
                           ? SizedBox.shrink()
                           : Dalai.text.small(context, title, bold: true),
                       Dalai.text.small(context, text,
-                          color: Theme
-                              .of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .color!)
+                          color: Theme.of(context).textTheme.bodyMedium!.color!)
                     ],
                   ),
                 ),
                 trailingIcon != null
                     ? Padding(
-                  padding: EdgeInsets.only(
-                      left: Dalai.spacing.lateralPaddingValue),
-                  child: Dalai.icon.dalaiIcons(context, trailingIcon),
-                )
+                        padding: EdgeInsets.only(
+                            left: Dalai.spacing.lateralPaddingValue),
+                        child: Dalai.icon.dalaiIcons(context, trailingIcon),
+                      )
                     : SizedBox.shrink(),
               ],
             )));
@@ -394,14 +350,14 @@ class Misc {
                     (selected
                         ? 0
                         : isFirst
-                        ? 2
-                        : 1),
+                            ? 2
+                            : 1),
                 right: Dalai.spacing.lateralPaddingValue / 2 +
                     (selected
                         ? 0
                         : isLast
-                        ? 2
-                        : 1),
+                            ? 2
+                            : 1),
                 top: Dalai.spacing.lateralPaddingValue / 2,
                 bottom: (Dalai.spacing.lateralPaddingValue / 2) - 1),
             decoration: BoxDecoration(
@@ -418,38 +374,38 @@ class Misc {
             child: Dalai.text.title3(context, letter, color: Colors.white)),
         selected
             ? Container(
-            padding: EdgeInsets.only(
-              left: (Dalai.spacing.lateralPaddingValue / 2),
-              right: (Dalai.spacing.lateralPaddingValue / 2),
-              top: 12,
-              bottom: 11,
-            ),
-            decoration: BoxDecoration(
-                color: color,
-                border: selected
-                    ? Border.all(
-                    color: Colors.white,
-                    width: 1.5 * Dalai.spacing.borderWidth)
-                    : null,
-                borderRadius: selected
-                    ? BorderRadius.circular(200)
-                    : BorderRadius.only(
-                    topLeft: Radius.circular(
-                        isFirst ? Dalai.spacing.borderRadius / 2 : 0),
-                    bottomLeft: Radius.circular(
-                        isFirst ? Dalai.spacing.borderRadius / 2 : 0),
-                    topRight: Radius.circular(
-                        isLast ? Dalai.spacing.borderRadius / 2 : 0),
-                    bottomRight: Radius.circular(
-                        isLast ? Dalai.spacing.borderRadius / 2 : 0))),
-            child: Dalai.text.title3(context, letter, color: Colors.white))
+                padding: EdgeInsets.only(
+                  left: (Dalai.spacing.lateralPaddingValue / 2),
+                  right: (Dalai.spacing.lateralPaddingValue / 2),
+                  top: 12,
+                  bottom: 11,
+                ),
+                decoration: BoxDecoration(
+                    color: color,
+                    border: selected
+                        ? Border.all(
+                            color: Colors.white,
+                            width: 1.5 * Dalai.spacing.borderWidth)
+                        : null,
+                    borderRadius: selected
+                        ? BorderRadius.circular(200)
+                        : BorderRadius.only(
+                            topLeft: Radius.circular(
+                                isFirst ? Dalai.spacing.borderRadius / 2 : 0),
+                            bottomLeft: Radius.circular(
+                                isFirst ? Dalai.spacing.borderRadius / 2 : 0),
+                            topRight: Radius.circular(
+                                isLast ? Dalai.spacing.borderRadius / 2 : 0),
+                            bottomRight: Radius.circular(
+                                isLast ? Dalai.spacing.borderRadius / 2 : 0))),
+                child: Dalai.text.title3(context, letter, color: Colors.white))
             : SizedBox.shrink()
       ],
     );
   }
 
-  Widget getNutriscoreImage(NutriscoreLevel nutriscoreLevel,
-      BuildContext context,
+  Widget getNutriscoreImage(
+      NutriscoreLevel nutriscoreLevel, BuildContext context,
       {double size = 44}) {
     return Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -457,8 +413,7 @@ class Misc {
       decoration: BoxDecoration(
           color: Colors.transparent,
           border: Border.all(
-              color: Theme
-                  .of(context)
+              color: Theme.of(context)
                   .textTheme
                   .bodyMedium!
                   .color!
@@ -472,52 +427,51 @@ class Misc {
         children: [
           Dalai.text.xs(context, 'Nutriscore',
               bold: true,
-              color: Theme
-                  .of(context)
+              color: Theme.of(context)
                   .textTheme
                   .bodyMedium!
                   .color!
                   .withOpacity(0.8)),
           nutriscoreLevel == NutriscoreLevel.none
               ? Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              nutriscoreItem(
-                  Color(0xff50A591).withOpacity(0.25), 'A', context,
-                  isFirst: true,
-                  selected: nutriscoreLevel == NutriscoreLevel.A),
-              nutriscoreItem(
-                  Color(0xff90C580).withOpacity(0.25), 'B', context,
-                  selected: nutriscoreLevel == NutriscoreLevel.B),
-              nutriscoreItem(
-                  Color(0xffF6BE56).withOpacity(0.25), 'C', context,
-                  selected: nutriscoreLevel == NutriscoreLevel.C),
-              nutriscoreItem(
-                  Color(0xffED7E46).withOpacity(0.25), 'D', context,
-                  selected: nutriscoreLevel == NutriscoreLevel.D),
-              nutriscoreItem(
-                  Color(0xffD2293A).withOpacity(0.25), 'E', context,
-                  isLast: true,
-                  selected: nutriscoreLevel == NutriscoreLevel.E)
-            ],
-          )
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    nutriscoreItem(
+                        Color(0xff50A591).withOpacity(0.25), 'A', context,
+                        isFirst: true,
+                        selected: nutriscoreLevel == NutriscoreLevel.A),
+                    nutriscoreItem(
+                        Color(0xff90C580).withOpacity(0.25), 'B', context,
+                        selected: nutriscoreLevel == NutriscoreLevel.B),
+                    nutriscoreItem(
+                        Color(0xffF6BE56).withOpacity(0.25), 'C', context,
+                        selected: nutriscoreLevel == NutriscoreLevel.C),
+                    nutriscoreItem(
+                        Color(0xffED7E46).withOpacity(0.25), 'D', context,
+                        selected: nutriscoreLevel == NutriscoreLevel.D),
+                    nutriscoreItem(
+                        Color(0xffD2293A).withOpacity(0.25), 'E', context,
+                        isLast: true,
+                        selected: nutriscoreLevel == NutriscoreLevel.E)
+                  ],
+                )
               : Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              nutriscoreItem(Color(0xff50A591), 'A', context,
-                  isFirst: true,
-                  selected: nutriscoreLevel == NutriscoreLevel.A),
-              nutriscoreItem(Color(0xff90C580), 'B', context,
-                  selected: nutriscoreLevel == NutriscoreLevel.B),
-              nutriscoreItem(Color(0xffF6BE56), 'C', context,
-                  selected: nutriscoreLevel == NutriscoreLevel.C),
-              nutriscoreItem(Color(0xffED7E46), 'D', context,
-                  selected: nutriscoreLevel == NutriscoreLevel.D),
-              nutriscoreItem(Color(0xffD2293A), 'E', context,
-                  isLast: true,
-                  selected: nutriscoreLevel == NutriscoreLevel.E)
-            ],
-          ),
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    nutriscoreItem(Color(0xff50A591), 'A', context,
+                        isFirst: true,
+                        selected: nutriscoreLevel == NutriscoreLevel.A),
+                    nutriscoreItem(Color(0xff90C580), 'B', context,
+                        selected: nutriscoreLevel == NutriscoreLevel.B),
+                    nutriscoreItem(Color(0xffF6BE56), 'C', context,
+                        selected: nutriscoreLevel == NutriscoreLevel.C),
+                    nutriscoreItem(Color(0xffED7E46), 'D', context,
+                        selected: nutriscoreLevel == NutriscoreLevel.D),
+                    nutriscoreItem(Color(0xffD2293A), 'E', context,
+                        isLast: true,
+                        selected: nutriscoreLevel == NutriscoreLevel.E)
+                  ],
+                ),
         ],
       ),
     );
@@ -591,9 +545,7 @@ class Misc {
     } else if (marker == MapMarker.currentLocation) {
       rawSvg = markerCurrentLocation;
     } else if (marker == MapMarker.origin) {
-      if (Theme
-          .of(context)
-          .brightness == Brightness.light) {
+      if (Theme.of(context).brightness == Brightness.light) {
         if (state == MapMarkerState.selected) {
           rawSvg = markerOriginUp;
         } else {
@@ -637,12 +589,12 @@ class Misc {
     final document = XmlDocument.parse(svgString);
     final svgElement = document.rootElement;
     final widthAttribute =
-    svgElement.getAttribute('width')!.replaceAll("px", "");
+        svgElement.getAttribute('width')!.replaceAll("px", "");
     final heightAttribute =
-    svgElement.getAttribute('height')!.replaceAll("px", "");
+        svgElement.getAttribute('height')!.replaceAll("px", "");
 
     final svgDrawableRoot =
-    await vg.loadPicture(SvgStringLoader(svgString), null);
+        await vg.loadPicture(SvgStringLoader(svgString), null);
 
     final image = await svgDrawableRoot.picture.toImage(
         int.parse(widthAttribute.toString()),
@@ -683,8 +635,8 @@ class Misc {
     return getPlaceholderImage(image, fit: fit).image;
   }
 
-  Widget checkboxList(List<String> titles, List<String?> subtitles,
-      List<CXIcon?> icons,
+  Widget checkboxList(
+      List<String> titles, List<String?> subtitles, List<CXIcon?> icons,
       {int selected = 0, required Function(int value) onSelect}) {
     return ListView.builder(
         shrinkWrap: true,
@@ -696,17 +648,10 @@ class Misc {
               leading: icons[index] == null
                   ? null
                   : Dalai.icon.dalaiIcons(context, icons[index]!,
-                  secondaryColor: Theme
-                      .of(context)
-                      .colorScheme
-                      .primary),
-              trailing: Dalai.icon.dalaiIcons(context,
-                  selected != index ? CXIcon.checkbox : CXIcon.checkbox_on,
-                  secondaryColor: Theme
-                      .of(context)
-                      .colorScheme
-                      .primary), onTap: () {
-            onSelect(index);
-          });
+                      secondaryColor: Theme.of(context).colorScheme.primary),
+              trailing: Dalai.button.checkbox(selected == index, (value) {
+                onSelect(index);
+              }, context));
         });
-  }}
+  }
+}

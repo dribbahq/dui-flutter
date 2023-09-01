@@ -307,15 +307,42 @@ class DalaiButtons {
 
   Widget checkbox(
       bool isSelected, Function(bool) onChange, BuildContext context) {
-    return GestureDetector(
-        child: Container(
-            child: isSelected
-                ? Dalai.icon.dalaiIcons(context, CXIcon.checkbox_on,
-                    secondaryColor: Dalai.color.primary)
-                : Dalai.icon.dalaiIcons(context, CXIcon.checkbox)),
-        onTap: () {
-          onChange(!isSelected);
-        });
+    var size = 26.0;
+    return Material(
+      borderRadius: BorderRadius.circular(Dalai.spacing.smallBorderRadius + 4),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      color: Colors.transparent,
+      child: InkWell(
+          child: Container(
+            width: size,
+            height: size,
+            color: Colors.transparent,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                    width: size - 4,
+                    height:  size - 4,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(6),
+                      border:
+                      Border.all(color: Theme.of(context).textTheme.bodyMedium!.color!, width: 2.0),
+                    )),
+                isSelected ? Container(
+                    width:  size - 14,
+                    height:  size - 14,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: BorderRadius.circular(2),
+                    )) : SizedBox.shrink(),
+              ],
+            ),
+          ),
+          onTap: () {
+            onChange(!isSelected);
+          }),
+    );
   }
 
   Widget toggle(
