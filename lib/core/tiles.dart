@@ -1,4 +1,5 @@
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
+import 'package:dalai/common_utils/color_extension.dart';
 import 'package:dalai/core/external/slidable_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:substring_highlight/substring_highlight.dart';
@@ -72,15 +73,15 @@ class DalaiTiles {
         title: Text(
           title ?? '',
           style: TextStyle(
-              fontSize: Dalai.text.h3,
+              fontSize: Dalai.text.regularText,
               fontWeight: Dalai.text.semiBoldWeight,
               color:
                   colorText ?? Theme.of(context).textTheme.bodyMedium!.color),
         ),
-        subtitle: Text(
+        subtitle: subtitle == null ? null : Text(
           subtitle ?? '',
           style: TextStyle(
-              fontSize: Dalai.text.regularText,
+              fontSize: Dalai.text.smallText,
               color:
                   colorText ?? Theme.of(context).textTheme.bodyMedium!.color),
           textAlign: TextAlign.start,
@@ -192,12 +193,86 @@ class DalaiTiles {
     );
   }
 
-  Widget squareTile(BuildContext context,
-      {CXIcon? icon,
-      required String? title,
-      Function()? onTap,
-      Function()? onInfoTap,
-      required String? value}) {
+  Widget squareTile(
+    BuildContext context, {
+    CXIcon? icon,
+    required String? title,
+    Function()? onTap,
+    Function()? onInfoTap,
+    String? value,
+    String? subtitle,
+    bool selected = false,
+  }) {
+    if (value == null) {
+      var backgroundColor = selected
+          ? Theme.of(context).colorScheme.background.calculateLuminance()
+          : Theme.of(context).colorScheme.background;
+      return InkWell(
+        onTap: () {
+          if (onTap != null) {
+            onTap();
+          }
+        },
+        child: Container(
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width / 2,
+            ),
+            padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              border: Border.all(
+                  color: Theme.of(context).colorScheme.background,
+                  width: Dalai.spacing.borderWidth),
+              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                        child: GestureDetector(
+                      onTap: onInfoTap != null
+                          ? () {
+                              onInfoTap();
+                            }
+                          : null,
+                      child: Container(
+                        width: double.infinity,
+                        color: Colors.transparent,
+                        child: Row(
+                          children: [
+                            Flexible(
+                              child: Dalai.text.regular(context, title,
+                                  bold: true,
+                                  color: backgroundColor.calculateLuminance(),
+                                  maxLines: 1),
+                            ),
+                            Dalai.spacing.hSpacer(small: true),
+                            onInfoTap != null
+                                ? Dalai.icon.dalaiIcons(
+                                    context, CXIcon.info_circle,
+                                    mainColor: backgroundColor.calculateLuminance(),
+                                    size: CXIconSize.x_small)
+                                : SizedBox.shrink(),
+                          ],
+                        ),
+                      ),
+                    )),
+                    icon == null
+                        ? SizedBox.shrink()
+                        : Dalai.icon.dalaiIcons(context, icon, mainColor: backgroundColor.calculateLuminance()),
+                  ],
+                ),
+                subtitle != null
+                    ? Dalai.text.xs(context, subtitle,
+                        color: backgroundColor.calculateLuminance())
+                    : SizedBox.shrink(),
+              ],
+            )),
+      );
+    }
     return InkWell(
       onTap: () {
         if (onTap != null) {
@@ -242,9 +317,13 @@ class DalaiTiles {
                   color: Colors.transparent,
                   child: Row(
                     children: [
-                      Flexible(child: Dalai.text.regular(context, title,
-                          bold: true,
-                          color: Theme.of(context).textTheme.bodyMedium!.color, maxLines: 1),),
+                      Flexible(
+                        child: Dalai.text.regular(context, title,
+                            bold: true,
+                            color:
+                                Theme.of(context).textTheme.bodyMedium!.color,
+                            maxLines: 1),
+                      ),
                       Dalai.spacing.hSpacer(small: true),
                       onInfoTap != null
                           ? Dalai.icon.dalaiIcons(context, CXIcon.info_circle,

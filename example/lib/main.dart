@@ -1,13 +1,17 @@
+import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:dalai/common_utils/alert.dart';
+import 'package:dalai/common_utils/color_extension.dart';
 import 'package:dalai/common_utils/common_utils.dart';
 import 'package:dalai/core/animations.dart';
 import 'package:dalai/core/badges.dart';
 import 'package:dalai/core/cards.dart';
 import 'package:dalai/core/external/slidable_tile.dart';
 import 'package:dalai/core/misc.dart';
+import 'package:dalai/core/picker.dart';
 import 'package:dalai/dalai.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,6 +28,15 @@ class MyApp extends StatelessWidget {
       theme: Dalai.theme.themeData(false),
       darkTheme: Dalai.theme.themeData(true),
       home: const MyHomePage(),
+      locale: const Locale('es', 'ES'),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('ca', 'CA'),
+      ],
     );
   }
 }
@@ -91,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var key10 = GlobalKey();
   var key11 = GlobalKey();
   var key12 = GlobalKey();
+  var key13 = GlobalKey();
 
   bool loading = false;
 
@@ -120,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: ListView.separated(
                   padding: EdgeInsets.symmetric(
                       horizontal: Dalai.spacing.lateralPaddingValue),
-                  itemCount: 12,
+                  itemCount: 13,
                   separatorBuilder: (context, index) {
                     return Dalai.spacing.hSpacer();
                   },
@@ -164,6 +178,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     } else if (index == 11) {
                       title = "Animations";
                       key = key12;
+                    } else if (index == 12) {
+                      title = "Pickers";
+                      key = key13;
                     }
 
                     return Dalai.badge.tagSolid(context, title,
@@ -1281,9 +1298,33 @@ class _MyHomePageState extends State<MyHomePage> {
                               Alert.showAlert('Hello', 'Hello', context,
                                   okText: 'Ok');
                             }),
+                            Dalai.spacing.spacer(),
+                            Dalai.tile.squareTile(context,
+                                title: "Total KM",
+                                icon: CXIcon.coin, onInfoTap: () {
+                              Alert.showAlert('Hello', 'Hello', context,
+                                  okText: 'Ok');
+                            }),
+                            Dalai.spacing.spacer(),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Dalai.tile.squareTile(context,
+                                      title: "2h",
+                                      subtitle: "As soon as possible",
+                                      selected: true),
+                                ),
+                                Dalai.spacing.hSpacer(),
+                                Expanded(
+                                  child: Dalai.tile.squareTile(context,
+                                      title: "Schedule",
+                                      subtitle: "Select date and hour"),
+                                ),
+                              ],
+                            )
                           ],
                         ),
-                        title: "Payment Method Tile"),
+                        title: "Value + Date Tile"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -1477,13 +1518,22 @@ class _MyHomePageState extends State<MyHomePage> {
                               context,
                               'Demo Picker',
                               'Demo Picker ',
-                              Dalai.misc.noticeCard(context,
-                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis, urna nec sagittis interdum, neque tortor sagittis urna, feugiat congue magna dui vel libero.',
-                                  title: 'This is just a demo', onTap: () {}),
-                              dismissText: 'Tancar',
-                              buttonText: 'Seleccionar',
-                              onDismissPressed: () {},
-                              onButtonPressed: () {});
+                              Dalai.picker.calendar(
+                                context,
+                                (initDate, lastDate) {
+                                  print("From: $initDate");
+                                  print("To: $lastDate");
+                                },
+                                calendarMode: CalendarMode.single,
+                                selectedDates: [
+                                  DateTime.now().add(Duration(days: 2)),
+                                ],
+                                disableWeekends: true,
+                              ), onButtonPressed: () {
+                            Navigator.pop(context);
+                          }, onDismissPressed: () {
+                            Navigator.pop(context);
+                          }, buttonText: 'Acceptar', dismissText: 'Cancel.lar');
                         }),
                         title: "Bottom Picker"),
                     Dalai.spacing.spacer(small: true),
@@ -1734,24 +1784,43 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Placeholder Images"),
-                    // Dalai.spacing.spacer(small: true),
-                    // showCaseBlock(
-                    //     Column(
-                    //       children: [
-                    //         Container(
-                    //           height: 100,
-                    //           width: double.infinity,
-                    //           decoration: BoxDecoration(
-                    //               image: DecorationImage(
-                    //             fit: BoxFit.fitWidth,
-                    //             image: Dalai.misc.getPlaceholderImageProvider(
-                    //                 PlaceholderImage.courier,
-                    //                 fit: BoxFit.fitWidth),
-                    //           )),
-                    //         )
-                    //       ],
-                    //     ),
-                    //     title: "Placeholder Image Providers"),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.misc.checkboxList([
+                              "Title 1",
+                              "Title 2",
+                              "Title 3"
+                            ], [
+                              "Subtitle 1",
+                              null,
+                              "Subtitle 3"
+                            ], [
+                              CXIcon.bag,
+                              null,
+                              CXIcon.bag_slash
+                            ], selected: 1, onSelect: (option) {}),
+                          ],
+                        ),
+                        title: "Checkbox Group"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Container(
+                              height: 100,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                fit: BoxFit.fitWidth,
+                                image: Dalai.misc.getPlaceholderImageProvider(
+                                    PlaceholderImage.courier,
+                                    fit: BoxFit.fitWidth),
+                              )),
+                            )
+                          ],
+                        ),
+                        title: "Placeholder Image Providers"),
                     Dalai.spacing.divider(context),
                   ],
                 ),
@@ -1896,6 +1965,158 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Animation Usage"),
+                    Dalai.spacing.divider(context),
+                  ],
+                ),
+              ),
+              Container(
+                key: key13,
+                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Dalai.text.title2(context, 'Pickers'),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.picker.calendar(
+                              context,
+                              (initDate, lastDate) {
+                                print("From: $initDate");
+                                print("To: $lastDate");
+                              },
+                              calendarMode: CalendarMode.single,
+                              selectedDates: [
+                                DateTime.now().add(Duration(days: 2)),
+                              ],
+                              disableWeekends: true,
+                            ),
+                          ],
+                        ),
+                        title: "Single Calendar Picker (Disabled Weekends)"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.picker.calendar(
+                              context,
+                              (initDate, lastDate) {
+                                print("From: $initDate");
+                                print("To: $lastDate");
+                              },
+                              showToday: false,
+                              calendarMode: CalendarMode.range,
+                              selectedDates: [
+                                DateTime.now().add(Duration(days: 2)),
+                                DateTime.now().add(Duration(days: 5))
+                              ],
+                            ),
+                          ],
+                        ),
+                        title: "Range Calendar Picker"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(
+                          children: [
+                            Dalai.picker.calendar(
+                              context,
+                              (initDate, lastDate) {
+                                print("From: $initDate");
+                                print("To: $lastDate");
+                              },
+                              calendarMode: CalendarMode.single,
+                              disableWeekends: true,
+                              disabledDates: [
+                                DateTime.now().add(Duration(days: 2)),
+                                DateTime.now().add(Duration(days: 5))
+                              ],
+                              disabledDays: [
+                                DateTime.monday,
+                                DateTime.thursday
+                              ],
+                              selectedDates: [],
+                            ),
+                          ],
+                        ),
+                        title: "Calendar Picker (Disabled Options)"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(children: [
+                          Dalai.picker.textScrollPicker(
+                              context, ['Test', 'Test', 'Test', 'Test'],
+                              (value) {
+                            print(value);
+                          }),
+                        ]),
+                        title: "Text Scroll Picker"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(children: [
+                          Dalai.picker.dateTimeScrollPicker(
+                              context,
+                              [
+                                DateTime.now(),
+                                DateTime.now().add(Duration(days: 1)),
+                                DateTime.now().add(Duration(days: 2))
+                              ],
+                              [
+                                TimeOfDay(hour: 12, minute: 0),
+                                TimeOfDay(hour: 12, minute: 1),
+                                TimeOfDay(hour: 12, minute: 2),
+                                TimeOfDay(hour: 12, minute: 3),
+                                TimeOfDay(hour: 12, minute: 4),
+                              ],
+                              onDateSelected: (selected) {},
+                              onTimeSelected: (selected) {}),
+                        ]),
+                        title: "DateTime Scroll Picker"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(children: [
+                          Dalai.picker.dateScrollPicker(
+                              context,
+                              [
+                                DateTime.now(),
+                                DateTime.now().add(Duration(days: 1)),
+                                DateTime.now().add(Duration(days: 2))
+                              ],
+                              onDateSelected: (selected) {}),
+                          Dalai.spacing.spacer(small: true),
+                        ]),
+                        title: "Date Picker"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(children: [
+                          Dalai.picker.timeScrollPicker(
+                              context,
+                              [
+                                TimeOfDay(hour: 11, minute: 15),
+                                TimeOfDay(hour: 11, minute: 30),
+                                TimeOfDay(hour: 11, minute: 45),
+                                TimeOfDay(hour: 12, minute: 00),
+                                TimeOfDay(hour: 12, minute: 15),
+                              ],
+                              onTimeSelected: (selected) {})
+                        ]),
+                        title: "Time Picker"),
+                    Dalai.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Column(children: [
+                          Dalai.picker.timeRangeScrollPicker(
+                              context,
+                              [
+                                TimeOfDay(hour: 11, minute: 15),
+                                TimeOfDay(hour: 11, minute: 30),
+                                TimeOfDay(hour: 11, minute: 45),
+                                TimeOfDay(hour: 12, minute: 00),
+                                TimeOfDay(hour: 12, minute: 15),
+                              ],
+                              timeRange: Duration(minutes: 80),
+                              onTimeSelected: (selected) {})
+                        ]),
+                        title: "Time Picker"),
                     Dalai.spacing.divider(context),
                   ],
                 ),

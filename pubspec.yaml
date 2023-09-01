@@ -33,6 +33,7 @@ dependencies:
   flutter_svg: ^2.0.7
   palette_generator: any
   soundpool: any
+  calendar_date_picker2: any
 
 dev_dependencies:
   flutter_test:
@@ -58,10 +59,10 @@ flutter:
     - lib/assets/animations/ax_tracking_ongoing_market.json
     - lib/assets/animations/ax_error_working.json
     - lib/assets/animations/ax_tracking_ongoing_super.json
-#    - lib/assets/animations/ax_order_cancel.json
-##    - lib/assets/animations/ax_tracking_pickup.json
-#    - lib/assets/animations/ax_order_delivered.json
-#    - lib/assets/animations/ax_tracking_queued.json
+    - lib/assets/animations/ax_order_cancel.json
+    - lib/assets/animations/ax_tracking_pickup.json
+    - lib/assets/animations/ax_order_delivered.json
+    - lib/assets/animations/ax_tracking_queued.json
 #    - lib/assets/images/lama-ui-icon.png
 #    - lib/assets/fonts/metropolis/regular.otf
 #    - lib/assets/fonts/metropolis/semibold.otf

@@ -8,6 +8,7 @@ import 'core/colors.dart';
 import 'core/icons.dart';
 import 'core/inputs.dart';
 import 'core/misc.dart';
+import 'core/picker.dart';
 import 'core/skeleton.dart';
 import 'core/spacing.dart';
 import 'core/text.dart';
@@ -27,6 +28,6 @@ class Dalai {
   static final DalaiTiles tile = DalaiTiles();
   static final DalaiBadges badge = DalaiBadges();
   static final DalaiAnimations animations = DalaiAnimations();
-
+  static final DalaiPickers picker = DalaiPickers();
   static final Misc misc = Misc();
 }

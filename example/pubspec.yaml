@@ -30,9 +30,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   dalai:
     path: ../
+  calendar_date_picker2: ^0.5.3
 
   cityxerpa_icons:
     git:
