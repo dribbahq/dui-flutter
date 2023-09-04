@@ -536,6 +536,7 @@ class DalaiInputs {
     Function(String)? onSubmit,
     Function()? onTap,
     int? maxLines,
+    Widget? suffixIcon,
     int? minLines,
     List<TextInputFormatter>? inputFormatters,
     bool loading = false,
@@ -574,7 +575,7 @@ class DalaiInputs {
                           width: Dalai.spacing.borderWidth)),
                   child: Padding(
                     padding: EdgeInsets.only(
-                        top: Dalai.spacing.lateralPaddingValue ,
+                        top: Dalai.spacing.lateralPaddingValue,
                         right: Dalai.spacing.lateralPaddingValue,
                         left: Dalai.spacing.lateralPaddingValue,
                         bottom: Dalai.spacing.lateralPaddingValue),
@@ -687,11 +688,25 @@ class DalaiInputs {
                           ),
                         ),
                         loading
-                            ? Dalai.misc.loadingAnimation(context, size: 16)
-                            : SizedBox.shrink(),
-                        loading
-                            ? Dalai.spacing.hSpacer(small: true)
-                            : SizedBox.shrink(),
+                            ? Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  loading
+                                      ? Dalai.misc
+                                          .loadingAnimation(context, size: 16)
+                                      : SizedBox.shrink(),
+                                  loading
+                                      ? Dalai.spacing.hSpacer(small: true)
+                                      : SizedBox.shrink(),
+                                ],
+                              )
+                            : Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Dalai.spacing.hSpacer(),
+                                  suffixIcon ?? SizedBox.shrink()
+                                ],
+                              )
                       ],
                     ),
                   ),
