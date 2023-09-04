@@ -14,6 +14,7 @@ import 'core/spacing.dart';
 import 'core/text.dart';
 import 'core/theme.dart';
 import 'core/tiles.dart';
+import 'common_utils/alert.dart';
 
 class Dalai {
   static final DalaiText text = DalaiText();
