@@ -19,7 +19,8 @@ enum AnimationType {
   trackingQueued,
   paymentProcessing,
   orderCancelled,
-  orderDelivered
+  orderDelivered,
+  coinFlip
 }
 
 class DalaiAnimations {
@@ -118,6 +119,8 @@ class DalaiAnimations {
       return 'lib/assets/animations/ax_order_cancel.json';
     } else if (animationType == AnimationType.orderDelivered) {
       return 'lib/assets/animations/ax_order_delivered.json';
+    }else if (animationType == AnimationType.coinFlip) {
+      return 'lib/assets/animations/ax_coin_flipping.json';
     } else {
       return 'lib/assets/animations/ax_error_generic.json';
     }
