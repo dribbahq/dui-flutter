@@ -1,7 +1,5 @@
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:dalai/common_utils/alert.dart';
-import 'package:dalai/common_utils/color_extension.dart';
 import 'package:dalai/common_utils/common_utils.dart';
 import 'package:dalai/core/animations.dart';
 import 'package:dalai/core/badges.dart';
@@ -1925,6 +1923,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                     backgroundColor: Dalai.color.cream),
                                 Dalai.animations.animation(
                                     context, AnimationType.orderDelivered,
+                                    circled: true,
+                                    size: 120,
+                                    backgroundColor: Dalai.color.cream),
+                                Dalai.animations.animation(
+                                    context, AnimationType.coinFlip,
                                     circled: true,
                                     size: 120,
                                     backgroundColor: Dalai.color.cream),
