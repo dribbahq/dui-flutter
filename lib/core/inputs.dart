@@ -666,7 +666,7 @@ class DalaiInputs {
                                             controller!.text.isNotEmpty
                                         ? Dalai.text.semiBoldWeight
                                         : Dalai.text.regularWeight,
-                                    color: enabled
+                                    color: colorText ?? (enabled
                                         ? isFocusEnabled ||
                                                 controller!.text.isNotEmpty
                                             ? Theme.of(context)
@@ -679,7 +679,7 @@ class DalaiInputs {
                                         : Theme.of(context)
                                             .inputDecorationTheme
                                             .focusColor!
-                                            .withOpacity(0.3)),
+                                            .withOpacity(0.3))),
                                 alignLabelWithHint: true,
                                 hintText: hint,
                                 hintMaxLines: maxLines),
