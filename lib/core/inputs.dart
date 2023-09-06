@@ -569,11 +569,7 @@ class DalaiInputs {
                                   .focusedBorder!
                                   .borderSide
                                   .color
-                              : Theme.of(context)
-                                  .inputDecorationTheme
-                                  .enabledBorder!
-                                  .borderSide
-                                  .color,
+                              : Colors.transparent,
                           width: Dalai.spacing.borderWidth)),
                   child: Padding(
                     padding: EdgeInsets.only(
