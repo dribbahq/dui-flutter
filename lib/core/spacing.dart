@@ -10,7 +10,7 @@ class DalaiSpacing{
   final EdgeInsets lateralPadding =
   const EdgeInsets.symmetric(horizontal: 12);
 
-  final double homeCategoriesPadding = 12 * 2;
+  final double homeCategoriesPadding = 12;
 
 
   /// Border Radius
