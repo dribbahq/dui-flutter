@@ -559,7 +559,7 @@ class DalaiInputs {
                 Flexible(
                     child: Container(
                   decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.background,
+                      color: bgColor ?? Theme.of(context).inputDecorationTheme.fillColor,
                       borderRadius:
                           BorderRadius.circular(Dalai.spacing.borderRadius),
                       border: Border.all(
