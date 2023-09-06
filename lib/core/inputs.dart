@@ -48,189 +48,191 @@ class DalaiInputs {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.background,
-                      borderRadius:
-                          BorderRadius.circular(Dalai.spacing.borderRadius),
-                      border: Border.all(
-                          color: error != null && error.isNotEmpty
-                              ? Dalai.color.error
-                              : isFocusEnabled
-                                  ? Theme.of(context)
-                                      .inputDecorationTheme
-                                      .focusedBorder!
-                                      .borderSide
-                                      .color
-                                  : Theme.of(context)
-                                      .inputDecorationTheme
-                                      .enabledBorder!
-                                      .borderSide
-                                      .color,
-                          width: Dalai.spacing.borderWidth)),
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        top: Dalai.spacing.lateralPaddingValue,
-                        right: Dalai.spacing.lateralPaddingValue,
-                        left: Dalai.spacing.lateralPaddingValue,
-                        bottom: Dalai.spacing.lateralPaddingValue),
-                    child: Row(
-                      children: [
-                        prefixIcon != null
-                            ? Row(
-                                children: [
-                                  prefixIcon,
-                                  Dalai.spacing.hSpacer(),
-                                  showPrefixSeparator!
-                                      ? Row(
-                                          children: [
-                                            SizedBox(
-                                              height: 24,
-                                              child: VerticalDivider(
-                                                width: 1,
-                                                thickness: 1,
-                                                color: Theme.of(context)
-                                                    .inputDecorationTheme
-                                                    .enabledBorder!
-                                                    .borderSide
-                                                    .color,
+                Flexible(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        borderRadius:
+                            BorderRadius.circular(Dalai.spacing.borderRadius),
+                        border: Border.all(
+                            color: error != null && error.isNotEmpty
+                                ? Dalai.color.error
+                                : isFocusEnabled
+                                    ? Theme.of(context)
+                                        .inputDecorationTheme
+                                        .focusedBorder!
+                                        .borderSide
+                                        .color
+                                    : Theme.of(context)
+                                        .inputDecorationTheme
+                                        .enabledBorder!
+                                        .borderSide
+                                        .color,
+                            width: Dalai.spacing.borderWidth)),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: Dalai.spacing.lateralPaddingValue,
+                          right: Dalai.spacing.lateralPaddingValue,
+                          left: Dalai.spacing.lateralPaddingValue,
+                          bottom: Dalai.spacing.lateralPaddingValue),
+                      child: Row(
+                        children: [
+                          prefixIcon != null
+                              ? Row(
+                                  children: [
+                                    prefixIcon,
+                                    Dalai.spacing.hSpacer(),
+                                    showPrefixSeparator!
+                                        ? Row(
+                                            children: [
+                                              SizedBox(
+                                                height: 24,
+                                                child: VerticalDivider(
+                                                  width: 1,
+                                                  thickness: 1,
+                                                  color: Theme.of(context)
+                                                      .inputDecorationTheme
+                                                      .enabledBorder!
+                                                      .borderSide
+                                                      .color,
+                                                ),
                                               ),
-                                            ),
-                                            Dalai.spacing.hSpacer()
-                                          ],
-                                        )
-                                      : const SizedBox.shrink(),
-                                ],
-                              )
-                            : const SizedBox.shrink(),
-                        Expanded(
-                          child: TextField(
-                            onChanged: (value) {
-                              if (onChange != null) {
-                                onChange();
-                              }
-                            },
-                            onTapOutside: (event) {
-                              focusNode.unfocus();
-                            },
-                            onSubmitted: (term) {
-                              if (textInputAction != null &&
-                                  textInputAction == TextInputAction.next) {
-                                FocusScope.of(context)
-                                    .requestFocus(nextFocusNode);
-                              }
-                              if (onSubmit != null) {
-                                onSubmit(term)!;
-                              }
-                            },
-                            inputFormatters: inputFormatters,
-                            autocorrect: false,
-                            keyboardType: keyboardType ?? TextInputType.text,
-                            textCapitalization: textCapitalization ??
-                                TextCapitalization.sentences,
-                            autofocus: false,
-                            controller: controller,
-                            enabled: enabled ?? true,
-                            maxLength: maxLength,
-                            obscureText: obscure ?? false,
-                            cursorColor: Theme.of(context)
-                                .inputDecorationTheme
-                                .focusColor,
-                            textInputAction:
-                                textInputAction ?? TextInputAction.done,
-                            maxLines: expands != null && expands
-                                ? null
-                                : maxLines ?? 1,
-                            minLines: minLines,
-                            expands: expands ?? false,
-                            textAlign: TextAlign.start,
-                            textAlignVertical: (isFocusEnabled ||
-                                        controller!.text.isNotEmpty) &&
-                                    expands == null &&
-                                    label != null
-                                ? TextAlignVertical.bottom
-                                : TextAlignVertical.top,
-                            style: TextStyle(
-                                fontSize: Dalai.text.regularText,
-                                color: colorText ??
-                                    (enabled == null || enabled
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .color
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .color!
-                                            .withOpacity(0.3))),
-                            decoration: InputDecoration(
-                                isDense: true,
-                                contentPadding: EdgeInsets.only(
-                                    top: Dalai.spacing.lateralPaddingValue,
-                                    bottom: 0),
-                                filled: false,
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.transparent, width: 0)),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.transparent, width: 0)),
-                                disabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.transparent, width: 0)),
-                                labelText: label,
-                                labelStyle: TextStyle(
-                                    fontWeight: isFocusEnabled ||
-                                            controller!.text.isNotEmpty
-                                        ? Dalai.text.semiBoldWeight
-                                        : Dalai.text.regularWeight,
-                                    color: enabled == null || enabled
-                                        ? isFocusEnabled ||
-                                                controller!.text.isNotEmpty
-                                            ? Theme.of(context)
-                                                .inputDecorationTheme
-                                                .focusColor
-                                            : Theme.of(context)
-                                                .textTheme
-                                                .bodySmall!
-                                                .color
-                                        : Theme.of(context)
-                                            .inputDecorationTheme
-                                            .focusColor!
-                                            .withOpacity(0.3)),
-                                alignLabelWithHint: true,
-                                hintText: hint,
-                                hintMaxLines: maxLines),
+                                              Dalai.spacing.hSpacer()
+                                            ],
+                                          )
+                                        : const SizedBox.shrink(),
+                                  ],
+                                )
+                              : const SizedBox.shrink(),
+                          Expanded(
+                            child: TextField(
+                              onChanged: (value) {
+                                if (onChange != null) {
+                                  onChange();
+                                }
+                              },
+                              onTapOutside: (event) {
+                                focusNode.unfocus();
+                              },
+                              onSubmitted: (term) {
+                                if (textInputAction != null &&
+                                    textInputAction == TextInputAction.next) {
+                                  FocusScope.of(context)
+                                      .requestFocus(nextFocusNode);
+                                }
+                                if (onSubmit != null) {
+                                  onSubmit(term)!;
+                                }
+                              },
+                              inputFormatters: inputFormatters,
+                              autocorrect: false,
+                              keyboardType: keyboardType ?? TextInputType.text,
+                              textCapitalization: textCapitalization ??
+                                  TextCapitalization.sentences,
+                              autofocus: false,
+                              controller: controller,
+                              enabled: enabled ?? true,
+                              maxLength: maxLength,
+                              obscureText: obscure ?? false,
+                              cursorColor: Theme.of(context)
+                                  .inputDecorationTheme
+                                  .focusColor,
+                              textInputAction:
+                                  textInputAction ?? TextInputAction.done,
+                              maxLines: expands != null && expands
+                                  ? null
+                                  : maxLines ?? 1,
+                              minLines: minLines,
+                              expands: expands ?? false,
+                              textAlign: TextAlign.start,
+                              textAlignVertical: (isFocusEnabled ||
+                                          controller!.text.isNotEmpty) &&
+                                      expands == null &&
+                                      label != null
+                                  ? TextAlignVertical.bottom
+                                  : TextAlignVertical.top,
+                              style: TextStyle(
+                                  fontSize: Dalai.text.regularText,
+                                  color: colorText ??
+                                      (enabled == null || enabled
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .color
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .color!
+                                              .withOpacity(0.3))),
+                              decoration: InputDecoration(
+                                  isDense: true,
+                                  contentPadding: EdgeInsets.only(
+                                      top: Dalai.spacing.lateralPaddingValue,
+                                      bottom: 0),
+                                  filled: false,
+                                  focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent, width: 0)),
+                                  enabledBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent, width: 0)),
+                                  disabledBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent, width: 0)),
+                                  labelText: label,
+                                  labelStyle: TextStyle(
+                                      fontWeight: isFocusEnabled ||
+                                              controller!.text.isNotEmpty
+                                          ? Dalai.text.semiBoldWeight
+                                          : Dalai.text.regularWeight,
+                                      color: enabled == null || enabled
+                                          ? isFocusEnabled ||
+                                                  controller!.text.isNotEmpty
+                                              ? Theme.of(context)
+                                                  .inputDecorationTheme
+                                                  .focusColor
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .bodySmall!
+                                                  .color
+                                          : Theme.of(context)
+                                              .inputDecorationTheme
+                                              .focusColor!
+                                              .withOpacity(0.3)),
+                                  alignLabelWithHint: true,
+                                  hintText: hint,
+                                  hintMaxLines: maxLines),
+                            ),
                           ),
-                        ),
-                        suffixIcon != null
-                            ? Row(
-                                children: [
-                                  showSuffixSeparator!
-                                      ? Row(
-                                          children: [
-                                            Dalai.spacing.hSpacer(),
-                                            SizedBox(
-                                              height: 24,
-                                              child: VerticalDivider(
-                                                width: 1,
-                                                thickness: 1,
-                                                color: Theme.of(context)
-                                                    .inputDecorationTheme
-                                                    .enabledBorder!
-                                                    .borderSide
-                                                    .color,
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      : const SizedBox.shrink(),
-                                  Dalai.spacing.hSpacer(),
-                                  suffixIcon
-                                ],
-                              )
-                            : const SizedBox.shrink(),
-                      ],
+                          suffixIcon != null
+                              ? Row(
+                                  children: [
+                                    showSuffixSeparator!
+                                        ? Row(
+                                            children: [
+                                              Dalai.spacing.hSpacer(),
+                                              SizedBox(
+                                                height: 24,
+                                                child: VerticalDivider(
+                                                  width: 1,
+                                                  thickness: 1,
+                                                  color: Theme.of(context)
+                                                      .inputDecorationTheme
+                                                      .enabledBorder!
+                                                      .borderSide
+                                                      .color,
+                                                ),
+                                              )
+                                            ],
+                                          )
+                                        : const SizedBox.shrink(),
+                                    Dalai.spacing.hSpacer(),
+                                    suffixIcon
+                                  ],
+                                )
+                              : const SizedBox.shrink(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
