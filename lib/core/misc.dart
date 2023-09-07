@@ -533,8 +533,8 @@ class Misc {
     );
   }
 
-  Future<Uint8List?> getMapMarker(MapMarker marker, BuildContext context,
-      {MapMarkerState state = MapMarkerState.selected}) async {
+  String getMapMarkerRawSVG(MapMarker marker, BuildContext context,
+      {MapMarkerState state = MapMarkerState.selected}){
     String rawSvg = '';
     if (marker == MapMarker.shop) {
       if (state == MapMarkerState.selected) {
@@ -571,6 +571,14 @@ class Misc {
     } else if (marker == MapMarker.van) {
       rawSvg = markerCar;
     }
+
+    return rawSvg;
+  }
+
+  Future<Uint8List?> getMapMarker(MapMarker marker, BuildContext context,
+      {MapMarkerState state = MapMarkerState.selected}) async {
+
+    var rawSvg = getMapMarkerRawSVG(marker, context, state: state);
 
     return svgToPng(rawSvg);
   }
