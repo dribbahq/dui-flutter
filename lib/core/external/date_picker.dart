@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import '../../dalai.dart';
+
+import '../../dui.dart';
 
 class TimePicker extends StatefulWidget {
   final String? title;
@@ -44,22 +45,22 @@ class _TimePickerState extends State<TimePicker> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Dalai.spacing.spacer(multiplier: 1),
+        DUI.spacing.spacer(multiplier: 1),
         widget.title != null
-            ? Dalai.text.small(context, widget.title, bold: true)
+            ? DUI.text.small(context, widget.title, bold: true)
             : SizedBox.shrink(),
         widget.subtitle != null
-            ? Dalai.spacing.spacer(small: true)
+            ? DUI.spacing.spacer(small: true)
             : SizedBox.shrink(),
         // widget.subtitle != null
-        //     ? Dalai.text.title2(
+        //     ? DUI.text.title2(
         //         context,
         //         DateFormat('EEEE, dd MMMM y',
         //                 LanguageManager.getCurrentLanguage())
         //             .format(widget.schedule!.dayDate))
         //     : SizedBox.shrink(),
-        Dalai.spacing.spacer(),
-        Dalai.spacing.divider(context),
+        DUI.spacing.spacer(),
+        DUI.spacing.divider(context),
         // Container(
         //   height: 200,
         //   child: Obx(() {
@@ -74,7 +75,7 @@ class _TimePickerState extends State<TimePicker> {
         //           return Container(
         //             height: 48,
         //             child: Center(
-        //               child: Dalai.text.title1(context,
+        //               child: DUI.text.title1(context,
         //                   '${timePicker.value[index].getText(context)}'),
         //             ),
         //           );
@@ -83,7 +84,7 @@ class _TimePickerState extends State<TimePicker> {
         //     ]);
         //   }),
         // ),
-        Dalai.spacing.spacer(),
+        DUI.spacing.spacer(),
         Row(
           children: [
             widget.dismissText == null ? const SizedBox.shrink() : Expanded(
@@ -91,7 +92,7 @@ class _TimePickerState extends State<TimePicker> {
               child: SizedBox(
                 width: double.infinity,
                 child:
-                    Dalai.button.noBgButton(context, widget.dismissText!, () {
+                    DUI.button.noBgButton(context, widget.dismissText!, () {
                   if (widget.onCancel != null) {
                     widget.onCancel!();
                   }
@@ -99,12 +100,12 @@ class _TimePickerState extends State<TimePicker> {
                 }),
               ),
             ),
-            Dalai.spacing.hSpacer(),
+            DUI.spacing.hSpacer(),
             widget.buttonText == null ? const SizedBox.shrink() : Expanded(
               flex: 2,
               child: SizedBox(
                 width: double.infinity,
-                child: Dalai.button.button(context, widget.buttonText!, () {
+                child: DUI.button.button(context, widget.buttonText!, () {
                   if (widget.onDone != null) {
                     widget.onDone!(""); // TODO
                   }

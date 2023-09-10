@@ -1,13 +1,7 @@
-import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
-import 'package:dalai/common_utils/alert.dart';
-import 'package:dalai/common_utils/common_utils.dart';
-import 'package:dalai/core/animations.dart';
-import 'package:dalai/core/badges.dart';
-import 'package:dalai/core/cards.dart';
-import 'package:dalai/core/external/slidable_tile.dart';
-import 'package:dalai/core/misc.dart';
-import 'package:dalai/core/picker.dart';
-import 'package:dalai/dalai.dart';
+import 'package:dui/common_utils/alert.dart';
+import 'package:dui/core/badges.dart';
+import 'package:dui/core/picker.dart';
+import 'package:dui/dui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -22,9 +16,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Lama UI Showcase',
-      theme: Dalai.theme.themeData(false),
-      darkTheme: Dalai.theme.themeData(true),
+      title: 'Dribba UI Showcase',
+      theme: DUI.theme.themeData(false),
+      darkTheme: DUI.theme.themeData(true),
       home: const MyHomePage(),
       locale: const Locale('es', 'ES'),
       localizationsDelegates: [
@@ -48,46 +42,46 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var availableColors = {
-    Dalai.color.primary: "primary",
-    Dalai.color.primaryAlternativeLight: "primaryAlternativeLight",
-    Dalai.color.primaryAlternativeDark: "primaryAlternativeDark",
-    Dalai.color.primaryContrast: "primaryContrast",
-    Dalai.color.primaryOutlinedNestingBackground:
+    DUI.color.primary: "primary",
+    DUI.color.primaryAlternativeLight: "primaryAlternativeLight",
+    DUI.color.primaryAlternativeDark: "primaryAlternativeDark",
+    DUI.color.primaryContrast: "primaryContrast",
+    DUI.color.primaryOutlinedNestingBackground:
         "primaryOutlinedNestingBackground",
-    Dalai.color.secondary: "secondary",
-    Dalai.color.secondaryDarkMode: "secondaryDarkMode",
-    Dalai.color.secondaryContrast: "secondaryContrast",
-    Dalai.color.text: "text",
-    Dalai.color.smallText: "smallText",
-    Dalai.color.textDarkMode: "textDarkMode",
-    Dalai.color.smallTextDarkMode: "smallTextDarkMode",
-    Dalai.color.disabledText: "disabledText",
-    Dalai.color.discount: "discount",
-    Dalai.color.warning: "warning",
-    Dalai.color.error: "error",
-    Dalai.color.loadingLightPrimary: "loadingLightPrimary",
-    Dalai.color.loadingLightSecondary: "loadingLightSecondary",
-    Dalai.color.loadingDarkPrimary: "loadingDarkPrimary",
-    Dalai.color.loadingDarkSecondary: "loadingDarkSecondary",
-    Dalai.color.background: "background",
-    Dalai.color.backgroundDarkMode: "backgroundDarkMode",
-    Dalai.color.scaffold: "scaffold",
-    Dalai.color.scaffoldDarkMode: "scaffoldDarkMode",
-    Dalai.color.homeCategoryBG: "homeCategoryBG",
-    Dalai.color.homeCategoryBGDark: "homeCategoryBGDark",
-    Dalai.color.inputFillColorLight: "inputFillColorLight",
-    Dalai.color.inputFillColorDark: "inputFillColorDark",
-    Dalai.color.inputHomeFillColor: "inputHomeFillColor",
-    Dalai.color.inputHomePlaceholderColor: "inputHomePlaceholderColor",
-    Dalai.color.inputBorderEnableLight: "inputBorderEnableLight",
-    Dalai.color.inputBorderFocusLight: "inputBorderFocusLight",
-    Dalai.color.cream: "cream",
-    Dalai.color.white: "white",
-    Dalai.color.black: "black",
-    Dalai.color.grey: "grey",
-    Dalai.color.blue: "blue",
-    Dalai.color.promo: "promo",
-    Dalai.color.auberginie: "auberginie",
+    DUI.color.secondary: "secondary",
+    DUI.color.secondaryDarkMode: "secondaryDarkMode",
+    DUI.color.secondaryContrast: "secondaryContrast",
+    DUI.color.text: "text",
+    DUI.color.smallText: "smallText",
+    DUI.color.textDarkMode: "textDarkMode",
+    DUI.color.smallTextDarkMode: "smallTextDarkMode",
+    DUI.color.disabledText: "disabledText",
+    DUI.color.discount: "discount",
+    DUI.color.warning: "warning",
+    DUI.color.error: "error",
+    DUI.color.loadingLightPrimary: "loadingLightPrimary",
+    DUI.color.loadingLightSecondary: "loadingLightSecondary",
+    DUI.color.loadingDarkPrimary: "loadingDarkPrimary",
+    DUI.color.loadingDarkSecondary: "loadingDarkSecondary",
+    DUI.color.background: "background",
+    DUI.color.backgroundDarkMode: "backgroundDarkMode",
+    DUI.color.scaffold: "scaffold",
+    DUI.color.scaffoldDarkMode: "scaffoldDarkMode",
+    DUI.color.homeCategoryBG: "homeCategoryBG",
+    DUI.color.homeCategoryBGDark: "homeCategoryBGDark",
+    DUI.color.inputFillColorLight: "inputFillColorLight",
+    DUI.color.inputFillColorDark: "inputFillColorDark",
+    DUI.color.inputHomeFillColor: "inputHomeFillColor",
+    DUI.color.inputHomePlaceholderColor: "inputHomePlaceholderColor",
+    DUI.color.inputBorderEnableLight: "inputBorderEnableLight",
+    DUI.color.inputBorderFocusLight: "inputBorderFocusLight",
+    DUI.color.cream: "cream",
+    DUI.color.white: "white",
+    DUI.color.black: "black",
+    DUI.color.grey: "grey",
+    DUI.color.blue: "blue",
+    DUI.color.promo: "promo",
+    DUI.color.auberginie: "auberginie",
   };
 
   var key1 = GlobalKey();
@@ -115,26 +109,26 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Dalai.spacing.spacer(multiplier: 8),
+              DUI.spacing.spacer(multiplier: 8),
               Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: Dalai.spacing.lateralPaddingValue),
+                      horizontal: DUI.spacing.lateralPaddingValue),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Dalai.spacing.spacer(small: true),
-                      Dalai.text.title1(context, 'LAMA Showcase'),
+                      DUI.spacing.spacer(small: true),
+                      DUI.text.title1(context, 'LAMA Showcase'),
                     ],
                   )),
               Container(
                 height: 44,
                 child: ListView.separated(
                   padding: EdgeInsets.symmetric(
-                      horizontal: Dalai.spacing.lateralPaddingValue),
+                      horizontal: DUI.spacing.lateralPaddingValue),
                   itemCount: 13,
                   separatorBuilder: (context, index) {
-                    return Dalai.spacing.hSpacer();
+                    return DUI.spacing.hSpacer();
                   },
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
@@ -181,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       key = key13;
                     }
 
-                    return Dalai.badge.tagSolid(context, title,
+                    return DUI.badge.tagSolid(context, title,
                         color: BadgeColor.secondary, onTap: () {
                       Scrollable.ensureVisible(key.currentContext!,
                           curve: Curves.easeIn,
@@ -192,68 +186,66 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Container(
                 key: key1,
-                padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
+                padding: EdgeInsets.all(DUI.spacing.lateralPaddingValue),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Dalai.text.title2(context, 'Text and Labels'),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.text.title2(context, 'Text and Labels'),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.text.title1(context, 'El teu heroi a domicili'),
-                        title: "Dalai.text.title1"),
-                    Dalai.spacing.spacer(small: true),
+                        DUI.text.title1(context, 'El teu heroi a domicili'),
+                        title: "DUI.text.title1"),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.text.title2(context, 'El teu heroi a domicili'),
-                        title: "Dalai.text.title2"),
-                    Dalai.spacing.spacer(small: true),
+                        DUI.text.title2(context, 'El teu heroi a domicili'),
+                        title: "DUI.text.title2"),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.text.title3(context, 'El teu heroi a domicili'),
-                        title: "Dalai.text.title3"),
-                    Dalai.spacing.spacer(small: true),
+                        DUI.text.title3(context, 'El teu heroi a domicili'),
+                        title: "DUI.text.title3"),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Dalai.text
+                            DUI.text
                                 .regular(context, 'El teu heroi a domicili'),
-                            Dalai.text.regular(
-                                context, 'El teu heroi a domicili',
+                            DUI.text.regular(context, 'El teu heroi a domicili',
                                 bold: true)
                           ],
                         ),
-                        title: "Dalai.text.regular"),
-                    Dalai.spacing.spacer(small: true),
+                        title: "DUI.text.regular"),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Dalai.text
-                                .small(context, 'El teu heroi a domicili'),
-                            Dalai.text.small(context, 'El teu heroi a domicili',
+                            DUI.text.small(context, 'El teu heroi a domicili'),
+                            DUI.text.small(context, 'El teu heroi a domicili',
                                 bold: true)
                           ],
                         ),
-                        title: "Dalai.text.small"),
-                    Dalai.spacing.spacer(small: true),
+                        title: "DUI.text.small"),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Dalai.text.xs(context, 'El teu heroi a domicili'),
-                            Dalai.text.xs(context, 'El teu heroi a domicili',
+                            DUI.text.xs(context, 'El teu heroi a domicili'),
+                            DUI.text.xs(context, 'El teu heroi a domicili',
                                 bold: true)
                           ],
                         ),
-                        title: "Dalai.text.xs"),
-                    Dalai.spacing.spacer(small: true),
+                        title: "DUI.text.xs"),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.text.itemHeader(
+                            DUI.text.itemHeader(
                               context,
                               'Menjar a domicili',
                               onAccessoryButtonText: 'Veure tot',
@@ -262,38 +254,38 @@ class _MyHomePageState extends State<MyHomePage> {
                                     okText: 'okText');
                               },
                             ),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.text.itemHeader(context, 'Menjar a domicili',
+                            DUI.spacing.spacer(small: true),
+                            DUI.text.itemHeader(context, 'Menjar a domicili',
                                 onAccessoryButtonText: 'Veure tot',
                                 onTap: () {},
                                 loading: true),
                           ],
                         ),
                         title: "Item Header with Button"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.text.smallItemHeader(
+                            DUI.text.smallItemHeader(
                               context,
                               'Opcions a la app',
                             ),
                           ],
                         ),
                         title: "Small Item Header"),
-                    Dalai.spacing.divider(context),
+                    DUI.spacing.divider(context),
                   ],
                 ),
               ),
               Container(
                 key: key2,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                padding: EdgeInsets.all(DUI.spacing.largeLateralPaddingValue),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Dalai.text.title2(context, 'Colors'),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.text.title2(context, 'Colors'),
+                    DUI.spacing.spacer(small: true),
                     GridView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
@@ -301,8 +293,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         itemCount: availableColors.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 4,
-                            crossAxisSpacing: Dalai.spacing.lateralPaddingValue,
-                            mainAxisSpacing: Dalai.spacing.lateralPaddingValue,
+                            crossAxisSpacing: DUI.spacing.lateralPaddingValue,
+                            mainAxisSpacing: DUI.spacing.lateralPaddingValue,
                             childAspectRatio: 0.65),
                         itemBuilder: (BuildContext context, int index) {
                           var key = availableColors.keys.elementAt(index);
@@ -313,60 +305,60 @@ class _MyHomePageState extends State<MyHomePage> {
                                 decoration: BoxDecoration(
                                     color: key,
                                     borderRadius: BorderRadius.circular(
-                                        Dalai.spacing.smallBorderRadius)),
+                                        DUI.spacing.smallBorderRadius)),
                               ),
                               title: availableColors.values.elementAt(index),
                               largePadding: false);
                         }),
-                    Dalai.spacing.divider(context),
+                    DUI.spacing.divider(context),
                   ],
                 ),
               ),
               Container(
                 key: key3,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                padding: EdgeInsets.all(DUI.spacing.largeLateralPaddingValue),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Dalai.text.title2(context, 'Spacing and Dividers'),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.text.title2(context, 'Spacing and Dividers'),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
                             Container(
                               height: 24,
                               width: 24,
-                              color: Dalai.color.primary,
+                              color: DUI.color.primary,
                             ),
-                            Dalai.spacing.spacer(),
+                            DUI.spacing.spacer(),
                             Container(
                               height: 24,
                               width: 24,
-                              color: Dalai.color.primary,
+                              color: DUI.color.primary,
                             ),
                           ],
                         ),
                         title: "Regular Spacer"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
                             Container(
                               height: 24,
                               width: 24,
-                              color: Dalai.color.primary,
+                              color: DUI.color.primary,
                             ),
-                            Dalai.spacing.spacer(small: true),
+                            DUI.spacing.spacer(small: true),
                             Container(
                               height: 24,
                               width: 24,
-                              color: Dalai.color.primary,
+                              color: DUI.color.primary,
                             ),
                           ],
                         ),
                         title: "Small Spacer"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -374,18 +366,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             Container(
                               height: 24,
                               width: 24,
-                              color: Dalai.color.primary,
+                              color: DUI.color.primary,
                             ),
-                            Dalai.spacing.hSpacer(),
+                            DUI.spacing.hSpacer(),
                             Container(
                               height: 24,
                               width: 24,
-                              color: Dalai.color.primary,
+                              color: DUI.color.primary,
                             ),
                           ],
                         ),
                         title: "Regular HSpacer"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -393,25 +385,25 @@ class _MyHomePageState extends State<MyHomePage> {
                             Container(
                               height: 24,
                               width: 24,
-                              color: Dalai.color.primary,
+                              color: DUI.color.primary,
                             ),
-                            Dalai.spacing.hSpacer(small: true),
+                            DUI.spacing.hSpacer(small: true),
                             Container(
                               height: 24,
                               width: 24,
-                              color: Dalai.color.primary,
+                              color: DUI.color.primary,
                             ),
                           ],
                         ),
                         title: "Small HSpacer"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(Dalai.spacing.divider(context),
+                    DUI.spacing.spacer(small: true),
+                    showCaseBlock(DUI.spacing.divider(context),
                         title: "Horizontal Divider"),
-                    showCaseBlock(Dalai.spacing.verticalDivider(context, 24),
+                    showCaseBlock(DUI.spacing.verticalDivider(context, 24),
                         title: "Vertical Divider"),
-                    showCaseBlock(Dalai.spacing.dottedDivider(context),
+                    showCaseBlock(DUI.spacing.dottedDivider(context),
                         title: "Dotted Divider"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -420,175 +412,125 @@ class _MyHomePageState extends State<MyHomePage> {
                                 height: 60,
                                 width: 60,
                                 decoration: BoxDecoration(
-                                    color: Dalai.color.primary,
+                                    color: DUI.color.primary,
                                     borderRadius: BorderRadius.circular(
-                                        Dalai.spacing.smallBorderRadius))),
-                            Dalai.spacing.hSpacer(),
+                                        DUI.spacing.smallBorderRadius))),
+                            DUI.spacing.hSpacer(),
                             Container(
                                 height: 60,
                                 width: 60,
                                 decoration: BoxDecoration(
-                                    color: Dalai.color.primary,
+                                    color: DUI.color.primary,
                                     borderRadius: BorderRadius.circular(
-                                        Dalai.spacing.borderRadius))),
-                            Dalai.spacing.hSpacer(),
+                                        DUI.spacing.borderRadius))),
+                            DUI.spacing.hSpacer(),
                             Container(
                               height: 60,
                               width: 60,
                               decoration: BoxDecoration(
-                                  color: Dalai.color.primary,
+                                  color: DUI.color.primary,
                                   borderRadius: BorderRadius.circular(
-                                      Dalai.spacing.largeBorderRadius)),
+                                      DUI.spacing.largeBorderRadius)),
                             ),
-                            Dalai.spacing.hSpacer(small: true),
+                            DUI.spacing.hSpacer(small: true),
                           ],
                         ),
                         title: "Border Radius (Small, Regular, Large)"),
-                    Dalai.spacing.divider(context),
-                  ],
-                ),
-              ),
-              Container(
-                key: key4,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Dalai.text.title2(context, 'Icons'),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Dalai.icon.dalaiIcons(context, CXIcon.bag,
-                                size: CXIconSize.x_small),
-                            Dalai.icon.dalaiIcons(context, CXIcon.bag,
-                                size: CXIconSize.small),
-                            Dalai.icon.dalaiIcons(context, CXIcon.bag),
-                            Dalai.icon.dalaiIcons(context, CXIcon.bag,
-                                size: CXIconSize.large),
-                            Dalai.icon.dalaiIcons(context, CXIcon.bag,
-                                size: CXIconSize.x_large),
-                          ],
-                        ),
-                        title: "Icon Sizes"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Dalai.icon.dalaiIcons(context, CXIcon.bike_slash,
-                                secondaryColor: Dalai.color.primary,
-                                size: CXIconSize.large),
-                            Dalai.icon.dalaiIcons(context, CXIcon.bike_slash,
-                                size: CXIconSize.large),
-                            Dalai.icon.dalaiIcons(context, CXIcon.bike_slash,
-                                mainColor: Dalai.color.blue,
-                                secondaryColor: Dalai.color.auberginie,
-                                size: CXIconSize.large),
-                          ],
-                        ),
-                        title: "Icon Colors"),
-                    Dalai.spacing.divider(context),
+                    DUI.spacing.divider(context),
                   ],
                 ),
               ),
               Container(
                 key: key5,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                padding: EdgeInsets.all(DUI.spacing.largeLateralPaddingValue),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Dalai.text.title2(context, 'Text Fields and Inputs'),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.text.title2(context, 'Text Fields and Inputs'),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Dalai.input.textField("Email address",
+                            DUI.input.textField("Email address",
                                 TextEditingController(), FocusNode(), context,
-                                suffixIcon:
-                                    Dalai.icon.dalaiIcons(context, CXIcon.fast),
-                                prefixIcon:
-                                    Dalai.icon.dalaiIcons(context, CXIcon.fast),
+                                suffixIcon: Icon(Icons.add),
+                                prefixIcon: Icon(Icons.add),
                                 helpMessage: "Help message"),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.input.textField(
+                            DUI.spacing.spacer(small: true),
+                            DUI.input.textField(
                                 "Password",
                                 TextEditingController(text: "Password"),
                                 FocusNode(),
                                 context,
                                 obscure: true),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.input.textField("Email address",
+                            DUI.spacing.spacer(small: true),
+                            DUI.input.textField("Email address",
                                 TextEditingController(), FocusNode(), context,
                                 enabled: false, helpMessage: "Help message"),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.input.textField(
+                            DUI.spacing.spacer(small: true),
+                            DUI.input.textField(
                                 "Email address",
                                 TextEditingController(text: 'alex@dribba.com'),
                                 FocusNode(),
                                 context,
                                 enabled: false,
                                 helpMessage: "Help message"),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.input.textField("Email address",
+                            DUI.spacing.spacer(small: true),
+                            DUI.input.textField("Email address",
                                 TextEditingController(), FocusNode(), context,
                                 error: "Error", helpMessage: "Help message"),
                           ],
                         ),
                         title: "Regular"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.input.smallTextField(
+                        DUI.input.smallTextField(
                             TextEditingController(), FocusNode(), context,
                             hint: 'Email address'),
                         title: "Small"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Dalai.input.searchField("Email address",
+                            DUI.input.searchField("Email address",
                                 TextEditingController(), FocusNode(), context),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.input.searchField(
+                            DUI.spacing.spacer(small: true),
+                            DUI.input.searchField(
                                 "Email address",
                                 TextEditingController(text: 'info@dribba.com'),
                                 FocusNode(),
                                 context,
                                 loading: true),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.input.searchField("Email address",
+                            DUI.spacing.spacer(small: true),
+                            DUI.input.searchField("Email address",
                                 TextEditingController(), FocusNode(), context,
                                 loading: true, enabled: false),
                           ],
                         ),
                         title: "Search"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Dalai.input.chatInputField(context, "Email address",
+                            DUI.input.chatInputField(context, "Email address",
                                 TextEditingController(), FocusNode()),
                           ],
                         ),
                         title: "Chat Input"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Dalai.input.phoneTextField(
+                            DUI.input.phoneTextField(
                                 context,
                                 "Número de teléfono",
                                 TextEditingController(),
@@ -598,23 +540,23 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Phone Input"),
-                    Dalai.spacing.divider(context),
+                    DUI.spacing.divider(context),
                   ],
                 ),
               ),
               Container(
                 key: key6,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                padding: EdgeInsets.all(DUI.spacing.largeLateralPaddingValue),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Dalai.text.title2(context, 'Buttons'),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.text.title2(context, 'Buttons'),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.button(context, "Log In", () {
+                            DUI.button.button(context, "Log In", () {
                               setState(() {
                                 loading = !loading;
                                 Future.delayed(Duration(seconds: 2), () {
@@ -624,17 +566,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                 });
                               });
                             }, loading: loading),
-                            Dalai.spacing.spacer(),
-                            Dalai.button.button(context, "Log In", null,
+                            DUI.spacing.spacer(),
+                            DUI.button.button(context, "Log In", null,
                                 loading: loading),
                           ],
                         ),
                         title: "Regular"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.shadowButton(context, "Log In", () {
+                            DUI.button.shadowButton(context, "Log In", () {
                               setState(() {
                                 loading = !loading;
                                 Future.delayed(Duration(seconds: 2), () {
@@ -644,17 +586,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                 });
                               });
                             }, loading: loading),
-                            Dalai.spacing.spacer(),
-                            Dalai.button.shadowButton(context, "Log In", null,
+                            DUI.spacing.spacer(),
+                            DUI.button.shadowButton(context, "Log In", null,
                                 loading: loading),
                           ],
                         ),
                         title: "Shadow"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.noBgButton(context, "Log In", () {
+                            DUI.button.noBgButton(context, "Log In", () {
                               setState(() {
                                 loading = !loading;
                                 Future.delayed(Duration(seconds: 2), () {
@@ -664,17 +606,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                 });
                               });
                             }, loading: loading),
-                            Dalai.spacing.spacer(),
-                            Dalai.button.noBgButton(context, "Log In", null,
+                            DUI.spacing.spacer(),
+                            DUI.button.noBgButton(context, "Log In", null,
                                 loading: loading),
                           ],
                         ),
                         title: "No BG Button"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.outlineButton(context, "Log In", () {
+                            DUI.button.outlineButton(context, "Log In", () {
                               setState(() {
                                 loading = !loading;
                                 Future.delayed(Duration(seconds: 2), () {
@@ -684,17 +626,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                 });
                               });
                             }, loading: loading),
-                            Dalai.spacing.spacer(),
-                            Dalai.button.outlineButton(context, "Log In", null,
+                            DUI.spacing.spacer(),
+                            DUI.button.outlineButton(context, "Log In", null,
                                 loading: loading),
                           ],
                         ),
                         title: "Outline Button"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.smallButton(
+                            DUI.button.smallButton(
                                 context, "Log In with CityXerpa", () {
                               setState(() {
                                 loading = !loading;
@@ -705,83 +647,82 @@ class _MyHomePageState extends State<MyHomePage> {
                                 });
                               });
                             }, loading: loading),
-                            Dalai.spacing.spacer(),
-                            Dalai.button.smallButton(
+                            DUI.spacing.spacer(),
+                            DUI.button.smallButton(
                                 context, "Log In with CityXerpa", null,
                                 loading: loading),
                           ],
                         ),
                         title: "Small Button"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(Dalai.button.buttonQtyLeading(context, 2),
+                    DUI.spacing.spacer(small: true),
+                    showCaseBlock(DUI.button.buttonQtyLeading(context, 2),
                         title: "Button Quantity Leading"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.buttonPriceTrailing(context, 22.50,
+                        DUI.button.buttonPriceTrailing(context, 22.50,
                             freeText: "Free", amountInEurosText: "%@ Euros"),
                         title: "Button Price Trailing",
-                        backgroundColor: Dalai.color.primary),
-                    Dalai.spacing.spacer(small: true),
+                        backgroundColor: DUI.color.primary),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.buttonMinPriceWidget(context,
+                        DUI.button.buttonMinPriceWidget(context,
                             minPrice: 22.5,
                             currentPrice: 10.0,
                             addMoreToRequestText: "Add more to order"),
                         title: "Button Min Price",
-                        backgroundColor: Dalai.color.primary),
-                    Dalai.spacing.spacer(small: true),
+                        backgroundColor: DUI.color.primary),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Dalai.button.iconButton(
+                            DUI.button.iconButton(
                               context,
-                              CXIcon.camera,
+                              Icons.camera_alt,
                             ),
-                            Dalai.spacing.hSpacer(),
-                            Dalai.button
-                                .iconButton(context, CXIcon.bag, filled: true),
+                            DUI.spacing.hSpacer(),
+                            DUI.button.iconButton(context, Icons.shopping_bag,
+                                filled: true),
                           ],
                         ),
                         title: "Icon Button (No-Filled & Filled)"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.backButtonCircle(
+                        DUI.button.backButtonCircle(
                           context,
                         ),
                         title: "Back Button Circle"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.button.appBarActionButtonCircle(
-                                context, CXIcon.compare_arrows),
-                            Dalai.spacing.hSpacer(),
-                            Dalai.button.appBarActionButtonCircle(
-                                context, CXIcon.compare_arrows,
+                            DUI.button.appBarActionButtonCircle(
+                                context, Icons.compare_arrows),
+                            DUI.spacing.hSpacer(),
+                            DUI.button.appBarActionButtonCircle(
+                                context, Icons.compare_arrows,
                                 loading: true),
                           ],
                         ),
                         title: "AppBar Action Button Circle"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Dalai.button.checkbox(true, (value) {}, context),
-                            Dalai.spacing.hSpacer(),
-                            Dalai.button.checkbox(false, (value) {}, context),
+                            DUI.button.checkbox(true, (value) {}, context),
+                            DUI.spacing.hSpacer(),
+                            DUI.button.checkbox(false, (value) {}, context),
                           ],
                         ),
                         title: "Checkbox"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Dalai.button.toggle(true, (value) {}, context),
+                    DUI.spacing.spacer(small: true),
+                    showCaseBlock(DUI.button.toggle(true, (value) {}, context),
                         title: "Toggle"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.slidingControl(
+                        DUI.button.slidingControl(
                           0,
                           (value) {},
                           context,
@@ -796,12 +737,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Dalai.icon.dalaiIcons(
-                                      context,
-                                      CXIcon.bike_alt,
-                                    ),
-                                    Dalai.spacing.hSpacer(small: true),
-                                    Dalai.text.regular(context, 'Tab 1',
+                                    Icon(Icons.directions_bike_rounded),
+                                    DUI.spacing.hSpacer(small: true),
+                                    DUI.text.regular(context, 'Tab 1',
                                         color: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
@@ -821,12 +759,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Dalai.icon.dalaiIcons(
-                                      context,
-                                      CXIcon.bag,
-                                    ),
-                                    Dalai.spacing.hSpacer(small: true),
-                                    Dalai.text.regular(context, 'Tab 2',
+                                    Icon(Icons.directions_bike_rounded),
+                                    DUI.spacing.hSpacer(small: true),
+                                    DUI.text.regular(context, 'Tab 2',
                                         color: Theme.of(context)
                                             .textTheme
                                             .bodyMedium!
@@ -841,19 +776,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         title: "Segment Bar",
                         largePadding: false),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.slidingControl(0, (value) {}, context,
+                        DUI.button.slidingControl(0, (value) {}, context,
                             children: {
                               0: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Dalai.icon.dalaiIcons(
-                                    context,
-                                    CXIcon.bike_alt,
-                                  ),
+                                  Icon(Icons.directions_bike_rounded),
                                 ],
                               ),
                               1: Column(
@@ -861,10 +793,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Dalai.icon.dalaiIcons(
-                                    context,
-                                    CXIcon.walk,
-                                  ),
+                                  Icon(Icons.directions_bike_rounded),
                                 ],
                               ),
                             },
@@ -872,449 +801,127 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: 44),
                         title: "Segment Bar (Small)",
                         largePadding: false),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.stepper(context, 0,
-                            (value, bool underLowerLimit, bool overUpperLimit) {
-                          print('-----------');
-                          print('under lower: $underLowerLimit');
-                          print('over upper: $overUpperLimit');
-                          print('-----------');
-                        }, upperLimit: 5),
-                        title: "Stepper"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Dalai.button.dataSelector(context, "Pau Casals, 6",
+                        DUI.button.dataSelector(context, "Pau Casals, 6",
                             "Where do we deliver it?", () {}),
                         title: "Data Selector"),
-                    Dalai.spacing.divider(context),
+                    DUI.spacing.divider(context),
                   ],
                 ),
               ),
               Container(
                 key: key7,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                padding: EdgeInsets.all(DUI.spacing.largeLateralPaddingValue),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Dalai.text.title2(context, 'Skeleton Loading'),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.text.title2(context, 'Skeleton Loading'),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Container(
                           height: 90,
-                          child: Dalai.skeleton.emptyRegularTileList(context),
+                          child: DUI.skeleton.emptyRegularTileList(context),
                         ),
                         title: "Empty Regular Tile List"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Dalai.skeleton.emptyBusinessContainer(160, context),
-                        title: "Supermarket Products Block"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Dalai.skeleton.emptySimpleContainer(60, 60, context),
-                        title: "Empty Simple Container"),
-                    Dalai.spacing.divider(context),
-                  ],
-                ),
-              ),
-              Container(
-                key: key8,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Dalai.text.title2(context, 'Cards'),
-                    showCaseBlock(
-                        Dalai.card.banner(
-                            context,
-                            "Check it out!",
-                            "Click on here to view more info",
-                            () {},
-                            "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
-                            Dalai.color.black),
-                        title: "Promotion Card"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Dalai.card.deliveryOrderCard(context,
-                            title: "Comanda al Ginza41",
-                            highlightText: "Ginza41",
-                            leadingSubtitle: "1 prod",
-                            trailingSubtitle: "22.50€",
-                            badge: Dalai.badge.badgeSolid(context, 'Entregat'),
-                            accessoryTitle:
-                                "Carrer de la Unió, 41 AD500 Andorra la Vella",
-                            imageURL:
-                                "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg"),
-                        title: "Delivery Order Card"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Dalai.card.mobilityOrderCard(context,
-                            header: "Sunday 22 of Fabriary",
-                            title: "Viatge a Barcelona",
-                            highlightText: "Barcelona",
-                            leadingSubtitle: "#627A",
-                            trailingSubtitle: "125.50€",
-                            badge:
-                                Dalai.badge.badgeSolid(context, 'Cancelled')),
-                        title: "Mobility Order Card"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Dalai.card.iconSmallCard(
-                                    context,
-                                    "Shop",
-                                    'https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg',
-                                    () {}),
-                                Dalai.spacing.hSpacer(),
-                                Dalai.card.iconSmallCard(
-                                    context,
-                                    "Restaurant",
-                                    'https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg',
-                                    () {},
-                                    isSelected: true),
-                              ],
-                            ),
-                            Dalai.spacing.spacer(small: true),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Dalai.card.iconSmallCard(
-                                    context, "Eat", null, () {},
-                                    isSelected: false),
-                                Dalai.spacing.hSpacer(),
-                                Dalai.card.iconSmallCard(
-                                    context, "Eat", null, () {},
-                                    isSelected: true),
-                              ],
-                            ),
-                          ],
-                        ),
-                        title: "Small Icon Card"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Dalai.card.avatar(context, "", loading: true),
-                            Dalai.spacing.hSpacer(),
-                            Dalai.card.avatar(
-                              context,
-                              "",
-                              initials: 'CX',
-                            ),
-                            Dalai.spacing.hSpacer(),
-                            Dalai.card.avatar(context,
-                                "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
-                                onTap: () {}),
-                          ],
-                        ),
-                        title: "Avatar"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Dalai.card.disclaimerTextWithImage(
-                                "¡Recuerda ponerte el cinturón!",
-                                "El uso del cinturón es obligtorio en CityXerpa Move, no te olvides!",
-                                ComponentImage.beltImage,
-                                context),
-                            Dalai.card.disclaimerTextWithImage(
-                                "¡Recuerda ponerte el cinturón!",
-                                "El uso del cinturón es obligtorio en CityXerpa Move, no te olvides!",
-                                ComponentImage.covidImage,
-                                context),
-                            Dalai.card.disclaimerTextWithImage(
-                                "¡Recuerda ponerte el cinturón!",
-                                "El uso del cinturón es obligtorio en CityXerpa Move, no te olvides!",
-                                ComponentImage.musicImage,
-                                context),
-                          ],
-                        ),
-                        title: "Image + Text + Subtitle Component"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Dalai.card.partnerCard(
-                              "Gohan Yama",
-                              "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
-                              context,
-                              () {},
-                              partnerIsClosed: false,
-                              partnerDeliveryPrice: "2,99 €",
-                              partnerDeliveryTime: "15 - 30 min",
-                              partnerAccessory: 'Fast Food & McCafé',
-                              badge: Dalai.badge.badgeSolid(context, 'Open'),
-                              ratingTitle: "4.5",
-                              showFastBadge: true,
-                              promotionTitle: "Free delivery",
-                              type: PartnerCardType.fullWidth,
-                            ),
-                            Dalai.spacing.spacer(),
-                            Dalai.card.partnerCard(
-                              "Gohan Yama",
-                              "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
-                              context,
-                              () {},
-                              partnerIsClosed: false,
-                              partnerDeliveryPrice: "2,99 €",
-                              partnerDeliveryTime: "15 - 30 min",
-                              partnerAccessory: 'Fast Food & McCafé',
-                              badge: Dalai.badge.badgeSolid(context, 'Open'),
-                              ratingTitle: "4.5",
-                              showFastBadge: true,
-                              promotionTitle: "Free delivery",
-                              type: PartnerCardType.squared,
-                            ),
-                            Dalai.spacing.spacer(),
-                            Dalai.card.partnerCard(
-                              "Gohan Yama",
-                              "https://cdn01.diariandorra.ad/uploads/imagenes/8col/2020/04/12/_82_e9f56a64.jpg",
-                              context,
-                              () {},
-                              partnerIsClosed: false,
-                              partnerDeliveryPrice: "2,99 €",
-                              partnerDeliveryTime: "15 - 30 min",
-                              partnerAccessory: 'Fast Food & McCafé',
-                              badge: Dalai.badge.badgeSolid(context, 'Open'),
-                              ratingTitle: "4.5",
-                              showFastBadge: true,
-                              promotionTitle: "Free delivery",
-                              type: PartnerCardType.promoted,
-                            ),
-                            Dalai.spacing.spacer(multiplier: 2),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Dalai.card.partnerCard(
-                                    "Ametller Origen",
-                                    "https://seeklogo.com/images/A/ametller-origen-logo-596158BBFA-seeklogo.com.png",
-                                    context,
-                                    () {},
-                                    partnerIsClosed: true,
-                                    partnerDeliveryPrice: "Gratis",
-                                    partnerDeliveryTime: "15 - 30 min",
-                                    promotionTitle: "¡Envio GRATIS!",
-                                    type: PartnerCardType.withPartnerLogo,
-                                  ),
-                                ),
-                                Dalai.spacing.hSpacer(),
-                                Expanded(
-                                  child: Dalai.card.partnerCard(
-                                    "Carrefour Andorra 2000",
-                                    "https://assets.stickpng.com/images/5842906ca6515b1e0ad75abb.png",
-                                    context,
-                                    () {},
-                                    partnerDeliveryPrice: "2,99 €",
-                                    partnerDeliveryTime: "15 - 30 min",
-                                    partnerAccessory: '12 prod. max.',
-                                    promotionTitle: "10% de descuento",
-                                    type: PartnerCardType.withPartnerLogo,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Dalai.spacing.spacer(),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Dalai.card.partnerCard(
-                                    "Pyrenees Gourmet",
-                                    "https://www.pyrenees.ad/images/logo.webp",
-                                    context,
-                                    () {},
-                                    partnerIsClosed: false,
-                                    partnerDeliveryPrice: "Gratis",
-                                    partnerDeliveryTime: "15 - 30 min",
-                                    type: PartnerCardType.withPartnerLogo,
-                                  ),
-                                ),
-                                Dalai.spacing.hSpacer(),
-                                Expanded(
-                                  child: Dalai.card.partnerCard(
-                                    "Mercadona",
-                                    "https://1000marcas.net/wp-content/uploads/2021/09/Mercadona-Logo.png",
-                                    context,
-                                    () {},
-                                    partnerDeliveryPrice: "2,99 €",
-                                    partnerDeliveryTime: "15 - 30 min",
-                                    type: PartnerCardType.withPartnerLogo,
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                        title: "Partner Banners"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Dalai.card.gridProductItem(
-                                    context,
-                                    'Nomen Arròs bomba ideal caldos',
-                                    '4,42€',
-                                    "https://www.supermercadosmas.com/media/catalog/product/cache/d91bc430dbe2e3d899436802c7aa5233/a/e/aecoc_08410055150070_08410055150070_d1n1.jpg",
-                                    () {},
-                                    priceAccessory: '1 kg',
-                                  ),
-                                ),
-                                Dalai.spacing.hSpacer(),
-                                Expanded(
-                                  child: Dalai.card.gridProductItem(
-                                    context,
-                                    'Nomen Arròs bomba ideal caldos',
-                                    '4,42€',
-                                    "https://www.supermercadosmas.com/media/catalog/product/cache/d91bc430dbe2e3d899436802c7aa5233/a/e/aecoc_08410055150070_08410055150070_d1n1.jpg",
-                                    () {},
-                                    priceAccessory: '1 kg',
-                                  ),
-                                ),
-                                Dalai.spacing.hSpacer(),
-                                Expanded(
-                                  child: Dalai.card.gridProductItem(
-                                    context,
-                                    'Nomen Arròs bomba ideal caldos',
-                                    '4,42€',
-                                    "https://www.supermercadosmas.com/media/catalog/product/cache/d91bc430dbe2e3d899436802c7aa5233/a/e/aecoc_08410055150070_08410055150070_d1n1.jpg",
-                                    () {},
-                                    priceAccessory: '1 kg',
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        title: "Product Grid"),
-                    Dalai.spacing.divider(context),
+                    DUI.spacing.divider(context),
                   ],
                 ),
               ),
               Container(
                 key: key9,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                padding: EdgeInsets.all(DUI.spacing.largeLateralPaddingValue),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Dalai.text.title2(context, 'Tiles'),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.text.title2(context, 'Tiles'),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.tile.listTile('Title', context, () {}),
-                            Dalai.spacing.divider(context),
-                            Dalai.tile.listTile('Loading Tile', context, () {},
+                            DUI.tile.listTile('Title', context, () {}),
+                            DUI.spacing.divider(context),
+                            DUI.tile.listTile('Loading Tile', context, () {},
                                 loading: true),
-                            Dalai.spacing.divider(context),
-                            Dalai.tile.listTile('Loading Tile', context, () {},
-                                trailing: const SizedBox.shrink(),
-                                loading: true,
-                                leading:
-                                    Dalai.icon.dalaiIcons(context, CXIcon.ban))
+                            DUI.spacing.divider(context),
+                            DUI.tile.listTile(
+                              'Loading Tile',
+                              context,
+                              () {},
+                              trailing: const SizedBox.shrink(),
+                              loading: true,
+                              leading: Icon(Icons.directions_bike_rounded),
+                            )
                           ],
                         ),
                         title: "Tile with Title"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.tile.listTileWithSub(
+                            DUI.tile.listTileWithSub(
                                 'Title', context, 'Subtitle',
                                 onTap: () {}),
-                            Dalai.spacing.divider(context),
-                            Dalai.tile.listTileWithSub(
-                                'Title', context, 'Subtitle',
-                                leading:
-                                    Dalai.icon.dalaiIcons(context, CXIcon.bag)),
+                            DUI.spacing.divider(context),
+                            DUI.tile.listTileWithSub(
+                              'Title',
+                              context,
+                              'Subtitle',
+                              leading: Icon(Icons.directions_bike_rounded),
+                            ),
                           ],
                         ),
                         title: "Tile with Subtitle"),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.tile.listTileCustomImage(
-                                Dalai.icon.dalaiIcons(context, CXIcon.bag),
+                            DUI.tile.listTileCustomImage(
+                                Icon(Icons.directions_bike_rounded),
                                 context,
                                 'Click me and get free bags!',
                                 () {}),
                           ],
                         ),
                         title: "Tile with Custom Image"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.tile.listSearchTileCustomImage(CXIcon.bag_alt,
-                                context, 'Click me and get free bags!', () {},
-                                searchText: "free"),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.tile.listSearchTileCustomImage(CXIcon.bag_alt,
-                                context, 'Click me and get free bags!', () {},
-                                searchText: "free", loading: true),
-                          ],
-                        ),
-                        title: "Tile with highlighted search text"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Dalai.tile.paymentMethod(
-                                context, "Card ending in 4444", "Exp. at 12/25",
-                                highlightText: "4444",
-                                ccBrand: CCBrand.visa,
-                                onTap: () {},
-                                onRemove: () {}),
-                          ],
-                        ),
-                        title: "Payment Method Tile"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Dalai.tile.squareTile(
+                            DUI.tile.squareTile(
                               context,
                               title: "Tips",
                               value: "25",
-                              icon: CXIcon.fast,
+                              icon: Icons.ac_unit_sharp,
                             ),
-                            Dalai.spacing.spacer(),
-                            Dalai.tile.squareTile(context,
+                            DUI.spacing.spacer(),
+                            DUI.tile.squareTile(context,
                                 title: "Total KM",
                                 value: "25,57 €",
-                                icon: CXIcon.coin, onInfoTap: () {
+                                icon: Icons.ac_unit_sharp, onInfoTap: () {
                               Alert.showAlert('Hello', 'Hello', context,
                                   okText: 'Ok');
                             }),
-                            Dalai.spacing.spacer(),
-                            Dalai.tile.squareTile(context,
+                            DUI.spacing.spacer(),
+                            DUI.tile.squareTile(context,
                                 title: "Total KM",
-                                icon: CXIcon.coin, onInfoTap: () {
+                                icon: Icons.ac_unit_sharp, onInfoTap: () {
                               Alert.showAlert('Hello', 'Hello', context,
                                   okText: 'Ok');
                             }),
-                            Dalai.spacing.spacer(),
+                            DUI.spacing.spacer(),
                             Row(
                               children: [
                                 Expanded(
-                                  child: Dalai.tile.squareTile(context,
+                                  child: DUI.tile.squareTile(context,
                                       title: "2h",
                                       subtitle: "As soon as possible",
                                       selected: true),
                                 ),
-                                Dalai.spacing.hSpacer(),
+                                DUI.spacing.hSpacer(),
                                 Expanded(
-                                  child: Dalai.tile.squareTile(context,
+                                  child: DUI.tile.squareTile(context,
                                       title: "Schedule",
                                       subtitle: "Select date and hour"),
                                 ),
@@ -1323,46 +930,45 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Value + Date Tile"),
-                    Dalai.spacing.divider(context),
+                    DUI.spacing.divider(context),
                   ],
                 ),
               ),
               Container(
                 key: key10,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                padding: EdgeInsets.all(DUI.spacing.largeLateralPaddingValue),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Dalai.text.title2(context, 'Badges'),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.text.title2(context, 'Badges'),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Dalai.badge.badgeSolid(context, 'Business closed'),
-                            Dalai.spacing.hSpacer(),
-                            Dalai.badge.badgeSolid(context, 'Business closed',
-                                icon: CXIcon.shop, color: BadgeColor.secondary),
+                            DUI.badge.badgeSolid(context, 'Business closed'),
+                            DUI.spacing.hSpacer(),
+                            DUI.badge.badgeSolid(context, 'Business closed',
+                                icon: Icons.shop, color: BadgeColor.secondary),
                           ],
                         ),
                         title: "Badge Solid"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Dalai.badge
-                                .badgeOutline(context, 'Business closed'),
-                            Dalai.spacing.hSpacer(),
-                            Dalai.badge.badgeOutline(context, 'Business closed',
-                                icon: CXIcon.shop, color: BadgeColor.secondary),
+                            DUI.badge.badgeOutline(context, 'Business closed'),
+                            DUI.spacing.hSpacer(),
+                            DUI.badge.badgeOutline(context, 'Business closed',
+                                icon: Icons.shop, color: BadgeColor.secondary),
                           ],
                         ),
                         title: "Badge Outline"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
@@ -1370,7 +976,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Dalai.badge.tagSolid(context, 'Click Me!',
+                                DUI.badge.tagSolid(context, 'Click Me!',
                                     onTap: () {
                                   Alert.showAlertYesNo(
                                     "You clicked me!",
@@ -1381,21 +987,19 @@ class _MyHomePageState extends State<MyHomePage> {
                                     onNoText: 'No',
                                   );
                                 }),
-                                Dalai.spacing.hSpacer(),
-                                Dalai.badge.tagSolid(context, 'Click Me!',
-                                    icon: CXIcon.vision_alt,
-                                    color: BadgeColor.secondary, onTap: () {
-                                  Alert.showStatusAlert("Title", "Test",
-                                      context, CXIcon.cityxerpa, Colors.black);
-                                }),
+                                DUI.spacing.hSpacer(),
+                                DUI.badge.tagSolid(context, 'Click Me!',
+                                    icon: Icons.ac_unit_sharp,
+                                    color: BadgeColor.secondary,
+                                    onTap: () {}),
                               ],
                             ),
-                            Dalai.spacing.spacer(small: true),
+                            DUI.spacing.spacer(small: true),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Dalai.badge.tagSolid(context, 'Click Me!',
+                                DUI.badge.tagSolid(context, 'Click Me!',
                                     onDelete: () {}, onTap: () {
                                   Alert.showAlert(
                                     "You clicked me!",
@@ -1404,9 +1008,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                     okText: 'OK',
                                   );
                                 }),
-                                Dalai.spacing.hSpacer(),
-                                Dalai.badge.tagSolid(context, 'Click Me!',
-                                    icon: CXIcon.vision_alt,
+                                DUI.spacing.hSpacer(),
+                                DUI.badge.tagSolid(context, 'Click Me!',
+                                    icon: Icons.ac_unit_sharp,
                                     color: BadgeColor.secondary,
                                     onDelete: () {}, onTap: () {
                                   Alert.showAlert(
@@ -1421,7 +1025,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Tag Solid"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
@@ -1429,7 +1033,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Dalai.badge.tagOutline(context, 'Click Me!',
+                                DUI.badge.tagOutline(context, 'Click Me!',
                                     onTap: () {
                                   Alert.showAlert(
                                     "You clicked me!",
@@ -1438,9 +1042,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                     okText: 'OK',
                                   );
                                 }),
-                                Dalai.spacing.hSpacer(),
-                                Dalai.badge.tagOutline(context, 'Click Me!',
-                                    icon: CXIcon.vision_alt,
+                                DUI.spacing.hSpacer(),
+                                DUI.badge.tagOutline(context, 'Click Me!',
+                                    icon: Icons.ac_unit_sharp,
                                     color: BadgeColor.secondary, onTap: () {
                                   Alert.showAlert(
                                     "You clicked me!",
@@ -1451,12 +1055,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 }),
                               ],
                             ),
-                            Dalai.spacing.spacer(small: true),
+                            DUI.spacing.spacer(small: true),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Dalai.badge.tagOutline(context, 'Click Me!',
+                                DUI.badge.tagOutline(context, 'Click Me!',
                                     onDelete: () {}, onTap: () {
                                   Alert.showAlert(
                                     "You clicked me!",
@@ -1465,9 +1069,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                     okText: 'OK',
                                   );
                                 }),
-                                Dalai.spacing.hSpacer(),
-                                Dalai.badge.tagOutline(context, 'Click Me!',
-                                    icon: CXIcon.vision_alt,
+                                DUI.spacing.hSpacer(),
+                                DUI.badge.tagOutline(context, 'Click Me!',
+                                    icon: Icons.ac_unit_sharp,
                                     color: BadgeColor.secondary,
                                     onDelete: () {}, onTap: () {
                                   Alert.showAlert(
@@ -1482,41 +1086,33 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Tag Outline"),
-                    Dalai.spacing.spacer(small: true),
-                    Dalai.spacing.divider(context),
+                    DUI.spacing.spacer(small: true),
+                    DUI.spacing.divider(context),
                   ],
                 ),
               ),
               Container(
                 key: key11,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                padding: EdgeInsets.all(DUI.spacing.largeLateralPaddingValue),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Dalai.text.title2(context, 'Misc'),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.text.title2(context, 'Misc'),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.misc.checkoutHeader(
-                            context, 'La teva comanda a ', 'Ginza41'),
-                        title: "Checkout Header"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Dalai.misc.spanWithBoldTitle(
+                        DUI.misc.spanWithBoldTitle(
                             context, 'La teva comanda a ', 'Ginza41'),
                         title: "Span with Bold Title"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(Dalai.misc.getProductPlaceholder(context),
-                        title: "Product Placeholder"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Dalai.button.smallButton(context, 'Obrir Bottom Picker',
+                        DUI.button.smallButton(context, 'Obrir Bottom Picker',
                             () {
-                          Dalai.misc.bottomSheetPicker(
+                          DUI.misc.bottomSheetPicker(
                               context,
                               'Demo Picker',
                               'Demo Picker ',
-                              Dalai.picker.calendar(
+                              DUI.picker.calendar(
                                 context,
                                 (initDate, lastDate) {
                                   print("From: $initDate");
@@ -1534,457 +1130,23 @@ class _MyHomePageState extends State<MyHomePage> {
                           }, buttonText: 'Acceptar', dismissText: 'Cancel.lar');
                         }),
                         title: "Bottom Picker"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Dalai.misc.noticeCard(context,
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis, urna nec sagittis interdum, neque tortor sagittis urna, feugiat congue magna dui vel libero.',
-                                title: 'This is a title',
-                                onTap: () {},
-                                trailingIcon: CXIcon.accessible),
-                            Dalai.spacing.spacer(),
-                            Dalai.misc.noticeCard(context,
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis, urna nec sagittis interdum, neque tortor sagittis urna, feugiat congue magna dui vel libero.',
-                                title: 'This is a title',
-                                onTap: () {},
-                                leadingIcon: CXIcon.bag),
-                          ],
-                        ),
-                        title: "Notice Card"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Dalai.misc.getNutriscoreImage(
-                                NutriscoreLevel.none, context),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.misc
-                                .getNutriscoreImage(NutriscoreLevel.A, context),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.misc
-                                .getNutriscoreImage(NutriscoreLevel.B, context),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.misc
-                                .getNutriscoreImage(NutriscoreLevel.C, context),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.misc
-                                .getNutriscoreImage(NutriscoreLevel.D, context),
-                            Dalai.spacing.spacer(small: true),
-                            Dalai.misc
-                                .getNutriscoreImage(NutriscoreLevel.E, context),
-                          ],
-                        ),
-                        title: "Nutriscore"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Dalai.misc.getCarPlate("A5545", context),
-                          ],
-                        ),
-                        title: "CityXerpa Move Car Plate"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                FutureBuilder(
-                                  future: Dalai.misc
-                                      .getMapMarker(MapMarker.shop, context),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData == false) {
-                                      return Dalai.skeleton
-                                          .emptySimpleContainer(
-                                              40, 40, context);
-                                    }
-                                    return SizedBox(
-                                      height: 40,
-                                      width: 40,
-                                      child: Image.memory(snapshot.data!),
-                                    );
-                                  },
-                                ),
-                                Dalai.spacing.hSpacer(small: true),
-                                FutureBuilder(
-                                  future: Dalai.misc.getMapMarker(
-                                      MapMarker.shop, context,
-                                      state: MapMarkerState.unselected),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData == false) {
-                                      return Dalai.skeleton
-                                          .emptySimpleContainer(
-                                              40, 40, context);
-                                    }
-                                    return SizedBox(
-                                      height: 40,
-                                      width: 40,
-                                      child: Image.memory(snapshot.data!),
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                            Dalai.spacing.spacer(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                FutureBuilder(
-                                  future: Dalai.misc.getMapMarker(
-                                      MapMarker.currentLocation, context),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData == false) {
-                                      return Dalai.skeleton
-                                          .emptySimpleContainer(
-                                              40, 40, context);
-                                    }
-                                    return SizedBox(
-                                      height: 20,
-                                      width: 20,
-                                      child: Image.memory(snapshot.data!),
-                                    );
-                                  },
-                                ),
-                                Dalai.spacing.hSpacer(small: true),
-                                FutureBuilder(
-                                  future: Dalai.misc
-                                      .getMapMarker(MapMarker.rider, context),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData == false) {
-                                      return Dalai.skeleton
-                                          .emptySimpleContainer(
-                                              40, 40, context);
-                                    }
-                                    return SizedBox(
-                                      height: 60,
-                                      width: 60,
-                                      child: Image.memory(snapshot.data!),
-                                    );
-                                  },
-                                ),
-                                Dalai.spacing.hSpacer(small: true),
-                                FutureBuilder(
-                                  future: Dalai.misc
-                                      .getMapMarker(MapMarker.car, context),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData == false) {
-                                      return Dalai.skeleton
-                                          .emptySimpleContainer(
-                                              40, 40, context);
-                                    }
-                                    return SizedBox(
-                                      height: 60,
-                                      width: 60,
-                                      child: Image.memory(snapshot.data!),
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                            Dalai.spacing.spacer(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                FutureBuilder(
-                                  future: Dalai.misc.getMapMarker(
-                                      MapMarker.origin, context,
-                                      state: MapMarkerState.selected),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData == false) {
-                                      return Dalai.skeleton
-                                          .emptySimpleContainer(
-                                              40, 40, context);
-                                    }
-                                    return SizedBox(
-                                      height: 40,
-                                      width: 40,
-                                      child: Image.memory(snapshot.data!),
-                                    );
-                                  },
-                                ),
-                                Dalai.spacing.hSpacer(small: true),
-                                FutureBuilder(
-                                  future: Dalai.misc.getMapMarker(
-                                      MapMarker.origin, context,
-                                      state: MapMarkerState.unselected),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData == false) {
-                                      return Dalai.skeleton
-                                          .emptySimpleContainer(
-                                              40, 40, context);
-                                    }
-                                    return SizedBox(
-                                      height: 40,
-                                      width: 40,
-                                      child: Image.memory(snapshot.data!),
-                                    );
-                                  },
-                                ),
-                                Dalai.spacing.hSpacer(small: true),
-                                FutureBuilder(
-                                  future: Dalai.misc.getMapMarker(
-                                      MapMarker.destination, context,
-                                      state: MapMarkerState.selected),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData == false) {
-                                      return Dalai.skeleton
-                                          .emptySimpleContainer(
-                                              40, 40, context);
-                                    }
-                                    return SizedBox(
-                                      height: 40,
-                                      width: 40,
-                                      child: Image.memory(snapshot.data!),
-                                    );
-                                  },
-                                ),
-                                Dalai.spacing.hSpacer(small: true),
-                                FutureBuilder(
-                                  future: Dalai.misc.getMapMarker(
-                                      MapMarker.destination, context,
-                                      state: MapMarkerState.unselected),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData == false) {
-                                      return Dalai.skeleton
-                                          .emptySimpleContainer(
-                                              40, 40, context);
-                                    }
-                                    return SizedBox(
-                                      height: 40,
-                                      width: 40,
-                                      child: Image.memory(snapshot.data!),
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        title: "Map Markers"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Dalai.misc
-                                .getPlaceholderImage(PlaceholderImage.courier),
-                            Dalai.spacing.spacer(),
-                            Dalai.misc
-                                .getPlaceholderImage(PlaceholderImage.partner),
-                            Dalai.spacing.spacer(),
-                            Dalai.misc.getPlaceholderImage(
-                                PlaceholderImage.experienceZone),
-                            Dalai.spacing.spacer(),
-                          ],
-                        ),
-                        title: "Placeholder Images"),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Dalai.misc.checkboxList([
-                              "Title 1",
-                              "Title 2",
-                              "Title 3"
-                            ], [
-                              "Subtitle 1",
-                              null,
-                              "Subtitle 3"
-                            ], [
-                              CXIcon.bag,
-                              null,
-                              CXIcon.bag_slash
-                            ], selected: 1, onSelect: (option) {}),
-                          ],
-                        ),
-                        title: "Checkbox Group"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Container(
-                              height: 100,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                fit: BoxFit.fitWidth,
-                                image: Dalai.misc.getPlaceholderImageProvider(
-                                    PlaceholderImage.courier,
-                                    fit: BoxFit.fitWidth),
-                              )),
-                            )
-                          ],
-                        ),
-                        title: "Placeholder Image Providers"),
-                    Dalai.spacing.divider(context),
-                  ],
-                ),
-              ),
-              Container(
-                key: key12,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Dalai.text.title2(context, 'Animations'),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            GridView(
-                              physics: NeverScrollableScrollPhysics(),
-                              padding: EdgeInsets.symmetric(horizontal: 6),
-                              shrinkWrap: true,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                mainAxisSpacing:
-                                    Dalai.spacing.lateralPaddingValue,
-                              ),
-                              children: [
-                                Dalai.animations.animation(
-                                    context, AnimationType.errorData,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.errorGeneric,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.errorMap,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.errorUpdate,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.errorWorking,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.errorSearch,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.trackingQueued,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.trackingPickup,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.trackingDropoff,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.trackingDelivering,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.trackingOngoingSuper,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(context,
-                                    AnimationType.trackingOngoingMarket,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(context,
-                                    AnimationType.trackingOngoingDelivery,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.paymentProcessing,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.orderCancelled,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.orderDelivered,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                                Dalai.animations.animation(
-                                    context, AnimationType.coinFlip,
-                                    circled: true,
-                                    size: 120,
-                                    backgroundColor: Dalai.color.cream),
-                              ],
-                            ),
-                          ],
-                        ),
-                        title: "Animations Available"),
-                    Dalai.spacing.spacer(small: true),
-                    showCaseBlock(
-                        Column(
-                          children: [
-                            Dalai.animations.animation(
-                              context,
-                              AnimationType.paymentProcessing,
-                              title: "Has de validar la teva identitat",
-                              subtitle:
-                                  "El teu banc ens demana que validem la teva identitat per poder fer el pagament.",
-                              onButtonTap: () {},
-                              buttonText: "Ja he validat la meva identitat",
-                              disclaimer:
-                                  "Obre la app del teu banc i segueix les instruccions per validar la teva identitat.",
-                            ),
-                            Dalai.spacing.dottedDivider(context),
-                            Dalai.spacing.spacer(),
-                            Dalai.animations.animation(
-                              context,
-                              AnimationType.trackingQueued,
-                              title: "Pots seguir la teva comanda a la app",
-                              subtitle:
-                                  "Fes clic per obrir la pantalla de Tracking de la app i seguir la teva comanda.",
-                              onButtonTap: () {},
-                              loading: true,
-                              buttonText: "Seguir comanda",
-                              disclaimer:
-                                  "Al premer el boto de seguir comanda, ens dones permis per obtenir la teva ubicació en temps real.",
-                            ),
-                          ],
-                        ),
-                        title: "Animation Usage"),
-                    Dalai.spacing.divider(context),
+                    DUI.spacing.divider(context),
                   ],
                 ),
               ),
               Container(
                 key: key13,
-                padding: EdgeInsets.all(Dalai.spacing.largeLateralPaddingValue),
+                padding: EdgeInsets.all(DUI.spacing.largeLateralPaddingValue),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Dalai.text.title2(context, 'Pickers'),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.text.title2(context, 'Pickers'),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.picker.calendar(
+                            DUI.picker.calendar(
                               context,
                               (initDate, lastDate) {
                                 print("From: $initDate");
@@ -1999,11 +1161,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Single Calendar Picker (Disabled Weekends)"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.picker.calendar(
+                            DUI.picker.calendar(
                               context,
                               (initDate, lastDate) {
                                 print("From: $initDate");
@@ -2019,11 +1181,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Range Calendar Picker"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           children: [
-                            Dalai.picker.calendar(
+                            DUI.picker.calendar(
                               context,
                               (initDate, lastDate) {
                                 print("From: $initDate");
@@ -2044,20 +1206,20 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         title: "Calendar Picker (Disabled Options)"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(children: [
-                          Dalai.picker.textScrollPicker(
+                          DUI.picker.textScrollPicker(
                               context, ['Test', 'Test', 'Test', 'Test'],
                               (value) {
                             print(value);
                           }),
                         ]),
                         title: "Text Scroll Picker"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(children: [
-                          Dalai.picker.dateTimeScrollPicker(
+                          DUI.picker.dateTimeScrollPicker(
                               context,
                               [
                                 DateTime.now(),
@@ -2075,10 +1237,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               onTimeSelected: (selected) {}),
                         ]),
                         title: "DateTime Scroll Picker"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(children: [
-                          Dalai.picker.dateScrollPicker(
+                          DUI.picker.dateScrollPicker(
                               context,
                               [
                                 DateTime.now(),
@@ -2086,13 +1248,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                 DateTime.now().add(Duration(days: 2))
                               ],
                               onDateSelected: (selected) {}),
-                          Dalai.spacing.spacer(small: true),
+                          DUI.spacing.spacer(small: true),
                         ]),
                         title: "Date Picker"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(children: [
-                          Dalai.picker.timeScrollPicker(
+                          DUI.picker.timeScrollPicker(
                               context,
                               [
                                 TimeOfDay(hour: 11, minute: 15),
@@ -2104,10 +1266,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               onTimeSelected: (selected) {})
                         ]),
                         title: "Time Picker"),
-                    Dalai.spacing.spacer(small: true),
+                    DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(children: [
-                          Dalai.picker.timeRangeScrollPicker(
+                          DUI.picker.timeRangeScrollPicker(
                               context,
                               [
                                 TimeOfDay(hour: 11, minute: 15),
@@ -2120,7 +1282,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               onTimeSelected: (selected) {})
                         ]),
                         title: "Time Picker"),
-                    Dalai.spacing.divider(context),
+                    DUI.spacing.divider(context),
                   ],
                 ),
               )
@@ -2138,7 +1300,7 @@ class _MyHomePageState extends State<MyHomePage> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         GridPaper(
-          color: Dalai.color.grey.withOpacity(0.1),
+          color: DUI.color.grey.withOpacity(0.1),
           divisions: 2,
           subdivisions: 2,
           interval: 24,
@@ -2151,22 +1313,22 @@ class _MyHomePageState extends State<MyHomePage> {
             decoration: BoxDecoration(
                 color: Theme.of(context).scaffoldBackgroundColor,
                 borderRadius:
-                    BorderRadius.circular(Dalai.spacing.smallBorderRadius)),
+                    BorderRadius.circular(DUI.spacing.smallBorderRadius)),
             child: Center(
               child: content,
             ),
           ),
         ),
         title != null
-            ? Dalai.spacing.spacer(small: true)
+            ? DUI.spacing.spacer(small: true)
             : const SizedBox.shrink(),
         title != null
-            ? Dalai.text.xs(context, title,
+            ? DUI.text.xs(context, title,
                 color: Theme.of(context).textTheme.bodyMedium!.color,
                 bold: true,
                 maxLines: 1)
             : const SizedBox.shrink(),
-        title != null ? Dalai.spacing.spacer() : const SizedBox.shrink(),
+        title != null ? DUI.spacing.spacer() : const SizedBox.shrink(),
       ],
     );
   }

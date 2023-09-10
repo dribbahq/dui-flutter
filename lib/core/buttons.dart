@@ -1,20 +1,16 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
-import 'package:dalai/core/external/custom_stepper.dart';
 import 'package:flutter/material.dart';
 import '../common_utils/common_utils.dart';
-import '../dalai.dart';
+import '../dui.dart';
 import 'external/button.dart';
 import 'external/custom_switch.dart';
 
-class DalaiButtons {
+class DUIButton {
   final double buttonMinHeight = 64.0;
   final double smallButtonMinHeight = 42.0;
 
   Widget button(BuildContext context, String? text, Function? onPressed,
-      {CXIcon? icon,
+      {IconData? icon,
       Widget? leading,
       Widget? trailing,
       Widget? content,
@@ -35,7 +31,7 @@ class DalaiButtons {
   }
 
   Widget shadowButton(BuildContext context, String? text, Function? onPressed,
-      {CXIcon? icon,
+      {IconData? icon,
       Widget? leading,
       Widget? trailing,
       Widget? content,
@@ -55,7 +51,7 @@ class DalaiButtons {
   }
 
   Widget noBgButton(BuildContext context, String? text, Function? onPressed,
-      {CXIcon? icon,
+      {IconData? icon,
       Widget? leading,
       Widget? trailing,
       Widget? content,
@@ -75,7 +71,7 @@ class DalaiButtons {
   }
 
   Widget outlineButton(BuildContext context, String? text, Function? onPressed,
-      {CXIcon? icon,
+      {IconData? icon,
       Widget? leading,
       Widget? trailing,
       Widget? content,
@@ -97,7 +93,7 @@ class DalaiButtons {
   }
 
   Widget smallButton(BuildContext context, String? text, Function? onPressed,
-      {CXIcon? icon,
+      {IconData? icon,
       Color? color,
       Color? bgColor,
       bool loading = false,
@@ -127,23 +123,23 @@ class DalaiButtons {
                   .color!
                   .withOpacity(0.2),
               borderRadius: BorderRadius.all(
-                  Radius.circular(Dalai.spacing.smallBorderRadius)),
+                  Radius.circular(DUI.spacing.smallBorderRadius)),
             ),
             padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-            child: Dalai.text.title3(context, qty.toString(),
-                color: Dalai.color.primaryContrast),
+            child: DUI.text.title3(context, qty.toString(),
+                color: DUI.color.primaryContrast),
           )
         : const SizedBox.shrink();
   }
 
   Widget buttonPriceTrailing(BuildContext context, double? price,
       {required String freeText, required String amountInEurosText}) {
-    return Dalai.text.title3(
+    return DUI.text.title3(
         context,
         price == 0
             ? freeText
             : amountInEurosText.replaceAll('%@', Utils.parsePrice(price)),
-        color: Dalai.color.primaryContrast);
+        color: DUI.color.primaryContrast);
   }
 
   Widget buttonMinPriceWidget(BuildContext context,
@@ -155,22 +151,22 @@ class DalaiButtons {
             children: [
               Container(
                 padding: EdgeInsets.only(
-                    left: Dalai.spacing.lateralPaddingValue,
-                    right: Dalai.spacing.lateralPaddingValue,
-                    top: Dalai.spacing.lateralPaddingValue,
+                    left: DUI.spacing.lateralPaddingValue,
+                    right: DUI.spacing.lateralPaddingValue,
+                    top: DUI.spacing.lateralPaddingValue,
                     bottom: 10),
                 decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.background,
                     borderRadius:
-                        BorderRadius.circular(Dalai.spacing.borderRadius),
+                        BorderRadius.circular(DUI.spacing.borderRadius),
                     border: Border.all(
                         color: Theme.of(context)
                             .textTheme
                             .bodyMedium!
                             .color!
                             .withOpacity(0.2),
-                        width: Dalai.spacing.borderWidth)),
-                child: Dalai.text.small(
+                        width: DUI.spacing.borderWidth)),
+                child: DUI.text.small(
                     context,
                     addMoreToRequestText.replaceAll(
                         "%@", Utils.parsePrice(minPrice - currentPrice)),
@@ -182,44 +178,46 @@ class DalaiButtons {
         : const SizedBox.shrink();
   }
 
-  Widget iconButton(BuildContext context, CXIcon icon,
-      {Function? onTap, bool filled = false}) {
+  Widget iconButton(BuildContext context, IconData icon,
+      {Function? onTap, bool filled = false, Color? iconColor}) {
     return ElevatedButton(
-      onPressed: () {
-        if (onTap != null) onTap();
-      },
-      style: ButtonStyle(
-        elevation: MaterialStateProperty.all(filled ? 2 : 0),
-        shape: MaterialStateProperty.all(CircleBorder()),
-        padding: MaterialStateProperty.all(
-            EdgeInsets.all(Dalai.spacing.lateralPaddingValue)),
-        backgroundColor: MaterialStateProperty.all(filled
-            ? Theme.of(context).colorScheme.background
-            : Colors.transparent),
-        surfaceTintColor: MaterialStateProperty.all(filled
-            ? Theme.of(context).colorScheme.background
-            : Colors.transparent),
-        overlayColor: MaterialStateProperty.resolveWith<Color?>((states) {
-          if (states.contains(MaterialState.pressed) ||
-              states.contains(MaterialState.hovered)) {
-            return Theme.of(context)
-                .textTheme
-                .bodyMedium!
-                .color!
-                .withOpacity(0.1);
-          }
-          return null;
-        }),
-      ),
-      child: Dalai.icon.dalaiIcons(context, icon),
-    );
+        onPressed: () {
+          if (onTap != null) onTap();
+        },
+        style: ButtonStyle(
+          elevation: MaterialStateProperty.all(filled ? 2 : 0),
+          shape: MaterialStateProperty.all(CircleBorder()),
+          padding: MaterialStateProperty.all(
+              EdgeInsets.all(DUI.spacing.lateralPaddingValue)),
+          backgroundColor: MaterialStateProperty.all(filled
+              ? Theme.of(context).colorScheme.background
+              : Colors.transparent),
+          surfaceTintColor: MaterialStateProperty.all(filled
+              ? Theme.of(context).colorScheme.background
+              : Colors.transparent),
+          overlayColor: MaterialStateProperty.resolveWith<Color?>((states) {
+            if (states.contains(MaterialState.pressed) ||
+                states.contains(MaterialState.hovered)) {
+              return Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .color!
+                  .withOpacity(0.1);
+            }
+            return null;
+          }),
+        ),
+        child: Icon(
+          icon,
+          color: iconColor ?? Theme.of(context).colorScheme.primary,
+        ));
   }
 
   Widget backButtonCircle(BuildContext context,
       {Function? onTap, bool filled = false}) {
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 4),
-        child: iconButton(context, CXIcon.arrow_left, onTap: () {
+        child: iconButton(context, Icons.arrow_forward_rounded, onTap: () {
           if (onTap != null) {
             onTap();
           }
@@ -227,10 +225,10 @@ class DalaiButtons {
         }));
   }
 
-  Widget appBarActionButtonCircle(BuildContext context, CXIcon icon,
+  Widget appBarActionButtonCircle(BuildContext context, IconData icon,
       {Function? onTap, bool loading = false}) {
     return Container(
-      margin: EdgeInsets.only(right: Dalai.spacing.lateralPaddingValue),
+      margin: EdgeInsets.only(right: DUI.spacing.lateralPaddingValue),
       child: Ink(
         decoration: ShapeDecoration(
           color: Theme.of(context).colorScheme.background,
@@ -238,8 +236,8 @@ class DalaiButtons {
         ),
         child: IconButton(
           icon: loading
-              ? Dalai.misc.loadingAnimation(context, size: 16)
-              : Dalai.icon.dalaiIcons(context, icon),
+              ? DUI.misc.loadingAnimation(context, size: 16)
+              : Icon(icon),
           onPressed: () async {
             if (onTap != null) {
               onTap();
@@ -250,66 +248,11 @@ class DalaiButtons {
     );
   }
 
-  Widget filterCategoryButton(BuildContext context,
-      {required dynamic category, required bool isSelected}) {
-    return Column(
-      children: [
-        Expanded(
-          child: Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(
-                vertical: Dalai.spacing.lateralPaddingValue / 2),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
-                color: isSelected
-                    ? Theme.of(context).colorScheme.background
-                    : Theme.of(context).scaffoldBackgroundColor,
-                border: Border.all(
-                    width: 2,
-                    color: isSelected
-                        ? Theme.of(context).colorScheme.primary
-                        : Theme.of(context).scaffoldBackgroundColor)),
-            child: category.icon != null
-                ? CachedNetworkImage(
-                    imageUrl: category.icon!.mediaLink!,
-                  )
-                : Dalai.icon.dalaiIcons(
-                    context,
-                    CXIcon.camera,
-                    size: CXIconSize.large,
-                    mainColor: Theme.of(context).colorScheme.secondary,
-                  ),
-          ),
-        ),
-        Dalai.spacing.spacer(small: true),
-        SizedBox(
-          height: 34,
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: AutoSizeText(
-              category.getName()!,
-              maxFontSize: Dalai.text.smallText,
-              minFontSize: Dalai.text.xsText,
-              maxLines: 2,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'metropolis',
-                color: Theme.of(context).textTheme.bodySmall!.color,
-                fontWeight: Dalai.text.regularWeight,
-                height: Dalai.text.textHeight,
-              ),
-            ),
-          ),
-        )
-      ],
-    );
-  }
-
   Widget checkbox(
       bool isSelected, Function(bool) onChange, BuildContext context) {
     var size = 26.0;
     return Material(
-      borderRadius: BorderRadius.circular(Dalai.spacing.smallBorderRadius + 4),
+      borderRadius: BorderRadius.circular(DUI.spacing.smallBorderRadius + 4),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       color: Colors.transparent,
       child: InkWell(
@@ -322,20 +265,23 @@ class DalaiButtons {
               children: [
                 Container(
                     width: size - 4,
-                    height:  size - 4,
+                    height: size - 4,
                     decoration: BoxDecoration(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(6),
-                      border:
-                      Border.all(color: Theme.of(context).textTheme.bodyMedium!.color!, width: 2.0),
+                      border: Border.all(
+                          color: Theme.of(context).textTheme.bodyMedium!.color!,
+                          width: 2.0),
                     )),
-                isSelected ? Container(
-                    width:  size - 14,
-                    height:  size - 14,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
-                      borderRadius: BorderRadius.circular(2),
-                    )) : SizedBox.shrink(),
+                isSelected
+                    ? Container(
+                        width: size - 14,
+                        height: size - 14,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.circular(2),
+                        ))
+                    : SizedBox.shrink(),
               ],
             ),
           ),
@@ -368,11 +314,11 @@ class DalaiButtons {
         decoration: BoxDecoration(
           color:
               Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius + 2),
+          borderRadius: BorderRadius.circular(DUI.spacing.borderRadius + 2),
         ),
         thumbDecoration: BoxDecoration(
           color: Theme.of(context).colorScheme.background,
-          borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius - 0.5),
+          borderRadius: BorderRadius.circular(DUI.spacing.borderRadius - 0.5),
         ),
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInToLinear,
@@ -383,28 +329,6 @@ class DalaiButtons {
     );
   }
 
-  Widget stepper(BuildContext context, int initialValue,
-      Function(int, bool underLowerLimit, bool overUpperLimit) onChange,
-      {bool loading = false,
-      String? appendString,
-      String? customText,
-      bool reduced = false,
-      int? lowerLimit,
-      int? upperLimit}) {
-    return CustomStepper(
-      lowerLimit: lowerLimit,
-      upperLimit: upperLimit,
-      initialValue: initialValue,
-      loading: loading,
-      reduced: reduced,
-      appendString: appendString,
-      customText: customText,
-      onChange: (int value, bool underLowerLimit, bool overUpperLimit) {
-        onChange(value, underLowerLimit, overUpperLimit);
-      },
-    );
-  }
-
   Widget dataSelector(BuildContext context, String? title, String? headerTitle,
       Function() onChange,
       {bool loading = false, bool forceDark = false}) {
@@ -412,10 +336,10 @@ class DalaiButtons {
       onTap: onChange,
       child: Container(
         padding: EdgeInsets.symmetric(
-            horizontal: Dalai.spacing.lateralPaddingValue,
-            vertical: Dalai.spacing.lateralPaddingValue / 2),
+            horizontal: DUI.spacing.lateralPaddingValue,
+            vertical: DUI.spacing.lateralPaddingValue / 2),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+          borderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
         ),
         width: double.infinity,
         child: Row(
@@ -426,17 +350,19 @@ class DalaiButtons {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 headerTitle != null
-                    ? Dalai.text.xs(context, headerTitle,
-                        color: forceDark ? Dalai.color.smallTextDarkMode : null)
+                    ? DUI.text.xs(context, headerTitle,
+                        color: forceDark ? DUI.color.smallTextDarkMode : null)
                     : SizedBox.shrink(),
-                Dalai.text.regular(context, title ?? "",
+                DUI.text.regular(context, title ?? "",
                     bold: true,
-                    color: forceDark ? Dalai.color.textDarkMode : null),
+                    color: forceDark ? DUI.color.textDarkMode : null),
               ],
             )),
-            Dalai.icon.dalaiIcons(context, CXIcon.chevron_down,
-                size: CXIconSize.small,
-                mainColor: forceDark ? Dalai.color.textDarkMode : null)
+            Icon(
+              Icons.keyboard_arrow_down_rounded,
+              size: 14.0,
+              color: forceDark ? DUI.color.textDarkMode : null,
+            ),
           ],
         ),
       ),

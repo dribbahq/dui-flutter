@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:substring_highlight/substring_highlight.dart';
 import '../common_utils/common_utils.dart';
-import '../dalai.dart';
+import '../dui.dart';
 
-class DalaiText {
+class DUIText {
   // font sizes
+  final double xxsText = 10.0;
   final double xsText = 12.0;
   final double smallText = 14.0;
   final double regularText = 16.0;
@@ -25,53 +26,62 @@ class DalaiText {
   * */
 
   Widget title1(BuildContext context, String? text,
-      {int? maxLines, TextAlign? textAlign, Color? color}) {
+      {int? maxLines,
+      TextAlign? textAlign,
+      Color? color,
+      TextDecoration? textDecoration}) {
     return Text(
       text ?? '',
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: TextStyle(
-        fontFamily: 'metropolis',
-        color: color ?? Theme.of(context).textTheme.titleLarge!.color,
-        fontSize: h1,
-        height: textHeight,
-        fontWeight: boldWeight,
-      ),
+          fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+          color: color ?? Theme.of(context).textTheme.titleLarge!.color,
+          fontSize: h1,
+          height: textHeight,
+          fontWeight: boldWeight,
+          decoration: textDecoration),
     );
   }
 
   Widget title2(BuildContext context, String? text,
-      {int? maxLines, TextAlign? textAlign, Color? color}) {
+      {int? maxLines,
+      TextAlign? textAlign,
+      Color? color,
+      TextDecoration? textDecoration}) {
     return Text(
       text ?? '',
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: TextStyle(
-        fontFamily: 'metropolis',
-        color: color ?? Theme.of(context).textTheme.titleLarge!.color,
-        fontSize: h2,
-        height: textHeight,
-        fontWeight: semiBoldWeight,
-      ),
+          fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+          color: color ?? Theme.of(context).textTheme.titleLarge!.color,
+          fontSize: h2,
+          height: textHeight,
+          fontWeight: semiBoldWeight,
+          decoration: textDecoration),
     );
   }
 
   Widget title3(BuildContext context, String? text,
-      {int? maxLines, TextAlign? textAlign, Color? color}) {
+      {int? maxLines,
+      TextAlign? textAlign,
+      Color? color,
+      TextDecoration? textDecoration}) {
     return Text(
       text ?? '',
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: TextStyle(
-        fontFamily: 'metropolis',
-        color: color ?? Theme.of(context).textTheme.titleLarge!.color,
-        fontSize: h3,
-        height: textHeight,
-        fontWeight: semiBoldWeight,
-      ),
+          fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+          color: color ?? Theme.of(context).textTheme.titleLarge!.color,
+          fontSize: h3,
+          height: textHeight,
+          fontWeight: semiBoldWeight,
+          decoration: textDecoration),
     );
   }
 
@@ -85,17 +95,17 @@ class DalaiText {
       TextDecoration? decoration}) {
     if (highlightText != null) {
       TextStyle selectedTextStyle = TextStyle(
-        fontSize: Dalai.text.regularText,
-        height: Dalai.text.textHeight,
-        fontWeight: Dalai.text.boldWeight,
-        fontFamily: 'metropolis',
+        fontSize: DUI.text.regularText,
+        height: DUI.text.textHeight,
+        fontWeight: DUI.text.boldWeight,
+        fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
         color: Theme.of(context).textTheme.bodyMedium!.color,
       );
       TextStyle unselectedTextStyle = TextStyle(
-        fontSize: Dalai.text.regularText,
-        height: Dalai.text.textHeight,
-        fontWeight: Dalai.text.semiBoldWeight,
-        fontFamily: 'metropolis',
+        fontSize: DUI.text.regularText,
+        height: DUI.text.textHeight,
+        fontWeight: DUI.text.semiBoldWeight,
+        fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
         color: highlightText.isNotEmpty
             ? Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.85)
             : Theme.of(context).textTheme.bodyMedium!.color,
@@ -152,9 +162,35 @@ class DalaiText {
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: TextStyle(
-        fontFamily: 'metropolis',
+        fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
         color: color ?? Theme.of(context).textTheme.bodySmall!.color!,
         fontSize: xsText,
+        height: height ?? textHeight,
+        fontWeight: bold! ? semiBoldWeight : regularWeight,
+        decoration: decoration ?? TextDecoration.none,
+      ),
+    );
+  }
+
+  Widget xxs(
+      BuildContext context,
+      String? text, {
+        int? maxLines,
+        TextAlign? textAlign,
+        Color? color,
+        double? height,
+        bool? bold = false,
+        TextDecoration? decoration,
+      }) {
+    return Text(
+      text ?? '',
+      textAlign: textAlign ?? TextAlign.start,
+      maxLines: maxLines,
+      overflow: maxLines != null ? TextOverflow.ellipsis : null,
+      style: TextStyle(
+        fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+        color: color ?? Theme.of(context).textTheme.bodySmall!.color!,
+        fontSize: xxsText,
         height: height ?? textHeight,
         fontWeight: bold! ? semiBoldWeight : regularWeight,
         decoration: decoration ?? TextDecoration.none,
@@ -177,7 +213,7 @@ class DalaiText {
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: TextStyle(
-        fontFamily: font ?? 'metropolis',
+        fontFamily: font ?? Theme.of(context).textTheme.bodyMedium!.fontFamily,
         color: color ?? Theme.of(context).textTheme.bodyMedium!.color,
         fontSize: fontSize,
         fontWeight: fontWeight,
@@ -206,7 +242,7 @@ class DalaiText {
         "div": Style(
             padding: HtmlPaddings.all(0),
             backgroundColor: Colors.transparent,
-            fontFamily: 'metropolis',
+            fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
             fontWeight: regularWeight,
             color: color ?? Theme.of(context).textTheme.bodyMedium!.color,
             lineHeight: height ?? LineHeight(textHeight),
@@ -247,7 +283,7 @@ class DalaiText {
         "div": Style(
             padding: HtmlPaddings.all(0),
             backgroundColor: Colors.transparent,
-            fontFamily: 'metropolis',
+            fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
             fontWeight: regularWeight,
             color: Theme.of(context).textTheme.bodySmall!.color,
             lineHeight: LineHeight(textHeight),
@@ -286,7 +322,7 @@ class DalaiText {
         "div": Style(
             padding: HtmlPaddings.all(0),
             backgroundColor: Colors.transparent,
-            fontFamily: 'metropolis',
+            fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
             fontWeight: regularWeight,
             color: Theme.of(context).textTheme.bodySmall!.color,
             lineHeight: LineHeight(textHeight),
@@ -318,7 +354,7 @@ class DalaiText {
       double? height,
       TextDecoration? decoration}) {
     return TextStyle(
-      fontFamily: 'metropolis',
+      fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
       color: color ?? Theme.of(context).textTheme.bodyMedium!.color,
       fontSize: regularText,
       fontWeight: bold! ? semiBoldWeight : regularWeight,
@@ -333,7 +369,7 @@ class DalaiText {
       double? height,
       TextDecoration? decoration}) {
     return TextStyle(
-        fontFamily: 'metropolis',
+        fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
         color: color ?? Theme.of(context).textTheme.bodySmall!.color!,
         fontSize: smallText,
         fontWeight: bold! ? semiBoldWeight : regularWeight,
@@ -357,15 +393,17 @@ class DalaiText {
   Widget itemHeader(BuildContext context, String text,
       {Function? onTap, String? onAccessoryButtonText, bool loading = false}) {
     return Container(
-      padding: EdgeInsets.only(top: 2 * Dalai.spacing.lateralPaddingValue),
+      padding: EdgeInsets.only(top: 2 * DUI.spacing.lateralPaddingValue),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-         Expanded(child:  title3(context, text,
-             color: Theme.of(context).textTheme.titleLarge!.color),),
+          Expanded(
+            child: title3(context, text,
+                color: Theme.of(context).textTheme.titleLarge!.color),
+          ),
           onAccessoryButtonText == null
               ? SizedBox.shrink()
-              : Dalai.button.smallButton(context, onAccessoryButtonText, onTap,
+              : DUI.button.smallButton(context, onAccessoryButtonText, onTap,
                   loading: loading)
         ],
       ),
@@ -375,9 +413,9 @@ class DalaiText {
   Widget smallItemHeader(BuildContext context, String text) {
     return Container(
       padding: EdgeInsets.only(
-          top: 2 * Dalai.spacing.lateralPaddingValue,
-          left: Dalai.spacing.lateralPaddingValue,
-          right: Dalai.spacing.lateralPaddingValue),
+          top: 2 * DUI.spacing.lateralPaddingValue,
+          left: DUI.spacing.lateralPaddingValue,
+          right: DUI.spacing.lateralPaddingValue),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

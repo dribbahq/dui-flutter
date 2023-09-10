@@ -1,12 +1,8 @@
-import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
-import 'package:dalai/common_utils/color_extension.dart';
-import 'package:dalai/core/external/slidable_tile.dart';
+import 'package:dui/common_utils/color_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:substring_highlight/substring_highlight.dart';
+import '../dui.dart';
 
-import '../dalai.dart';
-
-class DalaiTiles {
+class DUITile {
   Widget listTile(
     String? text,
     BuildContext context,
@@ -18,26 +14,19 @@ class DalaiTiles {
     Widget? trailing,
   }) {
     return Material(
-      color: Dalai.color.white,
+      color: DUI.color.white,
       child: ListTile(
         tileColor: Theme.of(context).colorScheme.background,
         contentPadding: padding ??
             EdgeInsets.symmetric(
-                horizontal: Dalai.spacing.lateralPaddingValue, vertical: 0),
-        title: Text(
-          text ?? '',
-          style: TextStyle(
-              fontSize: Dalai.text.regularText,
-              color:
-                  colorText ?? Theme.of(context).textTheme.bodyMedium!.color),
-        ),
+                horizontal: DUI.spacing.lateralPaddingValue, vertical: 0),
+        title: DUI.text.regular(context, text ?? '',
+            color: colorText ?? Theme.of(context).textTheme.bodyMedium!.color),
         trailing: loading!
-            ? Dalai.misc.loadingAnimation(context, size: 18)
+            ? DUI.misc.loadingAnimation(context, size: 18)
             : trailing ??
-                Dalai.icon.dalaiIcons(
-                  context,
-                  CXIcon.chevron_right,
-                  size: CXIconSize.small,
+                Icon(
+                  Icons.chevron_right,
                 ),
         leading: leading,
         onTap: onTap,
@@ -56,36 +45,36 @@ class DalaiTiles {
     Widget? trailing,
   }) {
     return Material(
-      color: Dalai.color.white,
+      color: DUI.color.white,
       child: ListTile(
         onTap: onTap,
         leading: leading,
         trailing: trailing ??
-            Dalai.icon.dalaiIcons(
-              context,
-              CXIcon.chevron_right,
-              size: CXIconSize.small,
+            Icon(
+              Icons.chevron_right,
             ),
         tileColor: Theme.of(context).colorScheme.background,
         contentPadding: padding ??
             EdgeInsets.symmetric(
-                horizontal: Dalai.spacing.lateralPaddingValue, vertical: 0),
+                horizontal: DUI.spacing.lateralPaddingValue, vertical: 0),
         title: Text(
           title ?? '',
           style: TextStyle(
-              fontSize: Dalai.text.regularText,
-              fontWeight: Dalai.text.semiBoldWeight,
+              fontSize: DUI.text.regularText,
+              fontWeight: DUI.text.semiBoldWeight,
               color:
                   colorText ?? Theme.of(context).textTheme.bodyMedium!.color),
         ),
-        subtitle: subtitle == null ? null : Text(
-          subtitle ?? '',
-          style: TextStyle(
-              fontSize: Dalai.text.smallText,
-              color:
-                  colorText ?? Theme.of(context).textTheme.bodyMedium!.color),
-          textAlign: TextAlign.start,
-        ),
+        subtitle: subtitle == null
+            ? null
+            : Text(
+                subtitle,
+                style: TextStyle(
+                    fontSize: DUI.text.smallText,
+                    color: colorText ??
+                        Theme.of(context).textTheme.bodyMedium!.color),
+                textAlign: TextAlign.start,
+              ),
       ),
     );
   }
@@ -103,8 +92,8 @@ class DalaiTiles {
             onTap: onTap,
             child: Padding(
               padding: EdgeInsets.only(
-                  left: Dalai.spacing.lateralPaddingValue,
-                  right: Dalai.spacing.lateralPaddingValue,
+                  left: DUI.spacing.lateralPaddingValue,
+                  right: DUI.spacing.lateralPaddingValue,
                   top: 16,
                   bottom: 16),
               child: Row(
@@ -112,81 +101,15 @@ class DalaiTiles {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     leading,
-                    Dalai.spacing.hSpacer(),
+                    DUI.spacing.hSpacer(),
                     Expanded(
                       child:
-                          Dalai.text.regular(context, title ?? '', maxLines: 2),
+                          DUI.text.regular(context, title ?? '', maxLines: 2),
                     ),
-                    Dalai.icon.dalaiIcons(context, CXIcon.chevron_right,
-                        size: CXIconSize.small),
-                  ]),
-            )),
-      ),
-    );
-  }
-
-  Widget listSearchTileCustomImage(
-      CXIcon leading, BuildContext context, String? title, Function() onTap,
-      {String? searchText,
-      double? imageSize,
-      Color? imageColor,
-      bool loading = false}) {
-    TextStyle selectedTextStyle = TextStyle(
-      fontSize: Dalai.text.regularText,
-      height: Dalai.text.textHeight,
-      fontWeight: Dalai.text.boldWeight,
-      fontFamily: 'metropolis',
-      color: Theme.of(context).textTheme.bodyMedium!.color,
-    );
-    TextStyle unselectedTextStyle = TextStyle(
-      fontSize: Dalai.text.regularText,
-      height: Dalai.text.textHeight,
-      fontWeight: Dalai.text.regularWeight,
-      fontFamily: 'metropolis',
-      color: searchText != null && searchText.isNotEmpty
-          ? Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.8)
-          : Theme.of(context).textTheme.bodyMedium!.color,
-    );
-
-    return Material(
-      color: Dalai.color.white,
-      child: Container(
-        height: 64,
-        color: Theme.of(context).colorScheme.background,
-        child: InkWell(
-            onTap: onTap,
-            child: Padding(
-              padding: EdgeInsets.only(
-                  left: Dalai.spacing.lateralPaddingValue,
-                  right: Dalai.spacing.lateralPaddingValue,
-                  top: 0,
-                  bottom: 0),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Dalai.icon.dalaiIcons(
-                      context,
-                      leading,
-                      mainColor: imageColor ??
-                          Theme.of(context).textTheme.bodyMedium!.color,
+                    Icon(
+                      Icons.chevron_right,
+                      size: 14.0,
                     ),
-                    Dalai.spacing.hSpacer(),
-                    Expanded(
-                        child: SubstringHighlight(
-                      text: title ?? '',
-                      term: searchText,
-                      textStyle: unselectedTextStyle,
-                      textStyleHighlight: selectedTextStyle,
-                    )),
-                    Dalai.spacing.hSpacer(),
-                    loading
-                        ? Dalai.misc.loadingAnimation(context, size: 18)
-                        : Dalai.icon.dalaiIcons(
-                            context,
-                            CXIcon.chevron_right,
-                            size: CXIconSize.small,
-                          ),
                   ]),
             )),
       ),
@@ -195,7 +118,7 @@ class DalaiTiles {
 
   Widget squareTile(
     BuildContext context, {
-    CXIcon? icon,
+    IconData? icon,
     required String? title,
     Function()? onTap,
     Function()? onInfoTap,
@@ -217,13 +140,13 @@ class DalaiTiles {
             constraints: BoxConstraints(
               maxWidth: MediaQuery.of(context).size.width / 2,
             ),
-            padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
+            padding: EdgeInsets.all(DUI.spacing.lateralPaddingValue),
             decoration: BoxDecoration(
               color: backgroundColor,
               border: Border.all(
                   color: Theme.of(context).colorScheme.background,
-                  width: Dalai.spacing.borderWidth),
-              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+                  width: DUI.spacing.borderWidth),
+              borderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -244,17 +167,16 @@ class DalaiTiles {
                         child: Row(
                           children: [
                             Flexible(
-                              child: Dalai.text.regular(context, title,
+                              child: DUI.text.regular(context, title,
                                   bold: true,
                                   color: backgroundColor.calculateLuminance(),
                                   maxLines: 1),
                             ),
-                            Dalai.spacing.hSpacer(small: true),
+                            DUI.spacing.hSpacer(small: true),
                             onInfoTap != null
-                                ? Dalai.icon.dalaiIcons(
-                                    context, CXIcon.info_circle,
-                                    mainColor: backgroundColor.calculateLuminance(),
-                                    size: CXIconSize.x_small)
+                                ? Icon(Icons.info_outline_rounded,
+                                    size: 12,
+                                    color: backgroundColor.calculateLuminance())
                                 : SizedBox.shrink(),
                           ],
                         ),
@@ -262,11 +184,12 @@ class DalaiTiles {
                     )),
                     icon == null
                         ? SizedBox.shrink()
-                        : Dalai.icon.dalaiIcons(context, icon, mainColor: backgroundColor.calculateLuminance()),
+                        : Icon(icon,
+                            color: backgroundColor.calculateLuminance()),
                   ],
                 ),
                 subtitle != null
-                    ? Dalai.text.xs(context, subtitle,
+                    ? DUI.text.xs(context, subtitle,
                         color: backgroundColor.calculateLuminance())
                     : SizedBox.shrink(),
               ],
@@ -283,13 +206,13 @@ class DalaiTiles {
           constraints: BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width / 2,
           ),
-          padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
+          padding: EdgeInsets.all(DUI.spacing.lateralPaddingValue),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.background,
             border: Border.all(
                 color: Theme.of(context).colorScheme.background,
-                width: Dalai.spacing.borderWidth),
-            borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+                width: DUI.spacing.borderWidth),
+            borderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -298,14 +221,12 @@ class DalaiTiles {
               Row(
                 children: [
                   Expanded(
-                    child: Dalai.text.title1(context, value),
+                    child: DUI.text.title1(context, value),
                   ),
-                  icon == null
-                      ? SizedBox.shrink()
-                      : Dalai.icon.dalaiIcons(context, icon),
+                  icon == null ? SizedBox.shrink() : Icon(icon),
                 ],
               ),
-              Dalai.spacing.spacer(small: true),
+              DUI.spacing.spacer(small: true),
               GestureDetector(
                 onTap: onInfoTap != null
                     ? () {
@@ -318,16 +239,18 @@ class DalaiTiles {
                   child: Row(
                     children: [
                       Flexible(
-                        child: Dalai.text.regular(context, title,
+                        child: DUI.text.regular(context, title,
                             bold: true,
                             color:
                                 Theme.of(context).textTheme.bodyMedium!.color,
                             maxLines: 1),
                       ),
-                      Dalai.spacing.hSpacer(small: true),
+                      DUI.spacing.hSpacer(small: true),
                       onInfoTap != null
-                          ? Dalai.icon.dalaiIcons(context, CXIcon.info_circle,
-                              size: CXIconSize.x_small)
+                          ? Icon(
+                              Icons.info_outline_rounded,
+                              size: 12,
+                            )
                           : SizedBox.shrink(),
                     ],
                   ),
@@ -335,23 +258,6 @@ class DalaiTiles {
               )
             ],
           )),
-    );
-  }
-
-  Widget paymentMethod(BuildContext context, String? title, String? subtitle,
-      {Function()? onTap,
-      Function()? onRemove,
-      String? highlightText,
-      bool? autoDone = false,
-      CCBrand? ccBrand}) {
-    return SlidableTile(
-      title: title ?? '',
-      subtitle: subtitle,
-      highlightText: highlightText,
-      onRemove: onRemove,
-      tapped: onTap,
-      autoDone: autoDone,
-      ccBrand: ccBrand,
     );
   }
 }

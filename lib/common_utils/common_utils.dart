@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:intl/intl.dart';
@@ -9,10 +8,8 @@ import 'package:map_launcher/map_launcher.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:vector_math/vector_math.dart' as deg;
-import '../dalai.dart';
+import '../dui.dart';
 import 'custom_modal_bottom_sheet.dart';
-
-enum NutriscoreLevel { A, B, C, D, E, none }
 
 class Utils {
   /*
@@ -64,16 +61,16 @@ class Utils {
               padding: skipPadding
                   ? null
                   : EdgeInsets.only(
-                      bottom: Dalai.spacing.lateralPaddingValue,
-                      left: Dalai.spacing.lateralPaddingValue,
-                      right: Dalai.spacing.lateralPaddingValue),
+                      bottom: DUI.spacing.lateralPaddingValue,
+                      left: DUI.spacing.lateralPaddingValue,
+                      right: DUI.spacing.lateralPaddingValue),
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(Dalai.spacing.largeBorderRadius)),
+                    top: Radius.circular(DUI.spacing.largeBorderRadius)),
                 boxShadow: [
                   BoxShadow(
-                    color: Dalai.color.black.withOpacity(0.2),
+                    color: DUI.color.black.withOpacity(0.2),
                     blurRadius: 5.0,
                     offset: const Offset(0.0, 0.0),
                   ),
@@ -91,16 +88,15 @@ class Utils {
                             ? Center(
                                 child: Opacity(
                                   opacity: 0.2,
-                                  child: Dalai.icon.dalaiIcons(
-                                      context, CXIcon.horizontal_line,
-                                      size: CXIconSize.x_large,
-                                      mainColor: Theme.of(context)
+                                  child: Icon(Icons.horizontal_rule_rounded,
+                                      size: 20,
+                                      color: Theme.of(context)
                                           .textTheme
                                           .bodyMedium!
                                           .color!),
                                 ),
                               )
-                            : Dalai.spacing.spacer(multiplier: 2),
+                            : DUI.spacing.spacer(multiplier: 2),
                         content ?? const SizedBox.shrink()
                       ],
                     ),
@@ -128,7 +124,7 @@ class Utils {
             maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.95),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-                top: Radius.circular(Dalai.spacing.borderRadius))),
+                top: Radius.circular(DUI.spacing.borderRadius))),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         builder: (context) {
           return content ?? Container();

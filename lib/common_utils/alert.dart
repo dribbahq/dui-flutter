@@ -1,47 +1,11 @@
 import 'dart:io';
-import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../dalai.dart';
+
+import '../dui.dart';
 
 class Alert {
-  static Future showStatusAlert(String title, String text, BuildContext context,
-      CXIcon icon, Color color) {
-    return showDialog(
-        context: context,
-        barrierDismissible: true,
-        builder: (BuildContext context) {
-          return Dialog(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
-              ),
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              child: Container(
-                width: 50,
-                padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Colors.white,
-                  borderRadius:
-                      BorderRadius.circular(Dalai.spacing.borderRadius),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Dalai.spacing.spacer(),
-                    Dalai.icon
-                        .dalaiIcons(context, icon, size: CXIconSize.large),
-                    Dalai.spacing.spacer(),
-                    Dalai.text.regular(context, title, bold: true),
-                    Dalai.text.small(context, text),
-                    Dalai.spacing.spacer(),
-                  ],
-                ),
-              ));
-        });
-  }
 
   static Future showAlert(String? title, String? text, BuildContext context,
       {onPressed, barrierDismissible, required String okText}) {
@@ -90,22 +54,22 @@ class Alert {
             return AlertDialog(
               shape: RoundedRectangleBorder(
                   borderRadius:
-                      BorderRadius.circular(Dalai.spacing.borderRadius)),
+                      BorderRadius.circular(DUI.spacing.borderRadius)),
               titlePadding: EdgeInsets.only(
-                  top: 2 * Dalai.spacing.lateralPaddingValue,
-                  bottom: Dalai.spacing.lateralPaddingValue / 2,
-                  left: Dalai.spacing.lateralPaddingValue,
-                  right: Dalai.spacing.lateralPaddingValue),
+                  top: 2 * DUI.spacing.lateralPaddingValue,
+                  bottom: DUI.spacing.lateralPaddingValue / 2,
+                  left: DUI.spacing.lateralPaddingValue,
+                  right: DUI.spacing.lateralPaddingValue),
               contentPadding: EdgeInsets.symmetric(
-                  vertical: 0, horizontal: Dalai.spacing.lateralPaddingValue),
+                  vertical: 0, horizontal: DUI.spacing.lateralPaddingValue),
               actionsPadding: EdgeInsets.symmetric(
-                  vertical: 0, horizontal: Dalai.spacing.lateralPaddingValue),
+                  vertical: 0, horizontal: DUI.spacing.lateralPaddingValue),
               surfaceTintColor: Theme.of(context).colorScheme.background,
-              title: Dalai.text.title3(context, title!),
-              content: Dalai.text.regular(context, text!),
+              title: DUI.text.title3(context, title!),
+              content: DUI.text.regular(context, text!),
               actions: <Widget>[
                 TextButton(
-                  child: Dalai.text.regular(context, okText,
+                  child: DUI.text.regular(context, okText,
                       bold: true, color: Colors.blueAccent),
                   onPressed: () {
                     if (onPressed != null) {
@@ -130,7 +94,7 @@ class Alert {
               ),
               content: Column(
                 children: <Widget>[
-                  Dalai.spacing.spacer(small: true),
+                  DUI.spacing.spacer(small: true),
                   Text(
                     text!,
                     style: const TextStyle(height: 1.2),
@@ -211,29 +175,29 @@ class Alert {
           return AlertDialog(
             shape: RoundedRectangleBorder(
                 borderRadius:
-                    BorderRadius.circular(Dalai.spacing.borderRadius)),
+                    BorderRadius.circular(DUI.spacing.borderRadius)),
             titlePadding: EdgeInsets.only(
-                top: 2 * Dalai.spacing.lateralPaddingValue,
-                bottom: Dalai.spacing.lateralPaddingValue / 2,
-                left: Dalai.spacing.lateralPaddingValue,
-                right: Dalai.spacing.lateralPaddingValue),
+                top: 2 * DUI.spacing.lateralPaddingValue,
+                bottom: DUI.spacing.lateralPaddingValue / 2,
+                left: DUI.spacing.lateralPaddingValue,
+                right: DUI.spacing.lateralPaddingValue),
             contentPadding: EdgeInsets.symmetric(
-                vertical: 0, horizontal: Dalai.spacing.lateralPaddingValue),
+                vertical: 0, horizontal: DUI.spacing.lateralPaddingValue),
             actionsPadding: EdgeInsets.symmetric(
-                vertical: 0, horizontal: Dalai.spacing.lateralPaddingValue),
+                vertical: 0, horizontal: DUI.spacing.lateralPaddingValue),
             surfaceTintColor: Theme.of(context).colorScheme.background,
-            title: Dalai.text.title3(context, title!),
-            content: Dalai.text.regular(context, text!),
+            title: DUI.text.title3(context, title!),
+            content: DUI.text.regular(context, text!),
             actions: <Widget>[
               TextButton(
-                child: Dalai.text.regular(context, onNoText,
+                child: DUI.text.regular(context, onNoText,
                     bold: true, color: Colors.blueAccent),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
               ),
               TextButton(
-                child: Dalai.text.regular(context, onYesText,
+                child: DUI.text.regular(context, onYesText,
                     bold: true, color: Colors.blueAccent),
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -252,7 +216,7 @@ class Alert {
             title: Text(title!),
             content: Column(
               children: <Widget>[
-                Dalai.spacing.spacer(small: true),
+                DUI.spacing.spacer(small: true),
                 Text(
                   text!,
                   style: const TextStyle(height: 1.2),

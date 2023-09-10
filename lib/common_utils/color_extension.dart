@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import '../dalai.dart';
+
+import '../dui.dart';
 
 extension ColorExtension on Color {
   Color calculateLuminance() {
     return computeLuminance() >= 0.5
-        ? Dalai.color.text
-        : Dalai.color.textDarkMode;
+        ? DUI.color.text
+        : DUI.color.textDarkMode;
   }
 
   static Color fromHex(String hexString) {

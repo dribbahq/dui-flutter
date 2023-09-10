@@ -1,10 +1,9 @@
-import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:country_flags/country_flags.dart';
 import 'package:collection/collection.dart';
 import '../../common_utils/common_utils.dart';
-import '../../dalai.dart';
+import '../../dui.dart';
 
 class CountryPicked {
   String? countryName;
@@ -23,7 +22,8 @@ class CountryPicker extends StatefulWidget {
   final String? initialSelection;
   final List<String>? favorite;
 
-  const CountryPicker({Key? key,
+  const CountryPicker({
+    Key? key,
     this.onChanged,
     this.initialSelection,
     this.favorite,
@@ -65,16 +65,15 @@ class _CountryPicker extends State<CountryPicker> {
               width: 24.0,
               height: 24.0,
             ),
-            Dalai.spacing.hSpacer(small: true),
-            Dalai.text.small(
+            DUI.spacing.hSpacer(small: true),
+            DUI.text.small(
               context,
               selectedItem!.countryCode,
             ),
-            Dalai.icon.dalaiIcons(
-              context,
-              CXIcon.chevron_down,
-              size: CXIconSize.x_small,
-            ),
+            Icon(
+              Icons.keyboard_arrow_down_outlined,
+              size: 12,
+            )
           ],
         ),
       ));
@@ -141,13 +140,13 @@ class _CountryPicker extends State<CountryPicker> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Dalai.spacing.hSpacer(multiplier: 5),
+          DUI.spacing.hSpacer(multiplier: 5),
           CountryFlag.fromCountryCode(
             element.countryExtension!.toLowerCase(),
             width: 24.0,
             height: 24.0,
           ),
-          Dalai.spacing.hSpacer(),
+          DUI.spacing.hSpacer(),
           Text(
             ' (${element.countryCode})',
             overflow: TextOverflow.ellipsis,
@@ -159,7 +158,7 @@ class _CountryPicker extends State<CountryPicker> {
                     .withOpacity(0.8),
                 fontSize: 16),
           ),
-          Dalai.spacing.hSpacer(),
+          DUI.spacing.hSpacer(),
           Expanded(
             child: Text(
               element.countryName!,
@@ -169,13 +168,13 @@ class _CountryPicker extends State<CountryPicker> {
                   fontSize: 22),
             ),
           ),
-          Dalai.spacing.hSpacer()
+          DUI.spacing.hSpacer()
         ],
       ));
     }
 
     items.add(
-      Dalai.spacing.divider(
+      DUI.spacing.divider(
         context,
       ),
     );
@@ -185,13 +184,13 @@ class _CountryPicker extends State<CountryPicker> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Dalai.spacing.hSpacer(multiplier: 5),
+          DUI.spacing.hSpacer(multiplier: 5),
           CountryFlag.fromCountryCode(
             element.countryExtension!.toLowerCase(),
             width: 24.0,
             height: 24.0,
           ),
-          Dalai.spacing.hSpacer(),
+          DUI.spacing.hSpacer(),
           Text(
             ' (${element.countryCode})',
             overflow: TextOverflow.ellipsis,
@@ -203,7 +202,7 @@ class _CountryPicker extends State<CountryPicker> {
                     .withOpacity(0.8),
                 fontSize: 16),
           ),
-          Dalai.spacing.hSpacer(),
+          DUI.spacing.hSpacer(),
           Expanded(
             child: Text(
               element.countryName!,
@@ -213,7 +212,7 @@ class _CountryPicker extends State<CountryPicker> {
                   fontSize: 22),
             ),
           ),
-          Dalai.spacing.hSpacer()
+          DUI.spacing.hSpacer()
         ],
       ));
     }

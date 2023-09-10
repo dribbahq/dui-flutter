@@ -1,70 +1,74 @@
 import 'dart:io';
-import '../dalai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class DalaiTheme {
-  ThemeData themeData(bool isDarkTheme) {
+import '../dui.dart';
+
+class DUITheme {
+  ThemeData themeData(bool isDarkTheme,
+      {ThemeData? customThemeData, String fontFamily = "metropolis"}) {
     return ThemeData(
       useMaterial3: true,
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       platform:
           Platform.isAndroid ? TargetPlatform.android : TargetPlatform.iOS,
-      fontFamily: 'metropolis',
-      textTheme: TextTheme(
-        displayMedium: TextStyle(
-            color:
-                isDarkTheme ? Dalai.color.textDarkMode : Dalai.color.primary),
-        bodyMedium: TextStyle(
-            color: isDarkTheme ? Dalai.color.textDarkMode : Dalai.color.text),
-        bodySmall: TextStyle(
-            color: isDarkTheme
-                ? Dalai.color.smallTextDarkMode
-                : Dalai.color.smallText),
-        titleLarge: TextStyle(
-            color: isDarkTheme ? Dalai.color.textDarkMode : Dalai.color.text),
-        titleSmall: TextStyle(
-            color: isDarkTheme
-                ? Dalai.color.smallTextDarkMode
-                : Dalai.color.smallText),
-      ),
+      fontFamily: fontFamily,
+      textTheme: customThemeData?.textTheme ??
+          TextTheme(
+            displayMedium: TextStyle(
+                color:
+                    isDarkTheme ? DUI.color.textDarkMode : DUI.color.primary),
+            bodyMedium: TextStyle(
+                color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
+            bodySmall: TextStyle(
+                color: isDarkTheme
+                    ? DUI.color.smallTextDarkMode
+                    : DUI.color.smallText),
+            titleLarge: TextStyle(
+                color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
+            titleSmall: TextStyle(
+                color: isDarkTheme
+                    ? DUI.color.smallTextDarkMode
+                    : DUI.color.smallText),
+          ),
       scaffoldBackgroundColor:
-          isDarkTheme ? Dalai.color.scaffoldDarkMode : Dalai.color.scaffold,
-      colorScheme: ColorScheme(
-        background: isDarkTheme
-            ? Dalai.color.backgroundDarkMode
-            : Dalai.color.background,
-        primary: Dalai.color.primary,
-        secondary:
-            isDarkTheme ? Dalai.color.secondaryDarkMode : Dalai.color.secondary,
-        surface: Colors.white,
-        error: Dalai.color.error,
-        onPrimary: Colors.white,
-        onSecondary: Colors.black,
-        onSurface: Colors.black,
-        onBackground: Colors.black,
-        onError: Colors.white,
-        brightness: isDarkTheme ? Brightness.dark : Brightness.light,
-      ),
+          isDarkTheme ? DUI.color.scaffoldDarkMode : DUI.color.scaffold,
+      colorScheme: customThemeData?.colorScheme ??
+          ColorScheme(
+            background: isDarkTheme
+                ? DUI.color.backgroundDarkMode
+                : DUI.color.background,
+            primary: DUI.color.primary,
+            secondary:
+                isDarkTheme ? DUI.color.secondaryDarkMode : DUI.color.secondary,
+            surface: Colors.white,
+            error: DUI.color.error,
+            onPrimary: Colors.white,
+            onSecondary: Colors.black,
+            onSurface: Colors.black,
+            onBackground: Colors.black,
+            onError: Colors.white,
+            brightness: isDarkTheme ? Brightness.dark : Brightness.light,
+          ),
       inputDecorationTheme: InputDecorationTheme(
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+              borderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
               borderSide: BorderSide(
                   color: isDarkTheme
                       ? const Color(0XFF444E5E)
-                      : Dalai.color.inputBorderEnableLight,
+                      : DUI.color.inputBorderEnableLight,
                   width: 1)),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius),
+              borderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
               borderSide: BorderSide(
                   color: isDarkTheme
                       ? const Color(0XFF444E5E)
-                      : Dalai.color.inputBorderFocusLight,
+                      : DUI.color.inputBorderFocusLight,
                   width: 2)),
-          focusColor: isDarkTheme ? Dalai.color.textDarkMode : Dalai.color.text,
+          focusColor: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text,
           fillColor: isDarkTheme
-              ? Dalai.color.inputFillColorDark
-              : Dalai.color.inputFillColorLight),
+              ? DUI.color.inputFillColorDark
+              : DUI.color.inputFillColorLight),
       buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.accent),
       textSelectionTheme: const TextSelectionThemeData(
           cursorColor: Color(0XFF444E5E),

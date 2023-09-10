@@ -1,7 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 
-class DalaiSpacing{
+class DUISpacing {
   /// Margins
   ///
   final double smallPaddingValue = 4;

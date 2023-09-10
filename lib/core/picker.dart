@@ -1,17 +1,14 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
-import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
-import 'package:dalai/common_utils/color_extension.dart';
-import 'package:dalai/common_utils/time_of_day_extensions.dart';
+import 'package:dui/common_utils/color_extension.dart';
+import 'package:dui/common_utils/time_of_day_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
 import '../common_utils/common_utils.dart';
-import '../dalai.dart';
+import '../dui.dart';
 
 enum CalendarMode { single, range }
 
-class DalaiPickers {
+class DUIPicker {
   Widget calendar(BuildContext context,
       Function(DateTime initDate, DateTime? endDate) onSelected,
       {CalendarMode calendarMode = CalendarMode.single,
@@ -25,7 +22,7 @@ class DalaiPickers {
       List<DateTime> disabledDates = const []}) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Dalai.spacing.borderRadius)),
+          borderRadius: BorderRadius.circular(DUI.spacing.borderRadius)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +73,7 @@ class DalaiPickers {
                   return Container(
                     decoration: BoxDecoration(
                         borderRadius:
-                            BorderRadius.circular(Dalai.spacing.borderRadius),
+                            BorderRadius.circular(DUI.spacing.borderRadius),
                         border: Border.all(
                             width: 1,
                             color: Theme.of(context)
@@ -90,9 +87,9 @@ class DalaiPickers {
                         MaterialLocalizations.of(context)
                             .formatDecimal(date.day),
                         style: TextStyle(
-                          fontFamily: 'Metropolis',
-                          fontWeight: Dalai.text.semiBoldWeight,
-                          fontSize: Dalai.text.smallText,
+                          fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+                          fontWeight: DUI.text.semiBoldWeight,
+                          fontSize: DUI.text.smallText,
                           color: Theme.of(context).textTheme.bodyMedium!.color,
                         ),
                       ),
@@ -111,37 +108,34 @@ class DalaiPickers {
                 );
               },
               controlsTextStyle: TextStyle(
-                fontFamily: 'Metropolis',
-                fontWeight: Dalai.text.semiBoldWeight,
-                fontSize: Dalai.text.h3,
+                fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+                fontWeight: DUI.text.semiBoldWeight,
+                fontSize: DUI.text.h3,
                 color: Theme.of(context).textTheme.bodyMedium!.color,
               ),
-              lastMonthIcon: Dalai.icon.dalaiIcons(context, CXIcon.chevron_left,
-                  size: CXIconSize.x_small),
-              nextMonthIcon: Dalai.icon.dalaiIcons(
-                  context, CXIcon.chevron_right,
-                  size: CXIconSize.x_small),
+              lastMonthIcon: Icon(Icons.arrow_back_ios_new_rounded, size: 14),
+              nextMonthIcon: Icon(Icons.arrow_forward_ios_rounded, size: 14),
               selectedDayHighlightColor:
                   Theme.of(context).colorScheme.secondary,
               selectedRangeHighlightColor:
                   Theme.of(context).colorScheme.secondary.withOpacity(0.05),
               selectedRangeDayTextStyle: TextStyle(
-                fontFamily: 'Metropolis',
-                fontWeight: Dalai.text.semiBoldWeight,
-                fontSize: Dalai.text.smallText,
+                fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+                fontWeight: DUI.text.semiBoldWeight,
+                fontSize: DUI.text.smallText,
                 color: Theme.of(context).textTheme.bodyMedium!.color,
               ),
               firstDayOfWeek: 1,
               weekdayLabelTextStyle: TextStyle(
-                fontFamily: 'Metropolis',
-                fontWeight: Dalai.text.semiBoldWeight,
-                fontSize: Dalai.text.xsText,
+                fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+                fontWeight: DUI.text.semiBoldWeight,
+                fontSize: DUI.text.xsText,
                 color: Theme.of(context).textTheme.bodyMedium!.color,
               ),
               disabledDayTextStyle: TextStyle(
-                fontFamily: 'Metropolis',
-                fontWeight: Dalai.text.semiBoldWeight,
-                fontSize: Dalai.text.smallText,
+                fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+                fontWeight: DUI.text.semiBoldWeight,
+                fontSize: DUI.text.smallText,
                 color: Theme.of(context)
                     .textTheme
                     .bodyMedium!
@@ -149,23 +143,22 @@ class DalaiPickers {
                     .withOpacity(0.2),
               ),
               dayTextStyle: TextStyle(
-                fontFamily: 'Metropolis',
-                fontWeight: Dalai.text.semiBoldWeight,
-                fontSize: Dalai.text.smallText,
+                fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+                fontWeight: DUI.text.semiBoldWeight,
+                fontSize: DUI.text.smallText,
                 color: Theme.of(context).textTheme.bodyMedium!.color,
               ),
               yearTextStyle: TextStyle(
-                fontFamily: 'Metropolis',
-                fontWeight: Dalai.text.semiBoldWeight,
-                fontSize: Dalai.text.regularText,
+                fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+                fontWeight: DUI.text.semiBoldWeight,
+                fontSize: DUI.text.regularText,
                 color: Theme.of(context).textTheme.bodyMedium!.color,
               ),
-              dayBorderRadius:
-                  BorderRadius.circular(Dalai.spacing.borderRadius),
+              dayBorderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
               selectedDayTextStyle: TextStyle(
-                  fontFamily: 'Metropolis',
-                  fontWeight: Dalai.text.semiBoldWeight,
-                  fontSize: Dalai.text.regularText,
+                  fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+                  fontWeight: DUI.text.semiBoldWeight,
+                  fontSize: DUI.text.regularText,
                   color: Theme.of(context)
                       .colorScheme
                       .secondary
@@ -175,7 +168,7 @@ class DalaiPickers {
           ),
           Container(
             child: footer ?? SizedBox.shrink(),
-            padding: EdgeInsets.all(Dalai.spacing.lateralPaddingValue),
+            padding: EdgeInsets.all(DUI.spacing.lateralPaddingValue),
           )
         ],
       ),
@@ -198,7 +191,7 @@ class DalaiPickers {
             return Container(
               height: 48,
               child: Center(
-                child: Dalai.text.title3(context, elements[index]),
+                child: DUI.text.title3(context, elements[index]),
               ),
             );
           }),
@@ -232,28 +225,28 @@ class DalaiPickers {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Utils.isToday(dates[index])
-                          ? Dalai.text.xs(context, todayString,
+                          ? DUI.text.xs(context, todayString,
                               color: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
                                   .color!
                                   .withOpacity(0.7))
                           : Utils.isTomorrow(dates[index])
-                              ? Dalai.text.xs(context, tomorrowString,
+                              ? DUI.text.xs(context, tomorrowString,
                                   color: Theme.of(context)
                                       .textTheme
                                       .bodyMedium!
                                       .color!
                                       .withOpacity(0.7))
                               : SizedBox.shrink(),
-                      Dalai.text.title3(context, Utils.formatDate(dates[index]))
+                      DUI.text.title3(context, Utils.formatDate(dates[index]))
                     ],
                   ),
                 ),
               );
             }),
           )),
-          Dalai.spacing.hSpacer(),
+          DUI.spacing.hSpacer(),
           Expanded(
               child: CupertinoPicker(
             onSelectedItemChanged: (int value) {
@@ -264,7 +257,7 @@ class DalaiPickers {
               return SizedBox(
                 height: 48,
                 child: Center(
-                  child: Dalai.text
+                  child: DUI.text
                       .title3(context, '${times[index].format(context)} h'),
                 ),
               );
@@ -296,21 +289,21 @@ class DalaiPickers {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Utils.isToday(dates[index])
-                          ? Dalai.text.xs(context, todayString,
+                          ? DUI.text.xs(context, todayString,
                               color: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
                                   .color!
                                   .withOpacity(0.7))
                           : Utils.isTomorrow(dates[index])
-                              ? Dalai.text.xs(context, tomorrowString,
+                              ? DUI.text.xs(context, tomorrowString,
                                   color: Theme.of(context)
                                       .textTheme
                                       .bodyMedium!
                                       .color!
                                       .withOpacity(0.7))
                               : SizedBox.shrink(),
-                      Dalai.text.title3(context, Utils.formatDate(dates[index]))
+                      DUI.text.title3(context, Utils.formatDate(dates[index]))
                     ],
                   ),
                 ),
@@ -336,7 +329,7 @@ class DalaiPickers {
               return SizedBox(
                 height: 48,
                 child: Center(
-                  child: Dalai.text
+                  child: DUI.text
                       .title3(context, '${times[index].format(context)} h'),
                 ),
               );
@@ -363,7 +356,7 @@ class DalaiPickers {
               return SizedBox(
                 height: 48,
                 child: Center(
-                  child: Dalai.text.title3(context,
+                  child: DUI.text.title3(context,
                       '${times[index].format(context)} - ${secondRange.format(context)} h'),
                 ),
               );

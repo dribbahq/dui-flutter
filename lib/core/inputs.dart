@@ -1,12 +1,10 @@
 import 'dart:async';
-
-import 'package:cityxerpa_icons/cityxerpa_symbols.dart';
-import 'package:dalai/core/external/country_picker.dart';
+import 'package:dui/core/external/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../dalai.dart';
+import '../dui.dart';
 
-class DalaiInputs {
+class DUIInput {
   Widget textField(
     String? label,
     TextEditingController? controller,
@@ -23,7 +21,7 @@ class DalaiInputs {
     Color? colorText,
     bool? expands,
     String? hint,
-    Function()? onChange,
+    Function(String)? onChange,
     Function(String)? onSubmit,
     int? maxLines,
     int? minLines,
@@ -48,191 +46,189 @@ class DalaiInputs {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Flexible(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.background,
-                        borderRadius:
-                            BorderRadius.circular(Dalai.spacing.borderRadius),
-                        border: Border.all(
-                            color: error != null && error.isNotEmpty
-                                ? Dalai.color.error
-                                : isFocusEnabled
-                                    ? Theme.of(context)
-                                        .inputDecorationTheme
-                                        .focusedBorder!
-                                        .borderSide
-                                        .color
-                                    : Theme.of(context)
-                                        .inputDecorationTheme
-                                        .enabledBorder!
-                                        .borderSide
-                                        .color,
-                            width: Dalai.spacing.borderWidth)),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          top: Dalai.spacing.lateralPaddingValue,
-                          right: Dalai.spacing.lateralPaddingValue,
-                          left: Dalai.spacing.lateralPaddingValue,
-                          bottom: Dalai.spacing.lateralPaddingValue),
-                      child: Row(
-                        children: [
-                          prefixIcon != null
-                              ? Row(
-                                  children: [
-                                    prefixIcon,
-                                    Dalai.spacing.hSpacer(),
-                                    showPrefixSeparator!
-                                        ? Row(
-                                            children: [
-                                              SizedBox(
-                                                height: 24,
-                                                child: VerticalDivider(
-                                                  width: 1,
-                                                  thickness: 1,
-                                                  color: Theme.of(context)
-                                                      .inputDecorationTheme
-                                                      .enabledBorder!
-                                                      .borderSide
-                                                      .color,
-                                                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.background,
+                      borderRadius:
+                          BorderRadius.circular(DUI.spacing.borderRadius),
+                      border: Border.all(
+                          color: error != null && error.isNotEmpty
+                              ? DUI.color.error
+                              : isFocusEnabled
+                                  ? Theme.of(context)
+                                      .inputDecorationTheme
+                                      .focusedBorder!
+                                      .borderSide
+                                      .color
+                                  : Theme.of(context)
+                                      .inputDecorationTheme
+                                      .enabledBorder!
+                                      .borderSide
+                                      .color,
+                          width: DUI.spacing.borderWidth)),
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        top: DUI.spacing.lateralPaddingValue,
+                        right: DUI.spacing.lateralPaddingValue,
+                        left: DUI.spacing.lateralPaddingValue,
+                        bottom: DUI.spacing.lateralPaddingValue),
+                    child: Row(
+                      children: [
+                        prefixIcon != null
+                            ? Row(
+                                children: [
+                                  prefixIcon,
+                                  DUI.spacing.hSpacer(),
+                                  showPrefixSeparator!
+                                      ? Row(
+                                          children: [
+                                            SizedBox(
+                                              height: 24,
+                                              child: VerticalDivider(
+                                                width: 1,
+                                                thickness: 1,
+                                                color: Theme.of(context)
+                                                    .inputDecorationTheme
+                                                    .enabledBorder!
+                                                    .borderSide
+                                                    .color,
                                               ),
-                                              Dalai.spacing.hSpacer()
-                                            ],
-                                          )
-                                        : const SizedBox.shrink(),
-                                  ],
-                                )
-                              : const SizedBox.shrink(),
-                          Expanded(
-                            child: TextField(
-                              onChanged: (value) {
-                                if (onChange != null) {
-                                  onChange();
-                                }
-                              },
-                              onTapOutside: (event) {
-                                focusNode.unfocus();
-                              },
-                              onSubmitted: (term) {
-                                if (textInputAction != null &&
-                                    textInputAction == TextInputAction.next) {
-                                  FocusScope.of(context)
-                                      .requestFocus(nextFocusNode);
-                                }
-                                if (onSubmit != null) {
-                                  onSubmit(term)!;
-                                }
-                              },
-                              inputFormatters: inputFormatters,
-                              autocorrect: false,
-                              keyboardType: keyboardType ?? TextInputType.text,
-                              textCapitalization: textCapitalization ??
-                                  TextCapitalization.sentences,
-                              autofocus: false,
-                              controller: controller,
-                              enabled: enabled ?? true,
-                              maxLength: maxLength,
-                              obscureText: obscure ?? false,
-                              cursorColor: Theme.of(context)
-                                  .inputDecorationTheme
-                                  .focusColor,
-                              textInputAction:
-                                  textInputAction ?? TextInputAction.done,
-                              maxLines: expands != null && expands
-                                  ? null
-                                  : maxLines ?? 1,
-                              minLines: minLines,
-                              expands: expands ?? false,
-                              textAlign: TextAlign.start,
-                              textAlignVertical: (isFocusEnabled ||
-                                          controller!.text.isNotEmpty) &&
-                                      expands == null &&
-                                      label != null
-                                  ? TextAlignVertical.bottom
-                                  : TextAlignVertical.top,
-                              style: TextStyle(
-                                  fontSize: Dalai.text.regularText,
-                                  color: colorText ??
-                                      (enabled == null || enabled
-                                          ? Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .color
-                                          : Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .color!
-                                              .withOpacity(0.3))),
-                              decoration: InputDecoration(
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.only(
-                                      top: Dalai.spacing.lateralPaddingValue,
-                                      bottom: 0),
-                                  filled: false,
-                                  focusedBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.transparent, width: 0)),
-                                  enabledBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.transparent, width: 0)),
-                                  disabledBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.transparent, width: 0)),
-                                  labelText: label,
-                                  labelStyle: TextStyle(
-                                      fontWeight: isFocusEnabled ||
-                                              controller!.text.isNotEmpty
-                                          ? Dalai.text.semiBoldWeight
-                                          : Dalai.text.regularWeight,
-                                      color: enabled == null || enabled
-                                          ? isFocusEnabled ||
-                                                  controller!.text.isNotEmpty
-                                              ? Theme.of(context)
-                                                  .inputDecorationTheme
-                                                  .focusColor
-                                              : Theme.of(context)
-                                                  .textTheme
-                                                  .bodySmall!
-                                                  .color
-                                          : Theme.of(context)
-                                              .inputDecorationTheme
-                                              .focusColor!
-                                              .withOpacity(0.3)),
-                                  alignLabelWithHint: true,
-                                  hintText: hint,
-                                  hintMaxLines: maxLines),
-                            ),
+                                            ),
+                                            DUI.spacing.hSpacer()
+                                          ],
+                                        )
+                                      : const SizedBox.shrink(),
+                                ],
+                              )
+                            : const SizedBox.shrink(),
+                        Expanded(
+                          child: TextField(
+                            onChanged: (value) {
+                              if (onChange != null) {
+                                onChange(value);
+                              }
+                            },
+                            onTapOutside: (event) {
+                              focusNode.unfocus();
+                            },
+                            onSubmitted: (term) {
+                              if (textInputAction != null &&
+                                  textInputAction == TextInputAction.next) {
+                                FocusScope.of(context)
+                                    .requestFocus(nextFocusNode);
+                              }
+                              if (onSubmit != null) {
+                                onSubmit(term)!;
+                              }
+                            },
+                            inputFormatters: inputFormatters,
+                            autocorrect: false,
+                            keyboardType: keyboardType ?? TextInputType.text,
+                            textCapitalization: textCapitalization ??
+                                TextCapitalization.sentences,
+                            autofocus: false,
+                            controller: controller,
+                            enabled: enabled ?? true,
+                            maxLength: maxLength,
+                            obscureText: obscure ?? false,
+                            cursorColor: Theme.of(context)
+                                .inputDecorationTheme
+                                .focusColor,
+                            textInputAction:
+                                textInputAction ?? TextInputAction.done,
+                            maxLines: expands != null && expands
+                                ? null
+                                : maxLines ?? 1,
+                            minLines: minLines,
+                            expands: expands ?? false,
+                            textAlign: TextAlign.start,
+                            textAlignVertical: (isFocusEnabled ||
+                                        controller!.text.isNotEmpty) &&
+                                    expands == null &&
+                                    label != null
+                                ? TextAlignVertical.bottom
+                                : TextAlignVertical.top,
+                            style: TextStyle(
+                                fontSize: DUI.text.regularText,
+                                color: colorText ??
+                                    (enabled == null || enabled
+                                        ? Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .color
+                                        : Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .color!
+                                            .withOpacity(0.3))),
+                            decoration: InputDecoration(
+                                isDense: true,
+                                contentPadding: EdgeInsets.only(
+                                    top: DUI.spacing.lateralPaddingValue,
+                                    bottom: 0),
+                                filled: false,
+                                focusedBorder: const OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.transparent, width: 0)),
+                                enabledBorder: const OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.transparent, width: 0)),
+                                disabledBorder: const OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.transparent, width: 0)),
+                                labelText: label,
+                                labelStyle: TextStyle(
+                                    fontWeight: isFocusEnabled ||
+                                            controller!.text.isNotEmpty
+                                        ? DUI.text.semiBoldWeight
+                                        : DUI.text.regularWeight,
+                                    color: enabled == null || enabled
+                                        ? isFocusEnabled ||
+                                                controller!.text.isNotEmpty
+                                            ? Theme.of(context)
+                                                .inputDecorationTheme
+                                                .focusColor
+                                            : Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .color
+                                        : Theme.of(context)
+                                            .inputDecorationTheme
+                                            .focusColor!
+                                            .withOpacity(0.3)),
+                                alignLabelWithHint: true,
+                                hintText: hint,
+                                hintMaxLines: maxLines),
                           ),
-                          suffixIcon != null
-                              ? Row(
-                                  children: [
-                                    showSuffixSeparator!
-                                        ? Row(
-                                            children: [
-                                              Dalai.spacing.hSpacer(),
-                                              SizedBox(
-                                                height: 24,
-                                                child: VerticalDivider(
-                                                  width: 1,
-                                                  thickness: 1,
-                                                  color: Theme.of(context)
-                                                      .inputDecorationTheme
-                                                      .enabledBorder!
-                                                      .borderSide
-                                                      .color,
-                                                ),
-                                              )
-                                            ],
-                                          )
-                                        : const SizedBox.shrink(),
-                                    Dalai.spacing.hSpacer(),
-                                    suffixIcon
-                                  ],
-                                )
-                              : const SizedBox.shrink(),
-                        ],
-                      ),
+                        ),
+                        suffixIcon != null
+                            ? Row(
+                                children: [
+                                  showSuffixSeparator!
+                                      ? Row(
+                                          children: [
+                                            DUI.spacing.hSpacer(),
+                                            SizedBox(
+                                              height: 24,
+                                              child: VerticalDivider(
+                                                width: 1,
+                                                thickness: 1,
+                                                color: Theme.of(context)
+                                                    .inputDecorationTheme
+                                                    .enabledBorder!
+                                                    .borderSide
+                                                    .color,
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      : const SizedBox.shrink(),
+                                  DUI.spacing.hSpacer(),
+                                  suffixIcon
+                                ],
+                              )
+                            : const SizedBox.shrink(),
+                      ],
                     ),
                   ),
                 ),
@@ -240,20 +236,20 @@ class DalaiInputs {
                   children: [
                     (error != null && error.isNotEmpty) ||
                             (helpMessage != null && helpMessage.isNotEmpty)
-                        ? Dalai.spacing.spacer(small: true)
+                        ? DUI.spacing.spacer(small: true)
                         : SizedBox.shrink(),
                     Row(
                       children: [
                         error != null && error.isNotEmpty
                             ? Expanded(
-                                child: Dalai.text.xs(context, error,
-                                    color: Dalai.color.error, maxLines: 2),
+                                child: DUI.text.xs(context, error,
+                                    color: DUI.color.error, maxLines: 2),
                               )
                             : SizedBox.shrink(),
-                        Dalai.spacing.hSpacer(),
+                        DUI.spacing.hSpacer(),
                         helpMessage != null && helpMessage.isNotEmpty
                             ? Expanded(
-                                child: Dalai.text.xs(context, helpMessage,
+                                child: DUI.text.xs(context, helpMessage,
                                     maxLines: 2, textAlign: TextAlign.end),
                               )
                             : SizedBox.shrink(),
@@ -310,10 +306,10 @@ class DalaiInputs {
                   decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.background,
                       borderRadius:
-                          BorderRadius.circular(Dalai.spacing.borderRadius),
+                          BorderRadius.circular(DUI.spacing.borderRadius),
                       border: Border.all(
                           color: error != null && error.isNotEmpty
-                              ? Dalai.color.error
+                              ? DUI.color.error
                               : isFocusEnabled
                                   ? Theme.of(context)
                                       .inputDecorationTheme
@@ -325,20 +321,20 @@ class DalaiInputs {
                                       .enabledBorder!
                                       .borderSide
                                       .color,
-                          width: Dalai.spacing.borderWidth)),
+                          width: DUI.spacing.borderWidth)),
                   child: Padding(
                     padding: EdgeInsets.only(
-                        top: Dalai.spacing.lateralPaddingValue,
-                        right: Dalai.spacing.lateralPaddingValue,
-                        left: Dalai.spacing.lateralPaddingValue,
-                        bottom: Dalai.spacing.lateralPaddingValue),
+                        top: DUI.spacing.lateralPaddingValue,
+                        right: DUI.spacing.lateralPaddingValue,
+                        left: DUI.spacing.lateralPaddingValue,
+                        bottom: DUI.spacing.lateralPaddingValue),
                     child: Row(
                       children: [
                         prefixIcon != null
                             ? Row(
                                 children: [
                                   prefixIcon,
-                                  Dalai.spacing.hSpacer(),
+                                  DUI.spacing.hSpacer(),
                                   showPrefixSeparator!
                                       ? Row(
                                           children: [
@@ -354,7 +350,7 @@ class DalaiInputs {
                                                     .color,
                                               ),
                                             ),
-                                            Dalai.spacing.hSpacer()
+                                            DUI.spacing.hSpacer()
                                           ],
                                         )
                                       : const SizedBox.shrink(),
@@ -405,7 +401,7 @@ class DalaiInputs {
                             textAlign: TextAlign.start,
                             textAlignVertical: TextAlignVertical.top,
                             style: TextStyle(
-                                fontSize: Dalai.text.regularText,
+                                fontSize: DUI.text.regularText,
                                 color: colorText ??
                                     (enabled == null || enabled
                                         ? Theme.of(context)
@@ -435,8 +431,8 @@ class DalaiInputs {
                                 labelStyle: TextStyle(
                                     fontWeight: isFocusEnabled ||
                                             controller!.text.isNotEmpty
-                                        ? Dalai.text.semiBoldWeight
-                                        : Dalai.text.regularWeight,
+                                        ? DUI.text.semiBoldWeight
+                                        : DUI.text.regularWeight,
                                     color: enabled == null || enabled
                                         ? isFocusEnabled ||
                                                 controller!.text.isNotEmpty
@@ -462,7 +458,7 @@ class DalaiInputs {
                                   showSuffixSeparator!
                                       ? Row(
                                           children: [
-                                            Dalai.spacing.hSpacer(),
+                                            DUI.spacing.hSpacer(),
                                             SizedBox(
                                               height: 24,
                                               child: VerticalDivider(
@@ -478,7 +474,7 @@ class DalaiInputs {
                                           ],
                                         )
                                       : const SizedBox.shrink(),
-                                  Dalai.spacing.hSpacer(),
+                                  DUI.spacing.hSpacer(),
                                   suffixIcon
                                 ],
                               )
@@ -491,20 +487,20 @@ class DalaiInputs {
                   children: [
                     (error != null && error.isNotEmpty) ||
                             (helpMessage != null && helpMessage.isNotEmpty)
-                        ? Dalai.spacing.spacer(small: true)
+                        ? DUI.spacing.spacer(small: true)
                         : SizedBox.shrink(),
                     Row(
                       children: [
                         error != null && error.isNotEmpty
                             ? Expanded(
-                                child: Dalai.text.xs(context, error,
-                                    color: Dalai.color.error, maxLines: 2),
+                                child: DUI.text.xs(context, error,
+                                    color: DUI.color.error, maxLines: 2),
                               )
                             : SizedBox.shrink(),
-                        Dalai.spacing.hSpacer(),
+                        DUI.spacing.hSpacer(),
                         helpMessage != null && helpMessage.isNotEmpty
                             ? Expanded(
-                                child: Dalai.text.xs(context, helpMessage,
+                                child: DUI.text.xs(context, helpMessage,
                                     maxLines: 2, textAlign: TextAlign.end),
                               )
                             : SizedBox.shrink(),
@@ -559,9 +555,9 @@ class DalaiInputs {
                 Flexible(
                     child: Container(
                   decoration: BoxDecoration(
-                      color: bgColor ?? Theme.of(context).inputDecorationTheme.fillColor,
+                      color: Theme.of(context).colorScheme.background,
                       borderRadius:
-                          BorderRadius.circular(Dalai.spacing.borderRadius),
+                          BorderRadius.circular(DUI.spacing.borderRadius),
                       border: Border.all(
                           color: isFocusEnabled
                               ? Theme.of(context)
@@ -569,21 +565,24 @@ class DalaiInputs {
                                   .focusedBorder!
                                   .borderSide
                                   .color
-                              : Colors.transparent,
-                          width: Dalai.spacing.borderWidth)),
+                              : Theme.of(context)
+                                  .inputDecorationTheme
+                                  .enabledBorder!
+                                  .borderSide
+                                  .color,
+                          width: DUI.spacing.borderWidth)),
                   child: Padding(
                     padding: EdgeInsets.only(
-                        top: Dalai.spacing.lateralPaddingValue,
-                        right: Dalai.spacing.lateralPaddingValue,
-                        left: Dalai.spacing.lateralPaddingValue,
-                        bottom: Dalai.spacing.lateralPaddingValue),
+                        top: DUI.spacing.lateralPaddingValue,
+                        right: DUI.spacing.lateralPaddingValue,
+                        left: DUI.spacing.lateralPaddingValue,
+                        bottom: DUI.spacing.lateralPaddingValue),
                     child: Row(
                       children: [
                         Row(
                           children: [
-                            Dalai.icon.dalaiIcons(context, CXIcon.search,
-                                mainColor: colorText),
-                            Dalai.spacing.hSpacer()
+                            Icon(Icons.search, color: colorText,),
+                            DUI.spacing.hSpacer()
                           ],
                         ),
                         Expanded(
@@ -633,7 +632,7 @@ class DalaiInputs {
                                 ? TextAlignVertical.bottom
                                 : TextAlignVertical.top,
                             style: TextStyle(
-                                fontSize: Dalai.text.regularText,
+                                fontSize: DUI.text.regularText,
                                 color: colorText ??
                                     (enabled
                                         ? Theme.of(context)
@@ -648,7 +647,7 @@ class DalaiInputs {
                             decoration: InputDecoration(
                                 isDense: true,
                                 contentPadding: EdgeInsets.only(
-                                    top: Dalai.spacing.lateralPaddingValue,
+                                    top: DUI.spacing.lateralPaddingValue,
                                     bottom: 0),
                                 filled: false,
                                 focusedBorder: const OutlineInputBorder(
@@ -664,9 +663,9 @@ class DalaiInputs {
                                 labelStyle: TextStyle(
                                     fontWeight: isFocusEnabled ||
                                             controller!.text.isNotEmpty
-                                        ? Dalai.text.semiBoldWeight
-                                        : Dalai.text.regularWeight,
-                                    color: colorText ?? (enabled
+                                        ? DUI.text.semiBoldWeight
+                                        : DUI.text.regularWeight,
+                                    color: enabled
                                         ? isFocusEnabled ||
                                                 controller!.text.isNotEmpty
                                             ? Theme.of(context)
@@ -679,7 +678,7 @@ class DalaiInputs {
                                         : Theme.of(context)
                                             .inputDecorationTheme
                                             .focusColor!
-                                            .withOpacity(0.3))),
+                                            .withOpacity(0.3)),
                                 alignLabelWithHint: true,
                                 hintText: hint,
                                 hintMaxLines: maxLines),
@@ -690,18 +689,18 @@ class DalaiInputs {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   loading
-                                      ? Dalai.misc
+                                      ? DUI.misc
                                           .loadingAnimation(context, size: 16)
                                       : SizedBox.shrink(),
                                   loading
-                                      ? Dalai.spacing.hSpacer(small: true)
+                                      ? DUI.spacing.hSpacer(small: true)
                                       : SizedBox.shrink(),
                                 ],
                               )
                             : Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Dalai.spacing.hSpacer(),
+                                  DUI.spacing.hSpacer(),
                                   suffixIcon ?? SizedBox.shrink()
                                 ],
                               )
@@ -721,7 +720,7 @@ class DalaiInputs {
   Widget chatInputField(BuildContext context, String? label,
       TextEditingController? controller, FocusNode focusNode,
       {Function(String)? onSubmit, double? height, bool? enabled}) {
-    return Dalai.input.smallTextField(controller, focusNode, context,
+    return DUI.input.smallTextField(controller, focusNode, context,
         hint: label,
         onSubmit: onSubmit,
         enabled: enabled,
@@ -738,8 +737,8 @@ class DalaiInputs {
       Function(String) onPrefixChange,
       {bool isEnabled = true,
       Widget? trailing,
-      Function()? onChange}) {
-    return Dalai.input.textField(label, controller, focusNode, context,
+      Function(String)? onChange}) {
+    return DUI.input.textField(label, controller, focusNode, context,
         enabled: isEnabled,
         suffixIcon: trailing ?? const SizedBox.shrink(),
         prefixIcon: CountryPicker(

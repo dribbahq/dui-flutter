@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DalaiColor{
+class DUIColor{
   //Primary
   final Color primary = const Color(0xFFF15657);
   final Color primaryAlternativeLight = const Color(0xFFFA7E7F);
