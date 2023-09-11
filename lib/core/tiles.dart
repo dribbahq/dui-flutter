@@ -1,5 +1,6 @@
 import 'package:dui/common_utils/color_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:substring_highlight/substring_highlight.dart';
 import '../dui.dart';
 
 class DUITile {
@@ -258,6 +259,67 @@ class DUITile {
               )
             ],
           )),
+    );
+  }
+
+  Widget listSearchTileCustomImage(
+      IconData leading, BuildContext context, String? title, Function() onTap,
+      {String? searchText,
+      double? imageSize,
+      Color? imageColor,
+      bool loading = false}) {
+    TextStyle selectedTextStyle = TextStyle(
+      fontSize: DUI.text.regularText,
+      height: DUI.text.textHeight,
+      fontWeight: DUI.text.boldWeight,
+      color: Theme.of(context).textTheme.bodyMedium!.color,
+    );
+    TextStyle unselectedTextStyle = TextStyle(
+      fontSize: DUI.text.regularText,
+      height: DUI.text.textHeight,
+      fontWeight: DUI.text.regularWeight,
+      color: searchText != null && searchText.isNotEmpty
+          ? Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.8)
+          : Theme.of(context).textTheme.bodyMedium!.color,
+    );
+
+    return Material(
+      color: DUI.color.white,
+      child: Container(
+        height: 64,
+        color: Theme.of(context).colorScheme.background,
+        child: InkWell(
+            onTap: onTap,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  left: DUI.spacing.lateralPaddingValue,
+                  right: DUI.spacing.lateralPaddingValue,
+                  top: 0,
+                  bottom: 0),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      leading,
+                      color: imageColor ??
+                          Theme.of(context).textTheme.bodyMedium!.color,
+                    ),
+                    DUI.spacing.hSpacer(),
+                    Expanded(
+                        child: SubstringHighlight(
+                      text: title ?? '',
+                      term: searchText,
+                      textStyle: unselectedTextStyle,
+                      textStyleHighlight: selectedTextStyle,
+                    )),
+                    DUI.spacing.hSpacer(),
+                    loading
+                        ? DUI.misc.loadingAnimation(context, size: 18)
+                        : Icon(Icons.chevron_right)
+                  ]),
+            )),
+      ),
     );
   }
 }

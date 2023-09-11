@@ -530,7 +530,7 @@ class DUIInput {
     Color? bgColor,
     bool? expands,
     String? hint,
-    Function()? onChange,
+    Function(String)? onChange,
     Function(String)? onSubmit,
     Function()? onTap,
     int? maxLines,
@@ -592,7 +592,7 @@ class DUIInput {
                             },
                             onChanged: (value) {
                               if (onChange != null) {
-                                onChange();
+                                onChange(value);
                               }
                             },
                             onSubmitted: (term) {
