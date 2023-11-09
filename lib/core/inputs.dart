@@ -53,7 +53,7 @@ class DUIInput {
                           BorderRadius.circular(DUI.spacing.borderRadius),
                       border: Border.all(
                           color: error != null && error.isNotEmpty
-                              ? DUI.color.error
+                              ? Theme.of(context).colorScheme.error
                               : isFocusEnabled
                                   ? Theme.of(context)
                                       .inputDecorationTheme
@@ -243,7 +243,7 @@ class DUIInput {
                         error != null && error.isNotEmpty
                             ? Expanded(
                                 child: DUI.text.xs(context, error,
-                                    color: DUI.color.error, maxLines: 2),
+                                    color: Theme.of(context).colorScheme.error, maxLines: 2),
                               )
                             : SizedBox.shrink(),
                         DUI.spacing.hSpacer(),
@@ -309,7 +309,7 @@ class DUIInput {
                           BorderRadius.circular(DUI.spacing.borderRadius),
                       border: Border.all(
                           color: error != null && error.isNotEmpty
-                              ? DUI.color.error
+                              ? Theme.of(context).colorScheme.error
                               : isFocusEnabled
                                   ? Theme.of(context)
                                       .inputDecorationTheme
@@ -494,7 +494,7 @@ class DUIInput {
                         error != null && error.isNotEmpty
                             ? Expanded(
                                 child: DUI.text.xs(context, error,
-                                    color: DUI.color.error, maxLines: 2),
+                                    color: Theme.of(context).colorScheme.error, maxLines: 2),
                               )
                             : SizedBox.shrink(),
                         DUI.spacing.hSpacer(),

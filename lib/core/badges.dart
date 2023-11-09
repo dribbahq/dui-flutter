@@ -208,7 +208,7 @@ class DUIBadge {
       case BadgeColor.white:
         return Theme.of(context).colorScheme.background;
       case BadgeColor.error:
-        return DUI.color.error;
+        return Theme.of(context).colorScheme.error;
       default:
         return Theme.of(context).colorScheme.primary;
     }

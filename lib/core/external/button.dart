@@ -75,7 +75,7 @@ class _CustomButtonState extends State<CustomButton> {
               elevation: 0,
               shadowColor: Colors.transparent,
               backgroundColor: widget.color ?? Colors.transparent,
-              foregroundColor: DUI.color.primaryOutlinedNestingBackground,
+              foregroundColor: Theme.of(context).colorScheme.primary.lighten(),
               disabledBackgroundColor: Colors.transparent,
               padding: DUI.spacing.lateralPadding,
               shape: RoundedRectangleBorder(
@@ -173,7 +173,7 @@ class _CustomButtonState extends State<CustomButton> {
           ),
           child: widget.loading
               ? DUI.misc.loadingAnimation(context,
-                  light: (widget.textColor ?? DUI.color.primaryContrast)
+                  light: (widget.textColor ?? Theme.of(context).colorScheme.onPrimary)
                           .computeLuminance() >
                       0.5)
               : Row(
@@ -193,7 +193,7 @@ class _CustomButtonState extends State<CustomButton> {
                                         Icon(
                                           widget.icon!,
                                           color: (widget.textColor ??
-                                                  DUI.color.primaryContrast)
+                                                  Theme.of(context).colorScheme.onPrimary)
                                               .withOpacity(
                                                   widget.onPressed == null
                                                       ? 0.5
@@ -208,7 +208,7 @@ class _CustomButtonState extends State<CustomButton> {
                                       context,
                                       widget.text,
                                       color: (widget.textColor ??
-                                              DUI.color.primaryContrast)
+                                              Theme.of(context).colorScheme.onPrimary)
                                           .withOpacity(widget.onPressed == null
                                               ? 0.5
                                               : 1),

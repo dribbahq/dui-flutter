@@ -1,3 +1,4 @@
+import 'package:dui/common_utils/color_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../common_utils/common_utils.dart';
@@ -44,13 +45,13 @@ class DUIMisc {
         height: (2 * size * 0.88),
         child: Center(
           child: LoadingAnimationWidget.discreteCircle(
-            color: light ? DUI.color.white : DUI.color.primary,
+            color: light ? Colors.white : Theme.of(context).colorScheme.primary,
             secondRingColor: light
-                ? DUI.color.primaryContrast
-                : DUI.color.primaryAlternativeDark,
+                ? Colors.white.darken(0.2)
+                : Theme.of(context).colorScheme.primary.darken(),
             thirdRingColor: light
-                ? DUI.color.primaryAlternativeDark
-                : DUI.color.primaryAlternativeLight,
+                ? Colors.white
+                : Theme.of(context).colorScheme.primary.lighten(),
             size: size,
           ),
         ));

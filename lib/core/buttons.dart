@@ -1,4 +1,5 @@
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
+import 'package:dui/core/theme.dart';
 import 'package:flutter/material.dart';
 import '../common_utils/common_utils.dart';
 import '../dui.dart';
@@ -127,7 +128,7 @@ class DUIButton {
             ),
             padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
             child: DUI.text.title3(context, qty.toString(),
-                color: DUI.color.primaryContrast),
+                color: Theme.of(context).colorScheme.onPrimary),
           )
         : const SizedBox.shrink();
   }
@@ -139,7 +140,7 @@ class DUIButton {
         price == 0
             ? freeText
             : amountInEurosText.replaceAll('%@', Utils.parsePrice(price)),
-        color: DUI.color.primaryContrast);
+        color: Theme.of(context).colorScheme.onPrimary);
   }
 
   Widget buttonMinPriceWidget(BuildContext context,

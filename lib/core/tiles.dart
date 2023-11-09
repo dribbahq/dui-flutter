@@ -15,7 +15,7 @@ class DUITile {
     Widget? trailing,
   }) {
     return Material(
-      color: DUI.color.white,
+      color: Colors.transparent,
       child: ListTile(
         tileColor: Theme.of(context).colorScheme.background,
         contentPadding: padding ??
@@ -46,7 +46,7 @@ class DUITile {
     Widget? trailing,
   }) {
     return Material(
-      color: DUI.color.white,
+      color: Colors.transparent,
       child: ListTile(
         onTap: onTap,
         leading: leading,
@@ -284,7 +284,7 @@ class DUITile {
     );
 
     return Material(
-      color: DUI.color.white,
+      color: Colors.transparent,
       child: Container(
         height: 64,
         color: Theme.of(context).colorScheme.background,

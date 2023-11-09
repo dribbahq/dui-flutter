@@ -56,7 +56,7 @@ class _StyledSwitchState extends State<StyledSwitch> {
           height: size - innerPadding * 2,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100),
-            color: DUI.color.white,
+            color: Colors.white,
           ),
         ),
       ),

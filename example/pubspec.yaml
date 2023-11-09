@@ -65,9 +65,9 @@ flutter:
   fonts:
     - family: metropolis
       fonts:
-        - asset: packages/dalai/assets/fonts/metropolis/regular.otf
+        - asset: packages/dui/assets/fonts/metropolis/regular.otf
           weight: 400
-        - asset: packages/dalai/assets/fonts/metropolis/semibold.otf
+        - asset: packages/dui/assets/fonts/metropolis/semibold.otf
           weight: 600
-        - asset: packages/dalai/assets/fonts/metropolis/bold.otf
+        - asset: packages/dui/assets/fonts/metropolis/bold.otf
           weight: 700

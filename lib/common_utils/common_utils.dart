@@ -70,7 +70,7 @@ class Utils {
                     top: Radius.circular(DUI.spacing.largeBorderRadius)),
                 boxShadow: [
                   BoxShadow(
-                    color: DUI.color.black.withOpacity(0.2),
+                    color: Colors.black.withOpacity(0.2),
                     blurRadius: 5.0,
                     offset: const Offset(0.0, 0.0),
                   ),
