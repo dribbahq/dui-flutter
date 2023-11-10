@@ -11,13 +11,13 @@ class DUITheme {
       useMaterial3: true,
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       platform:
-          Platform.isAndroid ? TargetPlatform.android : TargetPlatform.iOS,
+      Platform.isAndroid ? TargetPlatform.android : TargetPlatform.iOS,
       fontFamily: fontFamily,
       textTheme: customThemeData?.textTheme ??
           TextTheme(
             displayMedium: TextStyle(
                 color:
-                    isDarkTheme ? DUI.color.textDarkMode : DUI.color.primary),
+                isDarkTheme ? DUI.color.textDarkMode : DUI.color.primary),
             bodyMedium: TextStyle(
                 color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
             bodySmall: TextStyle(
@@ -31,7 +31,8 @@ class DUITheme {
                     ? DUI.color.smallTextDarkMode
                     : DUI.color.smallText),
           ),
-      scaffoldBackgroundColor: customThemeData?.scaffoldBackgroundColor ?? (isDarkTheme ? DUI.color.scaffoldDarkMode : DUI.color.scaffold),
+      scaffoldBackgroundColor:
+      isDarkTheme ? DUI.color.scaffoldDarkMode : DUI.color.scaffold,
       colorScheme: customThemeData?.colorScheme ??
           ColorScheme(
             background: isDarkTheme
@@ -39,7 +40,7 @@ class DUITheme {
                 : DUI.color.background,
             primary: DUI.color.primary,
             secondary:
-                isDarkTheme ? DUI.color.secondaryDarkMode : DUI.color.secondary,
+            isDarkTheme ? DUI.color.secondaryDarkMode : DUI.color.secondary,
             surface: Colors.white,
             error: DUI.color.error,
             onPrimary: Colors.white,
@@ -49,7 +50,7 @@ class DUITheme {
             onError: Colors.white,
             brightness: isDarkTheme ? Brightness.dark : Brightness.light,
           ),
-      inputDecorationTheme: customThemeData?.inputDecorationTheme ?? InputDecorationTheme(
+      inputDecorationTheme: InputDecorationTheme(
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
               borderSide: BorderSide(
@@ -68,12 +69,12 @@ class DUITheme {
           fillColor: isDarkTheme
               ? DUI.color.inputFillColorDark
               : DUI.color.inputFillColorLight),
-      buttonTheme: customThemeData?.buttonTheme ??  ButtonThemeData(textTheme: ButtonTextTheme.accent),
-      textSelectionTheme: customThemeData?.textSelectionTheme ?? TextSelectionThemeData(
+      buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.accent),
+      textSelectionTheme: const TextSelectionThemeData(
           cursorColor: Color(0XFF444E5E),
           selectionColor: Colors.transparent,
           selectionHandleColor: Colors.transparent),
-      appBarTheme: customThemeData?.appBarTheme ?? AppBarTheme(
+      appBarTheme: AppBarTheme(
         systemOverlayStyle: isDarkTheme
             ? SystemUiOverlayStyle.light
             : SystemUiOverlayStyle.dark,
