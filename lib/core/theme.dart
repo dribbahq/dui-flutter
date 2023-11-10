@@ -31,8 +31,7 @@ class DUITheme {
                     ? DUI.color.smallTextDarkMode
                     : DUI.color.smallText),
           ),
-      scaffoldBackgroundColor:
-          isDarkTheme ? DUI.color.scaffoldDarkMode : DUI.color.scaffold,
+      scaffoldBackgroundColor: customThemeData?.scaffoldBackgroundColor ?? (isDarkTheme ? DUI.color.scaffoldDarkMode : DUI.color.scaffold),
       colorScheme: customThemeData?.colorScheme ??
           ColorScheme(
             background: isDarkTheme
@@ -50,7 +49,7 @@ class DUITheme {
             onError: Colors.white,
             brightness: isDarkTheme ? Brightness.dark : Brightness.light,
           ),
-      inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: customThemeData?.inputDecorationTheme ?? InputDecorationTheme(
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
               borderSide: BorderSide(
@@ -69,12 +68,12 @@ class DUITheme {
           fillColor: isDarkTheme
               ? DUI.color.inputFillColorDark
               : DUI.color.inputFillColorLight),
-      buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.accent),
-      textSelectionTheme: const TextSelectionThemeData(
+      buttonTheme: customThemeData?.buttonTheme ??  ButtonThemeData(textTheme: ButtonTextTheme.accent),
+      textSelectionTheme: customThemeData?.textSelectionTheme ?? TextSelectionThemeData(
           cursorColor: Color(0XFF444E5E),
           selectionColor: Colors.transparent,
           selectionHandleColor: Colors.transparent),
-      appBarTheme: AppBarTheme(
+      appBarTheme: customThemeData?.appBarTheme ?? AppBarTheme(
         systemOverlayStyle: isDarkTheme
             ? SystemUiOverlayStyle.light
             : SystemUiOverlayStyle.dark,
