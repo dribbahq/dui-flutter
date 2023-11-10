@@ -45,67 +45,67 @@ class Utils {
   /*
   * Modals and Bottom Sheet Utils
   * */
-  static showBottomSheet(context,
+  static Future showBottomSheet(context,
       {Widget? content,
       bool dismissible = true,
       double? maxHeight,
       bool skipPadding = false}) {
-    Future(() => CustomShowModalBottomSheet.customShowModalBottomSheet(
-          darkMode: Theme.of(context).brightness == Brightness.light,
-          context: context,
-          dismissible: dismissible,
-          builder: (context) {
-            return Container(
-              constraints:
-                  BoxConstraints(maxHeight: maxHeight ?? double.infinity),
-              padding: skipPadding
-                  ? null
-                  : EdgeInsets.only(
-                      bottom: DUI.spacing.lateralPaddingValue,
-                      left: DUI.spacing.lateralPaddingValue,
-                      right: DUI.spacing.lateralPaddingValue),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.background,
-                borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(DUI.spacing.largeBorderRadius)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 5.0,
-                    offset: const Offset(0.0, 0.0),
-                  ),
-                ],
+    return CustomShowModalBottomSheet.customShowModalBottomSheet(
+      darkMode: Theme.of(context).brightness == Brightness.light,
+      context: context,
+      dismissible: dismissible,
+      builder: (context) {
+        return Container(
+          constraints:
+          BoxConstraints(maxHeight: maxHeight ?? double.infinity),
+          padding: skipPadding
+              ? null
+              : EdgeInsets.only(
+              bottom: DUI.spacing.lateralPaddingValue,
+              left: DUI.spacing.lateralPaddingValue,
+              right: DUI.spacing.lateralPaddingValue),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.background,
+            borderRadius: BorderRadius.vertical(
+                top: Radius.circular(DUI.spacing.largeBorderRadius)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 5.0,
+                offset: const Offset(0.0, 0.0),
               ),
-              child: Wrap(
-                children: <Widget>[
-                  SafeArea(
-                    top: false,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        dismissible == true
-                            ? Center(
-                                child: Opacity(
-                                  opacity: 0.2,
-                                  child: Icon(Icons.horizontal_rule_rounded,
-                                      size: 20,
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium!
-                                          .color!),
-                                ),
-                              )
-                            : DUI.spacing.spacer(multiplier: 2),
-                        content ?? const SizedBox.shrink()
-                      ],
-                    ),
-                  ),
-                ],
+            ],
+          ),
+          child: Wrap(
+            children: <Widget>[
+              SafeArea(
+                top: false,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    dismissible == true
+                        ? Center(
+                      child: Opacity(
+                        opacity: 0.2,
+                        child: Icon(Icons.horizontal_rule_rounded,
+                            size: 20,
+                            color: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .color!),
+                      ),
+                    )
+                        : DUI.spacing.spacer(multiplier: 2),
+                    content ?? const SizedBox.shrink()
+                  ],
+                ),
               ),
-            );
-          },
-        ));
+            ],
+          ),
+        );
+      },
+    );
   }
 
   static showBottomPage(
