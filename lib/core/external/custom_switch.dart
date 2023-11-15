@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../dui.dart';
 
 class StyledSwitch extends StatefulWidget {
   final void Function(bool isToggled) onChange;
@@ -39,18 +38,13 @@ class _StyledSwitchState extends State<StyledSwitch> {
         height: size,
         width: size * 1.60,
         padding: EdgeInsets.all(innerPadding),
-        alignment: isToggled ? Alignment.centerLeft : Alignment.centerRight,
+        alignment: !isToggled ? Alignment.centerLeft : Alignment.centerRight,
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOutSine,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: isToggled
-                ? Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .color!
-                    .withOpacity(0.1)
-                : Theme.of(context).colorScheme.primary),
+          borderRadius: BorderRadius.circular(50),
+          color: !isToggled ? Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(0.1) : Theme.of(context).colorScheme.primary,
+        ),
         child: Container(
           width: size - innerPadding * 2,
           height: size - innerPadding * 2,
