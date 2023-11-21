@@ -17,6 +17,8 @@ class CustomButton extends StatefulWidget {
   bool small;
   bool expanded;
   bool outlined = false;
+  Color? bgColor;
+  double? borderRadius;
 
   CustomButton(
       {Key? key,
@@ -31,7 +33,9 @@ class CustomButton extends StatefulWidget {
       this.loading = false,
       this.small = false,
       this.expanded = false,
-      this.outlined = false})
+      this.outlined = false,
+      this.bgColor,
+      this.borderRadius})
       : super(key: key);
 
   @override
@@ -74,20 +78,20 @@ class _CustomButtonState extends State<CustomButton> {
             style: ElevatedButton.styleFrom(
               elevation: 0,
               shadowColor: Colors.transparent,
-              backgroundColor: widget.color ?? Colors.transparent,
+              backgroundColor: widget.bgColor ?? Colors.transparent,
               foregroundColor: Theme.of(context).colorScheme.primary.lighten(),
               disabledBackgroundColor: Colors.transparent,
               padding: DUI.spacing.lateralPadding,
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                    color: widget.color ??
+                    color: widget.color?.withOpacity(widget.onPressed != null ? 0.2 : 0.1) ??
                         Theme.of(context)
                             .textTheme
                             .bodyMedium!
                             .color!
                             .withOpacity(widget.onPressed != null ? 0.2 : 0.1),
                     width: DUI.spacing.borderWidth),
-                borderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
+                borderRadius: BorderRadius.circular(widget.borderRadius ?? DUI.spacing.borderRadius),
               ),
             ),
             child: widget.loading
@@ -153,7 +157,7 @@ class _CustomButtonState extends State<CustomButton> {
                 ? Colors.transparent
                 : widget.color ?? Theme.of(context).colorScheme.primary,
             disabledBackgroundColor: widget.outlined
-                ? Colors.transparent
+                ? widget.bgColor ?? Colors.transparent
                 : (widget.color ?? Theme.of(context).colorScheme.primary)
                     .lighten(0.2),
             shape: widget.outlined
@@ -164,11 +168,11 @@ class _CustomButtonState extends State<CustomButton> {
                             .withOpacity(widget.onPressed != null ? 1 : 0.5),
                         width: 2),
                     borderRadius:
-                        BorderRadius.circular(DUI.spacing.borderRadius),
+                        BorderRadius.circular(widget.borderRadius ?? DUI.spacing.borderRadius),
                   )
                 : RoundedRectangleBorder(
                     borderRadius:
-                        BorderRadius.circular(DUI.spacing.borderRadius),
+                        BorderRadius.circular(widget.borderRadius ?? DUI.spacing.borderRadius),
                   ),
           ),
           child: widget.loading

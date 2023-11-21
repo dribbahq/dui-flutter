@@ -17,7 +17,8 @@ class DUIButton {
       Widget? content,
       Color? color,
       Color? textColor,
-      bool loading = false}) {
+      bool loading = false,
+      double? borderRadius}) {
     return CustomButton(
       text: text,
       onPressed: onPressed,
@@ -28,6 +29,7 @@ class DUIButton {
       color: color,
       textColor: textColor,
       loading: loading,
+      borderRadius: borderRadius,
     );
   }
 
@@ -37,7 +39,8 @@ class DUIButton {
       Widget? trailing,
       Widget? content,
       Color? color,
-      bool loading = false}) {
+      bool loading = false,
+      double? borderRadius}) {
     return CustomButton(
       text: text,
       onPressed: onPressed,
@@ -48,6 +51,7 @@ class DUIButton {
       color: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.1),
       textColor: color ?? Theme.of(context).textTheme.bodyMedium!.color,
       loading: loading,
+      borderRadius: borderRadius,
     );
   }
 
@@ -78,7 +82,8 @@ class DUIButton {
       Widget? content,
       Color? color,
       Color? bgColor,
-      bool loading = false}) {
+      bool loading = false,
+      double? borderRadius}) {
     return CustomButton(
       text: text,
       onPressed: onPressed,
@@ -90,6 +95,7 @@ class DUIButton {
       textColor: color ?? Theme.of(context).colorScheme.primary,
       loading: loading,
       outlined: true,
+      borderRadius: borderRadius,
     );
   }
 
@@ -98,16 +104,18 @@ class DUIButton {
       Color? color,
       Color? bgColor,
       bool loading = false,
-      bool expand = false}) {
+      bool expand = false,
+      double? borderRadius}) {
     return CustomButton(
       text: text,
       onPressed: onPressed,
       icon: icon,
       color: color,
-      textColor: color ?? Theme.of(context).colorScheme.primary,
+      bgColor: bgColor,
       loading: loading,
       small: true,
       expanded: expand,
+      borderRadius: borderRadius,
     );
   }
 
