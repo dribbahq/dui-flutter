@@ -1,5 +1,5 @@
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
-import 'package:dui/core/theme.dart';
+import 'package:dui/core/external/star_rating.dart';
 import 'package:flutter/material.dart';
 import '../common_utils/common_utils.dart';
 import '../dui.dart';
@@ -375,6 +375,30 @@ class DUIButton {
           ],
         ),
       ),
+    );
+  }
+
+  Widget starRating(BuildContext context, double rating,
+      {int? length,
+      Color? color,
+      double? iconSize,
+      Widget? customStarIcon,
+      Widget? customEmptyStarIcon,
+      Widget? customHalfStarIcon,
+      Function(double rating)? onChange,
+      double? spacing,
+      bool? allowHalfRating}) {
+    return CustomStarRating(
+      rating: rating,
+      length: length,
+      color: color,
+      iconSize: iconSize,
+      customStarIcon: customStarIcon,
+      customEmptyStarIcon: customEmptyStarIcon,
+      customHalfStarIcon: customHalfStarIcon,
+      onChange: onChange,
+      spacing: spacing,
+      allowHalfRating: allowHalfRating ?? true,
     );
   }
 }

@@ -99,6 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var key13 = GlobalKey();
 
   bool loading = false;
+  double starRating = 3.5;
 
   @override
   Widget build(BuildContext context) {
@@ -552,6 +553,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     DUI.text.title2(context, 'Buttons'),
+                    DUI.spacing.spacer(small: true),
+                    showCaseBlock(
+                        DUI.button.starRating(context,
+                            starRating,
+                            iconSize: 40,
+                            spacing: 4,
+                            onChange: (double rating){
+                          setState(() {
+                            starRating = rating;
+                          });
+                        }),
+                        title: "Star rating"),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
