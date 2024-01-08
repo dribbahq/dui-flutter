@@ -35,12 +35,13 @@ class DUIButton {
 
   Widget shadowButton(BuildContext context, String? text, Function? onPressed,
       {IconData? icon,
-      Widget? leading,
-      Widget? trailing,
-      Widget? content,
-      Color? color,
-      bool loading = false,
-      double? borderRadius}) {
+        Widget? leading,
+        Widget? trailing,
+        Widget? content,
+        Color? color,
+        bool loading = false,
+        double? borderRadius}) {
+    Color bgColor = color ?? Theme.of(context).textTheme.bodyMedium!.color!;
     return CustomButton(
       text: text,
       onPressed: onPressed,
@@ -48,7 +49,7 @@ class DUIButton {
       leading: leading,
       trailing: trailing,
       content: content,
-      color: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.1),
+      color: bgColor.withOpacity(0.1),
       textColor: color ?? Theme.of(context).textTheme.bodyMedium!.color,
       loading: loading,
       borderRadius: borderRadius,
