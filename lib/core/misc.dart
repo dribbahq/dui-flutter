@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:dui/common_utils/color_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -118,5 +120,45 @@ class DUIMisc {
             )
           ],
         ));
+  }
+
+  Widget glassContainer({double? width, double? height, double? borderRadius, double? blurRadius, Widget? child, Color? glassTintColor, int densityMultiplier = 1}){
+    Color color = glassTintColor ?? Colors.white;
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(borderRadius ?? DUI.spacing.borderRadius),
+      ),
+      width: width,
+      height: height,
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
+        children: [
+          BackdropFilter(
+            filter: ImageFilter.blur(
+              sigmaX: blurRadius ?? 8.0,
+              sigmaY: blurRadius ?? 8.0,
+            ),
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(borderRadius ?? DUI.spacing.borderRadius),
+                child: Container()),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(borderRadius ?? DUI.spacing.borderRadius),
+              border: Border.all(color: color.withOpacity(0.10)),
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    color.withOpacity(0.10 * densityMultiplier),
+                    color.withOpacity(0.05 * densityMultiplier),
+                  ]),
+            ),
+          ),
+          child ?? SizedBox.shrink(),
+        ],
+      ),
+    );
   }
 }

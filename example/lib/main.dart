@@ -1143,6 +1143,27 @@ class _MyHomePageState extends State<MyHomePage> {
                           }, buttonText: 'Acceptar', dismissText: 'Cancel.lar');
                         }),
                         title: "Bottom Picker"),
+                    DUI.spacing.spacer(small: true),
+                    showCaseBlock(
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Container(
+                            height: 100,
+                            color: Colors.white,
+                            child: Stack(
+                              children: [
+                                Center(
+                                    child: DUI.text.title1(context, 'Glass Container', color: Colors.black)
+                                ),
+                                DUI.misc.glassContainer(
+                                  densityMultiplier: 1,
+                                  glassTintColor: Colors.blue
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        title: "Glass container"),
                     DUI.spacing.divider(context),
                   ],
                 ),
