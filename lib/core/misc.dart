@@ -135,32 +135,27 @@ class DUIMisc {
       width: width,
       height: height,
       clipBehavior: Clip.antiAlias,
-      child: Stack(
-        children: [
-          BackdropFilter(
-            filter: ImageFilter.blur(
-              sigmaX: blurRadius ?? 8.0,
-              sigmaY: blurRadius ?? 8.0,
-            ),
-            child: ClipRRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(
+          sigmaX: blurRadius ?? 8.0,
+          sigmaY: blurRadius ?? 8.0,
+        ),
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(borderRadius ?? DUI.spacing.borderRadius),
+            child: Container(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(borderRadius ?? DUI.spacing.borderRadius),
-                child: Container()),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadius ?? DUI.spacing.borderRadius),
-              border: Border.all(color: color.withOpacity(0.10)),
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    color.withOpacity(0.10 * (densityMultiplier ?? 1)),
-                    color.withOpacity(0.05 * (densityMultiplier ?? 1)),
-                  ]),
-            ),
-          ),
-          child ?? SizedBox.shrink(),
-        ],
+                border: Border.all(color: color.withOpacity(0.10)),
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      color.withOpacity(0.10 * (densityMultiplier ?? 1)),
+                      color.withOpacity(0.05 * (densityMultiplier ?? 1)),
+                    ]),
+              ),
+              child: child,
+            )),
       ),
     );
   }
