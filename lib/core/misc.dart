@@ -122,8 +122,11 @@ class DUIMisc {
         ));
   }
 
-  Widget glassContainer({double? width, double? height, double? borderRadius, double? blurRadius, Widget? child, Color? glassTintColor, int densityMultiplier = 1}){
+  Widget glassContainer({double? width, double? height, double? borderRadius, double? blurRadius, Widget? child, Color? glassTintColor, int? densityMultiplier, bool enabled = true}){
     Color color = glassTintColor ?? Colors.white;
+    if(!enabled){
+      return child ?? SizedBox.shrink();
+    }
     return Container(
       decoration: BoxDecoration(
         color: Colors.transparent,
@@ -151,8 +154,8 @@ class DUIMisc {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    color.withOpacity(0.10 * densityMultiplier),
-                    color.withOpacity(0.05 * densityMultiplier),
+                    color.withOpacity(0.10 * (densityMultiplier ?? 1)),
+                    color.withOpacity(0.05 * (densityMultiplier ?? 1)),
                   ]),
             ),
           ),
