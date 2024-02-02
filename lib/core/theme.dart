@@ -6,13 +6,14 @@ import '../dui.dart';
 
 class DUITheme {
   ThemeData themeData(bool isDarkTheme,
-      {ThemeData? customThemeData, String fontFamily = "metropolis"}) {
+      {ThemeData? customThemeData, String fontFamily = "metropolis", String? package}) {
     return ThemeData(
       useMaterial3: true,
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       platform:
       Platform.isAndroid ? TargetPlatform.android : TargetPlatform.iOS,
       fontFamily: fontFamily,
+      package: package,
       textTheme: customThemeData?.textTheme ??
           TextTheme(
             displayLarge: TextStyle(
