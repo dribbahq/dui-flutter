@@ -58,7 +58,7 @@ class DUIText {
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: Theme.of(context).textTheme.displaySmall!.copyWith(
-        color: color ?? Theme.of(context).textTheme.displayMedium!.color,
+        color: color ?? Theme.of(context).textTheme.displaySmall!.color,
       ),
     );
   }
