@@ -27,6 +27,42 @@ class DUIText {
   /*
   * Text widgets
   * */
+  Widget headline1(BuildContext context, String? text, {int? maxLines, TextAlign? textAlign, Color? color}) {
+    return Text(
+      text ?? '',
+      textAlign: textAlign ?? TextAlign.start,
+      maxLines: maxLines,
+      overflow: maxLines != null ? TextOverflow.ellipsis : null,
+      style: Theme.of(context).textTheme.displayLarge!.copyWith(
+        color: color ?? Theme.of(context).textTheme.displayLarge!.color,
+      ),
+    );
+  }
+
+  Widget headline2(BuildContext context, String? text, {int? maxLines, TextAlign? textAlign, Color? color}) {
+    return Text(
+      text ?? '',
+      textAlign: textAlign ?? TextAlign.start,
+      maxLines: maxLines,
+      overflow: maxLines != null ? TextOverflow.ellipsis : null,
+      style: Theme.of(context).textTheme.displayMedium!.copyWith(
+        color: color ?? Theme.of(context).textTheme.displayMedium!.color,
+      ),
+    );
+  }
+
+  Widget headline3(BuildContext context, String? text, {int? maxLines, TextAlign? textAlign, Color? color}) {
+    return Text(
+      text ?? '',
+      textAlign: textAlign ?? TextAlign.start,
+      maxLines: maxLines,
+      overflow: maxLines != null ? TextOverflow.ellipsis : null,
+      style: Theme.of(context).textTheme.displaySmall!.copyWith(
+        color: color ?? Theme.of(context).textTheme.displayMedium!.color,
+      ),
+    );
+  }
+
 
   Widget title1(BuildContext context, String? text,
       {int? maxLines,
