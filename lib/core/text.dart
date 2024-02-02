@@ -13,6 +13,9 @@ class DUIText {
   final double h3 = 18.0;
   final double h2 = 20.0;
   final double h1 = 24.0;
+  final double head3 = 34.0;
+  final double head2 = 48.0;
+  final double head1 = 60.0;
 
   // font weight
   final FontWeight regularWeight = FontWeight.w400;

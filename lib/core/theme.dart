@@ -15,21 +15,71 @@ class DUITheme {
       fontFamily: fontFamily,
       textTheme: customThemeData?.textTheme ??
           TextTheme(
-            displayMedium: TextStyle(
-                color:
-                isDarkTheme ? DUI.color.textDarkMode : DUI.color.primary),
-            bodyMedium: TextStyle(
+            displayLarge: TextStyle(
+                fontSize: DUI.text.head1,
+                fontWeight: DUI.text.boldWeight,
+                letterSpacing: -0.5,
                 color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
-            bodySmall: TextStyle(
-                color: isDarkTheme
-                    ? DUI.color.smallTextDarkMode
-                    : DUI.color.smallText),
+            displayMedium: TextStyle(
+                fontSize: DUI.text.head2,
+                fontWeight: DUI.text.boldWeight,
+                letterSpacing: 0,
+                color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
+            displaySmall: TextStyle(
+                fontSize: DUI.text.head3,
+                fontWeight: DUI.text.boldWeight,
+                letterSpacing: 0.25,
+                color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
             titleLarge: TextStyle(
+                fontSize: DUI.text.h1,
+                fontWeight: DUI.text.boldWeight,
+                height: DUI.text.textHeight,
+                letterSpacing: 0,
+                color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
+            titleMedium: TextStyle(
+                fontSize: DUI.text.h2,
+                fontWeight: DUI.text.semiBoldWeight,
+                height: DUI.text.textHeight,
+                letterSpacing: 0.15,
                 color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
             titleSmall: TextStyle(
+                fontSize: DUI.text.h3,
+                fontWeight: DUI.text.semiBoldWeight,
+                height: DUI.text.textHeight,
+                letterSpacing: 0.15,
+                color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
+            bodyLarge: TextStyle(
+                fontSize: DUI.text.regularText,
+                letterSpacing: 0.5,
+                fontWeight: DUI.text.regularWeight,
+                color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
+            bodyMedium: TextStyle(
+                fontSize: DUI.text.smallText,
+                fontWeight: DUI.text.regularWeight,
+                letterSpacing: 0.25,
+                color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
+            bodySmall: TextStyle(
+                fontSize: DUI.text.xsText,
+                fontWeight: DUI.text.regularWeight,
+                letterSpacing: 0.4,
                 color: isDarkTheme
                     ? DUI.color.smallTextDarkMode
                     : DUI.color.smallText),
+            labelLarge: TextStyle(
+                fontSize: DUI.text.regularText,
+                letterSpacing: 0.15,
+                fontWeight: DUI.text.semiBoldWeight,
+                color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
+            labelMedium: TextStyle(
+                fontSize: DUI.text.smallText,
+                fontWeight: DUI.text.semiBoldWeight,
+                letterSpacing: 0.1,
+                color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
+            labelSmall: TextStyle(
+                fontSize: DUI.text.xsText,
+                fontWeight: DUI.text.semiBoldWeight,
+                letterSpacing: 0.4,
+                color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
           ),
       scaffoldBackgroundColor:
       isDarkTheme ? DUI.color.scaffoldDarkMode : DUI.color.scaffold,
