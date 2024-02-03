@@ -10,8 +10,6 @@ class DUITheme {
     return ThemeData(
       useMaterial3: true,
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
-      platform:
-      Platform.isAndroid ? TargetPlatform.android : TargetPlatform.iOS,
       fontFamily: fontFamily,
       package: package,
       textTheme: customThemeData?.textTheme ??
@@ -63,9 +61,7 @@ class DUITheme {
                 fontSize: DUI.text.xsText,
                 fontWeight: DUI.text.regularWeight,
                 letterSpacing: 0.4,
-                color: isDarkTheme
-                    ? DUI.color.smallTextDarkMode
-                    : DUI.color.smallText),
+                color: isDarkTheme ? DUI.color.smallTextDarkMode : DUI.color.smallText),
             labelLarge: TextStyle(
                 fontSize: DUI.text.regularText,
                 letterSpacing: 0.15,
@@ -82,16 +78,12 @@ class DUITheme {
                 letterSpacing: 0.4,
                 color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
           ),
-      scaffoldBackgroundColor:
-      isDarkTheme ? DUI.color.scaffoldDarkMode : DUI.color.scaffold,
+      scaffoldBackgroundColor: isDarkTheme ? DUI.color.scaffoldDarkMode : DUI.color.scaffold,
       colorScheme: customThemeData?.colorScheme ??
           ColorScheme(
-            background: isDarkTheme
-                ? DUI.color.backgroundDarkMode
-                : DUI.color.background,
+            background: isDarkTheme ? DUI.color.backgroundDarkMode : DUI.color.background,
             primary: DUI.color.primary,
-            secondary:
-            isDarkTheme ? DUI.color.secondaryDarkMode : DUI.color.secondary,
+            secondary: isDarkTheme ? DUI.color.secondaryDarkMode : DUI.color.secondary,
             surface: Colors.white,
             error: DUI.color.error,
             onPrimary: Colors.white,
@@ -105,34 +97,21 @@ class DUITheme {
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
               borderSide: BorderSide(
-                  color: isDarkTheme
-                      ? const Color(0XFF444E5E)
-                      : DUI.color.inputBorderEnableLight,
-                  width: 1)),
+                  color: isDarkTheme ? const Color(0XFF444E5E) : DUI.color.inputBorderEnableLight, width: 1)),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
-              borderSide: BorderSide(
-                  color: isDarkTheme
-                      ? const Color(0XFF444E5E)
-                      : DUI.color.inputBorderFocusLight,
-                  width: 2)),
+              borderSide:
+                  BorderSide(color: isDarkTheme ? const Color(0XFF444E5E) : DUI.color.inputBorderFocusLight, width: 2)),
           focusColor: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text,
-          fillColor: isDarkTheme
-              ? DUI.color.inputFillColorDark
-              : DUI.color.inputFillColorLight),
+          fillColor: isDarkTheme ? DUI.color.inputFillColorDark : DUI.color.inputFillColorLight),
       buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.accent),
       textSelectionTheme: const TextSelectionThemeData(
-          cursorColor: Color(0XFF444E5E),
-          selectionColor: Colors.transparent,
-          selectionHandleColor: Colors.transparent),
+          cursorColor: Color(0XFF444E5E), selectionColor: Colors.transparent, selectionHandleColor: Colors.transparent),
       appBarTheme: AppBarTheme(
-        systemOverlayStyle: isDarkTheme
-            ? SystemUiOverlayStyle.light
-            : SystemUiOverlayStyle.dark,
+        systemOverlayStyle: isDarkTheme ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
         color: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(
-            color: isDarkTheme ? Colors.white : const Color(0XFF383838)),
+        iconTheme: IconThemeData(color: isDarkTheme ? Colors.white : const Color(0XFF383838)),
       ),
     );
   }
