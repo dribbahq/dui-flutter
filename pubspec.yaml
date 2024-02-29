@@ -20,7 +20,7 @@ dependencies:
   cached_network_image: any
   lottie: any
   flutter_html: any
-  latlng: any
+  latlng: 1.0.0
   flutter_vibrate: any
   flutter_slidable: any
   custom_sliding_segmented_control: any
