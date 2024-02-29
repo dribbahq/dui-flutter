@@ -44,7 +44,7 @@ class CustomButton extends StatefulWidget {
 
 class _CustomButtonState extends State<CustomButton> {
   var currentValue = 0;
-  final double buttonMinHeight = 64.0;
+  final double buttonMinHeight = 56.0;
   final double smallButtonMinHeight = 42.0;
 
   @override
