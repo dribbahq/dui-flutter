@@ -17,7 +17,7 @@ To start using `dui-flutter` in your project, follow these simple steps:
 
 ```yaml dependencies:    
      dependencies:
-	     dalai: <latest_version>
+	     dui: <latest_version>
 ```
 
 

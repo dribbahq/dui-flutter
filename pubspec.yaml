@@ -1,5 +1,5 @@
 name: dui
-description: El Design System ha de reflectir els valors i objectius de Dribba com a empresa.
+description: DUI is a flutter package that provides a set of widgets to help you build your app faster.
 version: 0.0.1
 
 environment:
