@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DUIColor{
+class DUIColor {
   //Primary
   final Color primary = const Color(0xFFF15657);
   final Color primaryAlternativeLight = const Color(0xFFFA7E7F);
@@ -19,14 +19,15 @@ class DUIColor{
   final Color textDarkMode = const Color(0xFFF8F8F8);
   final Color smallTextDarkMode = const Color(0xFFCBCED2);
   final Color disabledText = const Color(0xFFBDBDBD);
-  Color getInvertedTextColor(BuildContext context){
-    if(Theme.of(context).brightness == Brightness.light){
+  Color getInvertedTextColor(BuildContext context) {
+    if (Theme.of(context).brightness == Brightness.light) {
       return textDarkMode;
     }
     return text;
   }
-  Color getInvertedSmallTextColor(BuildContext context){
-    if(Theme.of(context).brightness == Brightness.light){
+
+  Color getInvertedSmallTextColor(BuildContext context) {
+    if (Theme.of(context).brightness == Brightness.light) {
       return smallTextDarkMode;
     }
     return smallText;
@@ -55,7 +56,8 @@ class DUIColor{
   final Color inputFillColorLight = const Color(0XFFF7F7F7);
   final Color inputFillColorDark = const Color(0XFF444E5E);
   final Color inputHomeFillColor = const Color(0xFFCD494A);
-  final Color inputHomePlaceholderColor = const Color(0xFFFFFFFF).withOpacity(0.5);
+  final Color inputHomePlaceholderColor =
+      const Color(0xFFFFFFFF).withOpacity(0.5);
 
   final Color inputBorderEnableLight = const Color(0xFFDDDDDD);
   final Color inputBorderFocusLight = const Color(0xFFA3A3A3);
@@ -70,5 +72,4 @@ class DUIColor{
   final Color blue = const Color(0xFF3C5C8B);
   final Color promo = const Color(0xff2FA5D2);
   final Color auberginie = const Color(0xff743156);
-
 }

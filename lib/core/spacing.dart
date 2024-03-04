@@ -7,11 +7,9 @@ class DUISpacing {
   final double smallPaddingValue = 4;
   final double lateralPaddingValue = 12;
   final double largeLateralPaddingValue = 20;
-  final EdgeInsets lateralPadding =
-  const EdgeInsets.symmetric(horizontal: 12);
+  final EdgeInsets lateralPadding = const EdgeInsets.symmetric(horizontal: 12);
 
   final double homeCategoriesPadding = 12;
-
 
   /// Border Radius
   ///
@@ -52,7 +50,7 @@ class DUISpacing {
           margin: const EdgeInsetsDirectional.only(start: 0.0, end: 0.0),
           height: 0.5,
           color:
-          Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.2),
+              Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.2),
         ),
       ),
     );
@@ -65,7 +63,7 @@ class DUISpacing {
       child: Center(
         child: Container(
           color:
-          Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.2),
+              Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.2),
         ),
       ),
     );
@@ -80,7 +78,7 @@ class DUISpacing {
           lineThickness: 1.0,
           dashLength: 1.0,
           dashColor:
-          Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.4),
+              Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.4),
           dashRadius: 10.0,
           dashGapLength: 4.0,
           dashGapColor: Colors.transparent,

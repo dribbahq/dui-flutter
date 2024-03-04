@@ -23,17 +23,17 @@ extension ColorExtension on Color {
       '${blue.toRadixString(16).padLeft(2, '0')}';
 
   Color darken([double? amount]) {
-
     final hsl = HSLColor.fromColor(this);
-    final hslDark = hsl.withLightness(amount != null ? (hsl.lightness - amount).clamp(0.0, 1.0) : 0.25);
+    final hslDark = hsl.withLightness(
+        amount != null ? (hsl.lightness - amount).clamp(0.0, 1.0) : 0.25);
 
     return hslDark.toColor();
   }
 
   Color lighten([double? amount]) {
-
     final hsl = HSLColor.fromColor(this);
-    final hslLight = hsl.withLightness(amount != null ? (hsl.lightness + amount).clamp(0.0, 1.0) : 0.75);
+    final hslLight = hsl.withLightness(
+        amount != null ? (hsl.lightness + amount).clamp(0.0, 1.0) : 0.75);
 
     return hslLight.toColor();
   }

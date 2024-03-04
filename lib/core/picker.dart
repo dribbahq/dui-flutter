@@ -87,7 +87,10 @@ class DUIPicker {
                         MaterialLocalizations.of(context)
                             .formatDecimal(date.day),
                         style: TextStyle(
-                          fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+                          fontFamily: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .fontFamily,
                           fontWeight: DUI.text.semiBoldWeight,
                           fontSize: DUI.text.smallText,
                           color: Theme.of(context).textTheme.bodyMedium!.color,
@@ -156,7 +159,8 @@ class DUIPicker {
               ),
               dayBorderRadius: BorderRadius.circular(DUI.spacing.borderRadius),
               selectedDayTextStyle: TextStyle(
-                  fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
+                  fontFamily:
+                      Theme.of(context).textTheme.bodyMedium!.fontFamily,
                   fontWeight: DUI.text.semiBoldWeight,
                   fontSize: DUI.text.regularText,
                   color: Theme.of(context)

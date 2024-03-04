@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import '../dui.dart';
 
 class Alert {
-
   static Future showAlert(String? title, String? text, BuildContext context,
       {onPressed, barrierDismissible, required String okText}) {
     if (kIsWeb) {
@@ -174,8 +173,7 @@ class Alert {
         builder: (BuildContext context) {
           return AlertDialog(
             shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(DUI.spacing.borderRadius)),
+                borderRadius: BorderRadius.circular(DUI.spacing.borderRadius)),
             titlePadding: EdgeInsets.only(
                 top: 2 * DUI.spacing.lateralPaddingValue,
                 bottom: DUI.spacing.lateralPaddingValue / 2,

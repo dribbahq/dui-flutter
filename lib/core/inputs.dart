@@ -243,7 +243,8 @@ class DUIInput {
                         error != null && error.isNotEmpty
                             ? Expanded(
                                 child: DUI.text.xs(context, error,
-                                    color: Theme.of(context).colorScheme.error, maxLines: 2),
+                                    color: Theme.of(context).colorScheme.error,
+                                    maxLines: 2),
                               )
                             : SizedBox.shrink(),
                         DUI.spacing.hSpacer(),
@@ -494,7 +495,8 @@ class DUIInput {
                         error != null && error.isNotEmpty
                             ? Expanded(
                                 child: DUI.text.xs(context, error,
-                                    color: Theme.of(context).colorScheme.error, maxLines: 2),
+                                    color: Theme.of(context).colorScheme.error,
+                                    maxLines: 2),
                               )
                             : SizedBox.shrink(),
                         DUI.spacing.hSpacer(),
@@ -581,7 +583,10 @@ class DUIInput {
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.search, color: colorText,),
+                            Icon(
+                              Icons.search,
+                              color: colorText,
+                            ),
                             DUI.spacing.hSpacer()
                           ],
                         ),

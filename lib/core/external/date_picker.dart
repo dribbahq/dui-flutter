@@ -24,7 +24,6 @@ class TimePicker extends StatefulWidget {
 
   @override
   State<TimePicker> createState() => _TimePickerState();
-
 }
 
 class _TimePickerState extends State<TimePicker> {
@@ -88,32 +87,36 @@ class _TimePickerState extends State<TimePicker> {
         DUI.spacing.spacer(),
         Row(
           children: [
-            widget.dismissText == null ? const SizedBox.shrink() : Expanded(
-              flex: 1,
-              child: SizedBox(
-                width: double.infinity,
-                child:
-                    DUI.button.noBgButton(context, widget.dismissText!, () {
-                  if (widget.onCancel != null) {
-                    widget.onCancel!();
-                  }
-                  Navigator.pop(context);
-                }),
-              ),
-            ),
+            widget.dismissText == null
+                ? const SizedBox.shrink()
+                : Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: DUI.button.noBgButton(context, widget.dismissText!,
+                          () {
+                        if (widget.onCancel != null) {
+                          widget.onCancel!();
+                        }
+                        Navigator.pop(context);
+                      }),
+                    ),
+                  ),
             DUI.spacing.hSpacer(),
-            widget.buttonText == null ? const SizedBox.shrink() : Expanded(
-              flex: 2,
-              child: SizedBox(
-                width: double.infinity,
-                child: DUI.button.button(context, widget.buttonText!, () {
-                  if (widget.onDone != null) {
-                    widget.onDone!(""); // TODO
-                  }
-                  Navigator.pop(context);
-                }),
-              ),
-            )
+            widget.buttonText == null
+                ? const SizedBox.shrink()
+                : Expanded(
+                    flex: 2,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: DUI.button.button(context, widget.buttonText!, () {
+                        if (widget.onDone != null) {
+                          widget.onDone!(""); // TODO
+                        }
+                        Navigator.pop(context);
+                      }),
+                    ),
+                  )
           ],
         )
       ],

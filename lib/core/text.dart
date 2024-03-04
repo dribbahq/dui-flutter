@@ -27,42 +27,44 @@ class DUIText {
   /*
   * Text widgets
   * */
-  Widget headline1(BuildContext context, String? text, {int? maxLines, TextAlign? textAlign, Color? color}) {
+  Widget headline1(BuildContext context, String? text,
+      {int? maxLines, TextAlign? textAlign, Color? color}) {
     return Text(
       text ?? '',
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: Theme.of(context).textTheme.displayLarge!.copyWith(
-        color: color ?? Theme.of(context).textTheme.displayLarge!.color,
-      ),
+            color: color ?? Theme.of(context).textTheme.displayLarge!.color,
+          ),
     );
   }
 
-  Widget headline2(BuildContext context, String? text, {int? maxLines, TextAlign? textAlign, Color? color}) {
+  Widget headline2(BuildContext context, String? text,
+      {int? maxLines, TextAlign? textAlign, Color? color}) {
     return Text(
       text ?? '',
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: Theme.of(context).textTheme.displayMedium!.copyWith(
-        color: color ?? Theme.of(context).textTheme.displayMedium!.color,
-      ),
+            color: color ?? Theme.of(context).textTheme.displayMedium!.color,
+          ),
     );
   }
 
-  Widget headline3(BuildContext context, String? text, {int? maxLines, TextAlign? textAlign, Color? color}) {
+  Widget headline3(BuildContext context, String? text,
+      {int? maxLines, TextAlign? textAlign, Color? color}) {
     return Text(
       text ?? '',
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: Theme.of(context).textTheme.displaySmall!.copyWith(
-        color: color ?? Theme.of(context).textTheme.displaySmall!.color,
-      ),
+            color: color ?? Theme.of(context).textTheme.displaySmall!.color,
+          ),
     );
   }
-
 
   Widget title1(BuildContext context, String? text,
       {int? maxLines,
@@ -212,15 +214,15 @@ class DUIText {
   }
 
   Widget xxs(
-      BuildContext context,
-      String? text, {
-        int? maxLines,
-        TextAlign? textAlign,
-        Color? color,
-        double? height,
-        bool? bold = false,
-        TextDecoration? decoration,
-      }) {
+    BuildContext context,
+    String? text, {
+    int? maxLines,
+    TextAlign? textAlign,
+    Color? color,
+    double? height,
+    bool? bold = false,
+    TextDecoration? decoration,
+  }) {
     return Text(
       text ?? '',
       textAlign: textAlign ?? TextAlign.start,

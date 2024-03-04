@@ -6,7 +6,6 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../common_utils/common_utils.dart';
 import '../dui.dart';
 
-
 class DUIMisc {
   Widget spanWithBoldTitle(
     context,
@@ -122,15 +121,24 @@ class DUIMisc {
         ));
   }
 
-  Widget glassContainer({double? width, double? height, double? borderRadius, double? blurRadius, Widget? child, Color? glassTintColor, int? densityMultiplier, bool enabled = true}){
+  Widget glassContainer(
+      {double? width,
+      double? height,
+      double? borderRadius,
+      double? blurRadius,
+      Widget? child,
+      Color? glassTintColor,
+      int? densityMultiplier,
+      bool enabled = true}) {
     Color color = glassTintColor ?? Colors.white;
-    if(!enabled){
+    if (!enabled) {
       return child ?? SizedBox.shrink();
     }
     return Container(
       decoration: BoxDecoration(
         color: Colors.transparent,
-        borderRadius: BorderRadius.circular(borderRadius ?? DUI.spacing.borderRadius),
+        borderRadius:
+            BorderRadius.circular(borderRadius ?? DUI.spacing.borderRadius),
       ),
       width: width,
       height: height,
@@ -141,10 +149,12 @@ class DUIMisc {
           sigmaY: blurRadius ?? 8.0,
         ),
         child: ClipRRect(
-            borderRadius: BorderRadius.circular(borderRadius ?? DUI.spacing.borderRadius),
+            borderRadius:
+                BorderRadius.circular(borderRadius ?? DUI.spacing.borderRadius),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(borderRadius ?? DUI.spacing.borderRadius),
+                borderRadius: BorderRadius.circular(
+                    borderRadius ?? DUI.spacing.borderRadius),
                 border: Border.all(color: color.withOpacity(0.10)),
                 gradient: LinearGradient(
                     begin: Alignment.topLeft,

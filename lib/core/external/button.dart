@@ -86,14 +86,16 @@ class _CustomButtonState extends State<CustomButton> {
               padding: DUI.spacing.lateralPadding,
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                    color: widget.color?.withOpacity(widget.onPressed != null ? 0.2 : 0.1) ??
+                    color: widget.color?.withOpacity(
+                            widget.onPressed != null ? 0.2 : 0.1) ??
                         Theme.of(context)
                             .textTheme
                             .bodyMedium!
                             .color!
                             .withOpacity(widget.onPressed != null ? 0.2 : 0.1),
                     width: DUI.spacing.borderWidth),
-                borderRadius: BorderRadius.circular(widget.borderRadius ?? DUI.spacing.borderRadius),
+                borderRadius: BorderRadius.circular(
+                    widget.borderRadius ?? DUI.spacing.borderRadius),
               ),
             ),
             child: widget.loading
@@ -169,17 +171,18 @@ class _CustomButtonState extends State<CustomButton> {
                                 Theme.of(context).colorScheme.primary)
                             .withOpacity(widget.onPressed != null ? 1 : 0.5),
                         width: 2),
-                    borderRadius:
-                        BorderRadius.circular(widget.borderRadius ?? DUI.spacing.borderRadius),
+                    borderRadius: BorderRadius.circular(
+                        widget.borderRadius ?? DUI.spacing.borderRadius),
                   )
                 : RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(widget.borderRadius ?? DUI.spacing.borderRadius),
+                    borderRadius: BorderRadius.circular(
+                        widget.borderRadius ?? DUI.spacing.borderRadius),
                   ),
           ),
           child: widget.loading
               ? DUI.misc.loadingAnimation(context,
-                  light: (widget.textColor ?? Theme.of(context).colorScheme.onPrimary)
+                  light: (widget.textColor ??
+                              Theme.of(context).colorScheme.onPrimary)
                           .computeLuminance() >
                       0.5)
               : Row(
@@ -199,7 +202,9 @@ class _CustomButtonState extends State<CustomButton> {
                                         Icon(
                                           widget.icon!,
                                           color: (widget.textColor ??
-                                                  Theme.of(context).colorScheme.onPrimary)
+                                                  Theme.of(context)
+                                                      .colorScheme
+                                                      .onPrimary)
                                               .withOpacity(
                                                   widget.onPressed == null
                                                       ? 0.5
@@ -214,7 +219,9 @@ class _CustomButtonState extends State<CustomButton> {
                                       context,
                                       widget.text,
                                       color: (widget.textColor ??
-                                              Theme.of(context).colorScheme.onPrimary)
+                                              Theme.of(context)
+                                                  .colorScheme
+                                                  .onPrimary)
                                           .withOpacity(widget.onPressed == null
                                               ? 0.5
                                               : 1),

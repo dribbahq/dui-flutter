@@ -56,14 +56,13 @@ class Utils {
       dismissible: dismissible,
       builder: (context) {
         return Container(
-          constraints:
-          BoxConstraints(maxHeight: maxHeight ?? double.infinity),
+          constraints: BoxConstraints(maxHeight: maxHeight ?? double.infinity),
           padding: skipPadding
               ? null
               : EdgeInsets.only(
-              bottom: DUI.spacing.lateralPaddingValue,
-              left: DUI.spacing.lateralPaddingValue,
-              right: DUI.spacing.lateralPaddingValue),
+                  bottom: DUI.spacing.lateralPaddingValue,
+                  left: DUI.spacing.lateralPaddingValue,
+                  right: DUI.spacing.lateralPaddingValue),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.background,
             borderRadius: BorderRadius.vertical(
@@ -86,16 +85,16 @@ class Utils {
                   children: <Widget>[
                     dismissible == true
                         ? Center(
-                      child: Opacity(
-                        opacity: 0.2,
-                        child: Icon(Icons.horizontal_rule_rounded,
-                            size: 20,
-                            color: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .color!),
-                      ),
-                    )
+                            child: Opacity(
+                              opacity: 0.2,
+                              child: Icon(Icons.horizontal_rule_rounded,
+                                  size: 20,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .color!),
+                            ),
+                          )
                         : DUI.spacing.spacer(multiplier: 2),
                     content ?? const SizedBox.shrink()
                   ],
