@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       DUI.spacing.spacer(small: true),
-                      DUI.text.title1(context, 'LAMA Showcase'),
+                      DUI.text.title1(context, 'UI Showcase'),
                     ],
                   )),
               Container(
@@ -195,15 +195,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     DUI.text.title2(context, 'Text and Labels'),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        DUI.text.title1(context, 'El teu heroi a domicili'),
+                        DUI.text.title1(context, 'Lorem ipsum dolor sit amet'),
                         title: "DUI.text.title1"),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        DUI.text.title2(context, 'El teu heroi a domicili'),
+                        DUI.text.title2(context, 'Lorem ipsum dolor sit amet'),
                         title: "DUI.text.title2"),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        DUI.text.title3(context, 'El teu heroi a domicili'),
+                        DUI.text.title3(context, 'Lorem ipsum dolor sit amet'),
                         title: "DUI.text.title3"),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
@@ -212,8 +212,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             DUI.text
-                                .regular(context, 'El teu heroi a domicili'),
-                            DUI.text.regular(context, 'El teu heroi a domicili',
+                                .regular(context, 'Lorem ipsum dolor sit amet'),
+                            DUI.text.regular(context, 'Lorem ipsum dolor sit amet',
                                 bold: true)
                           ],
                         ),
@@ -224,8 +224,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            DUI.text.small(context, 'El teu heroi a domicili'),
-                            DUI.text.small(context, 'El teu heroi a domicili',
+                            DUI.text.small(context, 'Lorem ipsum dolor sit amet'),
+                            DUI.text.small(context, 'Lorem ipsum dolor sit amet',
                                 bold: true)
                           ],
                         ),
@@ -236,8 +236,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            DUI.text.xs(context, 'El teu heroi a domicili'),
-                            DUI.text.xs(context, 'El teu heroi a domicili',
+                            DUI.text.xs(context, 'Lorem ipsum dolor sit amet'),
+                            DUI.text.xs(context, 'Lorem ipsum dolor sit amet',
                                 bold: true)
                           ],
                         ),
@@ -248,7 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             DUI.text.itemHeader(
                               context,
-                              'Menjar a domicili',
+                              'Lorem ipsum dolor sit amet',
                               onAccessoryButtonText: 'Veure tot',
                               onTap: () {
                                 Alert.showAlert('title', 'text', context,
@@ -256,7 +256,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               },
                             ),
                             DUI.spacing.spacer(small: true),
-                            DUI.text.itemHeader(context, 'Menjar a domicili',
+                            DUI.text.itemHeader(context, 'Lorem ipsum dolor sit amet',
                                 onAccessoryButtonText: 'Veure tot',
                                 onTap: () {},
                                 loading: true),
@@ -650,7 +650,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Column(
                           children: [
                             DUI.button.smallButton(
-                                context, "Log In with CityXerpa", () {
+                                context, "Log In with Dribba", () {
                               setState(() {
                                 loading = !loading;
                                 Future.delayed(Duration(seconds: 2), () {
@@ -662,7 +662,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             }, loading: loading),
                             DUI.spacing.spacer(),
                             DUI.button.smallButton(
-                                context, "Log In with CityXerpa", null,
+                                context, "Log In with Dribba", null,
                                 loading: loading),
                           ],
                         ),
