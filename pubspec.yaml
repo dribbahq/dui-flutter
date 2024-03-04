@@ -1,9 +1,9 @@
 name: dui
 description: El Design System ha de reflectir els valors i objectius de Dribba com a empresa.
-version: 1.0.2
+version: 0.0.1
 
 environment:
-  sdk: '>=2.15.0 <3.0.0'
+  sdk: '>=2.15.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:

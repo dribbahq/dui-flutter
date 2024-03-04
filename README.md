@@ -1,4 +1,3 @@
-
 # DUI-Flutter
 ## Overview
 Welcome to `dui-flutter`, a UI library for developing mobile applications with Flutter. Created by Dribba, `dui-flutter` aims to provide developers with a comprehensive set of widgets and tools to bring their mobile app visions to life efficiently and effectively.
