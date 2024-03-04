@@ -30,6 +30,8 @@ dependencies:
   palette_generator: any
   soundpool: any
   calendar_date_picker2: any
+  collection: any
+  vector_math: any
 
 dev_dependencies:
   flutter_test:

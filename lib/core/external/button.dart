@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:dui/common_utils/color_extension.dart';
 import 'package:flutter/material.dart';
 

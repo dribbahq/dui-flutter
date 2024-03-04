@@ -1,7 +1,7 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:country_flags/country_flags.dart';
-import 'package:collection/collection.dart';
 import '../../common_utils/common_utils.dart';
 import '../../dui.dart';
 

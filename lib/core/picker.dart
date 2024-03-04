@@ -167,8 +167,8 @@ class DUIPicker {
             value: selectedDates,
           ),
           Container(
-            child: footer ?? SizedBox.shrink(),
             padding: EdgeInsets.all(DUI.spacing.lateralPaddingValue),
+            child: footer ?? SizedBox.shrink(),
           )
         ],
       ),
@@ -178,7 +178,7 @@ class DUIPicker {
   Widget textScrollPicker(BuildContext context, List<String> elements,
       Function(String value) onSelected,
       {double pickerHeight = 180}) {
-    return Container(
+    return SizedBox(
       height: pickerHeight,
       child: Row(children: [
         Expanded(
@@ -188,7 +188,7 @@ class DUIPicker {
           },
           itemExtent: 48,
           children: List.generate(elements.length, (index) {
-            return Container(
+            return SizedBox(
               height: 48,
               child: Center(
                 child: DUI.text.title3(context, elements[index]),

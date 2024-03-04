@@ -21,13 +21,13 @@ class MyApp extends StatelessWidget {
       darkTheme: DUI.theme.themeData(true),
       home: const MyHomePage(),
       locale: const Locale('es', 'ES'),
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale('ca', 'CA'),
+      supportedLocales: const [
+        Locale('ca', 'CA'),
       ],
     );
   }
@@ -46,8 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
     DUI.color.primaryAlternativeLight: "primaryAlternativeLight",
     DUI.color.primaryAlternativeDark: "primaryAlternativeDark",
     DUI.color.primaryContrast: "primaryContrast",
-    DUI.color.primaryOutlinedNestingBackground:
-        "primaryOutlinedNestingBackground",
+    DUI.color.primaryOutlinedNestingBackground: "primaryOutlinedNestingBackground",
     DUI.color.secondary: "secondary",
     DUI.color.secondaryDarkMode: "secondaryDarkMode",
     DUI.color.secondaryContrast: "secondaryContrast",
@@ -112,8 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               DUI.spacing.spacer(multiplier: 8),
               Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: DUI.spacing.lateralPaddingValue),
+                  padding: EdgeInsets.symmetric(horizontal: DUI.spacing.lateralPaddingValue),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,11 +120,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       DUI.text.title1(context, 'UI Showcase'),
                     ],
                   )),
-              Container(
+              SizedBox(
                 height: 44,
                 child: ListView.separated(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: DUI.spacing.lateralPaddingValue),
+                  padding: EdgeInsets.symmetric(horizontal: DUI.spacing.lateralPaddingValue),
                   itemCount: 13,
                   separatorBuilder: (context, index) {
                     return DUI.spacing.hSpacer();
@@ -176,11 +173,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       key = key13;
                     }
 
-                    return DUI.badge.tagSolid(context, title,
-                        color: BadgeColor.secondary, onTap: () {
+                    return DUI.badge.tagSolid(context, title, color: BadgeColor.secondary, onTap: () {
                       Scrollable.ensureVisible(key.currentContext!,
-                          curve: Curves.easeIn,
-                          duration: Duration(milliseconds: 500));
+                          curve: Curves.easeIn, duration: Duration(milliseconds: 500));
                     });
                   },
                 ),
@@ -194,27 +189,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     DUI.text.title2(context, 'Text and Labels'),
                     DUI.spacing.spacer(small: true),
-                    showCaseBlock(
-                        DUI.text.title1(context, 'Lorem ipsum dolor sit amet'),
-                        title: "DUI.text.title1"),
+                    showCaseBlock(DUI.text.title1(context, 'Lorem ipsum dolor sit amet'), title: "DUI.text.title1"),
                     DUI.spacing.spacer(small: true),
-                    showCaseBlock(
-                        DUI.text.title2(context, 'Lorem ipsum dolor sit amet'),
-                        title: "DUI.text.title2"),
+                    showCaseBlock(DUI.text.title2(context, 'Lorem ipsum dolor sit amet'), title: "DUI.text.title2"),
                     DUI.spacing.spacer(small: true),
-                    showCaseBlock(
-                        DUI.text.title3(context, 'Lorem ipsum dolor sit amet'),
-                        title: "DUI.text.title3"),
+                    showCaseBlock(DUI.text.title3(context, 'Lorem ipsum dolor sit amet'), title: "DUI.text.title3"),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            DUI.text
-                                .regular(context, 'Lorem ipsum dolor sit amet'),
-                            DUI.text.regular(context, 'Lorem ipsum dolor sit amet',
-                                bold: true)
+                            DUI.text.regular(context, 'Lorem ipsum dolor sit amet'),
+                            DUI.text.regular(context, 'Lorem ipsum dolor sit amet', bold: true)
                           ],
                         ),
                         title: "DUI.text.regular"),
@@ -225,8 +212,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             DUI.text.small(context, 'Lorem ipsum dolor sit amet'),
-                            DUI.text.small(context, 'Lorem ipsum dolor sit amet',
-                                bold: true)
+                            DUI.text.small(context, 'Lorem ipsum dolor sit amet', bold: true)
                           ],
                         ),
                         title: "DUI.text.small"),
@@ -237,8 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             DUI.text.xs(context, 'Lorem ipsum dolor sit amet'),
-                            DUI.text.xs(context, 'Lorem ipsum dolor sit amet',
-                                bold: true)
+                            DUI.text.xs(context, 'Lorem ipsum dolor sit amet', bold: true)
                           ],
                         ),
                         title: "DUI.text.xs"),
@@ -251,15 +236,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               'Lorem ipsum dolor sit amet',
                               onAccessoryButtonText: 'Veure tot',
                               onTap: () {
-                                Alert.showAlert('title', 'text', context,
-                                    okText: 'okText');
+                                Alert.showAlert('title', 'text', context, okText: 'okText');
                               },
                             ),
                             DUI.spacing.spacer(small: true),
                             DUI.text.itemHeader(context, 'Lorem ipsum dolor sit amet',
-                                onAccessoryButtonText: 'Veure tot',
-                                onTap: () {},
-                                loading: true),
+                                onAccessoryButtonText: 'Veure tot', onTap: () {}, loading: true),
                           ],
                         ),
                         title: "Item Header with Button"),
@@ -304,9 +286,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 height: 44,
                                 width: 44,
                                 decoration: BoxDecoration(
-                                    color: key,
-                                    borderRadius: BorderRadius.circular(
-                                        DUI.spacing.smallBorderRadius)),
+                                    color: key, borderRadius: BorderRadius.circular(DUI.spacing.smallBorderRadius)),
                               ),
                               title: availableColors.values.elementAt(index),
                               largePadding: false);
@@ -398,12 +378,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         title: "Small HSpacer"),
                     DUI.spacing.spacer(small: true),
-                    showCaseBlock(DUI.spacing.divider(context),
-                        title: "Horizontal Divider"),
-                    showCaseBlock(DUI.spacing.verticalDivider(context, 24),
-                        title: "Vertical Divider"),
-                    showCaseBlock(DUI.spacing.dottedDivider(context),
-                        title: "Dotted Divider"),
+                    showCaseBlock(DUI.spacing.divider(context), title: "Horizontal Divider"),
+                    showCaseBlock(DUI.spacing.verticalDivider(context, 24), title: "Vertical Divider"),
+                    showCaseBlock(DUI.spacing.dottedDivider(context), title: "Dotted Divider"),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Row(
@@ -414,24 +391,21 @@ class _MyHomePageState extends State<MyHomePage> {
                                 width: 60,
                                 decoration: BoxDecoration(
                                     color: DUI.color.primary,
-                                    borderRadius: BorderRadius.circular(
-                                        DUI.spacing.smallBorderRadius))),
+                                    borderRadius: BorderRadius.circular(DUI.spacing.smallBorderRadius))),
                             DUI.spacing.hSpacer(),
                             Container(
                                 height: 60,
                                 width: 60,
                                 decoration: BoxDecoration(
                                     color: DUI.color.primary,
-                                    borderRadius: BorderRadius.circular(
-                                        DUI.spacing.borderRadius))),
+                                    borderRadius: BorderRadius.circular(DUI.spacing.borderRadius))),
                             DUI.spacing.hSpacer(),
                             Container(
                               height: 60,
                               width: 60,
                               decoration: BoxDecoration(
                                   color: DUI.color.primary,
-                                  borderRadius: BorderRadius.circular(
-                                      DUI.spacing.largeBorderRadius)),
+                                  borderRadius: BorderRadius.circular(DUI.spacing.largeBorderRadius)),
                             ),
                             DUI.spacing.hSpacer(small: true),
                           ],
@@ -455,42 +429,28 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            DUI.input.textField("Email address",
-                                TextEditingController(), FocusNode(), context,
-                                suffixIcon: Icon(Icons.add),
-                                prefixIcon: Icon(Icons.add),
-                                helpMessage: "Help message"),
+                            DUI.input.textField("Email address", TextEditingController(), FocusNode(), context,
+                                suffixIcon: Icon(Icons.add), prefixIcon: Icon(Icons.add), helpMessage: "Help message"),
                             DUI.spacing.spacer(small: true),
                             DUI.input.textField(
-                                "Password",
-                                TextEditingController(text: "Password"),
-                                FocusNode(),
-                                context,
+                                "Password", TextEditingController(text: "Password"), FocusNode(), context,
                                 obscure: true),
                             DUI.spacing.spacer(small: true),
-                            DUI.input.textField("Email address",
-                                TextEditingController(), FocusNode(), context,
+                            DUI.input.textField("Email address", TextEditingController(), FocusNode(), context,
                                 enabled: false, helpMessage: "Help message"),
                             DUI.spacing.spacer(small: true),
                             DUI.input.textField(
-                                "Email address",
-                                TextEditingController(text: 'alex@dribba.com'),
-                                FocusNode(),
-                                context,
-                                enabled: false,
-                                helpMessage: "Help message"),
+                                "Email address", TextEditingController(text: 'alex@dribba.com'), FocusNode(), context,
+                                enabled: false, helpMessage: "Help message"),
                             DUI.spacing.spacer(small: true),
-                            DUI.input.textField("Email address",
-                                TextEditingController(), FocusNode(), context,
+                            DUI.input.textField("Email address", TextEditingController(), FocusNode(), context,
                                 error: "Error", helpMessage: "Help message"),
                           ],
                         ),
                         title: "Regular"),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        DUI.input.smallTextField(
-                            TextEditingController(), FocusNode(), context,
-                            hint: 'Email address'),
+                        DUI.input.smallTextField(TextEditingController(), FocusNode(), context, hint: 'Email address'),
                         title: "Small"),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
@@ -498,18 +458,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            DUI.input.searchField("Email address",
-                                TextEditingController(), FocusNode(), context),
+                            DUI.input.searchField("Email address", TextEditingController(), FocusNode(), context),
                             DUI.spacing.spacer(small: true),
                             DUI.input.searchField(
-                                "Email address",
-                                TextEditingController(text: 'info@dribba.com'),
-                                FocusNode(),
-                                context,
+                                "Email address", TextEditingController(text: 'info@dribba.com'), FocusNode(), context,
                                 loading: true),
                             DUI.spacing.spacer(small: true),
-                            DUI.input.searchField("Email address",
-                                TextEditingController(), FocusNode(), context,
+                            DUI.input.searchField("Email address", TextEditingController(), FocusNode(), context,
                                 loading: true, enabled: false),
                           ],
                         ),
@@ -520,8 +475,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            DUI.input.chatInputField(context, "Email address",
-                                TextEditingController(), FocusNode()),
+                            DUI.input.chatInputField(context, "Email address", TextEditingController(), FocusNode()),
                           ],
                         ),
                         title: "Chat Input"),
@@ -531,13 +485,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            DUI.input.phoneTextField(
-                                context,
-                                "Número de teléfono",
-                                TextEditingController(),
-                                FocusNode(),
-                                "+34",
-                                (prefix) {}),
+                            DUI.input.phoneTextField(context, "Número de teléfono", TextEditingController(),
+                                FocusNode(), "+34", (prefix) {}),
                           ],
                         ),
                         title: "Phone Input"),
@@ -555,11 +504,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     DUI.text.title2(context, 'Buttons'),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        DUI.button.starRating(context,
-                            starRating,
-                            iconSize: 40,
-                            spacing: 4,
-                            onChange: (double rating){
+                        DUI.button.starRating(context, starRating, iconSize: 40, spacing: 4, onChange: (double rating) {
                           setState(() {
                             starRating = rating;
                           });
@@ -580,8 +525,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               });
                             }, loading: loading),
                             DUI.spacing.spacer(),
-                            DUI.button.button(context, "Log In", null,
-                                loading: loading),
+                            DUI.button.button(context, "Log In", null, loading: loading),
                           ],
                         ),
                         title: "Regular"),
@@ -600,8 +544,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               });
                             }, loading: loading),
                             DUI.spacing.spacer(),
-                            DUI.button.shadowButton(context, "Log In", null,
-                                loading: loading),
+                            DUI.button.shadowButton(context, "Log In", null, loading: loading),
                           ],
                         ),
                         title: "Shadow"),
@@ -620,8 +563,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               });
                             }, loading: loading),
                             DUI.spacing.spacer(),
-                            DUI.button.noBgButton(context, "Log In", null,
-                                loading: loading),
+                            DUI.button.noBgButton(context, "Log In", null, loading: loading),
                           ],
                         ),
                         title: "No BG Button"),
@@ -640,8 +582,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               });
                             }, loading: loading),
                             DUI.spacing.spacer(),
-                            DUI.button.outlineButton(context, "Log In", null,
-                                loading: loading),
+                            DUI.button.outlineButton(context, "Log In", null, loading: loading),
                           ],
                         ),
                         title: "Outline Button"),
@@ -649,8 +590,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            DUI.button.smallButton(
-                                context, "Log In with Dribba", () {
+                            DUI.button.smallButton(context, "Log In with Dribba", () {
                               setState(() {
                                 loading = !loading;
                                 Future.delayed(Duration(seconds: 2), () {
@@ -661,27 +601,21 @@ class _MyHomePageState extends State<MyHomePage> {
                               });
                             }, loading: loading),
                             DUI.spacing.spacer(),
-                            DUI.button.smallButton(
-                                context, "Log In with Dribba", null,
-                                loading: loading),
+                            DUI.button.smallButton(context, "Log In with Dribba", null, loading: loading),
                           ],
                         ),
                         title: "Small Button"),
                     DUI.spacing.spacer(small: true),
-                    showCaseBlock(DUI.button.buttonQtyLeading(context, 2),
-                        title: "Button Quantity Leading"),
+                    showCaseBlock(DUI.button.buttonQtyLeading(context, 2), title: "Button Quantity Leading"),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        DUI.button.buttonPriceTrailing(context, 22.50,
-                            freeText: "Free", amountInEurosText: "%@ Euros"),
+                        DUI.button.buttonPriceTrailing(context, 22.50, freeText: "Free", amountInEurosText: "%@ Euros"),
                         title: "Button Price Trailing",
                         backgroundColor: DUI.color.primary),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         DUI.button.buttonMinPriceWidget(context,
-                            minPrice: 22.5,
-                            currentPrice: 10.0,
-                            addMoreToRequestText: "Add more to order"),
+                            minPrice: 22.5, currentPrice: 10.0, addMoreToRequestText: "Add more to order"),
                         title: "Button Min Price",
                         backgroundColor: DUI.color.primary),
                     DUI.spacing.spacer(small: true),
@@ -695,8 +629,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               Icons.camera_alt,
                             ),
                             DUI.spacing.hSpacer(),
-                            DUI.button.iconButton(context, Icons.shopping_bag,
-                                filled: true),
+                            DUI.button.iconButton(context, Icons.shopping_bag, filled: true),
                           ],
                         ),
                         title: "Icon Button (No-Filled & Filled)"),
@@ -710,12 +643,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            DUI.button.appBarActionButtonCircle(
-                                context, Icons.compare_arrows),
+                            DUI.button.appBarActionButtonCircle(context, Icons.compare_arrows),
                             DUI.spacing.hSpacer(),
-                            DUI.button.appBarActionButtonCircle(
-                                context, Icons.compare_arrows,
-                                loading: true),
+                            DUI.button.appBarActionButtonCircle(context, Icons.compare_arrows, loading: true),
                           ],
                         ),
                         title: "AppBar Action Button Circle"),
@@ -731,8 +661,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         title: "Checkbox"),
                     DUI.spacing.spacer(small: true),
-                    showCaseBlock(DUI.button.toggle(true, (value) {}, context),
-                        title: "Toggle"),
+                    showCaseBlock(DUI.button.toggle(true, (value) {}, context), title: "Toggle"),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         DUI.button.slidingControl(
@@ -753,11 +682,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Icon(Icons.directions_bike_rounded),
                                     DUI.spacing.hSpacer(small: true),
                                     DUI.text.regular(context, 'Tab 1',
-                                        color: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .color!,
-                                        bold: true)
+                                        color: Theme.of(context).textTheme.bodyMedium!.color!, bold: true)
                                   ],
                                 ),
                               ],
@@ -775,11 +700,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Icon(Icons.directions_bike_rounded),
                                     DUI.spacing.hSpacer(small: true),
                                     DUI.text.regular(context, 'Tab 2',
-                                        color: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .color!,
-                                        bold: true)
+                                        color: Theme.of(context).textTheme.bodyMedium!.color!, bold: true)
                                   ],
                                 ),
                               ],
@@ -797,7 +718,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 mainAxisSize: MainAxisSize.min,
-                                children: [
+                                children: const [
                                   Icon(Icons.directions_bike_rounded),
                                 ],
                               ),
@@ -805,7 +726,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
+                                children: const [
                                   Icon(Icons.directions_bike_rounded),
                                 ],
                               ),
@@ -815,9 +736,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         title: "Segment Bar (Small)",
                         largePadding: false),
                     DUI.spacing.spacer(small: true),
-                    showCaseBlock(
-                        DUI.button.dataSelector(context, "Pau Casals, 6",
-                            "Where do we deliver it?", () {}),
+                    showCaseBlock(DUI.button.dataSelector(context, "Pau Casals, 6", "Where do we deliver it?", () {}),
                         title: "Data Selector"),
                     DUI.spacing.divider(context),
                   ],
@@ -833,7 +752,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     DUI.text.title2(context, 'Skeleton Loading'),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        Container(
+                        SizedBox(
                           height: 90,
                           child: DUI.skeleton.emptyRegularTileList(context),
                         ),
@@ -856,8 +775,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             DUI.tile.listTile('Title', context, () {}),
                             DUI.spacing.divider(context),
-                            DUI.tile.listTile('Loading Tile', context, () {},
-                                loading: true),
+                            DUI.tile.listTile('Loading Tile', context, () {}, loading: true),
                             DUI.spacing.divider(context),
                             DUI.tile.listTile(
                               'Loading Tile',
@@ -874,9 +792,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     showCaseBlock(
                         Column(
                           children: [
-                            DUI.tile.listTileWithSub(
-                                'Title', context, 'Subtitle',
-                                onTap: () {}),
+                            DUI.tile.listTileWithSub('Title', context, 'Subtitle', onTap: () {}),
                             DUI.spacing.divider(context),
                             DUI.tile.listTileWithSub(
                               'Title',
@@ -891,10 +807,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Column(
                           children: [
                             DUI.tile.listTileCustomImage(
-                                Icon(Icons.directions_bike_rounded),
-                                context,
-                                'Click me and get free bags!',
-                                () {}),
+                                Icon(Icons.directions_bike_rounded), context, 'Click me and get free bags!', () {}),
                           ],
                         ),
                         title: "Tile with Custom Image"),
@@ -909,34 +822,25 @@ class _MyHomePageState extends State<MyHomePage> {
                               icon: Icons.ac_unit_sharp,
                             ),
                             DUI.spacing.spacer(),
-                            DUI.tile.squareTile(context,
-                                title: "Total KM",
-                                value: "25,57 €",
-                                icon: Icons.ac_unit_sharp, onInfoTap: () {
-                              Alert.showAlert('Hello', 'Hello', context,
-                                  okText: 'Ok');
+                            DUI.tile.squareTile(context, title: "Total KM", value: "25,57 €", icon: Icons.ac_unit_sharp,
+                                onInfoTap: () {
+                              Alert.showAlert('Hello', 'Hello', context, okText: 'Ok');
                             }),
                             DUI.spacing.spacer(),
-                            DUI.tile.squareTile(context,
-                                title: "Total KM",
-                                icon: Icons.ac_unit_sharp, onInfoTap: () {
-                              Alert.showAlert('Hello', 'Hello', context,
-                                  okText: 'Ok');
+                            DUI.tile.squareTile(context, title: "Total KM", icon: Icons.ac_unit_sharp, onInfoTap: () {
+                              Alert.showAlert('Hello', 'Hello', context, okText: 'Ok');
                             }),
                             DUI.spacing.spacer(),
                             Row(
                               children: [
                                 Expanded(
                                   child: DUI.tile.squareTile(context,
-                                      title: "2h",
-                                      subtitle: "As soon as possible",
-                                      selected: true),
+                                      title: "2h", subtitle: "As soon as possible", selected: true),
                                 ),
                                 DUI.spacing.hSpacer(),
                                 Expanded(
-                                  child: DUI.tile.squareTile(context,
-                                      title: "Schedule",
-                                      subtitle: "Select date and hour"),
+                                  child:
+                                      DUI.tile.squareTile(context, title: "Schedule", subtitle: "Select date and hour"),
                                 ),
                               ],
                             )
@@ -963,8 +867,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             DUI.badge.badgeSolid(context, 'Business closed'),
                             DUI.spacing.hSpacer(),
-                            DUI.badge.badgeSolid(context, 'Business closed',
-                                icon: Icons.shop, color: BadgeColor.secondary),
+                            DUI.badge
+                                .badgeSolid(context, 'Business closed', icon: Icons.shop, color: BadgeColor.secondary),
                           ],
                         ),
                         title: "Badge Solid"),
@@ -989,8 +893,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                DUI.badge.tagSolid(context, 'Click Me!',
-                                    onTap: () {
+                                DUI.badge.tagSolid(context, 'Click Me!', onTap: () {
                                   Alert.showAlertYesNo(
                                     "You clicked me!",
                                     "You perv...",
@@ -1002,9 +905,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 }),
                                 DUI.spacing.hSpacer(),
                                 DUI.badge.tagSolid(context, 'Click Me!',
-                                    icon: Icons.ac_unit_sharp,
-                                    color: BadgeColor.secondary,
-                                    onTap: () {}),
+                                    icon: Icons.ac_unit_sharp, color: BadgeColor.secondary, onTap: () {}),
                               ],
                             ),
                             DUI.spacing.spacer(small: true),
@@ -1012,8 +913,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                DUI.badge.tagSolid(context, 'Click Me!',
-                                    onDelete: () {}, onTap: () {
+                                DUI.badge.tagSolid(context, 'Click Me!', onDelete: () {}, onTap: () {
                                   Alert.showAlert(
                                     "You clicked me!",
                                     "You perv...",
@@ -1023,9 +923,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 }),
                                 DUI.spacing.hSpacer(),
                                 DUI.badge.tagSolid(context, 'Click Me!',
-                                    icon: Icons.ac_unit_sharp,
-                                    color: BadgeColor.secondary,
-                                    onDelete: () {}, onTap: () {
+                                    icon: Icons.ac_unit_sharp, color: BadgeColor.secondary, onDelete: () {}, onTap: () {
                                   Alert.showAlert(
                                     "You clicked me!",
                                     "You perv...",
@@ -1046,8 +944,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                DUI.badge.tagOutline(context, 'Click Me!',
-                                    onTap: () {
+                                DUI.badge.tagOutline(context, 'Click Me!', onTap: () {
                                   Alert.showAlert(
                                     "You clicked me!",
                                     "You perv...",
@@ -1057,8 +954,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 }),
                                 DUI.spacing.hSpacer(),
                                 DUI.badge.tagOutline(context, 'Click Me!',
-                                    icon: Icons.ac_unit_sharp,
-                                    color: BadgeColor.secondary, onTap: () {
+                                    icon: Icons.ac_unit_sharp, color: BadgeColor.secondary, onTap: () {
                                   Alert.showAlert(
                                     "You clicked me!",
                                     "You perv...",
@@ -1073,8 +969,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                DUI.badge.tagOutline(context, 'Click Me!',
-                                    onDelete: () {}, onTap: () {
+                                DUI.badge.tagOutline(context, 'Click Me!', onDelete: () {}, onTap: () {
                                   Alert.showAlert(
                                     "You clicked me!",
                                     "You perv...",
@@ -1084,9 +979,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 }),
                                 DUI.spacing.hSpacer(),
                                 DUI.badge.tagOutline(context, 'Click Me!',
-                                    icon: Icons.ac_unit_sharp,
-                                    color: BadgeColor.secondary,
-                                    onDelete: () {}, onTap: () {
+                                    icon: Icons.ac_unit_sharp, color: BadgeColor.secondary, onDelete: () {}, onTap: () {
                                   Alert.showAlert(
                                     "You clicked me!",
                                     "You perv...",
@@ -1113,24 +1006,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     DUI.text.title2(context, 'Misc'),
                     DUI.spacing.spacer(small: true),
-                    showCaseBlock(
-                        DUI.misc.spanWithBoldTitle(
-                            context, 'La teva comanda a ', 'Ginza41'),
+                    showCaseBlock(DUI.misc.spanWithBoldTitle(context, 'La teva comanda a ', 'Ginza41'),
                         title: "Span with Bold Title"),
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
-                        DUI.button.smallButton(context, 'Obrir Bottom Picker',
-                            () {
+                        DUI.button.smallButton(context, 'Obrir Bottom Picker', () {
                           DUI.misc.bottomSheetPicker(
                               context,
                               'Demo Picker',
                               'Demo Picker ',
                               DUI.picker.calendar(
                                 context,
-                                (initDate, lastDate) {
-                                  print("From: $initDate");
-                                  print("To: $lastDate");
-                                },
+                                (initDate, lastDate) {},
                                 calendarMode: CalendarMode.single,
                                 selectedDates: [
                                   DateTime.now().add(Duration(days: 2)),
@@ -1152,13 +1039,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             color: Colors.white,
                             child: Stack(
                               children: [
-                                Center(
-                                    child: DUI.text.title1(context, 'Glass Container', color: Colors.black)
-                                ),
-                                DUI.misc.glassContainer(
-                                  densityMultiplier: 1,
-                                  glassTintColor: Colors.blue
-                                ),
+                                Center(child: DUI.text.title1(context, 'Glass Container', color: Colors.black)),
+                                DUI.misc.glassContainer(densityMultiplier: 1, glassTintColor: Colors.blue),
                               ],
                             ),
                           ),
@@ -1182,10 +1064,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             DUI.picker.calendar(
                               context,
-                              (initDate, lastDate) {
-                                print("From: $initDate");
-                                print("To: $lastDate");
-                              },
+                              (initDate, lastDate) {},
                               calendarMode: CalendarMode.single,
                               selectedDates: [
                                 DateTime.now().add(Duration(days: 2)),
@@ -1201,10 +1080,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             DUI.picker.calendar(
                               context,
-                              (initDate, lastDate) {
-                                print("From: $initDate");
-                                print("To: $lastDate");
-                              },
+                              (initDate, lastDate) {},
                               showToday: false,
                               calendarMode: CalendarMode.range,
                               selectedDates: [
@@ -1221,20 +1097,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             DUI.picker.calendar(
                               context,
-                              (initDate, lastDate) {
-                                print("From: $initDate");
-                                print("To: $lastDate");
-                              },
+                              (initDate, lastDate) {},
                               calendarMode: CalendarMode.single,
                               disableWeekends: true,
                               disabledDates: [
                                 DateTime.now().add(Duration(days: 2)),
                                 DateTime.now().add(Duration(days: 5))
                               ],
-                              disabledDays: [
-                                DateTime.monday,
-                                DateTime.thursday
-                              ],
+                              disabledDays: [DateTime.monday, DateTime.thursday],
                               selectedDates: [],
                             ),
                           ],
@@ -1243,11 +1113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     DUI.spacing.spacer(small: true),
                     showCaseBlock(
                         Column(children: [
-                          DUI.picker.textScrollPicker(
-                              context, ['Test', 'Test', 'Test', 'Test'],
-                              (value) {
-                            print(value);
-                          }),
+                          DUI.picker.textScrollPicker(context, ['Test', 'Test', 'Test', 'Test'], (value) {}),
                         ]),
                         title: "Text Scroll Picker"),
                     DUI.spacing.spacer(small: true),
@@ -1325,10 +1191,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ));
   }
 
-  showCaseBlock(Widget content,
-      {String? title,
-      bool largePadding = true,
-      Color backgroundColor = Colors.white}) {
+  showCaseBlock(Widget content, {String? title, bool largePadding = true, Color backgroundColor = Colors.white}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -1339,28 +1202,18 @@ class _MyHomePageState extends State<MyHomePage> {
           subdivisions: 2,
           interval: 24,
           child: Container(
-            padding: EdgeInsets.only(
-                left: 12,
-                right: 12,
-                top: largePadding ? 24 : 12,
-                bottom: largePadding ? 24 : 12),
+            padding: EdgeInsets.only(left: 12, right: 12, top: largePadding ? 24 : 12, bottom: largePadding ? 24 : 12),
             decoration: BoxDecoration(
                 color: Theme.of(context).scaffoldBackgroundColor,
-                borderRadius:
-                    BorderRadius.circular(DUI.spacing.smallBorderRadius)),
+                borderRadius: BorderRadius.circular(DUI.spacing.smallBorderRadius)),
             child: Center(
               child: content,
             ),
           ),
         ),
+        title != null ? DUI.spacing.spacer(small: true) : const SizedBox.shrink(),
         title != null
-            ? DUI.spacing.spacer(small: true)
-            : const SizedBox.shrink(),
-        title != null
-            ? DUI.text.xs(context, title,
-                color: Theme.of(context).textTheme.bodyMedium!.color,
-                bold: true,
-                maxLines: 1)
+            ? DUI.text.xs(context, title, color: Theme.of(context).textTheme.bodyMedium!.color, bold: true, maxLines: 1)
             : const SizedBox.shrink(),
         title != null ? DUI.spacing.spacer() : const SizedBox.shrink(),
       ],

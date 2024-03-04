@@ -15,7 +15,7 @@ class ShakeWidget extends StatefulWidget {
   final Curve curve;
 
   @override
-  _ShakeWidgetState createState() => _ShakeWidgetState();
+  State<ShakeWidget> createState() => _ShakeWidgetState();
 }
 
 class _ShakeWidgetState extends State<ShakeWidget>

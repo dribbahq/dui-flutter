@@ -251,8 +251,6 @@ class Utils {
 
   static bool containsDate(List<DateTime> dates, DateTime targetDate) {
     for (DateTime date in dates) {
-      print("$date - $targetDate");
-      print(isSameDay(date, targetDate));
       if (isSameDay(date, targetDate)) {
         return true;
       }
