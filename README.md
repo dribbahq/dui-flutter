@@ -48,7 +48,7 @@ Contributions to `dui-flutter` are welcome! Whether it's submitting a bug report
 
 ## License
 
-`dui-flutter` is released under the MIT License. Feel free to use it in your projects, commercial or otherwise.
+`dui-flutter` is released under the BSD-3 License.
 
 ## Acknowledgments
 
