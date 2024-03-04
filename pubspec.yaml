@@ -1,6 +1,6 @@
 name: dui
 description: DUI is a flutter package that provides a set of widgets to help you build your app faster.
-version: 0.0.1
+version: 0.0.2
 
 environment:
   sdk: '>=2.15.0 <4.0.0'
