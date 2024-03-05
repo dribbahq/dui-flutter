@@ -41,4 +41,25 @@ class DUISkeleton {
       ),
     );
   }
+
+  Widget emptySimpleContainer(double height, double width, BuildContext context) {
+    return Shimmer.fromColors(
+        baseColor: Theme.of(context).brightness == Brightness.light
+            ? DUI.color.loadingLightPrimary!
+            : DUI.color.loadingDarkPrimary,
+        highlightColor: Theme.of(context).brightness == Brightness.light
+            ? DUI.color.loadingLightSecondary!
+            : DUI.color.loadingDarkSecondary,
+        enabled: true,
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 6.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: DUI.color.white, borderRadius: BorderRadius.all(Radius.circular(DUI.spacing.borderRadius))),
+            width: width,
+            height: height,
+          ),
+        ));
+  }
+
 }
