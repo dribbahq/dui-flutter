@@ -1,6 +1,6 @@
 name: dui
 description: DUI is a flutter package that provides a set of widgets to help you build your app faster.
-version: 0.0.4
+version: 0.0.5
 homepage: https://www.dribba.com
 repository: https://github.com/dribbahq/dui-flutter
 
@@ -22,7 +22,7 @@ dependencies:
   cached_network_image: any
   lottie: any
   flutter_html: any
-  latlng: 1.0.0
+  latlng: any
   flutter_vibrate: any
   flutter_slidable: any
   custom_sliding_segmented_control: any

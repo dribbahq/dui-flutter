@@ -1,3 +1,6 @@
+## 0.0.5
+* Upgrade dependencies
+
 ## 0.0.4
 * Add `emptySimpleContainer` to skeleton widgets
 
