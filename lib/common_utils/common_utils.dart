@@ -262,13 +262,13 @@ class Utils {
   /*
   * Launcher Helpers Methods
   * */
-  static launchMaps(List<double> geolocation, String? name) async {
-    LatLng location = LatLng(geolocation[0], geolocation[1]);
+  static launchMaps(List<double> geolocation, String? name, {DirectionsMode? directionsMode}) async {
+    LatLng location = LatLng(Angle.degree(geolocation[0]), Angle.degree(geolocation[1]));
     final availableMaps = await MapLauncher.installedMaps;
     await availableMaps.first.showDirections(
-        destination: Coords(location.longitude, location.latitude),
+        destination: Coords(location.longitude.degrees, location.latitude.degrees),
         destinationTitle: name ?? "",
-        directionsMode: DirectionsMode.walking);
+        directionsMode: directionsMode ?? DirectionsMode.walking);
   }
 
   static launchUrl(url) async {
@@ -366,20 +366,17 @@ class Utils {
   * Map Helper Methods
   * */
   static double getDegree(LatLng begin, LatLng end) {
-    double lat = (begin.latitude - end.latitude).abs();
+    double lat = (begin.latitude.degrees - end.latitude.degrees).abs();
 
-    double lng = (begin.longitude - end.longitude).abs();
+    double lng = (begin.longitude.degrees - end.longitude.degrees).abs();
 
-    if (begin.latitude < end.latitude && begin.longitude < end.longitude) {
+    if (begin.latitude.degrees < end.latitude.degrees && begin.longitude.degrees < end.longitude.degrees) {
       return deg.degrees(atan(lng / lat));
-    } else if (begin.latitude >= end.latitude &&
-        begin.longitude < end.longitude) {
+    } else if (begin.latitude.degrees >= end.latitude.degrees && begin.longitude.degrees < end.longitude.degrees) {
       return (90 - deg.degrees(atan(lng / lat))) + 90;
-    } else if (begin.latitude >= end.latitude &&
-        begin.longitude >= end.longitude) {
+    } else if (begin.latitude.degrees >= end.latitude.degrees && begin.longitude.degrees >= end.longitude.degrees) {
       return deg.degrees(atan(lng / lat)) + 180;
-    } else if (begin.latitude < end.latitude &&
-        begin.longitude >= end.longitude) {
+    } else if (begin.latitude.degrees < end.latitude.degrees && begin.longitude.degrees >= end.longitude.degrees) {
       return (90 - deg.degrees(atan(lng / lat))) + 270;
     }
 
