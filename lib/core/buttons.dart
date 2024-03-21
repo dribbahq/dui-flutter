@@ -259,7 +259,7 @@ class DUIButton {
   }
 
   Widget checkbox(
-      bool isSelected, Function(bool) onChange, BuildContext context) {
+      bool isSelected, Function(bool) onChange, BuildContext context, {Color? color}) {
     var size = 26.0;
     return Material(
       borderRadius: BorderRadius.circular(DUI.spacing.smallBorderRadius + 4),
@@ -288,7 +288,7 @@ class DUIButton {
                         width: size - 14,
                         height: size - 14,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: color ?? Theme.of(context).colorScheme.primary,
                           borderRadius: BorderRadius.circular(2),
                         ))
                     : SizedBox.shrink(),
