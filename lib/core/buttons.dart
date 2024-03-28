@@ -7,7 +7,7 @@ import 'external/button.dart';
 import 'external/custom_switch.dart';
 
 class DUIButton {
-  final double buttonMinHeight = 56.0;
+  final double buttonMinHeight = 64.0;
   final double smallButtonMinHeight = 42.0;
 
   Widget button(BuildContext context, String? text, Function? onPressed,

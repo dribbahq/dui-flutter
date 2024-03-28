@@ -160,7 +160,7 @@ class DUIInput {
                                             .textTheme
                                             .bodyMedium!
                                             .color!
-                                            .withOpacity(0.3))),
+                                            .withOpacity(0.75))),
                             decoration: InputDecoration(
                                 isDense: true,
                                 contentPadding: EdgeInsets.only(

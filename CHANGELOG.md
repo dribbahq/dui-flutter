@@ -1,3 +1,6 @@
+## 0.0.7
+* Changes on Buttons and TextFields
+
 ## 0.0.6
 * Upgrade dependencies
 
