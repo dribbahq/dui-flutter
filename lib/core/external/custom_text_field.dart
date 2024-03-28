@@ -219,7 +219,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                               .textTheme
                                               .bodyLarge!
                                               .color!
-                                              .withOpacity(0.3))),
+                                              .withOpacity(0.75))),
                               decoration: InputDecoration(
                                   isDense: true,
                                   contentPadding: EdgeInsets.only(
