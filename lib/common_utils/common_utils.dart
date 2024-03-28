@@ -46,10 +46,7 @@ class Utils {
   * Modals and Bottom Sheet Utils
   * */
   static Future showBottomSheet(context,
-      {Widget? content,
-      bool dismissible = true,
-      double? maxHeight,
-      bool skipPadding = false}) {
+      {Widget? content, bool dismissible = true, double? maxHeight, bool skipPadding = false}) {
     return CustomShowModalBottomSheet.customShowModalBottomSheet(
       darkMode: Theme.of(context).brightness == Brightness.light,
       context: context,
@@ -65,8 +62,7 @@ class Utils {
                   right: DUI.spacing.lateralPaddingValue),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.background,
-            borderRadius: BorderRadius.vertical(
-                top: Radius.circular(DUI.spacing.largeBorderRadius)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(DUI.spacing.largeBorderRadius)),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.2),
@@ -87,12 +83,13 @@ class Utils {
                         ? Center(
                             child: Opacity(
                               opacity: 0.2,
-                              child: Icon(Icons.horizontal_rule_rounded,
-                                  size: 20,
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .color!),
+                              child: Container(
+                                width: 49,
+                                height: 5.5,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
                             ),
                           )
                         : DUI.spacing.spacer(multiplier: 2),
@@ -119,11 +116,9 @@ class Utils {
         isDismissible: dismissible,
         isScrollControlled: true,
         useSafeArea: false,
-        constraints: BoxConstraints(
-            maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.95),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-                top: Radius.circular(DUI.spacing.borderRadius))),
+        constraints: BoxConstraints(maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.95),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(DUI.spacing.borderRadius))),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         builder: (context) {
           return content ?? Container();
@@ -135,18 +130,15 @@ class Utils {
   /*
   * Date Helper Methods
   * */
-  static DateFormat dateFormatScheduleSet =
-      DateFormat('yyyy-MM-ddTHH:mm:ss.SSS', 'ca_ES');
-  static DateFormat dateFormatScheduleGet =
-      DateFormat('yyyy-MM-ddTHH:mm:ssZ', 'ca_ES');
+  static DateFormat dateFormatScheduleSet = DateFormat('yyyy-MM-ddTHH:mm:ss.SSS', 'ca_ES');
+  static DateFormat dateFormatScheduleGet = DateFormat('yyyy-MM-ddTHH:mm:ssZ', 'ca_ES');
 
   static String formatDate(DateTime date, {String? localeCode}) {
     return DateFormat('EEE, dd MMM', localeCode ?? 'ca_ES').format(date);
   }
 
   static String formatDateTime(DateTime date, {String? localeCode}) {
-    return DateFormat('EEEE, dd/MMMM, HH:mm', localeCode ?? 'ca_ES')
-        .format(date);
+    return DateFormat('EEEE, dd/MMMM, HH:mm', localeCode ?? 'ca_ES').format(date);
   }
 
   static String formatDateformatTime(DateTime date, {String? localeCode}) {
@@ -157,8 +149,7 @@ class Utils {
     return DateFormat('dd/MM/yyyy').format(format.parse(date));
   }
 
-  static String getNiceDateMinus10(String date, DateFormat format,
-      {String? localeCode}) {
+  static String getNiceDateMinus10(String date, DateFormat format, {String? localeCode}) {
     try {
       return '${DateFormat('EE, dd/MM/yy, HH:mm', localeCode ?? 'ca_ES').format(format.parseUTC(date).toLocal())}h';
     } catch (e) {
@@ -166,8 +157,7 @@ class Utils {
     }
   }
 
-  static String getNiceDate(String date, DateFormat format,
-      {String? localeCode}) {
+  static String getNiceDate(String date, DateFormat format, {String? localeCode}) {
     try {
       return '${DateFormat('dd MMMM yyyy, HH:mm', localeCode ?? 'ca_ES').format(format.parseUTC(date).toLocal())}h';
     } catch (e) {
@@ -175,8 +165,7 @@ class Utils {
     }
   }
 
-  static String getNiceSmallDate(String date, DateFormat format,
-      {String? localeCode}) {
+  static String getNiceSmallDate(String date, DateFormat format, {String? localeCode}) {
     try {
       return '${DateFormat('dd MMM, HH:mm', localeCode ?? 'ca_ES').format(format.parseUTC(date).toLocal())}h';
     } catch (e) {
@@ -184,11 +173,9 @@ class Utils {
     }
   }
 
-  static String getNiceSmallDateNoHour(String date, DateFormat format,
-      {String? localeCode}) {
+  static String getNiceSmallDateNoHour(String date, DateFormat format, {String? localeCode}) {
     try {
-      return DateFormat('dd MMM', localeCode ?? 'ca_ES')
-          .format(format.parseUTC(date).toLocal());
+      return DateFormat('dd MMM', localeCode ?? 'ca_ES').format(format.parseUTC(date).toLocal());
     } catch (e) {
       return '';
     }
@@ -217,9 +204,7 @@ class Utils {
   }
 
   static bool isToday(DateTime other) {
-    return DateTime.now().year == other.year &&
-        DateTime.now().month == other.month &&
-        DateTime.now().day == other.day;
+    return DateTime.now().year == other.year && DateTime.now().month == other.month && DateTime.now().day == other.day;
   }
 
   static bool isTomorrow(DateTime other) {
@@ -229,14 +214,11 @@ class Utils {
   }
 
   static bool isSameDay(DateTime dateA, DateTime dateB) {
-    return dateA.year == dateB.year &&
-        dateA.month == dateB.month &&
-        dateA.day == dateB.day;
+    return dateA.year == dateB.year && dateA.month == dateB.month && dateA.day == dateB.day;
   }
 
   static bool isWeekend(DateTime dateA) {
-    return dateA.weekday == DateTime.saturday ||
-        dateA.weekday == DateTime.sunday;
+    return dateA.weekday == DateTime.saturday || dateA.weekday == DateTime.sunday;
   }
 
   static bool isExcludedDays(List<int> days, DateTime targetDate) {
@@ -295,13 +277,9 @@ class Utils {
     if (stringedPrice != null && double.tryParse(stringedPrice) != null) {
       double price = double.parse(stringedPrice);
       if (price % 1 == 0) {
-        return NumberFormat.currency(
-                locale: 'es_ES', symbol: '', decimalDigits: 0)
-            .format(price.round());
+        return NumberFormat.currency(locale: 'es_ES', symbol: '', decimalDigits: 0).format(price.round());
       }
-      return NumberFormat.currency(
-              locale: 'es_ES', symbol: '', decimalDigits: 2)
-          .format(price);
+      return NumberFormat.currency(locale: 'es_ES', symbol: '', decimalDigits: 2).format(price);
     }
     return "0";
   }
@@ -310,19 +288,16 @@ class Utils {
     if (price % 1 == 0) {
       return NumberFormat.decimalPattern().format(price.round());
     }
-    return NumberFormat.decimalPattern()
-        .format(double.parse(price.toStringAsFixed(1)));
+    return NumberFormat.decimalPattern().format(double.parse(price.toStringAsFixed(1)));
   }
 
   static String parsePriceCents(p) {
     if (p != null && double.tryParse(p) != null) {
       double price = double.parse(p) / 100;
       if (price % 1 == 0) {
-        return NumberFormat.currency(locale: 'eu', symbol: '', decimalDigits: 0)
-            .format(price.round());
+        return NumberFormat.currency(locale: 'eu', symbol: '', decimalDigits: 0).format(price.round());
       }
-      return NumberFormat.currency(locale: 'eu', symbol: '', decimalDigits: 2)
-          .format(price);
+      return NumberFormat.currency(locale: 'eu', symbol: '', decimalDigits: 2).format(price);
     }
     return "0";
   }
@@ -384,8 +359,7 @@ class Utils {
   }
 
   static bool sameCoordinate(LatLng coord1, LatLng coord2) {
-    if (coord1.latitude == coord2.latitude &&
-        coord1.longitude == coord2.longitude) {
+    if (coord1.latitude == coord2.latitude && coord1.longitude == coord2.longitude) {
       return true;
     }
     return false;
@@ -397,8 +371,7 @@ class Utils {
   * Color Helper Methods
   * */
   static Future<Color> getImagePalette(ImageProvider imageProvider) async {
-    final PaletteGenerator paletteGenerator =
-        await PaletteGenerator.fromImageProvider(imageProvider);
+    final PaletteGenerator paletteGenerator = await PaletteGenerator.fromImageProvider(imageProvider);
     return paletteGenerator.dominantColor!.color;
   }
 }

@@ -1,3 +1,6 @@
+## 0.0.8
+* Update Modal Bottom Sheet
+
 ## 0.0.7
 * Changes on Buttons and TextFields
 
