@@ -19,10 +19,10 @@ class DUIText {
 
   // font weight
   final FontWeight regularWeight = FontWeight.w400;
-  final FontWeight semiBoldWeight = FontWeight.w600;
-  final FontWeight boldWeight = FontWeight.w700;
+  final FontWeight semiBoldWeight = FontWeight.w700;
+  final FontWeight boldWeight = FontWeight.w800;
 
-  final double textHeight = 1.3;
+  final double textHeight = 1.2;
 
   /*
   * Text widgets

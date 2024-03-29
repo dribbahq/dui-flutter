@@ -1,3 +1,6 @@
+## 0.0.9
+* Update Text Styles
+
 ## 0.0.8
 * Update Modal Bottom Sheet
 

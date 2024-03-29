@@ -44,13 +44,13 @@ class DUITheme {
                 color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
             titleMedium: TextStyle(
                 fontSize: DUI.text.h2,
-                fontWeight: DUI.text.semiBoldWeight,
+                fontWeight: DUI.text.boldWeight,
                 height: DUI.text.textHeight,
                 letterSpacing: 0.15,
                 color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
             titleSmall: TextStyle(
                 fontSize: DUI.text.h3,
-                fontWeight: DUI.text.semiBoldWeight,
+                fontWeight: DUI.text.boldWeight,
                 height: DUI.text.textHeight,
                 letterSpacing: 0.15,
                 color: isDarkTheme ? DUI.color.textDarkMode : DUI.color.text),
