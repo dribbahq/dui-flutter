@@ -117,7 +117,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                         .enabledBorder!
                                         .borderSide
                                         .color,
-                        width: DUI.spacing.borderWidth),
+                        width: Theme.of(context)
+                            .inputDecorationTheme
+                            .enabledBorder!
+                            .borderSide
+                            .width),
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(
